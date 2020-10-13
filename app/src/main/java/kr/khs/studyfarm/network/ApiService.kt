@@ -45,11 +45,14 @@ interface StudyFarmApiService {
 }
 
 object StudyFarmApi {
-    val retrofit = Retrofit.Builder()
+    private val _retrofit = Retrofit.Builder()
         .addConverterFactory(MoshiConverterFactory.create(moshi)) // json to kotlin
         .baseUrl(BASE_URL)
         .client(clientBuilder.build())
         .build()
+
+    val retrofit : Retrofit
+        get() = _retrofit
 
     val retrofitService : StudyFarmApiService by lazy {
         retrofit.create(StudyFarmApiService::class.java)
