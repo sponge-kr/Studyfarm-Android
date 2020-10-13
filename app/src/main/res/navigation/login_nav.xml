@@ -9,7 +9,11 @@
         android:label="SigninFragment" >
         <action
             android:id="@+id/action_signinFragment_to_signupFragment"
-            app:destination="@id/signupFragment" />
+            app:destination="@id/signupFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
@@ -18,6 +22,10 @@
         <action
             android:id="@+id/action_signupFragment_to_signinFragment"
             app:destination="@id/signinFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
             app:popUpTo="@id/signinFragment" />
     </fragment>
 </navigation>

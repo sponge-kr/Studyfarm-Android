@@ -1,4 +1,4 @@
-package kr.khs.studyfarm
+package kr.khs.studyfarm.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.Window
 import android.view.WindowManager
-import kotlin.coroutines.CoroutineContext
+import kr.khs.studyfarm.R
 
 class SplashActivity : AppCompatActivity() {
     private val DELAY_TIME = 2000L
@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
 
         //TODO : Handler is deprecated library -> find alternative
         Handler().postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, SignActivity::class.java))
 
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
 
