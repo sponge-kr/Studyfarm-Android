@@ -25,11 +25,7 @@ private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
 
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi)) // json to kotlin
-    .baseUrl(BASE_URL)
-    .client(clientBuilder.build())
-    .build()
+
 
 interface StudyFarmApiService {
     @Headers("Content-Type: application/hal+json;charset=UTF-8",
@@ -39,6 +35,12 @@ interface StudyFarmApiService {
 }
 
 object StudyFarmApi {
+    val retrofit = Retrofit.Builder()
+        .addConverterFactory(MoshiConverterFactory.create(moshi)) // json to kotlin
+        .baseUrl(BASE_URL)
+        .client(clientBuilder.build())
+        .build()
+
     val retrofitService : StudyFarmApiService by lazy {
         retrofit.create(StudyFarmApiService::class.java)
     }

@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentSignupBinding
 import kr.khs.studyfarm.network.ApiStatus
@@ -38,6 +40,21 @@ class SignupFragment : Fragment() {
                 ApiStatus.ERROR -> "ERROR"
             }
             )
+        })
+
+        viewModel.response.observe(viewLifecycleOwner, Observer {
+            it.let {
+                if(it.code == 200.0) {
+                    Toast.makeText(context, "회원가입이 되었습니다.", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(SignupFragmentDirections.actionSignupFragmentToSigninFragment())
+                }
+            }
+        })
+
+        viewModel.error.observe(viewLifecycleOwner, Observer {
+            it.let {
+                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+            }
         })
 
         return binding.root

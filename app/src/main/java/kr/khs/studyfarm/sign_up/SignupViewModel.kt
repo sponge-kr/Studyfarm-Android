@@ -5,9 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
-import kr.khs.studyfarm.network.ApiStatus
-import kr.khs.studyfarm.network.StudyFarmApi
-import kr.khs.studyfarm.network.User
+import kr.khs.studyfarm.network.*
+import retrofit2.HttpException
 import java.lang.Exception
 
 class SignupViewModel : ViewModel() {
@@ -31,6 +30,14 @@ class SignupViewModel : ViewModel() {
 
     val profile = ObservableField<String>()
 
+    private val _response = MutableLiveData<Response>()
+    val response : LiveData<Response>
+        get() = _response
+
+    private val _error = MutableLiveData<ResponseError>()
+    val error : LiveData<ResponseError>
+        get() = _error
+
     //api status 변경에 따라 회원가입 로딩, 성공, 실패 -> observer을 통해서 처리하기 위함
     private val _apiStatus = MutableLiveData<ApiStatus>()
     val apiStatus : LiveData<ApiStatus>
@@ -42,14 +49,13 @@ class SignupViewModel : ViewModel() {
     init {
         name.set("김희승")
         email.set("ks96ks@naver.com")
-        password.set("test1!")
+        password.set("rlagmltmd1!")
         nickname.set("김희승")
         phone.set("01047335304")
         age.set(25.toString())
         state.set(11.toString())
         city.set(1.toString())
         simpleIntroduce.set("안녕하세요")
-        profile.set("null")
     }
 
     fun onSignupBtnClicked() {
@@ -64,7 +70,7 @@ class SignupViewModel : ViewModel() {
             state = state.get()!!.toDouble(),
             city = city.get()!!.toDouble(),
             simpleIntroduce = simpleIntroduce.get()!!,
-            profile = profile.get()!!
+            profile = profile.get()
         )
 
         addUser(user)
@@ -74,17 +80,21 @@ class SignupViewModel : ViewModel() {
         coroutineScope.launch {
             try {
                 _apiStatus.value = ApiStatus.LOADING
-                val ret = StudyFarmApi.retrofitService.addUser(user)
-                if(ret.code == 200.0)
-                    _apiStatus.value = ApiStatus.DONE
-                else
-                    _apiStatus.value = ApiStatus.ERROR
+                _response.value = StudyFarmApi.retrofitService.addUser(user)
+                _apiStatus.value = ApiStatus.DONE
             }
-            catch (e : Exception) {
+            catch (t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
-                e.printStackTrace()
+                errorHandling(t)
             }
         }
+    }
+
+    private fun errorHandling(t : Throwable) {
+        val httpException = t as HttpException
+        val errorBody = httpException.response()?.errorBody()!!
+        val converter = StudyFarmApi.retrofit.responseBodyConverter<ResponseError>(ResponseError::class.java, ResponseError::class.java.annotations)
+        _error.value = converter.convert(errorBody)
     }
 
     override fun onCleared() {

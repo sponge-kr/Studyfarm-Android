@@ -18,10 +18,6 @@ data class Links(
     val docs : Href
 )
 
-//data class Links(
-//    val links : HashMap<String, Href>
-//)
-
 data class Result(
     @Json(name = "users_seq")
     val userSeq : Double,
@@ -51,4 +47,11 @@ data class Response(
     val message : String,
     val responseTime : String,
     val result : Result
+)
+
+data class ResponseError(
+    val code : Double,
+    val message : String,
+    val errorDetails : String?,
+    val responseTime : String
 )
