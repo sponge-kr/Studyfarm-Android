@@ -27,61 +27,71 @@
                 android:id="@+id/signup_et_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.name}"/>
+                android:text="@={viewModel.name}"
+                android:singleLine="true"/>
 
             <EditText
                 android:id="@+id/signup_et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.email}"/>
+                android:text="@={viewModel.email}"
+                android:singleLine="true"/>
 
             <EditText
                 android:id="@+id/signup_et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.password}"/>
+                android:text="@={viewModel.password}"
+                android:singleLine="true"/>
 
             <EditText
                 android:id="@+id/signup_et_nickname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.nickname}"/>
+                android:text="@={viewModel.nickname}"
+                android:singleLine="true"/>
 
             <EditText
                 android:id="@+id/signup_et_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.phone}"/>
+                android:text="@={viewModel.phone}"
+                android:singleLine="true"/>
 
             <EditText
                 android:id="@+id/signup_et_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.age}"/>
+                android:text="@={viewModel.age}"
+                android:singleLine="true"/>
 
             <EditText
                 android:id="@+id/signup_et_state"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.state}"/>
+                android:text="@={viewModel.state}"
+                android:singleLine="true"/>
 
             <EditText
                 android:id="@+id/signup_et_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.city}"/>
+                android:text="@={viewModel.city}"
+                android:singleLine="true"/>
 
             <EditText
                 android:id="@+id/signup_et_simpleIntroduce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.simpleIntroduce}"/>
+                android:text="@={viewModel.simpleIntroduce}"
+                android:singleLine="true"/>
 
             <EditText
                 android:id="@+id/signup_et_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.profile}"/>
+                android:text="@={viewModel.profile}"
+                android:singleLine="true"/>
 
             <Button
                 android:id="@+id/signup_btn_signup"

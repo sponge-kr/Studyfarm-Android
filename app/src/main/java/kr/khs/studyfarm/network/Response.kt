@@ -52,6 +52,6 @@ data class Response(
 data class ResponseError(
     val code : Double,
     val message : String,
-    val errorDetails : String?,
+    val errorDetails : List<String>?,
     val responseTime : String
 )
