@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_nav"
+    app:startDestination="@id/signinFragment">
+
+    <fragment
+        android:id="@+id/signinFragment"
+        android:name="kr.khs.studyfarm.sign_in.SigninFragment"
+        android:label="SigninFragment" >
+        <action
+            android:id="@+id/action_signinFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="kr.khs.studyfarm.sign_up.SignupFragment"
+        android:label="SignupFragment" >
+        <action
+            android:id="@+id/action_signupFragment_to_signinFragment"
+            app:destination="@id/signinFragment" />
+    </fragment>
+</navigation>

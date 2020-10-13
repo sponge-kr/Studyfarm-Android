@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.khs.studyfarm.sign_up.SignupViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".sign_up.SignupFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+            <EditText
+                android:id="@+id/signup_et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.name}"/>
+
+            <EditText
+                android:id="@+id/signup_et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.email}"/>
+
+            <EditText
+                android:id="@+id/signup_et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.password}"/>
+
+            <EditText
+                android:id="@+id/signup_et_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.nickname}"/>
+
+            <EditText
+                android:id="@+id/signup_et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.phone}"/>
+
+            <EditText
+                android:id="@+id/signup_et_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.age}"/>
+
+            <EditText
+                android:id="@+id/signup_et_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.state}"/>
+
+            <EditText
+                android:id="@+id/signup_et_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.city}"/>
+
+            <EditText
+                android:id="@+id/signup_et_simpleIntroduce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.simpleIntroduce}"/>
+
+            <EditText
+                android:id="@+id/signup_et_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.profile}"/>
+
+            <Button
+                android:id="@+id/signup_btn_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="sign up"
+                android:onClick="@{() -> viewModel.onSignupBtnClicked()}"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
