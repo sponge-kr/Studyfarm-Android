@@ -8,6 +8,7 @@ import kotlinx.coroutines.*
 import kr.khs.studyfarm.network.ApiStatus
 import kr.khs.studyfarm.network.StudyFarmApi
 import kr.khs.studyfarm.network.User
+import java.lang.Exception
 
 class SignupViewModel : ViewModel() {
     val name = ObservableField<String>()
@@ -41,13 +42,14 @@ class SignupViewModel : ViewModel() {
     init {
         name.set("김희승")
         email.set("ks96ks@naver.com")
-        password.set("test")
+        password.set("test1!")
         nickname.set("김희승")
         phone.set("01047335304")
         age.set(25.toString())
         state.set(11.toString())
         city.set(1.toString())
         simpleIntroduce.set("안녕하세요")
+        profile.set("null")
     }
 
     fun onSignupBtnClicked() {
@@ -62,7 +64,7 @@ class SignupViewModel : ViewModel() {
             state = state.get()!!.toDouble(),
             city = city.get()!!.toDouble(),
             simpleIntroduce = simpleIntroduce.get()!!,
-            profile = profile.get()
+            profile = profile.get()!!
         )
 
         addUser(user)
@@ -73,15 +75,14 @@ class SignupViewModel : ViewModel() {
             try {
                 _apiStatus.value = ApiStatus.LOADING
                 val ret = StudyFarmApi.retrofitService.addUser(user)
-                println(ret.toString())
                 if(ret.code == 200.0)
                     _apiStatus.value = ApiStatus.DONE
                 else
                     _apiStatus.value = ApiStatus.ERROR
             }
-            catch (t : Throwable) {
+            catch (e : Exception) {
                 _apiStatus.value = ApiStatus.ERROR
-                println(t.localizedMessage)
+                e.printStackTrace()
             }
         }
     }
