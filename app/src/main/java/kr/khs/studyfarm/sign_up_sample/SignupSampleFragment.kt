@@ -1,7 +1,7 @@
-package kr.khs.studyfarm.sign_in
+package kr.khs.studyfarm.sign_up_sample
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,42 +12,42 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
-import kr.khs.studyfarm.databinding.FragmentSigninBinding
+import kr.khs.studyfarm.databinding.FragmentSignupSampleBinding
+import kr.khs.studyfarm.network.ApiStatus
 import kr.khs.studyfarm.sign_up.SignupFragmentDirections
-import kr.khs.studyfarm.view.MainActivity
 
-class SigninFragment : Fragment() {
+class SignupSampleFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding : FragmentSigninBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_signin, container, false
+        val binding : FragmentSignupSampleBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_signup_sample, container, false
         )
 
         binding.lifecycleOwner = this
 
-        val viewModelFactory = SigninViewModelFactory()
+        val viewModelFactory = SignupSampleViewModelFactory()
 
-        val viewModel = ViewModelProvider(this, viewModelFactory).get(SigninViewModel::class.java)
+        val viewModel = ViewModelProvider(this, viewModelFactory).get(SignupSampleViewModel::class.java)
 
         binding.viewModel = viewModel
 
-        viewModel.signUpBtnClicked.observe(viewLifecycleOwner, Observer {
-            if(it) {
-//                findNavController().navigate(SigninFragmentDirections.actionSigninFragmentToSignupFragment())
-                findNavController().navigate(SigninFragmentDirections.actionSigninFragmentToSignupSampleFragment())
-                viewModel.doneSignupBtnClicked()
+        viewModel.apiStatus.observe(viewLifecycleOwner, Observer {
+            Log.d("SIGN_UP", when(it) {
+                ApiStatus.LOADING -> "LOADING"
+                ApiStatus.DONE -> "DONE"
+                ApiStatus.ERROR -> "ERROR"
             }
+            )
         })
 
         viewModel.response.observe(viewLifecycleOwner, Observer {
             it.let {
                 if(it.code == 200.0) {
-                    val intent = Intent(activity, MainActivity::class.java)
-                    startActivity(intent)
-                    activity?.finish()
+                    Toast.makeText(context, "회원가입이 되었습니다.", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(SignupSampleFragmentDirections.actionSignupSampleFragmentToSigninFragment())
                 }
             }
         })
