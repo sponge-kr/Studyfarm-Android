@@ -30,7 +30,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/vertical_margin"
                 android:ems="10"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:text="@={viewModel.email}"/>
 
             <EditText
                 android:id="@+id/signin_et_pw"
@@ -38,7 +39,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/vertical_margin"
                 android:ems="10"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:text="@={viewModel.password}"/>
 
             <Button
                 android:id="@+id/siginin_btn_login"
@@ -46,7 +48,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:layout_marginVertical="@dimen/vertical_margin"
-                android:text="login" />
+                android:text="login"
+                android:onClick="@{() -> viewModel.onLoginBtnClicked()}"/>
 
             <Button
                 android:id="@+id/siginin_btn_signup"

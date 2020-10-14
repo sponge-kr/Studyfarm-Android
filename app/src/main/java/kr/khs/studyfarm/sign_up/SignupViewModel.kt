@@ -85,16 +85,9 @@ class SignupViewModel : ViewModel() {
             }
             catch (t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
-                errorHandling(t)
+                _error.value = errorHandling(t)
             }
         }
-    }
-
-    private fun errorHandling(t : Throwable) {
-        val httpException = t as HttpException
-        val errorBody = httpException.response()?.errorBody()!!
-        val converter = StudyFarmApi.retrofit.responseBodyConverter<ResponseError>(ResponseError::class.java, ResponseError::class.java.annotations)
-        _error.value = converter.convert(errorBody)
     }
 
     override fun onCleared() {
