@@ -6,13 +6,13 @@
     <data>
         <variable
             name="viewModel"
-            type="kr.khs.studyfarm.sign_up_sample.SignupSampleViewModel" />
+            type="kr.khs.studyfarm.sign_up.SignupViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".sign_up_sample.SignupSampleFragment">
+        tools:context=".sign_up.SignupFragment">
 
         <EditText
             android:id="@+id/signup_et"

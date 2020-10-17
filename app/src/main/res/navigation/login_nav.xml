@@ -1,42 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_nav"
-    app:startDestination="@id/signinFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/signMainFragment">
 
     <fragment
         android:id="@+id/signinFragment"
         android:name="kr.khs.studyfarm.sign_in.SigninFragment"
         android:label="SigninFragment" >
         <action
-            android:id="@+id/action_signinFragment_to_signupFragment"
-            app:destination="@id/signupFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
-        <action
             android:id="@+id/action_signinFragment_to_signupSampleFragment"
             app:destination="@id/signupSampleFragment" />
     </fragment>
     <fragment
-        android:id="@+id/signupFragment"
-        android:name="kr.khs.studyfarm.sign_up.SignupFragment"
-        android:label="SignupFragment" >
-        <action
-            android:id="@+id/action_signupFragment_to_signinFragment"
-            app:destination="@id/signinFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out"
-            app:popUpTo="@id/signinFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/signupSampleFragment"
-        android:name="kr.khs.studyfarm.sign_up_sample.SignupSampleFragment"
+        android:name="kr.khs.studyfarm.sign_up.SignupFragment"
         android:label="SignupSampleFragment" >
         <action
             android:id="@+id/action_signupSampleFragment_to_signinFragment"
+            app:destination="@id/signinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signMainFragment"
+        android:name="kr.khs.studyfarm.sign_main.SignMainFragment"
+        android:label="fragment_sign_main"
+        tools:layout="@layout/fragment_sign_main" >
+        <action
+            android:id="@+id/action_signMainFragment_to_signinFragment"
             app:destination="@id/signinFragment" />
     </fragment>
 </navigation>

@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentSigninBinding
-import kr.khs.studyfarm.sign_up.SignupFragmentDirections
 import kr.khs.studyfarm.view.MainActivity
 
 class SigninFragment : Fragment() {
