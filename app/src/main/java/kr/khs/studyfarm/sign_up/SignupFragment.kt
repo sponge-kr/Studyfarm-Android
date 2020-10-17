@@ -46,7 +46,7 @@ class SignupFragment : Fragment() {
             it.let {
                 if(it.code == 200.0) {
                     Toast.makeText(context, "회원가입이 되었습니다.", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(SignupSampleFragmentDirections.actionSignupSampleFragmentToSigninFragment())
+                    findNavController().navigate(SignupFragmentDirections.actionSignupSampleFragmentToSigninFragment())
                 }
             }
         })
