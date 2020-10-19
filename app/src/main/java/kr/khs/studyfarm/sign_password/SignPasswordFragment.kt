@@ -59,12 +59,6 @@ class SignPasswordFragment : Fragment() {
             }
         })
 
-        viewModel.error.observe(viewLifecycleOwner, Observer {
-            it.let {
-                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
-            }
-        })
-
         return binding.root
     }
 }
