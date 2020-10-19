@@ -11,13 +11,17 @@
         android:label="SignPasswordFragment" >
         <argument
             android:name="login_or_signup"
-            app:argType="boolean" />
+            app:argType="integer" />
         <argument
             android:name="email"
             app:argType="string" />
         <action
             android:id="@+id/action_signPasswordFragment_to_signupFragment"
             app:destination="@id/signupFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/signPasswordFragment" />
     </fragment>
     <fragment
@@ -28,6 +32,10 @@
         <action
             android:id="@+id/action_signEmailFragment_to_signPasswordFragment"
             app:destination="@id/signPasswordFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/signEmailFragment" />
     </fragment>
     <fragment
@@ -43,6 +51,10 @@
         <action
             android:id="@+id/action_signupFragment_to_signEmailFragment"
             app:destination="@id/signEmailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/signEmailFragment" />
     </fragment>
 </navigation>
