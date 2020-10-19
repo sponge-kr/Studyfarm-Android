@@ -1,12 +1,12 @@
-package kr.khs.studyfarm.sign_in
+package kr.khs.studyfarm.sign_email
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-class SigninViewModelFactory : ViewModelProvider.Factory {
+class SignEmailViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(SigninViewModel::class.java))
-            return SigninViewModel() as T
+        if(modelClass.isAssignableFrom(SignEmailViewModel::class.java))
+            return SignEmailViewModel() as T
         throw IllegalArgumentException("Unknown Class Name")
     }
 

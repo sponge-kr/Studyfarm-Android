@@ -1,6 +1,7 @@
 package kr.khs.studyfarm.sign_up
 
 import android.util.Log
+import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,19 +11,43 @@ import kotlinx.coroutines.*
 import kr.khs.studyfarm.network.*
 
 class SignupViewModel : ViewModel() {
-    private val _pointer = MutableLiveData<Int>()
-    val pointer : LiveData<Int>
-        get() = _pointer
 
-    val descriptionList = arrayOf("name", "email", "password", "nickname", "phone", "age", "state", "city", "simpleIntroduce", "profile")
-    val inputList = Array<String?>(10) { null }
+    private val MAX_SIGN_UP = 3
 
-    val descriptionField = ObservableField<String>()
-    val inputField = ObservableField<String>()
+    val email = MutableLiveData<String>()
 
-    val btnName = Transformations.map(pointer) { num ->
-        if(num < descriptionList.size - 1) "next"
-        else "sign up"
+    val password = MutableLiveData<String>()
+
+    val nickname = ObservableField<String>()
+
+    val introduce = ObservableField<String>()
+
+    val age = ObservableField<String>()
+
+    val necessaryCheck = ObservableField<BooleanArray>()
+
+    val optionalCheck = ObservableField<BooleanArray>()
+
+    private val step = MutableLiveData<Int>()
+
+    val stepVisibility = ObservableField<IntArray>()
+
+    val mainTitle = Transformations.map(step) {
+        when(it) {
+            1 -> "약관 동의"
+            2 -> "기본 정보"
+            3 -> "추가 정보"
+            else -> ""
+        }
+    }
+
+    val subTitle = Transformations.map(step) {
+        when(it) {
+            1 -> "앱 사용을 위 아래 항목에 동의해주세요."
+            2 -> "스터디원과 공유할 회원님의 정보를 입력해주세요."
+            3 -> "나와 딱 맞는 스터디를 가입할 수 있어요!"
+            else -> ""
+        }
     }
 
     private val _response = MutableLiveData<Response>()
@@ -42,52 +67,31 @@ class SignupViewModel : ViewModel() {
     private val coroutineScope = CoroutineScope(job + Dispatchers.Main)
 
     init {
-        _pointer.value = 0
-        descriptionField.set(descriptionList[pointer.value!!])
-//        name.set("김희승")
-//        email.set("ks96ks@naver.com")
-//        password.set("rlagmltmd1!")
-//        nickname.set("김희승")
-//        phone.set("01047335304")
-//        age.set(25.toString())
-//        state.set(11.toString())
-//        city.set(1.toString())
-//        simpleIntroduce.set("안녕하세요")
+        necessaryCheck.set(BooleanArray(3) { true })
+        optionalCheck.set(BooleanArray(2) { false })
+        stepVisibility.set(IntArray(3) { if(it == 0) View.VISIBLE else View.GONE })
+        step.value = 1
     }
 
     fun onNextBtnClicked() {
-        Log.d("SAMPLE_BEFORE", pointer.value!!.toString())
-
-        if(pointer.value!! < descriptionList.size && !inputField.get().isNullOrEmpty()) {
-            Log.d("SAMPLE_DOING", "something")
-            val cur = pointer.value!!
-            inputList[cur] = inputField.get()!!
-            _pointer.value = _pointer.value!!.plus(1)
-            if(cur + 1 == descriptionList.size)
-                onSignupBtnClicked()
-            else
-                descriptionField.set(descriptionList[cur + 1])
+        if(step.value != MAX_SIGN_UP) {
+            Log.d("SIGN_UP", step.value.toString())
+            step.value = step.value!!.plus(1)
+            stepVisibility.set(IntArray(3) { if(it == step.value!! - 1) View.VISIBLE else View.GONE })
         }
+        else {
+            val user = User(
+                email = email.value!!,
+                password = password.value!!,
+                nickname = nickname.get()!!,
+                name = nickname.get()!!,
+                age = if(age.get() == null) 0.0 else age.get()!!.toDouble(),
+                simpleIntroduce = if(introduce.get() == null) "" else introduce.get()!!,
+                profile = null
+            )
 
-        Log.d("SAMPLE_AFTER", pointer.value!!.toString())
-    }
-
-    fun onSignupBtnClicked() {
-        //TODO : profile을 제외한 모든 값은 일단 null이 아니라고 가정 -> 나중에 예외처리
-        val user = User(
-            name = inputList[0]!!,
-            email = inputList[1]!!,
-            password = inputList[2]!!,
-            nickname = inputList[3]!!,
-            phone = inputList[4]!!,
-            age = inputList[5]!!.toDouble(),
-            state = inputList[6]!!.toDouble(),
-            city = inputList[7]!!.toDouble(),
-            simpleIntroduce = inputList[8]!!,
-            profile = inputList[9]
-        )
-
-        addUser(user)
+            addUser(user)
+        }
     }
 
     private fun addUser(user: User) {

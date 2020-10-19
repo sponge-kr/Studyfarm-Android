@@ -7,9 +7,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 private const val BASE_URL = "http://3.214.168.45:8080/api/v1/"
 
@@ -48,6 +46,11 @@ interface StudyFarmApiService {
         "Accept: application/hal+json")
     @POST("auth/login")
     suspend fun loginUser(@Body login : LoginData) : Response
+
+    @Headers("Content-Type: application/hal+json;charset=UTF-8",
+        "Accept: application/hal+json")
+    @GET("user/check-email/{email}")
+    suspend fun checkEmail(@Path("email") email : String) : Response
 }
 
 object StudyFarmApi {

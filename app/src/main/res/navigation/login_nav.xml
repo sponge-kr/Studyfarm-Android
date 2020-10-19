@@ -3,31 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/signMainFragment">
+    app:startDestination="@id/signEmailFragment">
 
     <fragment
-        android:id="@+id/signinFragment"
-        android:name="kr.khs.studyfarm.sign_in.SigninFragment"
-        android:label="SigninFragment" >
+        android:id="@+id/signPasswordFragment"
+        android:name="kr.khs.studyfarm.sign_password.SignPasswordFragment"
+        android:label="SignPasswordFragment" >
+        <argument
+            android:name="login_or_signup"
+            app:argType="boolean" />
+        <argument
+            android:name="email"
+            app:argType="string" />
         <action
-            android:id="@+id/action_signinFragment_to_signupSampleFragment"
-            app:destination="@id/signupSampleFragment" />
+            android:id="@+id/action_signPasswordFragment_to_signupFragment"
+            app:destination="@id/signupFragment"
+            app:popUpTo="@id/signPasswordFragment" />
     </fragment>
     <fragment
-        android:id="@+id/signupSampleFragment"
+        android:id="@+id/signEmailFragment"
+        android:name="kr.khs.studyfarm.sign_email.SignEmailFragment"
+        android:label="fragment_sign_email"
+        tools:layout="@layout/fragment_sign_email" >
+        <action
+            android:id="@+id/action_signEmailFragment_to_signPasswordFragment"
+            app:destination="@id/signPasswordFragment"
+            app:popUpTo="@id/signEmailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
         android:name="kr.khs.studyfarm.sign_up.SignupFragment"
-        android:label="SignupSampleFragment" >
+        android:label="SignupFragment" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="password"
+            app:argType="string" />
         <action
-            android:id="@+id/action_signupSampleFragment_to_signinFragment"
-            app:destination="@id/signinFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/signMainFragment"
-        android:name="kr.khs.studyfarm.sign_main.SignMainFragment"
-        android:label="fragment_sign_main"
-        tools:layout="@layout/fragment_sign_main" >
-        <action
-            android:id="@+id/action_signMainFragment_to_signinFragment"
-            app:destination="@id/signinFragment" />
+            android:id="@+id/action_signupFragment_to_signEmailFragment"
+            app:destination="@id/signEmailFragment"
+            app:popUpTo="@id/signEmailFragment" />
     </fragment>
 </navigation>
