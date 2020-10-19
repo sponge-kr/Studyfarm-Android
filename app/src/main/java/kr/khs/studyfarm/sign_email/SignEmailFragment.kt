@@ -35,23 +35,17 @@ class SignEmailFragment : Fragment() {
         binding.viewModel = viewModel
 
         viewModel.status.observe(viewLifecycleOwner, Observer {
-            findNavController().navigate(SignEmailFragmentDirections.actionSignEmailFragmentToSignPasswordFragment(it, viewModel.email.get()!!))
-        })
-
-        viewModel.error.observe(viewLifecycleOwner, Observer {
-            it.let {
-                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+            if(it != 0) {
+                findNavController().navigate(
+                    SignEmailFragmentDirections.actionSignEmailFragmentToSignPasswordFragment(
+                        it,
+                        viewModel.email.get()!!
+                    )
+                )
+                viewModel.defaultStatus()
             }
         })
 
         return binding.root
     }
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        getBackStackData<String>("email") {
-//            viewModel.email.set(it)
-//        }
-//    }
 }

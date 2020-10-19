@@ -55,6 +55,7 @@ class SignPasswordFragment : Fragment() {
         viewModel.signupProcess.observe(viewLifecycleOwner, Observer {
             if(it) {
                 findNavController().navigate(SignPasswordFragmentDirections.actionSignPasswordFragmentToSignupFragment(viewModel.email.value!!, viewModel.password.get()!!))
+                viewModel.doneSignupProcess()
             }
         })
 
@@ -64,27 +65,6 @@ class SignPasswordFragment : Fragment() {
             }
         })
 
-//        val callback = object : OnBackPressedCallback(true) {
-//            override fun handleOnBackPressed() {
-//                setBackStackData("email", viewModel.email.value!!)
-//                findNavController().popBackStack()
-//            }
-//        }
-//        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
-
         return binding.root
     }
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//
-//        getBackStackData<String>("email") {
-//            viewModel.email.value = it
-//        }
-//
-//        getBackStackData<String>("password") {
-//            viewModel.password.set(it)
-//        }
-//    }
 }

@@ -11,9 +11,9 @@ class SignEmailViewModel : ViewModel() {
 
     val email = ObservableField<String>()
 
-    //true면 로그인, false면 회원가입
-    private val _status = MutableLiveData<Boolean>()
-    val status : LiveData<Boolean>
+    //0 default 1 회원가입 2 로그인
+    private val _status = MutableLiveData<Int>()
+    val status : LiveData<Int>
         get() = _status
 
     private val _response = MutableLiveData<Response>()
@@ -44,14 +44,18 @@ class SignEmailViewModel : ViewModel() {
                 _apiStatus.value = ApiStatus.LOADING
                 _response.value = StudyFarmApi.retrofitService.checkEmail(email)
                 _apiStatus.value = ApiStatus.DONE
-                _status.value = false
+                _status.value = 1
             }
             catch(t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
-                _status.value = true
+                _status.value = 2
                 _error.value = errorHandling(t)
             }
         }
+    }
+
+    fun defaultStatus() {
+        _status.value = 0
     }
 
     init {

@@ -13,11 +13,11 @@ class SignPasswordViewModel : ViewModel() {
 
     val password = ObservableField<String>()
 
-    //true면 로그인, false면 회원가입
-    val loginOrSignup = MutableLiveData<Boolean>()
+    //0 default 1 회원가입 2 로그인
+    val loginOrSignup = MutableLiveData<Int>()
 
     val subtitle = Transformations.map(loginOrSignup) {
-        if(it)
+        if(it == 2)
             "입력하신 이메일의 비밀번호를 입력해주세요."
         else
             "스터디팜에서 사용할 비밀번호입니다.\n1번만 입력하니 정확히 입력해주세요."
@@ -47,7 +47,7 @@ class SignPasswordViewModel : ViewModel() {
         get() = _signupProcess
 
     fun onNextBtnClicked() {
-        if(loginOrSignup.value!!) {
+        if(loginOrSignup.value!! == 2) {
             onLogin()
         }
         else {
@@ -67,6 +67,10 @@ class SignPasswordViewModel : ViewModel() {
                 _apiStatus.value = ApiStatus.ERROR
             }
         }
+    }
+
+    fun doneSignupProcess() {
+        _signupProcess.value = false
     }
 
     init {

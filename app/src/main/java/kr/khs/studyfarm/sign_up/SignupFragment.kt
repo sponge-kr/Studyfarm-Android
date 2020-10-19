@@ -57,11 +57,4 @@ class SignupFragment : Fragment() {
 
         return binding.root
     }
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        setBackStackData("email", viewModel.email.value!!)
-//        setBackStackData("password", viewModel.password.value!!)
-//    }
 }
