@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -38,12 +39,18 @@ class SignEmailFragment : Fragment() {
         binding.viewModel = viewModel
 
         viewModel.status.observe(viewLifecycleOwner, Observer {
-            if(it != 0) {
+            if(it == 1) {
                 findNavController().navigate(
                     SignEmailFragmentDirections.actionSignEmailFragmentToSignPasswordFragment(
-                        it,
                         viewModel.email.get()!!
                     )
+                )
+                viewModel.defaultStatus()
+            }
+            else if(it == 2) {
+                Toast.makeText(context, "이미 가입된 이메일입니다.\n로그인 화면으로 이동합니다.", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(
+                    SignEmailFragmentDirections.actionSignEmailFragmentToLoginFragment()
                 )
                 viewModel.defaultStatus()
             }

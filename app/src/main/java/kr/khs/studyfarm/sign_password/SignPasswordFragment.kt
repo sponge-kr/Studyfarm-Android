@@ -41,17 +41,6 @@ class SignPasswordFragment : Fragment() {
         val email = SignPasswordFragmentArgs.fromBundle(requireArguments()).email
         viewModel.email.value = email
 
-        val loginOrSignup = SignPasswordFragmentArgs.fromBundle(requireArguments()).loginOrSignup
-        viewModel.loginOrSignup.value = loginOrSignup
-
-        viewModel.loginProcess.observe(viewLifecycleOwner, Observer {
-            if(it) {
-                val intent = Intent(activity, MainActivity::class.java)
-                startActivity(intent)
-                activity?.finish()
-            }
-        })
-
         viewModel.signupProcess.observe(viewLifecycleOwner, Observer {
             if(it) {
                 findNavController().navigate(SignPasswordFragmentDirections.actionSignPasswordFragmentToSignupFragment(viewModel.email.value!!, viewModel.password.get()!!))

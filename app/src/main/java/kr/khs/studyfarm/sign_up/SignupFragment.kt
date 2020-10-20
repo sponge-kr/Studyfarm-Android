@@ -41,7 +41,7 @@ class SignupFragment : Fragment() {
             it.let {
                 if(it.code == 200.0) {
                     Toast.makeText(context, "회원가입이 되었습니다.\n가입한 이메일로 로그인 해주세요.", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(SignupFragmentDirections.actionSignupFragmentToSignEmailFragment())
+                    findNavController().navigate(SignupFragmentDirections.actionSignupFragmentToLoginFragment())
                 }
             }
         })

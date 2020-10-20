@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.khs.studyfarm.login.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".login.LoginFragment">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/vertical_margin"
+                app:errorEnabled="true"
+                android:id="@+id/signemail_et_email"
+                app:validation="@{viewModel.rule.EMAIL_RULE}"
+                app:errorMsg='@{"이메일 형식이 맞지 않습니다."}'>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="이메일 입력"
+                    android:inputType="textEmailAddress"
+                    android:text="@={viewModel.email}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signpw_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/vertical_margin"
+                app:validation="@{viewModel.rule.PASSWORD_RULE}"
+                app:errorMsg='@{"비밀번호의 형식이 맞지 않습니다."}'
+                app:setPasswordVisibilityToggle="@{true}">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="비밀번호 입력"
+                    android:inputType="textPassword"
+                    android:text="@={viewModel.password}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/signemail_btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/vertical_margin"
+                android:onClick="@{() -> viewModel.onLoginBtnClick()}"
+                android:text="로그인" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/signemail_maintitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="로그인하기"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/signemail_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="로그인 하려는 이메일 및 비밀번호를 입력해 주세요."
+            app:layout_constraintStart_toStartOf="@+id/signemail_maintitle"
+            app:layout_constraintTop_toBottomOf="@+id/signemail_maintitle" />
+
+        <Button
+            android:id="@+id/google"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="G"
+            app:layout_constraintEnd_toStartOf="@+id/naver"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/naver" />
+
+        <Button
+            android:id="@+id/naver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="N"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signemail_tv_social" />
+
+        <Button
+            android:id="@+id/apple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/naver"
+            app:layout_constraintTop_toTopOf="@+id/naver" />
+
+        <TextView
+            android:id="@+id/signemail_tv_social"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="소셜 계정으로 로그인하기"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintVertical_bias="0.2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

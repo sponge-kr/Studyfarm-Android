@@ -3,15 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/signEmailFragment">
+    app:startDestination="@id/signMainFragment">
 
     <fragment
         android:id="@+id/signPasswordFragment"
         android:name="kr.khs.studyfarm.sign_password.SignPasswordFragment"
         android:label="SignPasswordFragment" >
-        <argument
-            android:name="login_or_signup"
-            app:argType="integer" />
         <argument
             android:name="email"
             app:argType="string" />
@@ -37,6 +34,14 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/signEmailFragment" />
+        <action
+            android:id="@+id/action_signEmailFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/signMainFragment" />
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
@@ -49,12 +54,37 @@
             android:name="password"
             app:argType="string" />
         <action
-            android:id="@+id/action_signupFragment_to_signEmailFragment"
-            app:destination="@id/signEmailFragment"
+            android:id="@+id/action_signupFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/signEmailFragment" />
+            app:popUpTo="@id/signMainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/signMainFragment"
+        android:name="kr.khs.studyfarm.sign_main.SignMainFragment"
+        android:label="fragment_sign_main"
+        tools:layout="@layout/fragment_sign_main" >
+        <action
+            android:id="@+id/action_signMainFragment_to_signEmailFragment"
+            app:destination="@id/signEmailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_signMainFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="kr.khs.studyfarm.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>
