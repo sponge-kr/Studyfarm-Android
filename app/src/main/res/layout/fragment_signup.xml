@@ -252,11 +252,23 @@
             android:id="@+id/signup_btn_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="64dp"
+            android:onClick="@{() -> viewModel.onNextBtnClicked()}"
             android:text="다음"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/signup_btn_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="다음에 할래요."
+            android:visibility="@{viewModel.stepVisibility[2]}"
+            android:onClick="@{() -> viewModel.onNextBtnClicked()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:onClick="@{() -> viewModel.onNextBtnClicked()}"/>
+            app:layout_constraintTop_toBottomOf="@+id/signup_btn_next" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

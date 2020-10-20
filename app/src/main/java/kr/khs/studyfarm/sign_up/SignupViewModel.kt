@@ -87,7 +87,7 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
                 password = password.value!!,
                 nickname = nickname.get()!!,
                 name = nickname.get()!!,
-                age = if(age.get() == null) 0.0 else age.get()!!.toDouble(),
+                age = if(age.get() == null) 1.0 else age.get()!!.toDouble(),
                 simpleIntroduce = if(introduce.get() == null) "" else introduce.get()!!,
                 profile = null
             )
