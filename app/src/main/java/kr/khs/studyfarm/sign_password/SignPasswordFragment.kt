@@ -32,14 +32,13 @@ class SignPasswordFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        val viewModelFactory = SignPasswordViewModelFactory()
+        val email = SignPasswordFragmentArgs.fromBundle(requireArguments()).email
+
+        val viewModelFactory = SignPasswordViewModelFactory(email)
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(SignPasswordViewModel::class.java)
 
         binding.viewModel = viewModel
-
-        val email = SignPasswordFragmentArgs.fromBundle(requireArguments()).email
-        viewModel.email.value = email
 
         viewModel.signupProcess.observe(viewLifecycleOwner, Observer {
             if(it) {

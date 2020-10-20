@@ -27,15 +27,14 @@ class SignupFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        val viewModelFactory = SignupViewModelFactory()
+        val viewModelFactory = SignupViewModelFactory(
+            SignupFragmentArgs.fromBundle(requireArguments()).email,
+            SignupFragmentArgs.fromBundle(requireArguments()).password
+        )
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(SignupViewModel::class.java)
 
         binding.viewModel = viewModel
-
-        viewModel.email.value = SignupFragmentArgs.fromBundle(requireArguments()).email
-
-        viewModel.password.value = SignupFragmentArgs.fromBundle(requireArguments()).password
 
         viewModel.response.observe(viewLifecycleOwner, Observer {
             it.let {

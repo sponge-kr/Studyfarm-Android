@@ -9,7 +9,7 @@ import kotlinx.coroutines.*
 import kr.khs.studyfarm.Rule
 import kr.khs.studyfarm.network.*
 
-class SignPasswordViewModel : ViewModel() {
+class SignPasswordViewModel(_email : String) : ViewModel() {
 
     val passwordRule = Rule
 
@@ -45,6 +45,7 @@ class SignPasswordViewModel : ViewModel() {
     }
 
     init {
+        email.value = _email
         password.set("rlagmltmd1!")
     }
 

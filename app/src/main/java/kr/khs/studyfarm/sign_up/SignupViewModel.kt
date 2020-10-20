@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
 import kr.khs.studyfarm.network.*
 
-class SignupViewModel : ViewModel() {
+class SignupViewModel(_email : String, _password : String) : ViewModel() {
 
     private val MAX_SIGN_UP = 3
 
@@ -67,7 +67,9 @@ class SignupViewModel : ViewModel() {
     private val coroutineScope = CoroutineScope(job + Dispatchers.Main)
 
     init {
-        necessaryCheck.set(BooleanArray(3) { true })
+        email.value = _email
+        password.value = _password
+        necessaryCheck.set(BooleanArray(3) { false })
         optionalCheck.set(BooleanArray(2) { false })
         stepVisibility.set(IntArray(3) { if(it == 0) View.VISIBLE else View.GONE })
         step.value = 1
