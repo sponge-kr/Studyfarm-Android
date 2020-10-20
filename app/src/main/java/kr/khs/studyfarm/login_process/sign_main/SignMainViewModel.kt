@@ -1,4 +1,4 @@
-package kr.khs.studyfarm.sign_main
+package kr.khs.studyfarm.login_process.sign_main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

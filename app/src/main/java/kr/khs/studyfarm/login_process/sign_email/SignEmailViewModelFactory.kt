@@ -1,4 +1,4 @@
-package kr.khs.studyfarm.sign_email
+package kr.khs.studyfarm.login_process.sign_email
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

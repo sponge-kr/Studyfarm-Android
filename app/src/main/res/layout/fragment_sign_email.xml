@@ -6,13 +6,13 @@
     <data>
         <variable
             name="viewModel"
-            type="kr.khs.studyfarm.sign_email.SignEmailViewModel" />
+            type="kr.khs.studyfarm.login_process.sign_email.SignEmailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".sign_email.SignEmailFragment">
+        tools:context=".login_process.sign_email.SignEmailFragment">
 
         <LinearLayout
             android:id="@+id/linearLayout"

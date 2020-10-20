@@ -1,4 +1,4 @@
-package kr.khs.studyfarm.login
+package kr.khs.studyfarm.login_process.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

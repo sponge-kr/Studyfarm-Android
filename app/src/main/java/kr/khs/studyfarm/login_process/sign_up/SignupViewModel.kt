@@ -1,4 +1,4 @@
-package kr.khs.studyfarm.sign_up
+package kr.khs.studyfarm.login_process.sign_up
 
 import android.util.Log
 import android.view.View

@@ -1,4 +1,4 @@
-package kr.khs.studyfarm.sign_up
+package kr.khs.studyfarm.login_process.sign_up
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package kr.khs.studyfarm.login
+package kr.khs.studyfarm.login_process.login
 
 import android.content.Intent
 import android.os.Bundle

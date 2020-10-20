@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/signPasswordFragment"
-        android:name="kr.khs.studyfarm.sign_password.SignPasswordFragment"
+        android:name="kr.khs.studyfarm.login_process.sign_password.SignPasswordFragment"
         android:label="SignPasswordFragment" >
         <argument
             android:name="email"
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/signEmailFragment"
-        android:name="kr.khs.studyfarm.sign_email.SignEmailFragment"
+        android:name="kr.khs.studyfarm.login_process.sign_email.SignEmailFragment"
         android:label="fragment_sign_email"
         tools:layout="@layout/fragment_sign_email" >
         <action
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
-        android:name="kr.khs.studyfarm.sign_up.SignupFragment"
+        android:name="kr.khs.studyfarm.login_process.sign_up.SignupFragment"
         android:label="SignupFragment" >
         <argument
             android:name="email"
@@ -64,7 +64,7 @@
     </fragment>
     <fragment
         android:id="@+id/signMainFragment"
-        android:name="kr.khs.studyfarm.sign_main.SignMainFragment"
+        android:name="kr.khs.studyfarm.login_process.sign_main.SignMainFragment"
         android:label="fragment_sign_main"
         tools:layout="@layout/fragment_sign_main" >
         <action
@@ -84,7 +84,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="kr.khs.studyfarm.login.LoginFragment"
+        android:name="kr.khs.studyfarm.login_process.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
 </navigation>

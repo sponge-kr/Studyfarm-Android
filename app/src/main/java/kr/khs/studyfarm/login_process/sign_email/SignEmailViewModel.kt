@@ -1,4 +1,4 @@
-package kr.khs.studyfarm.login
+package kr.khs.studyfarm.login_process.sign_email
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
@@ -8,17 +8,16 @@ import kotlinx.coroutines.*
 import kr.khs.studyfarm.Rule
 import kr.khs.studyfarm.network.*
 
-class LoginViewModel : ViewModel() {
+class SignEmailViewModel : ViewModel() {
+
+    val emailRule = Rule
 
     val email = ObservableField<String>()
 
-    val password = ObservableField<String>()
-
-    val rule = Rule
-
-    private val _loginStatus = MutableLiveData<Boolean>()
-    val loginStatus : LiveData<Boolean>
-        get() = _loginStatus
+    //0 default 1 회원가입 2 로그인
+    private val _status = MutableLiveData<Int>()
+    val status : LiveData<Int>
+        get() = _status
 
     private val _response = MutableLiveData<Response>()
     val response : LiveData<Response>
@@ -36,29 +35,35 @@ class LoginViewModel : ViewModel() {
     private val job = Job()
     private val coroutineScope = CoroutineScope(job + Dispatchers.Main)
 
-    fun onLoginBtnClick() {
-        login()
+    fun onNextBtnClicked() {
+        if(email.get() != null) {
+            checkEmail(email.get()!!)
+        }
     }
 
-    private fun login() {
+    private fun checkEmail(email : String) {
         coroutineScope.launch {
             try {
                 _apiStatus.value = ApiStatus.LOADING
-                _response.value = StudyFarmApi.retrofitService.loginUser(LoginData(email.get()!!, password.get()!!))
+                _response.value = StudyFarmApi.retrofitService.checkEmail(email)
                 _apiStatus.value = ApiStatus.DONE
+                _status.value = 1
             }
-            catch (t : Throwable) {
+            catch(t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
+                _status.value = 2
                 _error.value = errorHandling(t)
             }
         }
     }
 
-    init {
-        email.set("ks96ks@naver.com")
-        password.set("rlagmltmd1!")
+    fun defaultStatus() {
+        _status.value = 0
     }
 
+    init {
+        email.set("ks96ks@naver.com")
+    }
 
     override fun onCleared() {
         super.onCleared()

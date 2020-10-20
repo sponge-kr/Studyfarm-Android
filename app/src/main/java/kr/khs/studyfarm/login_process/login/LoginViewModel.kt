@@ -1,4 +1,4 @@
-package kr.khs.studyfarm.sign_email
+package kr.khs.studyfarm.login_process.login
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
@@ -8,16 +8,17 @@ import kotlinx.coroutines.*
 import kr.khs.studyfarm.Rule
 import kr.khs.studyfarm.network.*
 
-class SignEmailViewModel : ViewModel() {
-
-    val emailRule = Rule
+class LoginViewModel : ViewModel() {
 
     val email = ObservableField<String>()
 
-    //0 default 1 회원가입 2 로그인
-    private val _status = MutableLiveData<Int>()
-    val status : LiveData<Int>
-        get() = _status
+    val password = ObservableField<String>()
+
+    val rule = Rule
+
+    private val _loginStatus = MutableLiveData<Boolean>()
+    val loginStatus : LiveData<Boolean>
+        get() = _loginStatus
 
     private val _response = MutableLiveData<Response>()
     val response : LiveData<Response>
@@ -35,35 +36,29 @@ class SignEmailViewModel : ViewModel() {
     private val job = Job()
     private val coroutineScope = CoroutineScope(job + Dispatchers.Main)
 
-    fun onNextBtnClicked() {
-        if(email.get() != null) {
-            checkEmail(email.get()!!)
-        }
+    fun onLoginBtnClick() {
+        login()
     }
 
-    private fun checkEmail(email : String) {
+    private fun login() {
         coroutineScope.launch {
             try {
                 _apiStatus.value = ApiStatus.LOADING
-                _response.value = StudyFarmApi.retrofitService.checkEmail(email)
+                _response.value = StudyFarmApi.retrofitService.loginUser(LoginData(email.get()!!, password.get()!!))
                 _apiStatus.value = ApiStatus.DONE
-                _status.value = 1
             }
-            catch(t : Throwable) {
+            catch (t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
-                _status.value = 2
                 _error.value = errorHandling(t)
             }
         }
     }
 
-    fun defaultStatus() {
-        _status.value = 0
-    }
-
     init {
         email.set("ks96ks@naver.com")
+        password.set("rlagmltmd1!")
     }
+
 
     override fun onCleared() {
         super.onCleared()

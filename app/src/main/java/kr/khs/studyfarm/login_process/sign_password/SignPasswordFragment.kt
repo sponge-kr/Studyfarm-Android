@@ -1,9 +1,6 @@
-package kr.khs.studyfarm.sign_password
+package kr.khs.studyfarm.login_process.sign_password
 
-import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,9 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentSignPasswordBinding
-import kr.khs.studyfarm.isEmailValidate
-import kr.khs.studyfarm.isPasswordValidate
-import kr.khs.studyfarm.view.MainActivity
 
 class SignPasswordFragment : Fragment() {
 

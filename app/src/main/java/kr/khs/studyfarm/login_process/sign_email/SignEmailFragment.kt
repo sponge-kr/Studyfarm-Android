@@ -1,9 +1,6 @@
-package kr.khs.studyfarm.sign_email
+package kr.khs.studyfarm.login_process.sign_email
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,9 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
-import kr.khs.studyfarm.Rule
 import kr.khs.studyfarm.databinding.FragmentSignEmailBinding
-import kr.khs.studyfarm.isEmailValidate
 
 class SignEmailFragment : Fragment() {
 

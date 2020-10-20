@@ -1,4 +1,4 @@
-package kr.khs.studyfarm.sign_password
+package kr.khs.studyfarm.login_process.sign_password
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
