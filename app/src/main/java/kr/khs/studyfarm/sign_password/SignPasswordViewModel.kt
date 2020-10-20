@@ -6,9 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
+import kr.khs.studyfarm.Rule
 import kr.khs.studyfarm.network.*
 
 class SignPasswordViewModel : ViewModel() {
+
+    val passwordRule = Rule
+
     val email = MutableLiveData<String>()
 
     val password = ObservableField<String>()

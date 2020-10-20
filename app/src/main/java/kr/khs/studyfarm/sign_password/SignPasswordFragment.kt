@@ -59,29 +59,6 @@ class SignPasswordFragment : Fragment() {
             }
         })
 
-        binding.signpwPassword.apply {
-            this.isPasswordVisibilityToggleEnabled = true
-            editText?.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                    p0?.let {
-                        binding.signpwPassword.error =
-                            if(isPasswordValidate(it.toString())) {
-                                null
-                            }
-                            else {
-                                "비밀번호 형식에 맞지 않습니다."
-                            }
-                    }
-                }
-
-            })
-        }
 
         return binding.root
     }

@@ -30,7 +30,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/vertical_margin"
                 app:errorEnabled="true"
-                android:id="@+id/signemail_et_email">
+                android:id="@+id/signemail_et_email"
+                app:validation="@{viewModel.emailRule.EMAIL_RULE}"
+                app:errorMsg='@{"이메일 형식이 맞지 않습니다."}'>
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"

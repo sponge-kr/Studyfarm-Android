@@ -5,9 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
+import kr.khs.studyfarm.Rule
 import kr.khs.studyfarm.network.*
 
 class SignEmailViewModel : ViewModel() {
+
+    val emailRule = Rule
 
     val email = ObservableField<String>()
 

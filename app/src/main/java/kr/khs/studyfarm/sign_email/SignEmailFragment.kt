@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
+import kr.khs.studyfarm.Rule
 import kr.khs.studyfarm.databinding.FragmentSignEmailBinding
 import kr.khs.studyfarm.isEmailValidate
 
@@ -48,26 +49,6 @@ class SignEmailFragment : Fragment() {
             }
         })
 
-        binding.signemailEtEmail.editText?.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                p0?.let {
-                    binding.signemailEtEmail.error =
-                    if(isEmailValidate(it.toString())) {
-                        null
-                    }
-                    else {
-                        "이메일 형식에 맞지 않습니다."
-                    }
-                }
-            }
-
-        })
 
         return binding.root
     }
