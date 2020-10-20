@@ -1,7 +1,6 @@
 package kr.khs.studyfarm.sign_up
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentSignupBinding
-import kr.khs.studyfarm.network.ApiStatus
-import kr.khs.studyfarm.setBackStackData
 
 class SignupFragment : Fragment() {
 

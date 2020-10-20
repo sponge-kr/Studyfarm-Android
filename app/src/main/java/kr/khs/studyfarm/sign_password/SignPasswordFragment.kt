@@ -2,20 +2,20 @@ package kr.khs.studyfarm.sign_password
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentSignPasswordBinding
-import kr.khs.studyfarm.getBackStackData
-import kr.khs.studyfarm.setBackStackData
+import kr.khs.studyfarm.isEmailValidate
+import kr.khs.studyfarm.isPasswordValidate
 import kr.khs.studyfarm.view.MainActivity
 
 class SignPasswordFragment : Fragment() {
@@ -58,6 +58,30 @@ class SignPasswordFragment : Fragment() {
                 viewModel.doneSignupProcess()
             }
         })
+
+        binding.signpwPassword.apply {
+            this.isPasswordVisibilityToggleEnabled = true
+            editText?.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    p0?.let {
+                        binding.signpwPassword.error =
+                            if(isPasswordValidate(it.toString())) {
+                                null
+                            }
+                            else {
+                                "비밀번호 형식에 맞지 않습니다."
+                            }
+                    }
+                }
+
+            })
+        }
 
         return binding.root
     }
