@@ -164,7 +164,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
+                    android:ems="20"
                     android:inputType="textPersonName"
                     android:hint="스터디 목적(선택사항)"
                     android:text="@={viewModel.studyPurpose}"/>
@@ -180,7 +180,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
+                    android:ems="20"
                     android:inputType="textPersonName"
                     android:hint="서비스 유입 경로(선택사항)"
                     android:text="@={viewModel.serviceWay}"/>
