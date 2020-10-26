@@ -45,6 +45,13 @@ class SignupFragment : Fragment() {
             }
         })
 
+        viewModel.toast.observe(viewLifecycleOwner, Observer {
+            if(it != "") {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                viewModel.doneToast()
+            }
+        })
+
         return binding.root
     }
 }

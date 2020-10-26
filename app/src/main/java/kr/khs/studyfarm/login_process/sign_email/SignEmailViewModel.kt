@@ -73,7 +73,7 @@ class SignEmailViewModel : ViewModel() {
     }
 
     init {
-        email.set("ks96ks@naver.com")
+        email.set("simpson5304@naver.com")
         _toast.value = ""
     }
 

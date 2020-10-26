@@ -45,7 +45,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/signup_subtitle"
             android:visibility="@{viewModel.stepVisibility[0]}">
-
             <RadioButton
                 android:id="@+id/signup_radio_terms1"
                 android:layout_width="match_parent"
@@ -93,15 +92,20 @@
             app:layout_constraintTop_toBottomOf="@+id/signup_subtitle"
             android:visibility="@{viewModel.stepVisibility[1]}">
 
-            <EditText
-                android:id="@+id/signup_et_nickname"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
+                android:id="@+id/signup_et_nickname"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="@={viewModel.nickname}"/>
+                app:layout_constraintTop_toTopOf="parent">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="별명"
+                    android:text="@={viewModel.nickname}"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/step2_1"
@@ -191,14 +195,12 @@
                 app:layout_constraintStart_toStartOf="@+id/signup_iv_profile"
                 app:layout_constraintTop_toBottomOf="@+id/signup_iv_profile" />
 
-            <TextView
-                android:id="@+id/step3_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="나이"
-                app:layout_constraintStart_toStartOf="@+id/signup_iv_profile"
-                app:layout_constraintTop_toBottomOf="@+id/singup_radiogroup_sex" />
+<!--            <TextView-->
+<!--                android:id="@+id/step3_2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text="나이" />-->
 
             <TextView
                 android:id="@+id/step3_3"
@@ -207,7 +209,7 @@
                 android:layout_marginTop="16dp"
                 android:text="이해도 및 숙련도"
                 app:layout_constraintStart_toStartOf="@+id/signup_iv_profile"
-                app:layout_constraintTop_toBottomOf="@+id/signup_et_age" />
+                app:layout_constraintTop_toBottomOf="@+id/signup_datepicker" />
 
             <RadioGroup
                 android:id="@+id/singup_radiogroup_sex"
@@ -231,20 +233,33 @@
                     android:text="여성" />
             </RadioGroup>
 
-            <EditText
-                android:id="@+id/signup_et_age"
+
+            <DatePicker
+                android:id="@+id/signup_datepicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:hint="25"
-                android:inputType="numberSigned"
-                android:maxLength="4"
-                android:maxLines="1"
-                android:text="@={viewModel.age}"
-                app:layout_constraintStart_toStartOf="@+id/step3_2"
-                app:layout_constraintTop_toBottomOf="@+id/step3_2" />
+                app:layout_constraintStart_toStartOf="@+id/signup_iv_profile"
+                app:layout_constraintTop_toBottomOf="@+id/singup_radiogroup_sex"
+                android:datePickerMode="spinner"
+                android:calendarViewShown="false" />
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/signup_iv_profile"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/singup_radiogroup_sex"-->
+<!--                android:id="@+id/signup_et_age"-->
+<!--                android:layout_marginTop="16dp">-->
+<!--                <EditText-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:ems="10"-->
+<!--                    android:hint="나이"-->
+<!--                    android:inputType="numberSigned"-->
+<!--                    android:maxLength="4"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:text="@={viewModel.age}" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

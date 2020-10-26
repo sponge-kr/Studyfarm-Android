@@ -66,6 +66,10 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
     private val job = Job()
     private val coroutineScope = CoroutineScope(job + Dispatchers.Main)
 
+    private val _toast = MutableLiveData<String>()
+    val toast : LiveData<String>
+        get() = _toast
+
     init {
         email.value = _email
         password.value = _password
@@ -77,22 +81,30 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
 
     fun onNextBtnClicked() {
         if(step.value != MAX_SIGN_UP) {
+            for(check in necessaryCheck.get()!!)
+                if(!check) {
+                    _toast.value = "필수 약관에 모두 동의하셔야 합니다."
+                    return
+                }
             Log.d("SIGN_UP", step.value.toString())
             step.value = step.value!!.plus(1)
             stepVisibility.set(IntArray(3) { if(it == step.value!! - 1) View.VISIBLE else View.GONE })
         }
         else {
-            val user = User(
-                email = email.value!!,
-                password = password.value!!,
-                nickname = nickname.get()!!,
-                name = nickname.get()!!,
-                age = if(age.get() == null) 1.0 else age.get()!!.toDouble(),
-                simpleIntroduce = if(introduce.get() == null) "" else introduce.get()!!,
-                profile = null
-            )
-
-            addUser(user)
+//            val user = User(
+//                email = email.value!!,
+//                password = password.value!!,
+//                nickname = nickname.get()!!,
+//                name = nickname.get()!!,
+//                age = if(age.get() == null) 1.0 else age.get()!!.toDouble(),
+//                simpleIntroduce = if(introduce.get() == null) "" else introduce.get()!!,
+//                profile = null,
+//                cityInfo = listOf(1, 1),
+//                serviceAgree = true,
+//
+//            )
+//
+//            addUser(user)
         }
     }
 
@@ -110,8 +122,13 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
         }
     }
 
+    fun doneToast() {
+        _toast.value = ""
+    }
+
     override fun onCleared() {
         super.onCleared()
         coroutineScope.cancel()
+        _toast.value = ""
     }
 }

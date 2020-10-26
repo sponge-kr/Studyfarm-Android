@@ -2,6 +2,12 @@ package kr.khs.studyfarm.network
 
 import com.squareup.moshi.Json
 
+data class Interesting(
+    val name : String,
+    @Json(name = "skill_level")
+    val skillLevel : String
+)
+
 data class User(
     val email : String,
     val password : String,
@@ -12,7 +18,19 @@ data class User(
     val state : Double = 0.0,
     val city : Double = 0.0,
     val simpleIntroduce : String = "",
-    val profile : String?
+    val profile : String?,
+    @Json(name = "city_info")
+    val cityInfo : List<Int>,
+    @Json(name = "born_date")
+    val bornDate : String = "2000-01-01",
+    val gender : Int,
+    val interesting : List<Interesting>,
+    @Json(name = "service_way")
+    val serviceWay : String,
+    @Json(name = "study_purpose")
+    val studyPurpose : String,
+    @Json(name = "service_use_agree")
+    val serviceAgree : Boolean,
 )
 
 data class LoginUser(
@@ -35,7 +53,7 @@ data class LoginUser(
     val simpleIntroduce : String,
     val profile : String?,
     @Json(name = "user_active")
-    val userActive : Boolean
+    val userActive : Boolean,
 )
 
 data class LoginData(
