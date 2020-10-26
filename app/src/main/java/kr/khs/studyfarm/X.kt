@@ -27,3 +27,7 @@ fun isPasswordValidate(str: String) = Pattern.compile(
 )
     .matcher(str)
     .matches()
+
+enum class Gender (val MW : Int) {
+    Not(-1), Man(0), Woman(1)
+}

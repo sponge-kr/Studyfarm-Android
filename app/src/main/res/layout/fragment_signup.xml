@@ -7,6 +7,10 @@
         <variable
             name="viewModel"
             type="kr.khs.studyfarm.login_process.sign_up.SignupViewModel" />
+
+        <variable
+            name="sex"
+            type="kr.khs.studyfarm.Gender" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -98,7 +102,7 @@
                 android:id="@+id/signup_et_nickname"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -150,6 +154,37 @@
                 app:layout_constraintStart_toStartOf="@+id/step2_2"
                 app:layout_constraintTop_toBottomOf="@+id/step2_2" />
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/signup_et_studypurpose"
+                android:layout_marginVertical="@dimen/vertical_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/signup_spinner3">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="스터디 목적(선택사항)"
+                    android:text="@={viewModel.studyPurpose}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/signup_et_serviceway"
+                android:layout_marginVertical="@dimen/vertical_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/signup_et_studypurpose">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="서비스 유입 경로(선택사항)"
+                    android:text="@={viewModel.serviceWay}"/>
+            </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -195,12 +230,14 @@
                 app:layout_constraintStart_toStartOf="@+id/signup_iv_profile"
                 app:layout_constraintTop_toBottomOf="@+id/signup_iv_profile" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/step3_2"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:text="나이" />-->
+            <TextView
+                android:id="@+id/step3_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="생년월일"
+                app:layout_constraintStart_toStartOf="@+id/signup_iv_profile"
+                app:layout_constraintTop_toBottomOf="@+id/singup_radiogroup_sex" />
 
             <TextView
                 android:id="@+id/step3_3"
@@ -224,13 +261,17 @@
                     android:id="@+id/signup_sex_man"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="남성" />
+                    android:text="남성"
+                    android:checked="@{viewModel.gender.equals(sex.Man)}"
+                    android:onClick="@{() -> viewModel.selectGender(sex.Man)}"/>
 
                 <RadioButton
                     android:id="@+id/signup_sex_woman"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="여성" />
+                    android:text="여성"
+                    android:checked="@{viewModel.gender.equals(sex.Woman)}"
+                    android:onClick="@{() -> viewModel.selectGender(sex.Woman)}"/>
             </RadioGroup>
 
 
@@ -239,27 +280,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@+id/signup_iv_profile"
-                app:layout_constraintTop_toBottomOf="@+id/singup_radiogroup_sex"
+                app:layout_constraintTop_toBottomOf="@+id/step3_2"
                 android:datePickerMode="spinner"
-                android:calendarViewShown="false" />
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/signup_iv_profile"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/singup_radiogroup_sex"-->
-<!--                android:id="@+id/signup_et_age"-->
-<!--                android:layout_marginTop="16dp">-->
-<!--                <EditText-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="@android:color/transparent"-->
-<!--                    android:ems="10"-->
-<!--                    android:hint="나이"-->
-<!--                    android:inputType="numberSigned"-->
-<!--                    android:maxLength="4"-->
-<!--                    android:maxLines="1"-->
-<!--                    android:text="@={viewModel.age}" />-->
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
+                android:calendarViewShown="false"
+                android:year="@={viewModel.year}"
+                android:month="@={viewModel.month}"
+                android:day="@={viewModel.day}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

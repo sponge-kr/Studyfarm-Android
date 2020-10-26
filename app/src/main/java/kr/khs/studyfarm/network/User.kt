@@ -9,28 +9,27 @@ data class Interesting(
 )
 
 data class User(
-    val email : String,
-    val password : String,
-    val nickname : String,
-    val name : String = "",
-    val phone : String = "",
-    val age : Double = 0.0,
-    val state : Double = 0.0,
-    val city : Double = 0.0,
-    val simpleIntroduce : String = "",
-    val profile : String?,
+    val email: String,
+    val password: String,
+    val nickname: String,
+    val name: String = "",
+    val phone: String = "",
+    val age: Double = 0.0,
+    @Json(name = "simple_introduce")
+    val simpleIntroduce: String = "",
+    val profile: String?,
     @Json(name = "city_info")
-    val cityInfo : List<Int>,
+    val cityInfo: List<Int>,
     @Json(name = "born_date")
-    val bornDate : String = "2000-01-01",
-    val gender : Int,
-    val interesting : List<Interesting>,
+    val bornDate: String = "2000-01-01",
+    val gender: Double,
+    val interesting: List<Interesting>? = null,
     @Json(name = "service_way")
-    val serviceWay : String,
+    val serviceWay: String,
     @Json(name = "study_purpose")
-    val studyPurpose : String,
+    val studyPurpose: String,
     @Json(name = "service_use_agree")
-    val serviceAgree : Boolean,
+    val serviceAgree: Boolean,
 )
 
 data class LoginUser(
