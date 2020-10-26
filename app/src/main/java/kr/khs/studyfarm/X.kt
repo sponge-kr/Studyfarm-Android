@@ -13,8 +13,9 @@ import java.util.regex.Pattern
 //}
 
 fun isEmailValidate(str : String) = Pattern.compile(
-    "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+//    "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+//            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+    "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\\.[a-zA-Z]{2,3}\$"
 //    "0-9a-zA-Z@0-9a-zA-Z.[a-zA-Z]{2,3}$"
 )
     .matcher(str)
@@ -22,7 +23,7 @@ fun isEmailValidate(str : String) = Pattern.compile(
 
 //비밀번호 정규식 체크
 fun isPasswordValidate(str: String) = Pattern.compile(
-    "^.(?=^.{8,15}\$)(?=.\\d)(?=.[a-zA-Z])(?=.[!@#\$%^&+=]).*\$"
+    "^.*(?=^.{8,15}\$)(?=.*\\d)(?=.*[a-zA-Z])(?=.*[!@#\$%^&+=]).*\$"
 )
     .matcher(str)
     .matches()

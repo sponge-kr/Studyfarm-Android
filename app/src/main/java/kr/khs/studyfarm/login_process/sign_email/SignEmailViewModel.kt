@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
 import kr.khs.studyfarm.Rule
+import kr.khs.studyfarm.isEmailValidate
 import kr.khs.studyfarm.network.*
 
 class SignEmailViewModel : ViewModel() {
@@ -35,8 +36,14 @@ class SignEmailViewModel : ViewModel() {
     private val job = Job()
     private val coroutineScope = CoroutineScope(job + Dispatchers.Main)
 
+    private val _toast = MutableLiveData<String>()
+    val toast : LiveData<String>
+        get() = _toast
+
     fun onNextBtnClicked() {
-        if(email.get() != null) {
+        if(!isEmailValidate(email.get()!!))
+            _toast.value = "올바른 이메일 형식을 입력해주세요."
+        else if(email.get() != null) {
             checkEmail(email.get()!!)
         }
     }
@@ -61,8 +68,13 @@ class SignEmailViewModel : ViewModel() {
         _status.value = 0
     }
 
+    fun doneToast() {
+        _toast.value = ""
+    }
+
     init {
         email.set("ks96ks@naver.com")
+        _toast.value = ""
     }
 
     override fun onCleared() {

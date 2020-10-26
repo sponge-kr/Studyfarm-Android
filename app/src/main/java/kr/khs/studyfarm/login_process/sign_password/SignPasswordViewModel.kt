@@ -7,6 +7,7 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
 import kr.khs.studyfarm.Rule
+import kr.khs.studyfarm.isPasswordValidate
 import kr.khs.studyfarm.network.*
 
 class SignPasswordViewModel(_email : String) : ViewModel() {
@@ -36,16 +37,29 @@ class SignPasswordViewModel(_email : String) : ViewModel() {
     val signupProcess : LiveData<Boolean>
         get() = _signupProcess
 
+    private val _toast = MutableLiveData<String>()
+    val toast : LiveData<String>
+        get() = _toast
+
     fun onNextBtnClicked() {
-        _signupProcess.value = true
+        if(password.get() == null || !isPasswordValidate(password.get()!!)) {
+            _toast.value = "올바른 비밀번호 형식이 아닙니다."
+        }
+        else
+            _signupProcess.value = true
     }
 
     fun doneSignupProcess() {
         _signupProcess.value = false
     }
 
+    fun doneToast() {
+        _toast.value = ""
+    }
+
     init {
         email.value = _email
+        _toast.value = ""
         password.set("rlagmltmd1!")
     }
 
