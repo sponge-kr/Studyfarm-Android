@@ -7,4 +7,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ChipStyle" parent="Theme.MaterialComponents.Light.Bridge" />
+
 </resources>
