@@ -45,6 +45,10 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
 
     val serviceWay = ObservableField<String>()
 
+    val interestedStudy = ObservableField<Array<String>>()
+
+    val chips = ObservableField<ArrayList<String>>()
+
     val mainTitle = Transformations.map(step) {
         when(it) {
             1 -> "약관 동의"
@@ -94,6 +98,10 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
         year.set(time.split("-")[0].toInt())
         month.set(time.split("-")[1].toInt())
         day.set(time.split("-")[2].toInt())
+
+        //나중에 db연결
+        interestedStudy.set(arrayOf("웹 개발", "안드로이드 개발", "ios 개발", "디자인"))
+        chips.set(arrayListOf("Test"))
     }
 
     fun selectGender(g : Gender) {

@@ -147,12 +147,39 @@
                 app:layout_constraintTop_toBottomOf="@+id/signup_spinner1" />
 
             <Spinner
-                android:id="@+id/signup_spinner3"
+                android:id="@+id/signup_spinner_interested"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:entries="@{viewModel.interestedStudy}"
+                android:layout_marginVertical="@dimen/vertical_margin"
                 app:layout_constraintStart_toStartOf="@+id/step2_2"
                 app:layout_constraintTop_toBottomOf="@+id/step2_2" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:id="@+id/signup_chipgroup_interested"
+                android:layout_marginVertical="@dimen/vertical_margin"
+                app:layout_constraintStart_toStartOf="@+id/signup_spinner_interested"
+                app:layout_constraintTop_toBottomOf="@+id/signup_spinner_interested" >
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:singleLine="true">
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/ChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="false"
+                        android:text="@{viewModel.chips[0]}"
+                        app:closeIcon="@android:drawable/ic_menu_close_clear_cancel"
+                        app:closeIconEnabled="true" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="wrap_content"
@@ -160,8 +187,8 @@
                 android:id="@+id/signup_et_studypurpose"
                 android:layout_marginVertical="@dimen/vertical_margin"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/signup_spinner3">
-                <EditText
+                app:layout_constraintTop_toBottomOf="@id/signup_chipgroup_interested">
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="20"
@@ -177,7 +204,7 @@
                 android:layout_marginVertical="@dimen/vertical_margin"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/signup_et_studypurpose">
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="20"
