@@ -15,7 +15,7 @@ import com.google.android.material.chip.ChipGroup
 import com.google.android.material.textfield.TextInputLayout
 import java.util.*
 
-
+//이메일, 비밀번호 등 textinputlayout가 주어진 조건에 부합하는지 체크
 @BindingAdapter("app:validation", "app:errorMsg")
 fun setErrorEnable(textInputLayout: TextInputLayout, stringRule: StringRule, errorMsg: String) {
     textInputLayout.editText?.addTextChangedListener(object : TextWatcher {
@@ -34,6 +34,7 @@ fun setErrorEnable(textInputLayout: TextInputLayout, stringRule: StringRule, err
     })
 }
 
+// 비밀번호 토글
 @BindingAdapter("setPasswordVisibilityToggle")
 fun setPasswordVisibility(textInputLayout: TextInputLayout, enabled: Boolean) {
     textInputLayout.isPasswordVisibilityToggleEnabled = enabled
@@ -57,11 +58,13 @@ interface StringRule {
     fun validate(s: Editable?): Boolean
 }
 
+// datepicker 자동으로 현재 날짜
 @BindingAdapter("android:year", "android:month", "android:day")
 fun setDate(view: DatePicker, year: Int, month: Int, day: Int) {
     view.updateDate(year, month, day)
 }
 
+//spinner와 chipgroup 연결
 @BindingAdapter("app:connectChipGroup", "app:chipsLiveData")
 fun addChip(view : Spinner, chipGroupId : Int, chips : ArrayList<String>) {
     val chipGroup = view.rootView.findViewById<ChipGroup>(chipGroupId)
