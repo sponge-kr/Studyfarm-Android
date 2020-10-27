@@ -123,6 +123,7 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
             stepVisibility.set(IntArray(3) { if(it == step.value!! - 1) View.VISIBLE else View.GONE })
         }
         else {
+            val interestingList = List(chips.value!!.size) { Interesting(chips.value!![it], "") }
             val user = User(
                 email = email.value!!,
                 password = password.value!!,
@@ -137,7 +138,7 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
                 gender = gender.MW.toDouble(),
                 serviceWay = serviceWay.get() ?: "",
                 studyPurpose = studyPurpose.get() ?: "",
-                interesting = listOf(),
+                interesting = interestingList,
             )
 
             addUser(user)
