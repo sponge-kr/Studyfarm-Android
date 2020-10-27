@@ -9,7 +9,7 @@
             type="kr.khs.studyfarm.login_process.sign_up.SignupViewModel" />
 
         <variable
-            name="sex"
+            name="gender"
             type="kr.khs.studyfarm.Gender" />
     </data>
 
@@ -154,30 +154,23 @@
                 android:entries="@{viewModel.interestedStudy}"
                 android:layout_marginVertical="@dimen/vertical_margin"
                 app:layout_constraintStart_toStartOf="@+id/step2_2"
-                app:layout_constraintTop_toBottomOf="@+id/step2_2" />
+                app:layout_constraintTop_toBottomOf="@+id/step2_2"
+                connectChipGroup="@{viewModel.chipGroupId}"/>
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:overScrollMode="never"
                 android:scrollbars="none"
-                android:id="@+id/signup_chipgroup_interested"
+                android:id="@+id/signup_scrollview_interested"
                 android:layout_marginVertical="@dimen/vertical_margin"
                 app:layout_constraintStart_toStartOf="@+id/signup_spinner_interested"
                 app:layout_constraintTop_toBottomOf="@+id/signup_spinner_interested" >
                 <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/signup_chipgroup_interested"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:singleLine="true">
-
-                    <com.google.android.material.chip.Chip
-                        style="@style/ChipStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checkable="false"
-                        android:text="@{viewModel.chips[0]}"
-                        app:closeIcon="@android:drawable/ic_menu_close_clear_cancel"
-                        app:closeIconEnabled="true" />
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
@@ -187,7 +180,7 @@
                 android:id="@+id/signup_et_studypurpose"
                 android:layout_marginVertical="@dimen/vertical_margin"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/signup_chipgroup_interested">
+                app:layout_constraintTop_toBottomOf="@id/signup_scrollview_interested">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -289,16 +282,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="남성"
-                    android:checked="@{viewModel.gender.equals(sex.Man)}"
-                    android:onClick="@{() -> viewModel.selectGender(sex.Man)}"/>
+                    android:checked="@{viewModel.gender.equals(gender.Man)}"
+                    android:onClick="@{() -> viewModel.selectGender(gender.Man)}"/>
 
                 <RadioButton
                     android:id="@+id/signup_sex_woman"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="여성"
-                    android:checked="@{viewModel.gender.equals(sex.Woman)}"
-                    android:onClick="@{() -> viewModel.selectGender(sex.Woman)}"/>
+                    android:checked="@{viewModel.gender.equals(gender.Woman)}"
+                    android:onClick="@{() -> viewModel.selectGender(gender.Woman)}"/>
             </RadioGroup>
 
 
