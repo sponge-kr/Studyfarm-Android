@@ -50,7 +50,7 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
     val interestedStudy = ObservableField<Array<String>>()
 
     val chipGroupId = ObservableField<Int>()
-    val chips = ObservableField<ArrayList<String>>()
+    val chips = MutableLiveData<ArrayList<String>>()
 
     val mainTitle = Transformations.map(step) {
         when(it) {
@@ -103,8 +103,8 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
         day.set(time.split("-")[2].toInt())
 
         //나중에 db연결
-        interestedStudy.set(arrayOf("-스터디 선택-", "웹 개발", "안드로이드 개발", "ios 개발", "디자인"))
-        chips.set(arrayListOf("Test"))
+        interestedStudy.set(arrayOf("- 스터디 선택 -", "웹 개발", "안드로이드 개발", "ios 개발", "디자인"))
+        chips.value = arrayListOf()
         chipGroupId.set(R.id.signup_chipgroup_interested)
     }
 
@@ -119,7 +119,6 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
                     _toast.value = "필수 약관에 모두 동의하셔야 합니다."
                     return
                 }
-            Log.d("SIGN_UP", step.value.toString())
             step.value = step.value!!.plus(1)
             stepVisibility.set(IntArray(3) { if(it == step.value!! - 1) View.VISIBLE else View.GONE })
         }
