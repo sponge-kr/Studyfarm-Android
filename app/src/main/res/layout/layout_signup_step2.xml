@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.khs.studyfarm.login_process.sign_up.SignupViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/signup_step2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding"
+        android:visibility="@{viewModel.stepVisibility[1]}">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/signup_et_nickname"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="별명"
+                android:text="@={viewModel.nickname}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/step2_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="지역"
+            app:layout_constraintStart_toStartOf="@+id/signup_et_nickname"
+            app:layout_constraintTop_toBottomOf="@+id/signup_et_nickname" />
+
+        <Spinner
+            android:id="@+id/signup_spinner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/step2_1"
+            app:layout_constraintTop_toBottomOf="@+id/step2_1" />
+
+        <Spinner
+            android:id="@+id/signup_spinner2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/signup_spinner1"
+            app:layout_constraintStart_toEndOf="@+id/signup_spinner1"
+            app:layout_constraintTop_toTopOf="@+id/signup_spinner1" />
+
+        <TextView
+            android:id="@+id/step2_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="관심 스터디"
+            app:layout_constraintStart_toStartOf="@+id/signup_spinner1"
+            app:layout_constraintTop_toBottomOf="@+id/signup_spinner1" />
+
+        <Spinner
+            android:id="@+id/signup_spinner_interested"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:entries="@{viewModel.interestedStudy}"
+            android:layout_marginVertical="@dimen/vertical_margin"
+            app:layout_constraintStart_toStartOf="@+id/step2_2"
+            app:layout_constraintTop_toBottomOf="@+id/step2_2"
+            app:connectChipGroup="@{viewModel.chipGroupId}"
+            app:chipsLiveData="@{viewModel.chips}" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:id="@+id/signup_scrollview_interested"
+            android:layout_marginVertical="@dimen/vertical_margin"
+            app:layout_constraintStart_toStartOf="@+id/signup_spinner_interested"
+            app:layout_constraintTop_toBottomOf="@+id/signup_spinner_interested">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/signup_chipgroup_interested"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleLine="true"></com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/signup_et_studypurpose"
+            android:layout_marginVertical="@dimen/vertical_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/signup_scrollview_interested">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="20"
+                android:inputType="textPersonName"
+                android:hint="스터디 목적(선택사항)"
+                android:text="@={viewModel.studyPurpose}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/signup_et_serviceway"
+            android:layout_marginVertical="@dimen/vertical_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/signup_et_studypurpose">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="20"
+                android:inputType="textPersonName"
+                android:hint="서비스 유입 경로(선택사항)"
+                android:text="@={viewModel.serviceWay}" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

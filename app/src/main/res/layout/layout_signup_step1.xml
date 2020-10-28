@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.khs.studyfarm.login_process.sign_up.SignupViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/signup_step1"
+        android:padding="@dimen/padding"
+        android:visibility="@{viewModel.stepVisibility[0]}">
+
+        <RadioButton
+            android:id="@+id/signup_radio_terms1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="필수 약관동의1"
+            android:checked="@={viewModel.necessaryCheck[0]}" />
+
+        <RadioButton
+            android:id="@+id/signup_radio_terms2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="필수 약관동의2"
+            android:checked="@={viewModel.necessaryCheck[1]}" />
+
+        <RadioButton
+            android:id="@+id/signup_radio_terms3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="필수 약관동의3"
+            android:checked="@={viewModel.necessaryCheck[2]}" />
+
+        <RadioButton
+            android:id="@+id/signup_radio_terms4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="선택 약관동의1"
+            android:checked="@={viewModel.optionalCheck[0]}" />
+
+        <RadioButton
+            android:id="@+id/signup_radio_terms5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="선택 약관동의2"
+            android:checked="@={viewModel.optionalCheck[1]}" />
+    </LinearLayout>
+</layout>
