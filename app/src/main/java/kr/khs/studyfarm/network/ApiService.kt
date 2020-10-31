@@ -56,6 +56,16 @@ interface StudyFarmApiService {
         "Accept: application/hal+json")
     @GET("user/check-nickname")
     suspend fun checkNickName(@FieldMap params : Map<String, String>) : Response
+
+    @Headers("Content-Type: application/hal+json;charset=UTF-8",
+        "Accept: application/hal+json")
+    @GET("utils/states")
+    suspend fun getStates() : Response
+
+    @Headers("Content-Type: application/hal+json;charset=UTF-8",
+        "Accept: application/hal+json")
+    @GET("utils/cities/{state_code}")
+    suspend fun getCities(@Path("state_code") stateCode : Int) : Response
 }
 
 object StudyFarmApi {

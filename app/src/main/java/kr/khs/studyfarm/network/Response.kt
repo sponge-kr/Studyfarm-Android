@@ -52,6 +52,29 @@ data class ResultCheckEmail(
     val docs : Href,
     val self : Href,
 )
+
+data class ResultStates(
+    val content : List<State>
+)
+
+data class ResultCities(
+    val content : List<City>
+)
+
+data class State(
+    val code : Double,
+    val name : String,
+    val links : StateLinks
+)
+
+data class City(
+    val code : Int,
+    val name : String
+)
+
+data class StateLinks(
+    val citylist : Href
+)
 /**
  * TODO - 어차피 Response는 result부분 제외하고 똑같으니 result를 any로 받고, 필요할때 해당 json을 as로 캐스팅해서 사용하기
  * class 명 재정의 필요할듯.
