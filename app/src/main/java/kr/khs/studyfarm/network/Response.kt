@@ -75,6 +75,16 @@ data class City(
 data class StateLinks(
     val citylist : Href
 )
+
+data class NicknameLinks(
+    val docs : Href,
+    val self : Href
+)
+
+data class ResultCheckNickname(
+    val exist : Boolean,
+    val links : NicknameLinks
+)
 /**
  * TODO - 어차피 Response는 result부분 제외하고 똑같으니 result를 any로 받고, 필요할때 해당 json을 as로 캐스팅해서 사용하기
  * class 명 재정의 필요할듯.

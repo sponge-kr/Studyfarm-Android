@@ -34,6 +34,15 @@ fun setErrorEnable(textInputLayout: TextInputLayout, stringRule: StringRule, err
     })
 }
 
+@BindingAdapter("app:validationBoolean", "app:errorMsgBoolean")
+fun setErrorEnableBoolean(textInputLayout: TextInputLayout, boolean : Boolean, errorMsg: String) {
+    textInputLayout.error =
+        if(!boolean)
+            null
+        else
+            errorMsg
+}
+
 // 비밀번호 토글
 @BindingAdapter("setPasswordVisibilityToggle")
 fun setPasswordVisibility(textInputLayout: TextInputLayout, enabled: Boolean) {
@@ -101,4 +110,9 @@ fun addChip(view : Spinner, chipGroupId : Int, chips : ArrayList<String>) {
         }
 
     }
+}
+
+@BindingAdapter("app:nicknameCheck")
+fun checkNickName(view : TextInputLayout, listener : View.OnFocusChangeListener) {
+    view.editText?.onFocusChangeListener = listener
 }

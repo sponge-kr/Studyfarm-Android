@@ -1,5 +1,7 @@
 package kr.khs.studyfarm.login_process.sign_up
 
+import android.view.View
+import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,6 +10,7 @@ import kotlinx.coroutines.*
 import kr.khs.studyfarm.Rule
 import kr.khs.studyfarm.isEmailValidate
 import kr.khs.studyfarm.network.*
+import java.util.AbstractMap
 
 class SignupViewModel : ViewModel() {
 
@@ -18,6 +21,8 @@ class SignupViewModel : ViewModel() {
     val password = ObservableField<String>()
 
     val nickname = ObservableField<String>()
+
+    val duplicateNickname = ObservableBoolean()
 
     //0 default 1 회원가입 2 로그인
     private val _status = MutableLiveData<Int>()
@@ -52,7 +57,35 @@ class SignupViewModel : ViewModel() {
         }
     }
 
+    val nicknameFocusChangeListener = View.OnFocusChangeListener { view, b ->
+        //포커스에서 벗어났을
+        if(!b)
+            checkNickName()
+    }
+
+    private fun checkNickName() {
+        coroutineScope.launch {
+            try {
+                _apiStatus.value = ApiStatus.LOADING
+                _response.value = StudyFarmApi.retrofitService.checkNickName(nickname.get().toString())
+                val temp = _response.value!!.result as AbstractMap<*, *>
+                duplicateNickname.set(temp["exist"] as Boolean)
+                _apiStatus.value = ApiStatus.DONE
+            }
+            catch(t : Throwable) {
+                _apiStatus.value = ApiStatus.ERROR
+                println(t.localizedMessage)
+                _error.value = errorHandling(t)
+            }
+        }
+    }
+
     private fun checkEmail(email : String) {
+        if(duplicateNickname.get()) {
+            _toast.value = "닉네임이 중복됩니다."
+            return
+        }
+
         coroutineScope.launch {
             try {
                 _apiStatus.value = ApiStatus.LOADING
@@ -81,6 +114,7 @@ class SignupViewModel : ViewModel() {
         email.set("simpson5304@naver.com")
         password.set("gmltmd!23")
         _toast.value = ""
+        duplicateNickname.set(false)
     }
 
     override fun onCleared() {

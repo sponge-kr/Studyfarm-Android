@@ -55,7 +55,7 @@ interface StudyFarmApiService {
     @Headers("Content-Type: application/hal+json;charset=UTF-8",
         "Accept: application/hal+json")
     @GET("user/check-nickname")
-    suspend fun checkNickName(@FieldMap params : Map<String, String>) : Response
+    suspend fun checkNickName(@Query("nickname") param : String) : Response
 
     @Headers("Content-Type: application/hal+json;charset=UTF-8",
         "Accept: application/hal+json")

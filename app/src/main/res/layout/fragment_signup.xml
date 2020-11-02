@@ -28,7 +28,10 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/signup_et_nickname"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:nicknameCheck="@{viewModel.nicknameFocusChangeListener}"
+                app:validationBoolean="@{viewModel.duplicateNickname}"
+                app:errorMsgBoolean='@{"중복된 닉네임입니다."}'>
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
