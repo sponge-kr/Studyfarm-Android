@@ -40,22 +40,42 @@
             app:layout_constraintStart_toStartOf="@+id/signup_et_nickname"
             app:layout_constraintTop_toBottomOf="@+id/signup_et_nickname" />
 
-        <Spinner
-            android:id="@+id/signup_spinner1"
-            android:layout_width="wrap_content"
+        <HorizontalScrollView
+            android:id="@+id/signup_scroll_city"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="@+id/step2_1"
-            app:layout_constraintTop_toBottomOf="@+id/step2_1" />
+            app:layout_constraintTop_toBottomOf="@+id/step2_1">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="서울시 강동구"
+                    android:layout_margin="@dimen/vertical_margin"/>
 
-        <Spinner
-            android:id="@+id/signup_spinner2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/signup_spinner1"
-            app:layout_constraintStart_toEndOf="@+id/signup_spinner1"
-            app:layout_constraintTop_toTopOf="@+id/signup_spinner1" />
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="경기도 용인시"
+                    android:layout_margin="@dimen/vertical_margin"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="인천광역시 미추홀구"
+                    android:layout_margin="@dimen/vertical_margin"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="추가하기"
+                    android:layout_margin="@dimen/vertical_margin"/>
+            </LinearLayout>
+
+        </HorizontalScrollView>
 
         <TextView
             android:id="@+id/step2_2"
@@ -63,70 +83,91 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="관심 스터디"
-            app:layout_constraintStart_toStartOf="@+id/signup_spinner1"
-            app:layout_constraintTop_toBottomOf="@+id/signup_spinner1" />
+            app:layout_constraintStart_toStartOf="@+id/signup_scroll_city"
+            app:layout_constraintTop_toBottomOf="@+id/signup_scroll_city" />
 
-        <Spinner
-            android:id="@+id/signup_spinner_interested"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:entries="@{viewModel.interestedStudy}"
-            android:layout_marginVertical="@dimen/vertical_margin"
-            app:layout_constraintStart_toStartOf="@+id/step2_2"
-            app:layout_constraintTop_toBottomOf="@+id/step2_2"
-            app:connectChipGroup="@{viewModel.chipGroupId}"
-            app:chipsLiveData="@{viewModel.chips}" />
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/step2_2"
+            app:layout_constraintStart_toStartOf="@id/step2_2">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:overScrollMode="never"
-            android:scrollbars="none"
-            android:id="@+id/signup_scrollview_interested"
-            android:layout_marginVertical="@dimen/vertical_margin"
-            app:layout_constraintStart_toStartOf="@+id/signup_spinner_interested"
-            app:layout_constraintTop_toBottomOf="@+id/signup_spinner_interested">
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/signup_chip_study1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:text="sample"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/signup_chipgroup_interested"
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:rating="3"
+                    app:layout_constraintBottom_toBottomOf="@+id/signup_chip_study1"
+                    app:layout_constraintStart_toEndOf="@+id/signup_chip_study1"
+                    app:layout_constraintTop_toTopOf="@+id/signup_chip_study1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/signup_chip_study2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:text="sample"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:rating="3"
+                    app:layout_constraintBottom_toBottomOf="@+id/signup_chip_study2"
+                    app:layout_constraintStart_toEndOf="@+id/signup_chip_study2"
+                    app:layout_constraintTop_toTopOf="@+id/signup_chip_study2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/signup_chip_study3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:text="sample"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:rating="3"
+                    app:layout_constraintBottom_toBottomOf="@+id/signup_chip_study3"
+                    app:layout_constraintStart_toEndOf="@+id/signup_chip_study3"
+                    app:layout_constraintTop_toTopOf="@+id/signup_chip_study3" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:singleLine="true"></com.google.android.material.chip.ChipGroup>
-        </HorizontalScrollView>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/signup_et_studypurpose"
-            android:layout_marginVertical="@dimen/vertical_margin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/signup_scrollview_interested">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="20"
-                android:inputType="textPersonName"
-                android:hint="스터디 목적(선택사항)"
-                android:text="@={viewModel.studyPurpose}" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/signup_et_serviceway"
-            android:layout_marginVertical="@dimen/vertical_margin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/signup_et_studypurpose">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="20"
-                android:inputType="textPersonName"
-                android:hint="서비스 유입 경로(선택사항)"
-                android:text="@={viewModel.serviceWay}" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:text="추가하기" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

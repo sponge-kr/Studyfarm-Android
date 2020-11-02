@@ -47,11 +47,6 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
 
     val serviceWay = ObservableField<String>()
 
-    val interestedStudy = ObservableField<Array<String>>()
-
-    val chipGroupId = ObservableField<Int>()
-    val chips = MutableLiveData<ArrayList<String>>()
-
     val mainTitle = Transformations.map(step) {
         when(it) {
             1 -> "약관 동의"
@@ -101,11 +96,6 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
         year.set(time.split("-")[0].toInt())
         month.set(time.split("-")[1].toInt())
         day.set(time.split("-")[2].toInt())
-
-        //나중에 db연결
-        interestedStudy.set(arrayOf("- 스터디 선택 -", "웹 개발", "안드로이드 개발", "ios 개발", "디자인"))
-        chips.value = arrayListOf()
-        chipGroupId.set(R.id.signup_chipgroup_interested)
     }
 
     fun selectGender(g : Gender) {
@@ -123,7 +113,6 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
             stepVisibility.set(IntArray(3) { if(it == step.value!! - 1) View.VISIBLE else View.GONE })
         }
         else {
-            val interestingList = List(chips.value!!.size) { Interesting(chips.value!![it], "") }
             val user = User(
                 email = email.value!!,
                 password = password.value!!,
@@ -138,7 +127,7 @@ class SignupViewModel(_email : String, _password : String) : ViewModel() {
                 gender = gender.MW.toDouble(),
                 serviceWay = serviceWay.get() ?: "",
                 studyPurpose = studyPurpose.get() ?: "",
-                interesting = interestingList,
+                interesting = listOf(),
             )
 
             addUser(user)
