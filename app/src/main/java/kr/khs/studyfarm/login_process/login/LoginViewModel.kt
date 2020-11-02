@@ -16,6 +16,10 @@ class LoginViewModel : ViewModel() {
 
     val rule = Rule
 
+    private val _gotoSignUp = MutableLiveData<Boolean>()
+    val gotoSignUp : LiveData<Boolean>
+        get() = _gotoSignUp
+
     private val _loginStatus = MutableLiveData<Boolean>()
     val loginStatus : LiveData<Boolean>
         get() = _loginStatus
@@ -54,9 +58,18 @@ class LoginViewModel : ViewModel() {
         }
     }
 
+    fun doGoToSignUp() {
+        _gotoSignUp.value = true
+    }
+
+    fun doneGoToSignUp() {
+        _gotoSignUp.value = false
+    }
+
     init {
         email.set("ks96ks@naver.com")
         password.set("rlagmltmd1!")
+        _gotoSignUp.value = false
     }
 
 

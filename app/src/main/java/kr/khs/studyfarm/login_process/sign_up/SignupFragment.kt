@@ -27,21 +27,29 @@ class SignupFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        val viewModelFactory = SignupViewModelFactory(
-            SignupFragmentArgs.fromBundle(requireArguments()).email,
-            SignupFragmentArgs.fromBundle(requireArguments()).password
-        )
+        val viewModelFactory = SignupViewModelFactory()
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(SignupViewModel::class.java)
 
         binding.viewModel = viewModel
 
-        viewModel.response.observe(viewLifecycleOwner, Observer {
-            it.let {
-                if(it.code == 200.0) {
-                    Toast.makeText(context, "회원가입이 되었습니다.\n가입한 이메일로 로그인 해주세요.", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(SignupFragmentDirections.actionSignupFragmentToLoginFragment())
-                }
+        viewModel.status.observe(viewLifecycleOwner, Observer {
+            if(it == 1) {
+                findNavController().navigate(
+                    SignupFragmentDirections.actionSignupFragmentToSignupAuthFragment(
+                        viewModel.email.get().toString(),
+                        viewModel.password.get().toString(),
+                        viewModel.nickname.get().toString()
+                    )
+                )
+                viewModel.defaultStatus()
+            }
+            else if(it == 2) {
+                Toast.makeText(context, "이미 가입된 이메일입니다.\n로그인 화면으로 이동합니다.", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(
+                    SignupFragmentDirections.actionSignupFragmentToLoginFragment()
+                )
+                viewModel.defaultStatus()
             }
         })
 
@@ -51,6 +59,7 @@ class SignupFragment : Fragment() {
                 viewModel.doneToast()
             }
         })
+
 
         return binding.root
     }

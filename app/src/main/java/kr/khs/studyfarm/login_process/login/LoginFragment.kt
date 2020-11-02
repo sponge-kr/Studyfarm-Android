@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentLoginBinding
 import kr.khs.studyfarm.view.MainActivity
@@ -42,6 +43,13 @@ class LoginFragment : Fragment() {
 
         viewModel.error.observe(viewLifecycleOwner, Observer {
             Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+        })
+
+        viewModel.gotoSignUp.observe(viewLifecycleOwner, Observer {
+            if(it) {
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignupFragment())
+                viewModel.doneGoToSignUp()
+            }
         })
 
         return binding.root
