@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentSignupBinding
+import kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementFragment
 
 class SignupFragment : Fragment() {
 
@@ -35,13 +36,15 @@ class SignupFragment : Fragment() {
 
         viewModel.status.observe(viewLifecycleOwner, Observer {
             if(it == 1) {
-                findNavController().navigate(
-                    SignupFragmentDirections.actionSignupFragmentToSignupAuthFragment(
-                        viewModel.email.get().toString(),
-                        viewModel.password.get().toString(),
-                        viewModel.nickname.get().toString()
-                    )
-                )
+                val agree = AgreementFragment()
+                agree.show(parentFragmentManager, "custom dialog")
+//                findNavController().navigate(
+//                    SignupFragmentDirections.actionSignupFragmentToSignupAuthFragment(
+//                        viewModel.email.get().toString(),
+//                        viewModel.password.get().toString(),
+//                        viewModel.nickname.get().toString()
+//                    )
+//                )
                 viewModel.defaultStatus()
             }
             else if(it == 2) {

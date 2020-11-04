@@ -9,8 +9,6 @@ class SignupAuthViewModel(_email : String) : ViewModel() {
 
     val email = MutableLiveData<String>()
 
-    val check = ObservableField<Boolean>()
-
     private val _nextBtnClicked = MutableLiveData<Boolean>()
     val nextBtnClicked : LiveData<Boolean>
         get() = _nextBtnClicked
@@ -20,10 +18,7 @@ class SignupAuthViewModel(_email : String) : ViewModel() {
         get() = _toast
 
     fun doNextBtnClicked() {
-        if(check.get()!!)
-            _nextBtnClicked.value = true
-        else
-            _toast.value = "필수 약관을 체크해주세요."
+        _nextBtnClicked.value = true
     }
 
     fun doneNextBtnClicked() {
@@ -38,6 +33,5 @@ class SignupAuthViewModel(_email : String) : ViewModel() {
         _nextBtnClicked.value = false
         _toast.value = ""
         email.value = _email
-        check.set(false)
     }
 }

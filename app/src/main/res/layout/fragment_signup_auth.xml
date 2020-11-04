@@ -21,14 +21,13 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/vertical_margin"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:onClick="@{() -> viewModel.doNextBtnClicked()}"
             android:text="다음"
             app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signupauth_checkbox" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
         <TextView
             android:id="@+id/signupauth_maintitle"
@@ -82,19 +81,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/signupauth_email"
                 android:onClick="@{() -> viewModel.doNextBtnClicked()}"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <CheckBox
-            android:id="@+id/signupauth_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:text="스터디팜 회원 가입 시, 다음 내용에 대해 모두 읽었으며 이에 동의한 것으로 간주합니다. 이용약관 및 개인정보 취급방침"
-            android:checked="@={viewModel.check}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
         <TextView
             android:id="@+id/signupauth_inquire"
