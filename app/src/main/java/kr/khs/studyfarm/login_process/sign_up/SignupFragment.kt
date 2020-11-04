@@ -36,15 +36,12 @@ class SignupFragment : Fragment() {
 
         viewModel.status.observe(viewLifecycleOwner, Observer {
             if(it == 1) {
-                val agree = AgreementFragment()
-                agree.show(parentFragmentManager, "custom dialog")
-//                findNavController().navigate(
-//                    SignupFragmentDirections.actionSignupFragmentToSignupAuthFragment(
-//                        viewModel.email.get().toString(),
-//                        viewModel.password.get().toString(),
-//                        viewModel.nickname.get().toString()
-//                    )
-//                )
+                findNavController().navigate(
+                    SignupFragmentDirections.actionSignupFragmentToAgreementFragment(
+                        viewModel.email.get().toString(),
+                        viewModel.password.get().toString(),
+                        viewModel.nickname.get().toString())
+                )
                 viewModel.defaultStatus()
             }
             else if(it == 2) {

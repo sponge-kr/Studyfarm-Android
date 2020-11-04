@@ -78,8 +78,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signupauth_email"
-                android:onClick="@{() -> viewModel.doNextBtnClicked()}"/>
+                app:layout_constraintTop_toBottomOf="@+id/signupauth_email"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
