@@ -4,6 +4,7 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.*
 import kr.khs.studyfarm.Rule
 import kr.khs.studyfarm.network.*
@@ -76,5 +77,13 @@ class LoginViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         coroutineScope.cancel()
+    }
+}
+
+class LoginViewModelFactory : ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if(modelClass.isAssignableFrom(LoginViewModel::class.java))
+            return LoginViewModel() as T
+        throw IllegalArgumentException("Unknown Class Name")
     }
 }

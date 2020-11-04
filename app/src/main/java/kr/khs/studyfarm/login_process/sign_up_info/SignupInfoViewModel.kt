@@ -3,10 +3,7 @@ package kr.khs.studyfarm.login_process.sign_up_info
 import android.annotation.SuppressLint
 import android.view.View
 import androidx.databinding.ObservableField
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import kotlinx.coroutines.*
 import kr.khs.studyfarm.Gender
 import kr.khs.studyfarm.network.*
@@ -132,5 +129,13 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
         super.onCleared()
         coroutineScope.cancel()
         _toast.value = ""
+    }
+}
+
+class SignupInfoViewModelFactory(private val email : String, private val password : String, private val nickname : String) : ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if(modelClass.isAssignableFrom(SignupInfoViewModel::class.java))
+            return SignupInfoViewModel(email, password, nickname) as T
+        throw IllegalArgumentException("Unknown Class Name")
     }
 }

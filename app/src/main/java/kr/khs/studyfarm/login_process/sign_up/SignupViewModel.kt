@@ -6,6 +6,7 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.*
 import kr.khs.studyfarm.Rule
 import kr.khs.studyfarm.isEmailValidate
@@ -121,4 +122,13 @@ class SignupViewModel : ViewModel() {
         super.onCleared()
         coroutineScope.cancel()
     }
+}
+
+class SignupViewModelFactory : ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if(modelClass.isAssignableFrom(SignupViewModel::class.java))
+            return SignupViewModel() as T
+        throw IllegalArgumentException("Unknown Class Name")
+    }
+
 }

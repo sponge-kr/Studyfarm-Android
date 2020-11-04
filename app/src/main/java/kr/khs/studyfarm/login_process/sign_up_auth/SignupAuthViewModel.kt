@@ -4,6 +4,7 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 
 class SignupAuthViewModel(_email : String) : ViewModel() {
 
@@ -34,4 +35,13 @@ class SignupAuthViewModel(_email : String) : ViewModel() {
         _toast.value = ""
         email.value = _email
     }
+}
+
+class SignupAuthViewModelFactory(private val email : String) : ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if(modelClass.isAssignableFrom(SignupAuthViewModel::class.java))
+            return SignupAuthViewModel(email) as T
+        throw IllegalArgumentException("Unknown Class Name")
+    }
+
 }
