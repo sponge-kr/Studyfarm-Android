@@ -20,55 +20,68 @@
             android:id="@+id/step2_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:text="지역"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="96dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/signup_spinner_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/vertical_margin"
+            android:spinnerMode="dialog"
+            android:entries="@{viewModel.states}"
+            app:layout_constraintStart_toStartOf="@+id/step2_1"
+            app:layout_constraintTop_toBottomOf="@+id/step2_1" />
+
+        <Spinner
+            android:id="@+id/signup_spinner_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:spinnerMode="dialog"
+            android:entries="@{viewModel.cities}"
+            app:layout_constraintBottom_toBottomOf="@+id/signup_spinner_city"
+            app:layout_constraintStart_toEndOf="@+id/signup_spinner_city"
+            app:layout_constraintTop_toTopOf="@+id/signup_spinner_city" />
 
         <HorizontalScrollView
-            android:id="@+id/signup_scroll_city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@+id/step2_1"
-            app:layout_constraintTop_toBottomOf="@+id/step2_1">
-            <LinearLayout
+            android:layout_marginTop="@dimen/vertical_margin"
+            app:layout_constraintStart_toStartOf="@+id/signup_spinner_city"
+            app:layout_constraintTop_toBottomOf="@+id/signup_spinner_city"
+            android:id="@+id/signup_horizonscroll_chipgroup">
+            <com.google.android.material.chip.ChipGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:id="@+id/signup_chipgroup_city">
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/signup_chip_city1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="서울시 강동구"
-                    android:layout_margin="@dimen/vertical_margin"/>
-
-                <com.google.android.material.chip.Chip
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="경기도 용인시"
-                    android:layout_margin="@dimen/vertical_margin"/>
+                    android:checkable="false"
+                    android:text="sample" />
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/signup_chip_city2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="인천광역시 미추홀구"
-                    android:layout_margin="@dimen/vertical_margin"/>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="추가하기"
-                    android:layout_margin="@dimen/vertical_margin"/>
-            </LinearLayout>
-
+                    android:checkable="false"
+                    android:text="sample" />
+            </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>
 
         <TextView
             android:id="@+id/step2_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="관심 스터디"
-            app:layout_constraintStart_toStartOf="@+id/signup_scroll_city"
-            app:layout_constraintTop_toBottomOf="@+id/signup_scroll_city" />
+            app:layout_constraintStart_toStartOf="@+id/signup_spinner_city"
+            app:layout_constraintTop_toBottomOf="@+id/signup_horizonscroll_chipgroup" />
 
         <LinearLayout
             android:layout_width="match_parent"

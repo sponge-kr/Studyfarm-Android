@@ -1,13 +1,11 @@
 package kr.khs.studyfarm.login_process.sign_up_info
 
-import android.annotation.SuppressLint
 import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.*
 import kotlinx.coroutines.*
 import kr.khs.studyfarm.Gender
 import kr.khs.studyfarm.network.*
-import java.text.SimpleDateFormat
 import java.util.*
 
 class SignupInfoViewModel(_email : String, _password : String, _nickname : String) : ViewModel() {
@@ -28,6 +26,12 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
 
     var gender = Gender.Not
 
+    val states = ObservableField<List<String>>()
+    val statesInt = ObservableField<List<Int>>()
+
+    val cities = ObservableField<MutableList<String>>()
+    val citiesInt = ObservableField<MutableList<Int>>()
+
     val studyPurpose = ObservableField<String>()
 
     val serviceWay = ObservableField<String>()
@@ -47,6 +51,10 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
             else -> ""
         }
     }
+
+    private val _isSignupSuccess = MutableLiveData<Boolean>()
+    val isSignupSuccess : LiveData<Boolean>
+        get() = _isSignupSuccess
 
     private val _response = MutableLiveData<Response>()
     val response : LiveData<Response>
@@ -74,6 +82,9 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
         nickname.value = _nickname
         stepVisibility.set(IntArray(2) { if(it == 0) View.VISIBLE else View.GONE })
         step.value = 1
+        _isSignupSuccess.value = false
+        getStates()
+
     }
 
     fun selectGender(g : Gender) {
@@ -112,6 +123,25 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
             try {
                 _apiStatus.value = ApiStatus.LOADING
                 _response.value = StudyFarmApi.retrofitService.addUser(user)
+                _apiStatus.value = ApiStatus.DONE
+                _isSignupSuccess.value = true
+            }
+            catch (t : Throwable) {
+                _apiStatus.value = ApiStatus.ERROR
+                _error.value = errorHandling(t)
+            }
+        }
+    }
+
+    private fun getStates() {
+        coroutineScope.launch {
+            try {
+                _apiStatus.value = ApiStatus.LOADING
+                _response.value = StudyFarmApi.retrofitService.getStates()
+                val abMap = _response.value!!.result as AbstractMap<*, *>
+                val jsonState = abMap["content"] as ArrayList<*>
+                states.set(List(jsonState.size + 1) { if(it == 0) "시/도 선택" else (jsonState[it - 1] as AbstractMap<*, *>)["name"] as String })
+                statesInt.set(List(jsonState.size + 1) { if(it == 0) 0 else ((jsonState[it - 1] as AbstractMap<*, *>)["code"] as Double).toInt() })
                 _apiStatus.value = ApiStatus.DONE
             }
             catch (t : Throwable) {
