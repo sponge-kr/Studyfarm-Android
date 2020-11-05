@@ -1,6 +1,7 @@
 package kr.khs.studyfarm.login_process.sign_up_info
 
 import android.view.View
+import android.widget.AdapterView
 import androidx.databinding.ObservableField
 import androidx.lifecycle.*
 import kotlinx.coroutines.*
@@ -29,8 +30,8 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
     val states = ObservableField<List<String>>()
     val statesInt = ObservableField<List<Int>>()
 
-    val cities = ObservableField<MutableList<String>>()
-    val citiesInt = ObservableField<MutableList<Int>>()
+    val cities = ObservableField<List<String>>()
+    val citiesInt = ObservableField<List<Int>>()
 
     val studyPurpose = ObservableField<String>()
 
@@ -84,7 +85,7 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
         step.value = 1
         _isSignupSuccess.value = false
         getStates()
-
+        cities.set(listOf("시/도 부터 선택하세요."))
     }
 
     fun selectGender(g : Gender) {
@@ -151,6 +152,24 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
         }
     }
 
+    private fun getCities(n : Int) {
+        coroutineScope.launch {
+            try {
+                _apiStatus.value = ApiStatus.LOADING
+                _response.value = StudyFarmApi.retrofitService.getCities(n)
+                val abMap = _response.value!!.result as AbstractMap<*, *>
+                val jsonCity = abMap["content"] as ArrayList<*>
+                cities.set(List(jsonCity.size + 1) { if(it == 0) "세부 지역 선택" else (jsonCity[it - 1] as AbstractMap<*, *>)["name"] as String })
+                citiesInt.set(List(jsonCity.size + 1) { if(it == 0) 0 else ((jsonCity[it - 1] as AbstractMap<*, *>)["code"] as Double).toInt() })
+                _apiStatus.value = ApiStatus.DONE
+            }
+            catch (t : Throwable) {
+                _apiStatus.value = ApiStatus.ERROR
+                _error.value = errorHandling(t)
+            }
+        }
+    }
+
     fun doneToast() {
         _toast.value = ""
     }
@@ -159,6 +178,19 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
         super.onCleared()
         coroutineScope.cancel()
         _toast.value = ""
+    }
+
+    val stateSelectedListener = object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+            if(p2 != 0) {
+                getCities(statesInt.get()!![p2])
+            }
+        }
+
+        override fun onNothingSelected(p0: AdapterView<*>?) {
+
+        }
+
     }
 }
 

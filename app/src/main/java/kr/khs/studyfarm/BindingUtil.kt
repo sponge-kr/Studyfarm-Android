@@ -112,6 +112,12 @@ fun addChip(view : Spinner, chipGroupId : Int, chips : ArrayList<String>) {
     }
 }
 
+//spinner에 onItemSelectedListener추가
+@BindingAdapter("app:setOnItemSelectedListener")
+fun addOnItemSelectedListener(view : Spinner, listener: AdapterView.OnItemSelectedListener) {
+    view.onItemSelectedListener = listener
+}
+
 @BindingAdapter("app:nicknameCheck")
 fun checkNickName(view : TextInputLayout, listener : View.OnFocusChangeListener) {
     view.editText?.onFocusChangeListener = listener
