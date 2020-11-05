@@ -29,9 +29,12 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
 
     val states = ObservableField<List<String>>()
     val statesInt = ObservableField<List<Int>>()
+    var curState = 0
 
     val cities = ObservableField<List<String>>()
     val citiesInt = ObservableField<List<Int>>()
+
+    val cityChipList = ObservableField<ArrayList<String>>()
 
     val studyPurpose = ObservableField<String>()
 
@@ -86,6 +89,7 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
         _isSignupSuccess.value = false
         getStates()
         cities.set(listOf("시/도 부터 선택하세요."))
+        cityChipList.set(arrayListOf())
     }
 
     fun selectGender(g : Gender) {
@@ -183,14 +187,22 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
     val stateSelectedListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
             if(p2 != 0) {
+                curState = p2
                 getCities(statesInt.get()!![p2])
             }
         }
 
-        override fun onNothingSelected(p0: AdapterView<*>?) {
+        override fun onNothingSelected(p0: AdapterView<*>?) { }
+    }
 
+    val citySelectedListener = object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+            if(p2 != 0) {
+                println("$curState - ${citiesInt.get()!![p2]}")
+            }
         }
 
+        override fun onNothingSelected(p0: AdapterView<*>?) { }
     }
 }
 
