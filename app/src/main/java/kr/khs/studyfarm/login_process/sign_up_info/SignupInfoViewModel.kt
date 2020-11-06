@@ -200,11 +200,6 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
         override fun onNothingSelected(p0: AdapterView<*>?) { }
     }
 
-    // 현재 칩그룹 만들기 생각하는 방법
-    // cityChipList를 fragment에서 observe하여 변경되었을경우 그에 따라 칩그룹을 새로 만든다.
-    // 근데? 매번 새로 만들면 리소스 낭비.
-    // 어디로 가야 하오,,
-    // 일단 똑바로 프린트도안됨
     val citySelectedListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
             if(p2 != 0) {
