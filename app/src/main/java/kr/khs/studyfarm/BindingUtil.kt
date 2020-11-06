@@ -68,7 +68,7 @@ interface StringRule {
     fun validate(s: Editable?): Boolean
 }
 
-// 현재 상태 : visibility가 똑바로 조정이 안된다. 삭제할떄.
+// 현재 상태 : visibility가 똑바로 조정이 안된다. 삭제할떄. -> chipgroup에 binding adapter을 연결하자! -> 나아가서 spinner listener까지?
 @BindingAdapter("app:cityChipList", "app:cityList")
 fun cityChipEventListener(view : Chip, chipList : MutableList<String>, cityList : ArrayList<Int>) {
     view.apply {
