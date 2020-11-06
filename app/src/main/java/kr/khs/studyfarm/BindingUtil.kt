@@ -68,6 +68,7 @@ interface StringRule {
     fun validate(s: Editable?): Boolean
 }
 
+// 현재 상태 : visibility가 똑바로 조정이 안된다. 삭제할떄.
 @BindingAdapter("app:cityChipList", "app:cityList")
 fun cityChipEventListener(view : Chip, chipList : MutableList<String>, cityList : ArrayList<Int>) {
     view.apply {
@@ -75,15 +76,23 @@ fun cityChipEventListener(view : Chip, chipList : MutableList<String>, cityList 
         isCloseIconVisible = true
         closeIcon = ResourcesCompat.getDrawable(resources, android.R.drawable.ic_menu_close_clear_cancel, null)
         setOnCloseIconClickListener {
-            (parent as ChipGroup).removeView(it)
             var idx = 0
             for(i in 0 until 3)
                 if(chipList[i] == this.text)
                     idx = i
+            println(idx.toString() + " " + this.text)
+            for(i in 0 until 3)
+                print("${chipList[i]}, ")
+            println()
+            for(i in 0 until cityList.size)
+                print("${cityList[i]}, ")
+            println()
+
             chipList.removeAt(idx)
             chipList.add("")
             cityList.removeAt(idx * 2)
             cityList.removeAt(idx * 2)
+            (parent as ChipGroup).removeView(it)
         }
     }
 }

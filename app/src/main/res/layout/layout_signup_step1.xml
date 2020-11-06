@@ -66,7 +66,9 @@
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:visibility="@{viewModel.cityChipVisibility[0]}"
-                    android:text="@{viewModel.cityChipList[0]}" />
+                    android:text="@{viewModel.cityChipList[0]}"
+                    app:cityChipList="@{viewModel.cityChipList}"
+                    app:cityList="@{viewModel.cityList}"/>
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/signup_chip_city2"
@@ -74,7 +76,9 @@
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:visibility="@{viewModel.cityChipVisibility[1]}"
-                    android:text="@{viewModel.cityChipList[1]}" />
+                    android:text="@{viewModel.cityChipList[1]}"
+                    app:cityChipList="@{viewModel.cityChipList}"
+                    app:cityList="@{viewModel.cityList}" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/signup_chip_city3"
@@ -82,7 +86,9 @@
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:visibility="@{viewModel.cityChipVisibility[2]}"
-                    android:text="@{viewModel.cityChipList[2]}" />
+                    android:text="@{viewModel.cityChipList[2]}"
+                    app:cityChipList="@{viewModel.cityChipList}"
+                    app:cityList="@{viewModel.cityList}" />
             </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>
 

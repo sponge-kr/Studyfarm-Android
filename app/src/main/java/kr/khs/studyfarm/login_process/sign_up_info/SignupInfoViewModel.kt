@@ -216,9 +216,15 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
                     _toast.value = "이미 포함되어있는 지역입니다."
                     return
                 }
-                cityChipList.set(List(MAX_CITY_CHOICE) { if(it < cityList.size / 2) cityChipList.get()!![it] else "${states.get()!![curState]} ${cities.get()!![p2]}" }.toMutableList())
+                cityChipList.set(List(MAX_CITY_CHOICE) { if(it < cityList.size / 2) cityChipList.get()!![it] else if(it > cityList.size / 2) "" else "${states.get()!![curState]} ${cities.get()!![p2]}" }.toMutableList())
                 cityChipVisibility.set(IntArray(MAX_CITY_CHOICE) { if(cityList.size / 2 >= it) View.VISIBLE else View.INVISIBLE })
                 cityList.addAll(arrayOf(curState, citiesInt.get()!![p2]))
+                for(str in cityChipList.get()!!)
+                    print("$str, ")
+                println()
+                for(i in cityList)
+                    print("$i ")
+
 //                cityChipList.get()!![temp] = "${states.get()!![curState]} ${cities.get()!![p2]}"
             }
         }
