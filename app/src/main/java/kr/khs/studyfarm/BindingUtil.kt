@@ -34,6 +34,7 @@ fun setErrorEnable(textInputLayout: TextInputLayout, stringRule: StringRule, err
     })
 }
 
+//닉네임 중복 표시
 @BindingAdapter("app:validationBoolean", "app:errorMsgBoolean")
 fun setErrorEnableBoolean(textInputLayout: TextInputLayout, boolean : Boolean, errorMsg: String) {
     textInputLayout.error =
@@ -67,10 +68,24 @@ interface StringRule {
     fun validate(s: Editable?): Boolean
 }
 
-// datepicker 자동으로 현재 날짜
-@BindingAdapter("android:year", "android:month", "android:day")
-fun setDate(view: DatePicker, year: Int, month: Int, day: Int) {
-    view.updateDate(year, month, day)
+@BindingAdapter("app:cityChipList", "app:cityList")
+fun cityChipEventListener(view : Chip, chipList : MutableList<String>, cityList : ArrayList<Int>) {
+    view.apply {
+        isCheckable = false
+        isCloseIconVisible = true
+        closeIcon = ResourcesCompat.getDrawable(resources, android.R.drawable.ic_menu_close_clear_cancel, null)
+        setOnCloseIconClickListener {
+            (parent as ChipGroup).removeView(it)
+            var idx = 0
+            for(i in 0 until 3)
+                if(chipList[i] == this.text)
+                    idx = i
+            chipList.removeAt(idx)
+            chipList.add("")
+            cityList.removeAt(idx * 2)
+            cityList.removeAt(idx * 2)
+        }
+    }
 }
 
 //spinner와 chipgroup 연결

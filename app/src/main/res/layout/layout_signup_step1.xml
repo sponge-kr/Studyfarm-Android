@@ -65,14 +65,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checkable="false"
-                    android:text="sample" />
+                    android:visibility="@{viewModel.cityChipVisibility[0]}"
+                    android:text="@{viewModel.cityChipList[0]}" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/signup_chip_city2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checkable="false"
-                    android:text="sample" />
+                    android:visibility="@{viewModel.cityChipVisibility[1]}"
+                    android:text="@{viewModel.cityChipList[1]}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/signup_chip_city3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:visibility="@{viewModel.cityChipVisibility[2]}"
+                    android:text="@{viewModel.cityChipList[2]}" />
             </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>
 

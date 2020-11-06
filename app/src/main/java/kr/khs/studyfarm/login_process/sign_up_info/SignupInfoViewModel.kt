@@ -13,6 +13,8 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
 
     private val MAX_SIGN_UP = 2
 
+    private val MAX_CITY_CHOICE = 3
+
     private val email = MutableLiveData<String>()
 
     private val password = MutableLiveData<String>()
@@ -34,7 +36,9 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
     val cities = ObservableField<List<String>>()
     val citiesInt = ObservableField<List<Int>>()
 
-    val cityChipList = ObservableField<ArrayList<String>>()
+    val cityChipList = ObservableField<MutableList<String>>()
+    val cityChipVisibility = ObservableField<IntArray>()
+    val cityList = ArrayList<Int>()
 
     val studyPurpose = ObservableField<String>()
 
@@ -84,12 +88,13 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
         email.value = _email
         password.value = _password
         nickname.value = _nickname
-        stepVisibility.set(IntArray(2) { if(it == 0) View.VISIBLE else View.GONE })
+        stepVisibility.set(IntArray(2) { if(it == 0) View.VISIBLE else View.INVISIBLE })
         step.value = 1
         _isSignupSuccess.value = false
         getStates()
         cities.set(listOf("시/도 부터 선택하세요."))
-        cityChipList.set(arrayListOf())
+        cityChipVisibility.set(IntArray(MAX_CITY_CHOICE) { View.INVISIBLE })
+        cityChipList.set(arrayListOf("", "", ""))
     }
 
     fun selectGender(g : Gender) {
@@ -195,10 +200,26 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
         override fun onNothingSelected(p0: AdapterView<*>?) { }
     }
 
+    // 현재 칩그룹 만들기 생각하는 방법
+    // cityChipList를 fragment에서 observe하여 변경되었을경우 그에 따라 칩그룹을 새로 만든다.
+    // 근데? 매번 새로 만들면 리소스 낭비.
+    // 어디로 가야 하오,,
+    // 일단 똑바로 프린트도안됨
     val citySelectedListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
             if(p2 != 0) {
-                println("$curState - ${citiesInt.get()!![p2]}")
+                if(cityList.size == 6) {
+                    _toast.value = "지역은 최대 3개까지 선택할 수 있습니다."
+                    return
+                }
+                if(cityChipList.get()!!.contains("${states.get()!![curState]} ${cities.get()!![p2]}")) {
+                    _toast.value = "이미 포함되어있는 지역입니다."
+                    return
+                }
+                cityChipList.set(List(MAX_CITY_CHOICE) { if(it < cityList.size / 2) cityChipList.get()!![it] else "${states.get()!![curState]} ${cities.get()!![p2]}" }.toMutableList())
+                cityChipVisibility.set(IntArray(MAX_CITY_CHOICE) { if(cityList.size / 2 >= it) View.VISIBLE else View.INVISIBLE })
+                cityList.addAll(arrayOf(curState, citiesInt.get()!![p2]))
+//                cityChipList.get()!![temp] = "${states.get()!![curState]} ${cities.get()!![p2]}"
             }
         }
 
