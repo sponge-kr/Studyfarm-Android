@@ -29,16 +29,9 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
 
     var gender = Gender.Not
 
-    val states = ObservableField<List<String>>()
-    val statesInt = ObservableField<List<Int>>()
-    var curState = 0
+    val stateList = ObservableField<List<StateData>>()
 
-    val cities = ObservableField<List<String>>()
-    val citiesInt = ObservableField<List<Int>>()
-
-    val cityChipList = ObservableField<MutableList<String>>()
-    val cityChipVisibility = ObservableField<IntArray>()
-    val cityList = ArrayList<Int>()
+    val cityList = ObservableField<List<StateData>>()
 
     val studyPurpose = ObservableField<String>()
 
@@ -92,9 +85,6 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
         step.value = 1
         _isSignupSuccess.value = false
         getStates()
-        cities.set(listOf("시/도 부터 선택하세요."))
-        cityChipVisibility.set(IntArray(MAX_CITY_CHOICE) { View.INVISIBLE })
-        cityChipList.set(arrayListOf("", "", ""))
     }
 
     fun selectGender(g : Gender) {
@@ -150,8 +140,10 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
                 _response.value = StudyFarmApi.retrofitService.getStates()
                 val abMap = _response.value!!.result as AbstractMap<*, *>
                 val jsonState = abMap["content"] as ArrayList<*>
-                states.set(List(jsonState.size + 1) { if(it == 0) "시/도 선택" else (jsonState[it - 1] as AbstractMap<*, *>)["name"] as String })
-                statesInt.set(List(jsonState.size + 1) { if(it == 0) 0 else ((jsonState[it - 1] as AbstractMap<*, *>)["code"] as Double).toInt() })
+                stateList.set(List(jsonState.size) { StateData(
+                    ((jsonState[it] as AbstractMap<*, *>)["code"] as Double).toInt(),
+                    (jsonState[it] as AbstractMap<*, *>)["name"] as String
+                )})
                 _apiStatus.value = ApiStatus.DONE
             }
             catch (t : Throwable) {
@@ -168,8 +160,10 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
                 _response.value = StudyFarmApi.retrofitService.getCities(n)
                 val abMap = _response.value!!.result as AbstractMap<*, *>
                 val jsonCity = abMap["content"] as ArrayList<*>
-                cities.set(List(jsonCity.size + 1) { if(it == 0) "세부 지역 선택" else (jsonCity[it - 1] as AbstractMap<*, *>)["name"] as String })
-                citiesInt.set(List(jsonCity.size + 1) { if(it == 0) 0 else ((jsonCity[it - 1] as AbstractMap<*, *>)["code"] as Double).toInt() })
+                cityList.set(List(jsonCity.size) { StateData(
+                    ((jsonCity[it] as AbstractMap<*, *>)["code"] as Double).toInt(),
+                    (jsonCity[it] as AbstractMap<*, *>)["name"] as String
+                )})
                 _apiStatus.value = ApiStatus.DONE
             }
             catch (t : Throwable) {
@@ -188,44 +182,6 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
         coroutineScope.cancel()
         _toast.value = ""
     }
-
-    val stateSelectedListener = object : AdapterView.OnItemSelectedListener {
-        override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-            if(p2 != 0) {
-                curState = p2
-                getCities(statesInt.get()!![p2])
-            }
-        }
-
-        override fun onNothingSelected(p0: AdapterView<*>?) { }
-    }
-
-    val citySelectedListener = object : AdapterView.OnItemSelectedListener {
-        override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-            if(p2 != 0) {
-                if(cityList.size == 6) {
-                    _toast.value = "지역은 최대 3개까지 선택할 수 있습니다."
-                    return
-                }
-                if(cityChipList.get()!!.contains("${states.get()!![curState]} ${cities.get()!![p2]}")) {
-                    _toast.value = "이미 포함되어있는 지역입니다."
-                    return
-                }
-                cityChipList.set(List(MAX_CITY_CHOICE) { if(it < cityList.size / 2) cityChipList.get()!![it] else if(it > cityList.size / 2) "" else "${states.get()!![curState]} ${cities.get()!![p2]}" }.toMutableList())
-                cityChipVisibility.set(IntArray(MAX_CITY_CHOICE) { if(cityList.size / 2 >= it) View.VISIBLE else View.INVISIBLE })
-                cityList.addAll(arrayOf(curState, citiesInt.get()!![p2]))
-                for(str in cityChipList.get()!!)
-                    print("$str, ")
-                println()
-                for(i in cityList)
-                    print("$i ")
-
-//                cityChipList.get()!![temp] = "${states.get()!![curState]} ${cities.get()!![p2]}"
-            }
-        }
-
-        override fun onNothingSelected(p0: AdapterView<*>?) { }
-    }
 }
 
 class SignupInfoViewModelFactory(private val email : String, private val password : String, private val nickname : String) : ViewModelProvider.Factory {
@@ -235,3 +191,5 @@ class SignupInfoViewModelFactory(private val email : String, private val passwor
         throw IllegalArgumentException("Unknown Class Name")
     }
 }
+
+data class StateData(val num : Int, val str : String)

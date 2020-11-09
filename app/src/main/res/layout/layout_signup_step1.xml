@@ -26,70 +26,45 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Spinner
-            android:id="@+id/signup_spinner_city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/vertical_margin"
-            app:setOnItemSelectedListener="@{viewModel.stateSelectedListener}"
-            android:spinnerMode="dialog"
-            android:entries="@{viewModel.states}"
-            app:layout_constraintStart_toStartOf="@+id/step2_1"
-            app:layout_constraintTop_toBottomOf="@+id/step2_1" />
-
-        <Spinner
-            android:id="@+id/signup_spinner_state"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            app:setOnItemSelectedListener="@{viewModel.citySelectedListener}"
-            android:spinnerMode="dialog"
-            android:entries="@{viewModel.cities}"
-            app:layout_constraintBottom_toBottomOf="@+id/signup_spinner_city"
-            app:layout_constraintStart_toEndOf="@+id/signup_spinner_city"
-            app:layout_constraintTop_toTopOf="@+id/signup_spinner_city" />
-
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/vertical_margin"
-            app:layout_constraintStart_toStartOf="@+id/signup_spinner_city"
-            app:layout_constraintTop_toBottomOf="@+id/signup_spinner_city"
-            android:id="@+id/signup_horizonscroll_chipgroup">
-            <com.google.android.material.chip.ChipGroup
-                android:layout_width="wrap_content"
+            android:layout_margin="@dimen/vertical_margin"
+            android:id="@+id/signup_horizonscroll_city"
+            app:layout_constraintStart_toStartOf="@+id/step2_1"
+            app:layout_constraintTop_toBottomOf="@+id/step2_1">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/signup_chipgroup_city">
+                android:orientation="horizontal">
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/signup_chip_city1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkable="false"
-                    android:visibility="@{viewModel.cityChipVisibility[0]}"
-                    android:text="@{viewModel.cityChipList[0]}"
-                    app:cityChipList="@{viewModel.cityChipList}"
-                    app:cityList="@{viewModel.cityList}"/>
+                    android:text="sample"
+                    android:layout_margin="@dimen/vertical_margin"
+                    android:id="@+id/signup_chip_city1" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/signup_chip_city2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkable="false"
-                    android:visibility="@{viewModel.cityChipVisibility[1]}"
-                    android:text="@{viewModel.cityChipList[1]}"
-                    app:cityChipList="@{viewModel.cityChipList}"
-                    app:cityList="@{viewModel.cityList}" />
+                    android:text="sample"
+                    android:layout_margin="@dimen/vertical_margin"
+                    android:id="@+id/signup_chip_city2" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/signup_chip_city3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkable="false"
-                    android:visibility="@{viewModel.cityChipVisibility[2]}"
-                    android:text="@{viewModel.cityChipList[2]}"
-                    app:cityChipList="@{viewModel.cityChipList}"
-                    app:cityList="@{viewModel.cityList}" />
-            </com.google.android.material.chip.ChipGroup>
+                    android:text="sample"
+                    android:layout_margin="@dimen/vertical_margin"
+                    android:id="@+id/signup_chip_city3" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="추가하기"
+                    android:layout_margin="@dimen/vertical_margin"
+                    android:id="@+id/signup_btn_addcity" />
+            </LinearLayout>
         </HorizontalScrollView>
 
         <TextView
@@ -98,8 +73,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="관심 스터디"
-            app:layout_constraintStart_toStartOf="@+id/signup_spinner_city"
-            app:layout_constraintTop_toBottomOf="@+id/signup_horizonscroll_chipgroup" />
+            app:layout_constraintStart_toStartOf="@+id/signup_horizonscroll_city"
+            app:layout_constraintTop_toBottomOf="@+id/signup_horizonscroll_city" />
 
         <LinearLayout
             android:layout_width="match_parent"
