@@ -56,8 +56,7 @@ class AgreementFragment : BottomSheetDialogFragment() {
             if(it) {
                 findNavController().navigate(AgreementFragmentDirections.actionAgreementFragmentToSignupAuthFragment(
                     AgreementFragmentArgs.fromBundle(requireArguments()).email,
-                    AgreementFragmentArgs.fromBundle(requireArguments()).password,
-                    AgreementFragmentArgs.fromBundle(requireArguments()).nickname
+                    viewModel.seq
                 ))
                 viewModel.doneNextBtnClicked()
             }

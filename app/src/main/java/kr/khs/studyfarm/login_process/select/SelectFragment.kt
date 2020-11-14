@@ -34,9 +34,7 @@ class SelectFragment : Fragment() {
         viewModel.returnSignup.observe(viewLifecycleOwner, Observer {
             if(it) {
                 findNavController().navigate(SelectFragmentDirections.actionSelectFragmentToSignupInfoFragment(
-                    SelectFragmentArgs.fromBundle(requireArguments()).email,
-                    SelectFragmentArgs.fromBundle(requireArguments()).password,
-                    SelectFragmentArgs.fromBundle(requireArguments()).nickname,
+                    SelectFragmentArgs.fromBundle(requireArguments()).seq,
                     viewModel.selectCity,
                     null
                 ))

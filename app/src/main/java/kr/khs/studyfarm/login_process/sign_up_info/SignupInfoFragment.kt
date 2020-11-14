@@ -29,9 +29,6 @@ class SignupInfoFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val viewModelFactory = SignupInfoViewModelFactory(
-            SignupInfoFragmentArgs.fromBundle(requireArguments()).email,
-            SignupInfoFragmentArgs.fromBundle(requireArguments()).password,
-            SignupInfoFragmentArgs.fromBundle(requireArguments()).nickname,
             SignupInfoFragmentArgs.fromBundle(requireArguments()).cities,
             SignupInfoFragmentArgs.fromBundle(requireArguments()).interested
         )
@@ -59,9 +56,7 @@ class SignupInfoFragment : Fragment() {
         viewModel.cityOrInterested.observe(viewLifecycleOwner, Observer {
             if(it != 0) {
                 findNavController().navigate(SignupInfoFragmentDirections.actionSignupInfoFragmentToSelectFragment(
-                    SignupInfoFragmentArgs.fromBundle(requireArguments()).email,
-                    SignupInfoFragmentArgs.fromBundle(requireArguments()).password,
-                    SignupInfoFragmentArgs.fromBundle(requireArguments()).nickname,
+                    SignupInfoFragmentArgs.fromBundle(requireArguments()).seq,
                     it != 1,
                     SignupInfoFragmentArgs.fromBundle(requireArguments()).cities,
                     SignupInfoFragmentArgs.fromBundle(requireArguments()).interested

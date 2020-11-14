@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentSignupAuthBinding
+import kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementFragmentArgs
 
 class SignupAuthFragment : Fragment() {
 
@@ -35,9 +36,7 @@ class SignupAuthFragment : Fragment() {
             if(it) {
                 findNavController().navigate(
                     SignupAuthFragmentDirections.actionSignupAuthFragmentToSignupInfoFragment(
-                        SignupAuthFragmentArgs.fromBundle(requireArguments()).email,
-                        SignupAuthFragmentArgs.fromBundle(requireArguments()).password,
-                        SignupAuthFragmentArgs.fromBundle(requireArguments()).nickname,
+                        SignupAuthFragmentArgs.fromBundle(requireArguments()).seq,
                         null,
                         null
                     )

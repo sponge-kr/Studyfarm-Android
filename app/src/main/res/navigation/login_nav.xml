@@ -23,20 +23,14 @@
         android:id="@+id/signupInfoFragment"
         android:name="kr.khs.studyfarm.login_process.sign_up_info.SignupInfoFragment"
         android:label="SignupInfoFragment">
-        <argument
-            android:name="email"
-            app:argType="string" />
-        <argument
-            android:name="password"
-            app:argType="string" />
-        <argument
-            android:name="nickname"
-            app:argType="string" />
         <action
             android:id="@+id/action_signupInfoFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="seq"
+            app:argType="integer" />
         <action
             android:id="@+id/action_signupInfoFragment_to_selectFragment"
             app:destination="@id/selectFragment" />
@@ -62,18 +56,15 @@
         android:id="@+id/signupAuthFragment"
         android:name="kr.khs.studyfarm.login_process.sign_up_auth.SignupAuthFragment"
         android:label="SignupAuthFragment" >
+        <action
+            android:id="@+id/action_signupAuthFragment_to_signupInfoFragment"
+            app:destination="@id/signupInfoFragment" />
         <argument
             android:name="email"
             app:argType="string" />
         <argument
-            android:name="password"
-            app:argType="string" />
-        <argument
-            android:name="nickname"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_signupAuthFragment_to_signupInfoFragment"
-            app:destination="@id/signupInfoFragment" />
+            android:name="seq"
+            app:argType="integer" />
     </fragment>
     <dialog
         android:id="@+id/agreementFragment"
@@ -96,20 +87,14 @@
         android:id="@+id/selectFragment"
         android:name="kr.khs.studyfarm.login_process.select.SelectFragment"
         android:label="SelectFragment" >
-        <argument
-            android:name="email"
-            app:argType="string" />
-        <argument
-            android:name="password"
-            app:argType="string" />
-        <argument
-            android:name="nickname"
-            app:argType="string" />
         <action
             android:id="@+id/action_selectFragment_to_signupInfoFragment"
             app:destination="@id/signupInfoFragment"
             app:popUpTo="@id/signupInfoFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="seq"
+            app:argType="integer" />
         <argument
             android:name="cityOrInterested"
             app:argType="boolean" />

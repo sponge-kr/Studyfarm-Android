@@ -11,23 +11,11 @@ import kr.khs.studyfarm.login_process.select.CityInfo
 import kr.khs.studyfarm.network.*
 import java.util.*
 
-class SignupInfoViewModel(__email : String, __password : String, __nickname : String, __cities : Array<CityInfo>?, __interesting : Array<String>?) : ViewModel() {
+class SignupInfoViewModel(__cities : Array<CityInfo>?, __interesting : Array<String>?) : ViewModel() {
 
     private val MAX_SIGN_UP = 2
 
     private val MAX_CITY_CHOICE = 3
-
-    private val _email = MutableLiveData<String>()
-    val email : LiveData<String>
-        get() = _email
-
-    private val _password = MutableLiveData<String>()
-    val password : LiveData<String>
-        get() = _password
-
-    private val _nickname = MutableLiveData<String>()
-    val nickname : LiveData<String>
-        get() = _nickname
 
     private val _cities = MutableLiveData<Array<CityInfo>>()
     val cityTexts = Transformations.map(_cities) {
@@ -206,9 +194,6 @@ class SignupInfoViewModel(__email : String, __password : String, __nickname : St
     }
 
     init {
-        _email.value = __email
-        _password.value = __password
-        _nickname.value = __nickname
         _cities.value = __cities ?: arrayOf()
         _interesting.value = __interesting ?: arrayOf()
         stepVisibility.set(IntArray(2) { if(it == 0) View.VISIBLE else View.INVISIBLE })
@@ -224,11 +209,10 @@ class SignupInfoViewModel(__email : String, __password : String, __nickname : St
     }
 }
 
-class SignupInfoViewModelFactory(private val email : String, private val password : String, private val nickname : String,
-    private val cities : Array<CityInfo>?, private val interesting : Array<String>?) : ViewModelProvider.Factory {
+class SignupInfoViewModelFactory(private val cities : Array<CityInfo>?, private val interesting : Array<String>?) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(SignupInfoViewModel::class.java))
-            return SignupInfoViewModel(email, password, nickname, cities, interesting) as T
+            return SignupInfoViewModel(cities, interesting) as T
         throw IllegalArgumentException("Unknown Class Name")
     }
 }
