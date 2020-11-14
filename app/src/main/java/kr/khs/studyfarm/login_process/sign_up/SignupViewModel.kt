@@ -111,7 +111,7 @@ class SignupViewModel : ViewModel() {
     }
 
     init {
-        nickname.set("kimheeseung")
+        nickname.set("kimheeseung1")
         email.set("simpson5304@naver.com")
         password.set("gmltmd!23")
         _toast.value = ""

@@ -35,7 +35,11 @@ class AgreementFragment : BottomSheetDialogFragment() {
 
         binding.lifecycleOwner = this
 
-        val viewModelFactory = AgreementViewModelFactory()
+        val viewModelFactory = AgreementViewModelFactory(
+            AgreementFragmentArgs.fromBundle(requireArguments()).email,
+            AgreementFragmentArgs.fromBundle(requireArguments()).password,
+            AgreementFragmentArgs.fromBundle(requireArguments()).nickname
+        )
 
         val viewModel = ViewModelProvider(this, viewModelFactory).get(AgreementViewModel::class.java)
 
@@ -55,6 +59,7 @@ class AgreementFragment : BottomSheetDialogFragment() {
                     AgreementFragmentArgs.fromBundle(requireArguments()).password,
                     AgreementFragmentArgs.fromBundle(requireArguments()).nickname
                 ))
+                viewModel.doneNextBtnClicked()
             }
         })
 

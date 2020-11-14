@@ -5,8 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.coroutines.*
+import kr.khs.studyfarm.network.*
+import java.util.AbstractMap
 
-class AgreementViewModel : ViewModel() {
+class AgreementViewModel(val email : String, val password : String, val nickname : String) : ViewModel() {
 
     val CHECK_BOX_SIZE = 4 // 체크 갯수
     val NECESSARY = 2 // 필수인 갯수
@@ -20,6 +23,24 @@ class AgreementViewModel : ViewModel() {
     private val _nextBtnClicked = MutableLiveData<Boolean>()
     val nextBtnClicked : LiveData<Boolean>
         get() = _nextBtnClicked
+
+    private val _response = MutableLiveData<Response>()
+    val response : LiveData<Response>
+        get() = _response
+
+    private val _error = MutableLiveData<ResponseError>()
+    val error : LiveData<ResponseError>
+        get() = _error
+
+    //api status 변경에 따라 회원가입 로딩, 성공, 실패 -> observer을 통해서 처리하기 위함
+    private val _apiStatus = MutableLiveData<ApiStatus>()
+    val apiStatus : LiveData<ApiStatus>
+        get() = _apiStatus
+
+    private val job = Job()
+    private val coroutineScope = CoroutineScope(job + Dispatchers.Main)
+
+    var seq = -1
 
     fun allCheck() {
         var flag = true
@@ -39,7 +60,12 @@ class AgreementViewModel : ViewModel() {
                 return
             }
 
-        _nextBtnClicked.value = true
+        addUser(User(
+            email,
+            password,
+            nickname,
+            true
+        ))
     }
 
     fun doneNextBtnClicked() {
@@ -50,17 +76,45 @@ class AgreementViewModel : ViewModel() {
         _toast.value = ""
     }
 
+    private fun addUser(user: User) {
+        coroutineScope.launch {
+            try {
+                _apiStatus.value = ApiStatus.LOADING
+                _response.value = StudyFarmApi.retrofitService.addUser(user)
+                val abMap = _response.value!!.result as AbstractMap<*, *>
+                seq = (abMap["users_seq"] as Double).toInt()
+                println(seq)
+                _apiStatus.value = ApiStatus.DONE
+                _nextBtnClicked.value = true
+            }
+            catch (t : Throwable) {
+                _apiStatus.value = ApiStatus.ERROR
+                _error.value = errorHandling(t)
+            }
+        }
+    }
+
     init {
         checked.set(BooleanArray(CHECK_BOX_SIZE))
         _toast.value = ""
         _nextBtnClicked.value = false
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        coroutineScope.cancel()
+        _toast.value = ""
+    }
 }
 
-class AgreementViewModelFactory : ViewModelProvider.Factory {
+class AgreementViewModelFactory(
+    private val email : String,
+    private val password : String,
+    private val nickname : String
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(AgreementViewModel::class.java))
-            return AgreementViewModel() as T
+            return AgreementViewModel(email, password, nickname) as T
         throw IllegalArgumentException("Unknown Class Name")
     }
 
