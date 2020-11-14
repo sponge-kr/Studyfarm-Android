@@ -37,7 +37,9 @@ class SignupAuthFragment : Fragment() {
                     SignupAuthFragmentDirections.actionSignupAuthFragmentToSignupInfoFragment(
                         SignupAuthFragmentArgs.fromBundle(requireArguments()).email,
                         SignupAuthFragmentArgs.fromBundle(requireArguments()).password,
-                        SignupAuthFragmentArgs.fromBundle(requireArguments()).nickname
+                        SignupAuthFragmentArgs.fromBundle(requireArguments()).nickname,
+                        null,
+                        null
                     )
                 )
                 viewModel.doneNextBtnClicked()

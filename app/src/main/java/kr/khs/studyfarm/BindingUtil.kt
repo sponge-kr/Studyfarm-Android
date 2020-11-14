@@ -4,7 +4,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
-import android.widget.DatePicker
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
@@ -13,6 +12,7 @@ import androidx.databinding.ObservableField
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.textfield.TextInputLayout
+import kr.khs.studyfarm.login_process.select.CityInfo
 import java.util.*
 
 //이메일, 비밀번호 등 textinputlayout가 주어진 조건에 부합하는지 체크
@@ -145,4 +145,33 @@ fun addOnItemSelectedListener(view : Spinner, listener: AdapterView.OnItemSelect
 @BindingAdapter("app:nicknameCheck")
 fun checkNickName(view : TextInputLayout, listener : View.OnFocusChangeListener) {
     view.editText?.onFocusChangeListener = listener
+}
+
+//20201112 현재 없어져도 뷰에서 업데이트가 안된다,,
+//setOnCloseIconClickListener에 추가해보자!
+@BindingAdapter("app:visibility", "app:chipText", "app:chipArray", "app:chipUpdate")
+fun setVisibility(view : Chip, visible : Boolean, city : CityInfo?, arr : ArrayList<CityInfo>, update : () -> Unit ) {
+    if(city == null)
+        view.visibility = View.INVISIBLE
+    city?.let {
+        view.apply {
+            visibility = if (visible) View.VISIBLE else View.INVISIBLE
+            text = city.toString()
+            isCheckable = false
+            isCloseIconVisible = true
+            closeIcon = ResourcesCompat.getDrawable(
+                resources,
+                android.R.drawable.ic_menu_close_clear_cancel,
+                null
+            )
+            setOnCloseIconClickListener {
+                for(obj in arr)
+                    if(obj == city) {
+                        arr.remove(obj)
+                        break
+                    }
+                update()
+            }
+        }
+    }
 }

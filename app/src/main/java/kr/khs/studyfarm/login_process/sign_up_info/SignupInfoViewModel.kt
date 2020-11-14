@@ -1,25 +1,47 @@
 package kr.khs.studyfarm.login_process.sign_up_info
 
+import android.os.Parcelable
 import android.view.View
-import android.widget.AdapterView
 import androidx.databinding.ObservableField
 import androidx.lifecycle.*
+import kotlinx.android.parcel.Parcelize
 import kotlinx.coroutines.*
 import kr.khs.studyfarm.Gender
+import kr.khs.studyfarm.login_process.select.CityInfo
 import kr.khs.studyfarm.network.*
 import java.util.*
 
-class SignupInfoViewModel(_email : String, _password : String, _nickname : String) : ViewModel() {
+class SignupInfoViewModel(__email : String, __password : String, __nickname : String, __cities : Array<CityInfo>?, __interesting : Array<String>?) : ViewModel() {
 
     private val MAX_SIGN_UP = 2
 
     private val MAX_CITY_CHOICE = 3
 
-    private val email = MutableLiveData<String>()
+    private val _email = MutableLiveData<String>()
+    val email : LiveData<String>
+        get() = _email
 
-    private val password = MutableLiveData<String>()
+    private val _password = MutableLiveData<String>()
+    val password : LiveData<String>
+        get() = _password
 
-    private val nickname = MutableLiveData<String>()
+    private val _nickname = MutableLiveData<String>()
+    val nickname : LiveData<String>
+        get() = _nickname
+
+    private val _cities = MutableLiveData<Array<CityInfo>>()
+    val cities : LiveData<Array<CityInfo>>
+        get() = _cities
+
+    private val _interesting = MutableLiveData<Array<String>>()
+    val interesting : LiveData<Array<String>>
+        get() = _interesting
+
+    // default : 0
+    // 1 - city, 2 - interested -> 1은 false로 전달, 2은 true로 전달
+    private val _cityOrInterested = MutableLiveData<Int>()
+    val cityOrInterested : LiveData<Int>
+        get() = _cityOrInterested
 
     val introduce = ObservableField<String>()
 
@@ -76,16 +98,6 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
     private val _toast = MutableLiveData<String>()
     val toast : LiveData<String>
         get() = _toast
-
-    init {
-        email.value = _email
-        password.value = _password
-        nickname.value = _nickname
-        stepVisibility.set(IntArray(2) { if(it == 0) View.VISIBLE else View.INVISIBLE })
-        step.value = 1
-        _isSignupSuccess.value = false
-        getStates()
-    }
 
     fun selectGender(g : Gender) {
         gender = g
@@ -177,6 +189,30 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
         _toast.value = ""
     }
 
+    fun doSelectCity() {
+        _cityOrInterested.value = 1
+    }
+
+    fun doSelectInteresting() {
+        _cityOrInterested.value = 2
+    }
+
+    fun doneSelect() {
+        _cityOrInterested.value = 0
+    }
+
+    init {
+        _email.value = __email
+        _password.value = __password
+        _nickname.value = __nickname
+        _cities.value = __cities ?: arrayOf()
+        _interesting.value = __interesting ?: arrayOf()
+        stepVisibility.set(IntArray(2) { if(it == 0) View.VISIBLE else View.INVISIBLE })
+        step.value = 1
+        _isSignupSuccess.value = false
+        _cityOrInterested.value = 0
+    }
+
     override fun onCleared() {
         super.onCleared()
         coroutineScope.cancel()
@@ -184,12 +220,14 @@ class SignupInfoViewModel(_email : String, _password : String, _nickname : Strin
     }
 }
 
-class SignupInfoViewModelFactory(private val email : String, private val password : String, private val nickname : String) : ViewModelProvider.Factory {
+class SignupInfoViewModelFactory(private val email : String, private val password : String, private val nickname : String,
+    private val cities : Array<CityInfo>?, private val interesting : Array<String>?) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(SignupInfoViewModel::class.java))
-            return SignupInfoViewModel(email, password, nickname) as T
+            return SignupInfoViewModel(email, password, nickname, cities, interesting) as T
         throw IllegalArgumentException("Unknown Class Name")
     }
 }
 
-data class StateData(val num : Int, val str : String)
+@Parcelize
+data class StateData(val num : Int, val str : String) : Parcelable

@@ -31,7 +31,9 @@ class SignupInfoFragment : Fragment() {
         val viewModelFactory = SignupInfoViewModelFactory(
             SignupInfoFragmentArgs.fromBundle(requireArguments()).email,
             SignupInfoFragmentArgs.fromBundle(requireArguments()).password,
-            SignupInfoFragmentArgs.fromBundle(requireArguments()).nickname
+            SignupInfoFragmentArgs.fromBundle(requireArguments()).nickname,
+            SignupInfoFragmentArgs.fromBundle(requireArguments()).cities,
+            SignupInfoFragmentArgs.fromBundle(requireArguments()).interested
         )
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(SignupInfoViewModel::class.java)
@@ -51,6 +53,20 @@ class SignupInfoFragment : Fragment() {
             if(it != "") {
                 Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
                 viewModel.doneToast()
+            }
+        })
+
+        viewModel.cityOrInterested.observe(viewLifecycleOwner, Observer {
+            if(it != 0) {
+                findNavController().navigate(SignupInfoFragmentDirections.actionSignupInfoFragmentToSelectFragment(
+                    SignupInfoFragmentArgs.fromBundle(requireArguments()).email,
+                    SignupInfoFragmentArgs.fromBundle(requireArguments()).password,
+                    SignupInfoFragmentArgs.fromBundle(requireArguments()).nickname,
+                    it != 1,
+                    SignupInfoFragmentArgs.fromBundle(requireArguments()).cities,
+                    SignupInfoFragmentArgs.fromBundle(requireArguments()).interested
+                ))
+                viewModel.doneSelect()
             }
         })
 
