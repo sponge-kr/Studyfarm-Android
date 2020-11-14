@@ -40,21 +40,24 @@
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="sample"
+                    android:visibility="@{viewModel.cityVisiblities[0]}"
+                    android:text="@{viewModel.cityTexts[0]}"
                     android:layout_margin="@dimen/vertical_margin"
                     android:id="@+id/signup_chip_city1" />
 
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="sample"
+                    android:visibility="@{viewModel.cityVisiblities[1]}"
+                    android:text="@{viewModel.cityTexts[1]}"
                     android:layout_margin="@dimen/vertical_margin"
                     android:id="@+id/signup_chip_city2" />
 
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="sample"
+                    android:visibility="@{viewModel.cityVisiblities[2]}"
+                    android:text="@{viewModel.cityTexts[2]}"
                     android:layout_margin="@dimen/vertical_margin"
                     android:id="@+id/signup_chip_city3" />
 

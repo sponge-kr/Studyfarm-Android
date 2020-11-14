@@ -13,7 +13,7 @@ import kr.khs.studyfarm.network.*
 import java.util.AbstractMap
 import java.util.ArrayList
 
-class SelectViewModel : ViewModel() {
+class SelectViewModel(_cityInit : Array<CityInfo>?) : ViewModel() {
     private val _returnSignup = MutableLiveData<Boolean>()
     val returnSignup : LiveData<Boolean>
         get() = _returnSignup
@@ -137,14 +137,17 @@ class SelectViewModel : ViewModel() {
         _returnSignup.value = false
         getStates()
         _selectCity.value = ArrayList()
+        if(_cityInit != null)
+            for(element in _cityInit)
+                _selectCity.value!!.add(element)
         chipUpdate()
     }
 }
 
-class SelectViewModelFactory : ViewModelProvider.Factory {
+class SelectViewModelFactory(private val cityInit: Array<CityInfo>?) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(SelectViewModel::class.java))
-            return SelectViewModel() as T
+            return SelectViewModel(cityInit) as T
         throw IllegalArgumentException("Unknown Class Name")
     }
 }

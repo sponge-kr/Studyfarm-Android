@@ -30,8 +30,12 @@ class SignupInfoViewModel(__email : String, __password : String, __nickname : St
         get() = _nickname
 
     private val _cities = MutableLiveData<Array<CityInfo>>()
-    val cities : LiveData<Array<CityInfo>>
-        get() = _cities
+    val cityTexts = Transformations.map(_cities) {
+        Array(it.size) { idx -> it[idx].toString() }
+    }
+    val cityVisiblities = Transformations.map(_cities) {
+        Array(3) { idx -> if(idx < it.size) View.VISIBLE else View.GONE }
+    }
 
     private val _interesting = MutableLiveData<Array<String>>()
     val interesting : LiveData<Array<String>>

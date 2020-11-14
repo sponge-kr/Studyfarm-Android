@@ -25,7 +25,7 @@ class SelectFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        val viewModelFactory = SelectViewModelFactory()
+        val viewModelFactory = SelectViewModelFactory(SelectFragmentArgs.fromBundle(requireArguments()).cities)
 
         val viewModel = ViewModelProvider(this, viewModelFactory).get(SelectViewModel::class.java)
 
