@@ -41,6 +41,11 @@ interface StudyFarmApiService {
     @POST("user")
     suspend fun addUser(@Body user : User) : Response
 
+    @Headers("Content-Type: application/hal+json;charset=UTF-8",
+        "Accept: application/hal+json")
+    @POST("user/info/{seq}")
+    suspend fun addUserInfo(@Path("seq") seq : Int, @Body userInfo : UserInfo) : Response
+
 
     @Headers("Content-Type: application/hal+json;charset=UTF-8",
         "Accept: application/hal+json")

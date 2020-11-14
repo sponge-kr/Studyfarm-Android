@@ -14,22 +14,21 @@ data class User(
     val nickname: String,
     @Json(name = "service_use_agree")
     val serviceAgree: Boolean,
-//    val name: String = "",
-//    val phone: String = "",
-//    val age: Double = 0.0,
-//    @Json(name = "simple_introduce")
-//    val simpleIntroduce: String = "",
-//    val profile: String?,
-//    @Json(name = "city_info")
-//    val cityInfo: List<Int>,
-//    @Json(name = "born_date")
-//    val bornDate: String = "2000-01-01",
-//    val gender: Double,
-//    val interesting: List<Interesting>? = null,
-//    @Json(name = "service_way")
-//    val serviceWay: String,
-//    @Json(name = "study_purpose")
-//    val studyPurpose: String,
+)
+
+data class UserInfo(
+    val age: Double = 0.0,
+    @Json(name = "city_info")
+    val cityInfo: List<Int>,
+    @Json(name = "simple_introduce")
+    val simpleIntroduce: String = "",
+    val gender: Double,
+    val interesting: List<Interesting>? = null,
+    val profile: String?,
+    @Json(name = "study_purpose")
+    val studyPurpose: String,
+    @Json(name = "service_way")
+    val serviceWay: String,
 )
 
 data class LoginUser(

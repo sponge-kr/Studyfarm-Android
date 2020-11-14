@@ -11,13 +11,22 @@ import kr.khs.studyfarm.login_process.select.CityInfo
 import kr.khs.studyfarm.network.*
 import java.util.*
 
-class SignupInfoViewModel(__cities : Array<CityInfo>?, __interesting : Array<String>?) : ViewModel() {
+class SignupInfoViewModel(val seq : Int,__cities : Array<CityInfo>?, __interesting : Array<String>?) : ViewModel() {
 
     private val MAX_SIGN_UP = 2
 
     private val MAX_CITY_CHOICE = 3
 
     private val _cities = MutableLiveData<Array<CityInfo>>()
+    val citiesConverting : List<Int>
+        get() {
+            return List(_cities.value!!.size * 2) {
+                if(it % 2 == 0)
+                    _cities.value!![it / 2].state.num
+                else
+                    _cities.value!![it / 2].city!!.num
+            }
+        }
     val cityTexts = Transformations.map(_cities) {
         Array(it.size) { idx -> it[idx].toString() }
     }
@@ -42,10 +51,6 @@ class SignupInfoViewModel(__cities : Array<CityInfo>?, __interesting : Array<Str
     val stepVisibility = ObservableField<IntArray>()
 
     var gender = Gender.Not
-
-    val stateList = ObservableField<List<StateData>>()
-
-    val cityList = ObservableField<List<StateData>>()
 
     val studyPurpose = ObservableField<String>()
 
@@ -101,74 +106,28 @@ class SignupInfoViewModel(__cities : Array<CityInfo>?, __interesting : Array<Str
             stepVisibility.set(IntArray(3) { if(it == step.value!! - 1) View.VISIBLE else View.GONE })
         }
         else {
-//            val user = User(
-//                email = email.value!!,
-//                password = password.value!!,
-//                nickname = nickname.get()!!,
-//                name = nickname.get()!!,
-//                age = 1.0,
-//                simpleIntroduce = introduce.get() ?: "",
-//                profile = null,
-//                cityInfo = listOf(),
-//                serviceAgree = true,
-//                bornDate = "${year.get()}-${month.get()}-${day.get()}",
-//                gender = gender.MW.toDouble(),
-//                serviceWay = serviceWay.get() ?: "",
-//                studyPurpose = studyPurpose.get() ?: "",
-//                interesting = listOf(),
-//            )
-//
-//            addUser(user)
+            val userInfo = UserInfo(
+                age = 1.0,
+                simpleIntroduce = introduce.get() ?: "",
+                profile = null,
+                cityInfo = citiesConverting,
+                gender = gender.MW.toDouble(),
+                serviceWay = serviceWay.get() ?: "",
+                studyPurpose = studyPurpose.get() ?: "",
+                interesting = listOf(),
+            )
+
+            addUserInfo(userInfo)
         }
     }
 
-    private fun addUser(user: User) {
+    private fun addUserInfo(userInfo: UserInfo) {
         coroutineScope.launch {
             try {
                 _apiStatus.value = ApiStatus.LOADING
-                _response.value = StudyFarmApi.retrofitService.addUser(user)
+                _response.value = StudyFarmApi.retrofitService.addUserInfo(seq, userInfo)
                 _apiStatus.value = ApiStatus.DONE
                 _isSignupSuccess.value = true
-            }
-            catch (t : Throwable) {
-                _apiStatus.value = ApiStatus.ERROR
-                _error.value = errorHandling(t)
-            }
-        }
-    }
-
-    private fun getStates() {
-        coroutineScope.launch {
-            try {
-                _apiStatus.value = ApiStatus.LOADING
-                _response.value = StudyFarmApi.retrofitService.getStates()
-                val abMap = _response.value!!.result as AbstractMap<*, *>
-                val jsonState = abMap["content"] as ArrayList<*>
-                stateList.set(List(jsonState.size) { StateData(
-                    ((jsonState[it] as AbstractMap<*, *>)["code"] as Double).toInt(),
-                    (jsonState[it] as AbstractMap<*, *>)["name"] as String
-                )})
-                _apiStatus.value = ApiStatus.DONE
-            }
-            catch (t : Throwable) {
-                _apiStatus.value = ApiStatus.ERROR
-                _error.value = errorHandling(t)
-            }
-        }
-    }
-
-    private fun getCities(n : Int) {
-        coroutineScope.launch {
-            try {
-                _apiStatus.value = ApiStatus.LOADING
-                _response.value = StudyFarmApi.retrofitService.getCities(n)
-                val abMap = _response.value!!.result as AbstractMap<*, *>
-                val jsonCity = abMap["content"] as ArrayList<*>
-                cityList.set(List(jsonCity.size) { StateData(
-                    ((jsonCity[it] as AbstractMap<*, *>)["code"] as Double).toInt(),
-                    (jsonCity[it] as AbstractMap<*, *>)["name"] as String
-                )})
-                _apiStatus.value = ApiStatus.DONE
             }
             catch (t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
@@ -209,10 +168,12 @@ class SignupInfoViewModel(__cities : Array<CityInfo>?, __interesting : Array<Str
     }
 }
 
-class SignupInfoViewModelFactory(private val cities : Array<CityInfo>?, private val interesting : Array<String>?) : ViewModelProvider.Factory {
+class SignupInfoViewModelFactory(private val seq : Int,
+                                 private val cities : Array<CityInfo>?,
+                                 private val interesting : Array<String>?) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(SignupInfoViewModel::class.java))
-            return SignupInfoViewModel(cities, interesting) as T
+            return SignupInfoViewModel(seq, cities, interesting) as T
         throw IllegalArgumentException("Unknown Class Name")
     }
 }
