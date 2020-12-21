@@ -64,7 +64,7 @@ data class ResultCities(
 data class State(
     val code : Double,
     val name : String,
-    val links : StateLinks
+    val children : List<City>
 )
 
 data class City(

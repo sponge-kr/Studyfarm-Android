@@ -17,18 +17,18 @@ data class User(
 )
 
 data class UserInfo(
-    val age: Double = 0.0,
+    val age: Int = 0,
     @Json(name = "city_info")
     val cityInfo: List<Int>,
-    @Json(name = "simple_introduce")
-    val simpleIntroduce: String = "",
-    val gender: Double,
-    val interesting: List<Interesting>? = null,
-    val profile: String?,
-    @Json(name = "study_purpose")
-    val studyPurpose: String,
-    @Json(name = "service_way")
-    val serviceWay: String,
+//    @Json(name = "simple_introduce")
+//    val simpleIntroduce: String = "",
+    val gender: Int,
+    val interesting: List<Int>? = null,
+//    val profile: String?,
+//    @Json(name = "study_purpose")
+//    val studyPurpose: String,
+//    @Json(name = "service_way")
+//    val serviceWay: String,
 )
 
 data class LoginUser(

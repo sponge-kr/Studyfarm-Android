@@ -107,14 +107,14 @@ class SignupInfoViewModel(val seq : Int,__cities : Array<CityInfo>?, __interesti
         }
         else {
             val userInfo = UserInfo(
-                age = 1.0,
-                simpleIntroduce = introduce.get() ?: "",
-                profile = null,
+                age = 1,
+//                simpleIntroduce = introduce.get() ?: "",
+//                profile = null,
                 cityInfo = citiesConverting,
-                gender = gender.MW.toDouble(),
-                serviceWay = serviceWay.get() ?: "",
-                studyPurpose = studyPurpose.get() ?: "",
-                interesting = listOf(),
+                gender = gender.MW,
+//                serviceWay = serviceWay.get() ?: "",
+//                studyPurpose = studyPurpose.get() ?: "",
+                interesting = listOf(47,2,52,3),
             )
 
             addUserInfo(userInfo)
@@ -179,4 +179,4 @@ class SignupInfoViewModelFactory(private val seq : Int,
 }
 
 @Parcelize
-data class StateData(val num : Int, val str : String) : Parcelable
+data class StateData(val num : Int, val str : String, var children : List<StateData> = listOf()) : Parcelable

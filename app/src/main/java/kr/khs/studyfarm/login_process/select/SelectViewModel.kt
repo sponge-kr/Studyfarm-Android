@@ -1,6 +1,7 @@
 package kr.khs.studyfarm.login_process.select
 
 import android.os.Parcelable
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.*
 import kotlinx.android.parcel.Parcelize
@@ -12,6 +13,7 @@ import kr.khs.studyfarm.login_process.sign_up_info.StateData
 import kr.khs.studyfarm.network.*
 import java.util.AbstractMap
 import java.util.ArrayList
+import kotlin.math.log
 
 class SelectViewModel(_cityInit : Array<CityInfo>?) : ViewModel() {
     private val _returnSignup = MutableLiveData<Boolean>()
@@ -66,8 +68,21 @@ class SelectViewModel(_cityInit : Array<CityInfo>?) : ViewModel() {
                 val jsonState = abMap["content"] as ArrayList<*>
                 stateList.value = (List(jsonState.size) { StateData(
                     ((jsonState[it] as AbstractMap<*, *>)["code"] as Double).toInt(),
-                    (jsonState[it] as AbstractMap<*, *>)["name"] as String
+                    (jsonState[it] as AbstractMap<*, *>)["name"] as String,
                 )})
+
+                for(i in 0 until jsonState.size) {
+                    val list = ArrayList<StateData>()
+                    val temp = (jsonState[i] as AbstractMap<*, *>)["children"] as ArrayList<*>
+                    for(j in 0 until temp.size) {
+                        val split = temp[j].toString().split("{", "=", ",", "}")
+                        list.add(StateData(
+                            split[2].toDouble().toInt(),
+                            split[4]
+                        ))
+                    }
+                    stateList.value!![i].children = list
+                }
                 _apiStatus.value = ApiStatus.DONE
             }
             catch (t : Throwable) {
@@ -86,7 +101,7 @@ class SelectViewModel(_cityInit : Array<CityInfo>?) : ViewModel() {
                 val jsonCity = abMap["content"] as ArrayList<*>
                 cityList.value = (List(jsonCity.size) { StateData(
                     ((jsonCity[it] as AbstractMap<*, *>)["code"] as Double).toInt(),
-                    (jsonCity[it] as AbstractMap<*, *>)["name"] as String
+                    (jsonCity[it] as AbstractMap<*, *>)["name"] as String,
                 )})
                 _apiStatus.value = ApiStatus.DONE
             }
@@ -98,8 +113,13 @@ class SelectViewModel(_cityInit : Array<CityInfo>?) : ViewModel() {
     }
 
     fun onStateSelect(data : StateData) {
-        getCities(data.num)
         cur = CityInfo(data)
+        if(data.children.isEmpty()) {
+            onCitySelect(StateData(0, ""))
+        }
+        else {
+            cityList.value = data.children
+        }
     }
 
     fun onCitySelect(data : StateData) {

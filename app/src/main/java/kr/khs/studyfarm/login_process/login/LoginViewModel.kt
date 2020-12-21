@@ -69,7 +69,7 @@ class LoginViewModel : ViewModel() {
 
     init {
         email.set("ks96ks@naver.com")
-        password.set("rlagmltmd1!")
+        password.set("gmltmd!23")
         _gotoSignUp.value = false
     }
 
