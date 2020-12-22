@@ -28,7 +28,7 @@ class SignupFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        val viewModelFactory = SignupViewModelFactory()
+        val viewModelFactory = SignupViewModelFactory(requireContext())
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(SignupViewModel::class.java)
 
@@ -45,7 +45,7 @@ class SignupFragment : Fragment() {
                 viewModel.defaultStatus()
             }
             else if(it == 2) {
-                Toast.makeText(context, "이미 가입된 이메일입니다.\n로그인 화면으로 이동합니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.signup_duplicateEmail), Toast.LENGTH_SHORT).show()
                 findNavController().navigate(
                     SignupFragmentDirections.actionSignupFragmentToLoginFragment()
                 )

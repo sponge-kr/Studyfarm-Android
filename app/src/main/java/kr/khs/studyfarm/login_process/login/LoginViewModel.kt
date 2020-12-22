@@ -1,15 +1,20 @@
 package kr.khs.studyfarm.login_process.login
 
+import android.content.Context
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.*
+import kr.khs.studyfarm.R
 import kr.khs.studyfarm.Rule
 import kr.khs.studyfarm.network.*
+import kr.khs.studyfarm.network.request.LoginData
+import kr.khs.studyfarm.network.response.Response
+import kr.khs.studyfarm.network.response.ResponseError
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel(val context : Context) : ViewModel() {
 
     val email = ObservableField<String>()
 
@@ -21,10 +26,6 @@ class LoginViewModel : ViewModel() {
     val gotoSignUp : LiveData<Boolean>
         get() = _gotoSignUp
 
-    private val _loginStatus = MutableLiveData<Boolean>()
-    val loginStatus : LiveData<Boolean>
-        get() = _loginStatus
-
     private val _response = MutableLiveData<Response>()
     val response : LiveData<Response>
         get() = _response
@@ -32,6 +33,10 @@ class LoginViewModel : ViewModel() {
     private val _error = MutableLiveData<ResponseError>()
     val error : LiveData<ResponseError>
         get() = _error
+
+    private val _toast = MutableLiveData<String>()
+    val toast : LiveData<String>
+        get() = _toast
 
     //api status 변경에 따라 회원가입 로딩, 성공, 실패 -> observer을 통해서 처리하기 위함
     private val _apiStatus = MutableLiveData<ApiStatus>()
@@ -54,7 +59,7 @@ class LoginViewModel : ViewModel() {
             }
             catch (t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
-                _error.value = errorHandling(t)
+                _toast.value = context.getString(R.string.login_error)
             }
         }
     }
@@ -65,6 +70,10 @@ class LoginViewModel : ViewModel() {
 
     fun doneGoToSignUp() {
         _gotoSignUp.value = false
+    }
+
+    fun doneToast() {
+        _toast.value = ""
     }
 
     init {
@@ -80,10 +89,10 @@ class LoginViewModel : ViewModel() {
     }
 }
 
-class LoginViewModelFactory : ViewModelProvider.Factory {
+class LoginViewModelFactory(private val context : Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(LoginViewModel::class.java))
-            return LoginViewModel() as T
+            return LoginViewModel(context) as T
         throw IllegalArgumentException("Unknown Class Name")
     }
 }

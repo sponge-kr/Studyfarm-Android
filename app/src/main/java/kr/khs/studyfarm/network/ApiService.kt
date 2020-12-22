@@ -2,6 +2,10 @@ package kr.khs.studyfarm.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kr.khs.studyfarm.network.request.LoginData
+import kr.khs.studyfarm.network.request.User
+import kr.khs.studyfarm.network.request.UserInfo
+import kr.khs.studyfarm.network.response.Response
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

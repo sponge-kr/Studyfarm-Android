@@ -1,21 +1,23 @@
 package kr.khs.studyfarm.login_process.select
 
+import android.content.Context
 import android.os.Parcelable
-import android.util.Log
-import android.view.View
 import androidx.lifecycle.*
 import kotlinx.android.parcel.Parcelize
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kr.khs.studyfarm.R
 import kr.khs.studyfarm.login_process.sign_up_info.StateData
 import kr.khs.studyfarm.network.*
+import kr.khs.studyfarm.network.response.Response
+import kr.khs.studyfarm.network.response.ResponseError
+import kr.khs.studyfarm.network.response.errorHandling
 import java.util.AbstractMap
 import java.util.ArrayList
-import kotlin.math.log
 
-class SelectViewModel(_cityInit : Array<CityInfo>?) : ViewModel() {
+class SelectViewModel(val context : Context, _cityInit : Array<CityInfo>?) : ViewModel() {
     private val _returnSignup = MutableLiveData<Boolean>()
     val returnSignup : LiveData<Boolean>
         get() = _returnSignup
@@ -30,7 +32,6 @@ class SelectViewModel(_cityInit : Array<CityInfo>?) : ViewModel() {
     var cur : CityInfo? = null
 
     val chipVisible = MutableLiveData<List<Boolean>>()
-    val chipObjects = MutableLiveData<MutableList<CityInfo?>>()
 
     private val _response = MutableLiveData<Response>()
     val response : LiveData<Response>
@@ -92,26 +93,6 @@ class SelectViewModel(_cityInit : Array<CityInfo>?) : ViewModel() {
         }
     }
 
-    private fun getCities(n : Int) {
-        coroutineScope.launch {
-            try {
-                _apiStatus.value = ApiStatus.LOADING
-                _response.value = StudyFarmApi.retrofitService.getCities(n)
-                val abMap = _response.value!!.result as AbstractMap<*, *>
-                val jsonCity = abMap["content"] as ArrayList<*>
-                cityList.value = (List(jsonCity.size) { StateData(
-                    ((jsonCity[it] as AbstractMap<*, *>)["code"] as Double).toInt(),
-                    (jsonCity[it] as AbstractMap<*, *>)["name"] as String,
-                )})
-                _apiStatus.value = ApiStatus.DONE
-            }
-            catch (t : Throwable) {
-                _apiStatus.value = ApiStatus.ERROR
-                _error.value = errorHandling(t)
-            }
-        }
-    }
-
     fun onStateSelect(data : StateData) {
         cur = CityInfo(data)
         if(data.children.isEmpty()) {
@@ -125,12 +106,12 @@ class SelectViewModel(_cityInit : Array<CityInfo>?) : ViewModel() {
     fun onCitySelect(data : StateData) {
         cur!!.city = data
         if(_selectCity.value?.size == 3) {
-            _toast.value = "지역은 최대 3곳까지 선택할 수 있습니다."
+            _toast.value = context.getString(R.string.select_maxsize)
             return
         }
         for (city in _selectCity.value!!) {
             if (cur!!.state.num == city.state.num && cur!!.city!!.num == city.city!!.num) {
-                _toast.value = "동일한 지역이 이미 선택되어 있습니다."
+                _toast.value = context.getString(R.string.select_duplicateCity)
                 return
             }
         }
@@ -143,14 +124,11 @@ class SelectViewModel(_cityInit : Array<CityInfo>?) : ViewModel() {
     }
 
     val chipUpdateListener : () -> Unit = {
-        //delete
-
         chipUpdate()
     }
 
     fun chipUpdate() {
         chipVisible.value = List(3) { idx -> idx < _selectCity.value!!.size }
-//        chipObjects.value = MutableList(3) { if(chipVisible.value!![it]) selectCity[it] else null }
     }
 
     init {
@@ -164,10 +142,11 @@ class SelectViewModel(_cityInit : Array<CityInfo>?) : ViewModel() {
     }
 }
 
-class SelectViewModelFactory(private val cityInit: Array<CityInfo>?) : ViewModelProvider.Factory {
+class SelectViewModelFactory(private val context : Context,
+                             private val cityInit: Array<CityInfo>?) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(SelectViewModel::class.java))
-            return SelectViewModel(cityInit) as T
+            return SelectViewModel(context, cityInit) as T
         throw IllegalArgumentException("Unknown Class Name")
     }
 }

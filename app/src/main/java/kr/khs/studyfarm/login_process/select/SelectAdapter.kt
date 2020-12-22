@@ -12,8 +12,6 @@ import kr.khs.studyfarm.login_process.sign_up_info.StateData
 
 class SelectAdapter(val clickListener : StateClickListener) : ListAdapter<StateData, RecyclerView.ViewHolder>(SelectDiffCallback()) {
 
-    private val adapterScope = CoroutineScope(Dispatchers.Default)
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder.from(parent)
     }

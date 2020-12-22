@@ -17,7 +17,6 @@ import kr.khs.studyfarm.databinding.BottomsheetAgreementBinding
 
 class AgreementFragment : BottomSheetDialogFragment() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, R.style.CustomBottomSheetDialogTheme)
@@ -36,6 +35,7 @@ class AgreementFragment : BottomSheetDialogFragment() {
         binding.lifecycleOwner = this
 
         val viewModelFactory = AgreementViewModelFactory(
+            requireContext(),
             AgreementFragmentArgs.fromBundle(requireArguments()).email,
             AgreementFragmentArgs.fromBundle(requireArguments()).password,
             AgreementFragmentArgs.fromBundle(requireArguments()).nickname

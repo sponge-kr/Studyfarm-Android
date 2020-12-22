@@ -9,7 +9,10 @@ import kotlinx.coroutines.*
 import kr.khs.studyfarm.Gender
 import kr.khs.studyfarm.login_process.select.CityInfo
 import kr.khs.studyfarm.network.*
-import java.util.*
+import kr.khs.studyfarm.network.request.UserInfo
+import kr.khs.studyfarm.network.response.Response
+import kr.khs.studyfarm.network.response.ResponseError
+import kr.khs.studyfarm.network.response.errorHandling
 
 class SignupInfoViewModel(val seq : Int,__cities : Array<CityInfo>?, __interesting : Array<String>?) : ViewModel() {
 

@@ -41,7 +41,7 @@ class SignupInfoFragment : Fragment() {
         viewModel.isSignupSuccess.observe(viewLifecycleOwner, Observer {
             it.let {
                 if(it) {
-                    Toast.makeText(context, "회원가입이 되었습니다.\n가입한 이메일로 로그인 해주세요.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.signup_success), Toast.LENGTH_SHORT).show()
                     findNavController().navigate(SignupInfoFragmentDirections.actionSignupInfoFragmentToLoginFragment())
                 }
             }

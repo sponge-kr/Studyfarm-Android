@@ -1,6 +1,5 @@
 package kr.khs.studyfarm.login_process.sign_up_auth
 
-import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

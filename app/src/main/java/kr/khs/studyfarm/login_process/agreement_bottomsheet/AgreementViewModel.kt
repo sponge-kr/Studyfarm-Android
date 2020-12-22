@@ -1,15 +1,18 @@
 package kr.khs.studyfarm.login_process.agreement_bottomsheet
 
+import android.content.Context
 import androidx.databinding.ObservableField
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import kotlinx.coroutines.*
+import kr.khs.studyfarm.R
 import kr.khs.studyfarm.network.*
+import kr.khs.studyfarm.network.request.User
+import kr.khs.studyfarm.network.response.Response
+import kr.khs.studyfarm.network.response.ResponseError
 import java.util.AbstractMap
 
-class AgreementViewModel(val email : String, val password : String, val nickname : String) : ViewModel() {
+class AgreementViewModel(val context: Context,
+                         val email : String, val password : String, val nickname : String) : ViewModel() {
 
     val CHECK_BOX_SIZE = 4 // 체크 갯수
     val NECESSARY = 2 // 필수인 갯수
@@ -56,7 +59,7 @@ class AgreementViewModel(val email : String, val password : String, val nickname
     fun doNextBtnClicked() {
         for(i in 0 until NECESSARY)
             if(!checked.get()!![i]) {
-                _toast.value = "필수 약관에 모두 동의해주셔야합니다."
+                _toast.value = context.getString(R.string.agreement_necessary)
                 return
             }
 
@@ -89,7 +92,6 @@ class AgreementViewModel(val email : String, val password : String, val nickname
             }
             catch (t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
-                _error.value = errorHandling(t)
             }
         }
     }
@@ -108,13 +110,14 @@ class AgreementViewModel(val email : String, val password : String, val nickname
 }
 
 class AgreementViewModelFactory(
+    private val context : Context,
     private val email : String,
     private val password : String,
     private val nickname : String
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(AgreementViewModel::class.java))
-            return AgreementViewModel(email, password, nickname) as T
+            return AgreementViewModel(context, email, password, nickname) as T
         throw IllegalArgumentException("Unknown Class Name")
     }
 

@@ -24,7 +24,7 @@ class LoginFragment : Fragment() {
             inflater, R.layout.fragment_login, container, false
         )
 
-        val viewModelFactory = LoginViewModelFactory()
+        val viewModelFactory = LoginViewModelFactory(requireContext())
 
         val viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
 
@@ -41,8 +41,11 @@ class LoginFragment : Fragment() {
             }
         })
 
-        viewModel.error.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+        viewModel.toast.observe(viewLifecycleOwner, Observer {
+            if(it != "") {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                viewModel.doneToast()
+            }
         })
 
         viewModel.gotoSignUp.observe(viewLifecycleOwner, Observer {

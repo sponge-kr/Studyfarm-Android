@@ -1,5 +1,6 @@
 package kr.khs.studyfarm.login_process.sign_up
 
+import android.content.Context
 import android.view.View
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
@@ -8,12 +9,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.*
+import kr.khs.studyfarm.R
 import kr.khs.studyfarm.Rule
 import kr.khs.studyfarm.isEmailValidate
 import kr.khs.studyfarm.network.*
+import kr.khs.studyfarm.network.response.Response
+import kr.khs.studyfarm.network.response.ResponseError
+import kr.khs.studyfarm.network.response.errorHandling
 import java.util.AbstractMap
 
-class SignupViewModel : ViewModel() {
+class SignupViewModel(val context : Context) : ViewModel() {
 
     val rule = Rule
 
@@ -52,14 +57,13 @@ class SignupViewModel : ViewModel() {
 
     fun onNextBtnClicked() {
         if(!isEmailValidate(email.get()!!))
-            _toast.value = "올바른 이메일 형식을 입력해주세요."
+            _toast.value = context.getString(R.string.signup_checkEmailForm)
         else if(email.get() != null) {
             checkEmail(email.get()!!)
         }
     }
 
     val nicknameFocusChangeListener = View.OnFocusChangeListener { view, b ->
-        //포커스에서 벗어났을
         if(!b)
             checkNickName()
     }
@@ -83,7 +87,7 @@ class SignupViewModel : ViewModel() {
 
     private fun checkEmail(email : String) {
         if(duplicateNickname.get()) {
-            _toast.value = "닉네임이 중복됩니다."
+            _toast.value = context.getString(R.string.signup_duplicateNickname)
             return
         }
 
@@ -124,10 +128,10 @@ class SignupViewModel : ViewModel() {
     }
 }
 
-class SignupViewModelFactory : ViewModelProvider.Factory {
+class SignupViewModelFactory(private val context : Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(SignupViewModel::class.java))
-            return SignupViewModel() as T
+            return SignupViewModel(context) as T
         throw IllegalArgumentException("Unknown Class Name")
     }
 

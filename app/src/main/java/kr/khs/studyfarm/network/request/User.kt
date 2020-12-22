@@ -1,12 +1,6 @@
-package kr.khs.studyfarm.network
+package kr.khs.studyfarm.network.request
 
 import com.squareup.moshi.Json
-
-data class Interesting(
-    val name : String,
-    @Json(name = "skill_level")
-    val skillLevel : String
-)
 
 data class User(
     val email: String,

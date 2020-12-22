@@ -47,7 +47,8 @@ fun setErrorEnableBoolean(textInputLayout: TextInputLayout, boolean : Boolean, e
 // 비밀번호 토글
 @BindingAdapter("setPasswordVisibilityToggle")
 fun setPasswordVisibility(textInputLayout: TextInputLayout, enabled: Boolean) {
-    textInputLayout.isPasswordVisibilityToggleEnabled = enabled
+//    textInputLayout.isPasswordVisibilityToggleEnabled = enabled
+    textInputLayout.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
 }
 
 object Rule {
