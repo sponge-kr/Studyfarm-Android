@@ -26,7 +26,10 @@ class SignupAuthFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        val viewModelFactory = SignupAuthViewModelFactory(SignupAuthFragmentArgs.fromBundle(requireArguments()).email)
+        val viewModelFactory = SignupAuthViewModelFactory(
+            requireContext(),
+            SignupAuthFragmentArgs.fromBundle(requireArguments()).email
+        )
 
         val viewModel = ViewModelProvider(this, viewModelFactory).get(SignupAuthViewModel::class.java)
 

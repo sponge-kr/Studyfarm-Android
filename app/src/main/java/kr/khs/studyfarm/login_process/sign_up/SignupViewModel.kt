@@ -96,11 +96,14 @@ class SignupViewModel(val context : Context) : ViewModel() {
                 _apiStatus.value = ApiStatus.LOADING
                 _response.value = StudyFarmApi.retrofitService.checkEmail(email)
                 _apiStatus.value = ApiStatus.DONE
-                _status.value = 1
+                val temp = _response.value!!.result as AbstractMap<*, *>
+                _status.value = if(!(temp["check_result"] as Boolean))
+                    1
+                else
+                    2
             }
             catch(t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
-                _status.value = 2
                 _error.value = errorHandling(t)
             }
         }

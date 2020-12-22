@@ -73,8 +73,8 @@ interface StudyFarmApiService {
 
     @Headers("Content-Type: application/hal+json;charset=UTF-8",
         "Accept: application/hal+json")
-    @GET("utils/cities/{state_code}")
-    suspend fun getCities(@Path("state_code") stateCode : Int) : Response
+    @GET("user/check-active")
+    suspend fun checkEmailActive(@Query("email") email : String) : Response
 }
 
 object StudyFarmApi {

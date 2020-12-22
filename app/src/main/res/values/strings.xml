@@ -10,4 +10,5 @@
     <string name="signup_duplicateNickname">닉네임이 중복됩니다.</string>
     <string name="signup_checkEmailForm">올바른 이메일 형식을 입력해주세요.</string>
     <string name="signup_success">회원가입이 되었습니다.\n가입한 이메일로 로그인 해주세요.</string>
+    <string name="signup_emailActiveCheck">이메일 인증을 먼저 진행해주세요.</string>
 </resources>
