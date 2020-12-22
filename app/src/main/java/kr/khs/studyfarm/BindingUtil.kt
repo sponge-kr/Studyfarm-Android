@@ -4,11 +4,11 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
+import com.shawnlin.numberpicker.NumberPicker
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
-import androidx.databinding.ObservableField
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.textfield.TextInputLayout
@@ -174,5 +174,12 @@ fun setVisibility(view : Chip, visible : Boolean, city : CityInfo?, arr : ArrayL
                 update()
             }
         }
+    }
+}
+
+@BindingAdapter("app:agePickerSettting")
+fun testNumberPicker(view : NumberPicker, age : Int) {
+    view.apply {
+        value = age
     }
 }

@@ -29,6 +29,7 @@ class SignupInfoFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val viewModelFactory = SignupInfoViewModelFactory(
+            requireContext(),
             SignupInfoFragmentArgs.fromBundle(requireArguments()).seq,
             SignupInfoFragmentArgs.fromBundle(requireArguments()).cities,
             SignupInfoFragmentArgs.fromBundle(requireArguments()).interested

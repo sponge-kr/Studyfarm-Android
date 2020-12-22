@@ -1,5 +1,6 @@
 package kr.khs.studyfarm.login_process.sign_up_info
 
+import android.content.Context
 import android.os.Parcelable
 import android.view.View
 import androidx.databinding.ObservableField
@@ -7,6 +8,7 @@ import androidx.lifecycle.*
 import kotlinx.android.parcel.Parcelize
 import kotlinx.coroutines.*
 import kr.khs.studyfarm.Gender
+import kr.khs.studyfarm.R
 import kr.khs.studyfarm.login_process.select.CityInfo
 import kr.khs.studyfarm.network.*
 import kr.khs.studyfarm.network.request.UserInfo
@@ -14,7 +16,7 @@ import kr.khs.studyfarm.network.response.Response
 import kr.khs.studyfarm.network.response.ResponseError
 import kr.khs.studyfarm.network.response.errorHandling
 
-class SignupInfoViewModel(val seq : Int,__cities : Array<CityInfo>?, __interesting : Array<String>?) : ViewModel() {
+class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array<CityInfo>?, __interesting : Array<String>?) : ViewModel() {
 
     private val MAX_SIGN_UP = 2
 
@@ -53,6 +55,8 @@ class SignupInfoViewModel(val seq : Int,__cities : Array<CityInfo>?, __interesti
 
     val stepVisibility = ObservableField<IntArray>()
 
+    val age = ObservableField<Int>()
+
     var gender = Gender.Not
 
     val studyPurpose = ObservableField<String>()
@@ -61,16 +65,16 @@ class SignupInfoViewModel(val seq : Int,__cities : Array<CityInfo>?, __interesti
 
     val mainTitle = Transformations.map(step) {
         when(it) {
-            1 -> "기본 정보"
-            2 -> "추가 정보"
+            1 -> context.getString(R.string.signup_infoMaintitle1)
+            2 -> context.getString(R.string.signup_infoMaintitle2)
             else -> ""
         }
     }
 
     val subTitle = Transformations.map(step) {
         when(it) {
-            1 -> "스터디원과 공유할 회원님의 정보를 입력해주세요."
-            2 -> "나와 딱 맞는 스터디를 가입할 수 있어요!"
+            1 -> context.getString(R.string.signup_infoSubTitle1)
+            2 -> context.getString(R.string.signup_infoSubTitle2)
             else -> ""
         }
     }
@@ -110,14 +114,14 @@ class SignupInfoViewModel(val seq : Int,__cities : Array<CityInfo>?, __interesti
         }
         else {
             val userInfo = UserInfo(
-                age = 1,
+                age = age.get() ?: 0,
 //                simpleIntroduce = introduce.get() ?: "",
 //                profile = null,
                 cityInfo = citiesConverting,
                 gender = gender.MW,
 //                serviceWay = serviceWay.get() ?: "",
 //                studyPurpose = studyPurpose.get() ?: "",
-                interesting = listOf(47,2,52,3),
+                interesting = listOf(),
             )
 
             addUserInfo(userInfo)
@@ -162,6 +166,7 @@ class SignupInfoViewModel(val seq : Int,__cities : Array<CityInfo>?, __interesti
         step.value = 1
         _isSignupSuccess.value = false
         _cityOrInterested.value = 0
+        age.set(25)
     }
 
     override fun onCleared() {
@@ -171,12 +176,13 @@ class SignupInfoViewModel(val seq : Int,__cities : Array<CityInfo>?, __interesti
     }
 }
 
-class SignupInfoViewModelFactory(private val seq : Int,
+class SignupInfoViewModelFactory(private val context : Context,
+                                 private val seq : Int,
                                  private val cities : Array<CityInfo>?,
                                  private val interesting : Array<String>?) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(SignupInfoViewModel::class.java))
-            return SignupInfoViewModel(seq, cities, interesting) as T
+            return SignupInfoViewModel(context, seq, cities, interesting) as T
         throw IllegalArgumentException("Unknown Class Name")
     }
 }

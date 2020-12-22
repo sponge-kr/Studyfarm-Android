@@ -58,9 +58,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="생년월일"
+            android:text="나이"
             app:layout_constraintStart_toStartOf="@+id/singup_radiogroup_sex"
             app:layout_constraintTop_toBottomOf="@+id/singup_radiogroup_sex" />
+
+        <com.shawnlin.numberpicker.NumberPicker
+            android:id="@+id/signup_age_picker"
+            android:layout_width="300dp"
+            android:layout_height="64dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/step3_2"
+            app:np_orientation="horizontal"
+            app:np_max="100"
+            app:np_min="1"
+            app:np_dividerColor="@color/colorPrimary"
+            app:agePickerSettting="@{viewModel.age}"/>
 
         <RadioGroup
             android:id="@+id/singup_radiogroup_sex"
