@@ -23,9 +23,14 @@ class SelectFragment : Fragment() {
             inflater, R.layout.fragment_select, container, false
         )
 
+        //false : city, true : interested
+        val cityOrInterested = SelectFragmentArgs.fromBundle(requireArguments()).cityOrInterested
+
         binding.lifecycleOwner = this
 
-        val viewModelFactory = SelectViewModelFactory(requireContext(),
+        val viewModelFactory = SelectViewModelFactory(
+            requireContext(),
+            cityOrInterested,
             SelectFragmentArgs.fromBundle(requireArguments()).cities)
 
         val viewModel = ViewModelProvider(this, viewModelFactory).get(SelectViewModel::class.java)

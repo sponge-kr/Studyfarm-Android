@@ -17,7 +17,7 @@ import kr.khs.studyfarm.network.response.errorHandling
 import java.util.AbstractMap
 import java.util.ArrayList
 
-class SelectViewModel(val context : Context, _cityInit : Array<CityInfo>?) : ViewModel() {
+class SelectViewModel(val context : Context, private val cityOrInterested : Boolean, _cityInit : Array<CityInfo>?) : ViewModel() {
     private val _returnSignup = MutableLiveData<Boolean>()
     val returnSignup : LiveData<Boolean>
         get() = _returnSignup
@@ -133,20 +133,23 @@ class SelectViewModel(val context : Context, _cityInit : Array<CityInfo>?) : Vie
 
     init {
         _returnSignup.value = false
-        getStates()
-        _selectCity.value = ArrayList()
-        if(_cityInit != null)
-            for(element in _cityInit)
-                _selectCity.value!!.add(element)
+        if(!cityOrInterested) {
+            getStates()
+            _selectCity.value = ArrayList()
+            if (_cityInit != null)
+                for (element in _cityInit)
+                    _selectCity.value!!.add(element)
+        }
         chipUpdate()
     }
 }
 
 class SelectViewModelFactory(private val context : Context,
+                             private val cityOrInterested : Boolean,
                              private val cityInit: Array<CityInfo>?) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(SelectViewModel::class.java))
-            return SelectViewModel(context, cityInit) as T
+            return SelectViewModel(context, cityOrInterested, cityInit) as T
         throw IllegalArgumentException("Unknown Class Name")
     }
 }
