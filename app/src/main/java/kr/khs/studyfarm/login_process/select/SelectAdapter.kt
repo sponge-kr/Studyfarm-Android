@@ -5,12 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kr.khs.studyfarm.databinding.ListItemSelectBinding
-import kr.khs.studyfarm.login_process.sign_up_info.StateData
+import kr.khs.studyfarm.login_process.sign_up_info.InfoData
 
-class SelectAdapter(val clickListener : StateClickListener) : ListAdapter<StateData, RecyclerView.ViewHolder>(SelectDiffCallback()) {
+class SelectAdapter(val clickListener : StateClickListener) : ListAdapter<InfoData, RecyclerView.ViewHolder>(SelectDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder.from(parent)
@@ -18,12 +16,12 @@ class SelectAdapter(val clickListener : StateClickListener) : ListAdapter<StateD
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
-            is ViewHolder -> holder.bind(getItem(position) as StateData, clickListener)
+            is ViewHolder -> holder.bind(getItem(position) as InfoData, clickListener)
         }
     }
 
     class ViewHolder private constructor(val binding : ListItemSelectBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: StateData, clickListener : StateClickListener) {
+        fun bind(item: InfoData, clickListener : StateClickListener) {
             binding.data = item
             binding.clickListener = clickListener
             binding.executePendingBindings()
@@ -40,16 +38,16 @@ class SelectAdapter(val clickListener : StateClickListener) : ListAdapter<StateD
 
 }
 
-class SelectDiffCallback : DiffUtil.ItemCallback<StateData>() {
-    override fun areItemsTheSame(oldItem: StateData, newItem: StateData): Boolean {
+class SelectDiffCallback : DiffUtil.ItemCallback<InfoData>() {
+    override fun areItemsTheSame(oldItem: InfoData, newItem: InfoData): Boolean {
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: StateData, newItem: StateData): Boolean {
+    override fun areContentsTheSame(oldItem: InfoData, newItem: InfoData): Boolean {
         return oldItem == newItem
     }
 }
 
-class StateClickListener(val clickListener : (data : StateData) -> Unit) {
-    fun onClick(data : StateData) = clickListener(data)
+class StateClickListener(val clickListener : (data : InfoData) -> Unit) {
+    fun onClick(data : InfoData) = clickListener(data)
 }

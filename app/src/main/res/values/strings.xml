@@ -4,7 +4,7 @@
 <!--    for sign up toast message -->
     <string name="agreement_necessary">필수 약관에 모두 동의해주셔야합니다.</string>
     <string name="login_error">아이디 혹은 비밀번호가 일치하지 않습니다.</string>
-    <string name="select_maxsize">지역은 최대 3곳까지 선택할 수 있습니다.</string>
+    <string name="select_maxCity">지역은 최대 3곳까지 선택할 수 있습니다.</string>
     <string name="select_duplicateCity">동일한 지역이 이미 선택되어 있습니다.</string>
     <string name="signup_duplicateEmail">이미 가입된 이메일입니다.\n로그인 화면으로 이동합니다.</string>
     <string name="signup_duplicateNickname">닉네임이 중복됩니다.</string>
@@ -15,4 +15,6 @@
     <string name="signup_infoMaintitle2">추가 정보</string>
     <string name="signup_infoSubTitle1">스터디원과 공유할 회원님의 정보를 입력해주세요.</string>
     <string name="signup_infoSubTitle2">나와 딱 맞는 스터디를 가입할 수 있어요!</string>
+    <string name="signup_maxStudy">관심 스터디는 최대 3개까지 선택할 수 있습니다.</string>
+    <string name="select_duplicateStudy">동일한 스터디가 이미 선택되어 있습니다.</string>
 </resources>

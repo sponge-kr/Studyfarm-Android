@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kr.khs.studyfarm.R
-import kr.khs.studyfarm.login_process.sign_up_info.StateData
+import kr.khs.studyfarm.login_process.sign_up_info.InfoData
 import kr.khs.studyfarm.network.*
 import kr.khs.studyfarm.network.response.Response
 import kr.khs.studyfarm.network.response.ResponseError
@@ -17,19 +17,19 @@ import kr.khs.studyfarm.network.response.errorHandling
 import java.util.AbstractMap
 import java.util.ArrayList
 
-class SelectViewModel(val context : Context, private val cityOrInterested : Boolean, _cityInit : Array<CityInfo>?) : ViewModel() {
+class SelectViewModel(val context : Context, private val cityOrInterested : Boolean, _dataInit : Array<SelectInfo>?) : ViewModel() {
     private val _returnSignup = MutableLiveData<Boolean>()
     val returnSignup : LiveData<Boolean>
         get() = _returnSignup
 
-    val stateList = MutableLiveData<List<StateData>>()
+    val parentList = MutableLiveData<List<InfoData>>()
 
-    val cityList = MutableLiveData<List<StateData>>()
+    val childrenList = MutableLiveData<List<InfoData>>()
 
-    val _selectCity = MutableLiveData<ArrayList<CityInfo>>()
-    val selectCity : Array<CityInfo>
-        get() = Array(_selectCity.value!!.size) { _selectCity.value!![it] }
-    var cur : CityInfo? = null
+    val _selectData = MutableLiveData<ArrayList<SelectInfo>>()
+    val selectData : Array<SelectInfo>
+        get() = Array(_selectData.value!!.size) { _selectData.value!![it] }
+    var cur : SelectInfo? = null
 
     val chipVisible = MutableLiveData<List<Boolean>>()
 
@@ -60,29 +60,34 @@ class SelectViewModel(val context : Context, private val cityOrInterested : Bool
         _returnSignup.value = false
     }
 
-    private fun getStates() {
+    private fun getParent() {
         coroutineScope.launch {
             try {
+                println("getParent")
                 _apiStatus.value = ApiStatus.LOADING
-                _response.value = StudyFarmApi.retrofitService.getStates()
+                _response.value =
+                    if(!cityOrInterested)
+                        StudyFarmApi.retrofitService.getStates()
+                    else
+                        StudyFarmApi.retrofitService.getStudies()
                 val abMap = _response.value!!.result as AbstractMap<*, *>
                 val jsonState = abMap["content"] as ArrayList<*>
-                stateList.value = (List(jsonState.size) { StateData(
+                parentList.value = (List(jsonState.size) { InfoData(
                     ((jsonState[it] as AbstractMap<*, *>)["code"] as Double).toInt(),
                     (jsonState[it] as AbstractMap<*, *>)["name"] as String,
                 )})
 
                 for(i in 0 until jsonState.size) {
-                    val list = ArrayList<StateData>()
+                    val list = ArrayList<InfoData>()
                     val temp = (jsonState[i] as AbstractMap<*, *>)["children"] as ArrayList<*>
                     for(j in 0 until temp.size) {
                         val split = temp[j].toString().split("{", "=", ",", "}")
-                        list.add(StateData(
+                        list.add(InfoData(
                             split[2].toDouble().toInt(),
                             split[4]
                         ))
                     }
-                    stateList.value!![i].children = list
+                    parentList.value!![i].children = list
                 }
                 _apiStatus.value = ApiStatus.DONE
             }
@@ -93,29 +98,29 @@ class SelectViewModel(val context : Context, private val cityOrInterested : Bool
         }
     }
 
-    fun onStateSelect(data : StateData) {
-        cur = CityInfo(data)
+    fun onParentSelect(data : InfoData) {
+        cur = SelectInfo(data)
         if(data.children.isEmpty()) {
-            onCitySelect(StateData(0, ""))
+            onChildrenSelect(InfoData(0, ""))
         }
         else {
-            cityList.value = data.children
+            childrenList.value = data.children
         }
     }
 
-    fun onCitySelect(data : StateData) {
-        cur!!.city = data
-        if(_selectCity.value?.size == 3) {
-            _toast.value = context.getString(R.string.select_maxsize)
+    fun onChildrenSelect(data : InfoData) {
+        cur!!.children = data
+        if(_selectData.value?.size == 3) {
+            _toast.value = if(cityOrInterested) context.getString(R.string.signup_maxStudy) else context.getString(R.string.select_maxCity)
             return
         }
-        for (city in _selectCity.value!!) {
-            if (cur!!.state.num == city.state.num && cur!!.city!!.num == city.city!!.num) {
-                _toast.value = context.getString(R.string.select_duplicateCity)
+        for (city in _selectData.value!!) {
+            if (cur!!.parent.num == city.parent.num && cur!!.children!!.num == city.children!!.num) {
+                _toast.value = if(cityOrInterested) context.getString(R.string.select_duplicateStudy) else context.getString(R.string.select_duplicateCity)
                 return
             }
         }
-        _selectCity.value!!.add(cur!!.copy())
+        _selectData.value!!.add(cur!!.copy())
         chipUpdate()
     }
 
@@ -128,25 +133,23 @@ class SelectViewModel(val context : Context, private val cityOrInterested : Bool
     }
 
     fun chipUpdate() {
-        chipVisible.value = List(3) { idx -> idx < _selectCity.value!!.size }
+        chipVisible.value = List(3) { idx -> idx < _selectData.value!!.size }
     }
 
     init {
         _returnSignup.value = false
-        if(!cityOrInterested) {
-            getStates()
-            _selectCity.value = ArrayList()
-            if (_cityInit != null)
-                for (element in _cityInit)
-                    _selectCity.value!!.add(element)
-        }
+        getParent()
+        _selectData.value = ArrayList()
+        if (_dataInit != null)
+            for (element in _dataInit)
+                _selectData.value!!.add(element)
         chipUpdate()
     }
 }
 
 class SelectViewModelFactory(private val context : Context,
                              private val cityOrInterested : Boolean,
-                             private val cityInit: Array<CityInfo>?) : ViewModelProvider.Factory {
+                             private val cityInit: Array<SelectInfo>?) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(SelectViewModel::class.java))
             return SelectViewModel(context, cityOrInterested, cityInit) as T
@@ -155,8 +158,8 @@ class SelectViewModelFactory(private val context : Context,
 }
 
 @Parcelize
-data class CityInfo(var state : StateData, var city : StateData? = null) : Parcelable {
+data class SelectInfo(var parent : InfoData, var children : InfoData? = null) : Parcelable {
     override fun toString(): String {
-        return "${state.str} ${city?.str ?: ""}"
+        return "${parent.str} ${children?.str ?: ""}"
     }
 }

@@ -31,7 +31,11 @@ class SelectFragment : Fragment() {
         val viewModelFactory = SelectViewModelFactory(
             requireContext(),
             cityOrInterested,
-            SelectFragmentArgs.fromBundle(requireArguments()).cities)
+            if(cityOrInterested)
+                SelectFragmentArgs.fromBundle(requireArguments()).interested
+            else
+                SelectFragmentArgs.fromBundle(requireArguments()).cities
+        )
 
         val viewModel = ViewModelProvider(this, viewModelFactory).get(SelectViewModel::class.java)
 
@@ -39,10 +43,11 @@ class SelectFragment : Fragment() {
 
         viewModel.returnSignup.observe(viewLifecycleOwner, Observer {
             if(it) {
+                println(viewModel.selectData)
                 findNavController().navigate(SelectFragmentDirections.actionSelectFragmentToSignupInfoFragment(
                     SelectFragmentArgs.fromBundle(requireArguments()).seq,
-                    viewModel.selectCity,
-                    null
+                    if(!cityOrInterested) viewModel.selectData else SelectFragmentArgs.fromBundle(requireArguments()).cities,
+                    if(cityOrInterested) viewModel.selectData else SelectFragmentArgs.fromBundle(requireArguments()).interested
                 ))
                 viewModel.doneSignup()
             }
@@ -56,20 +61,20 @@ class SelectFragment : Fragment() {
         })
 
         val stateAdapter = SelectAdapter(StateClickListener {
-            viewModel.onStateSelect(it)
+            viewModel.onParentSelect(it)
         })
         val cityAdapter = SelectAdapter(StateClickListener {
-            viewModel.onCitySelect(it)
+            viewModel.onChildrenSelect(it)
         })
 
         binding.selectRvFirst.adapter = stateAdapter
         binding.selectRvSecond.adapter = cityAdapter
 
-        viewModel.stateList.observe(viewLifecycleOwner, Observer {
+        viewModel.parentList.observe(viewLifecycleOwner, Observer {
             stateAdapter.submitList(it)
         })
 
-        viewModel.cityList.observe(viewLifecycleOwner, Observer {
+        viewModel.childrenList.observe(viewLifecycleOwner, Observer {
             cityAdapter.submitList(it)
         })
 

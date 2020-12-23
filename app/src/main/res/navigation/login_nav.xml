@@ -36,11 +36,11 @@
             app:destination="@id/selectFragment" />
         <argument
             android:name="cities"
-            app:argType="kr.khs.studyfarm.login_process.select.CityInfo[]"
+            app:argType="kr.khs.studyfarm.login_process.select.SelectInfo[]"
             app:nullable="true" />
         <argument
             android:name="interested"
-            app:argType="string[]"
+            app:argType="kr.khs.studyfarm.login_process.select.SelectInfo[]"
             app:nullable="true" />
     </fragment>
     <fragment
@@ -100,11 +100,11 @@
             app:argType="boolean" />
         <argument
             android:name="cities"
-            app:argType="kr.khs.studyfarm.login_process.select.CityInfo[]"
+            app:argType="kr.khs.studyfarm.login_process.select.SelectInfo[]"
             app:nullable="true" />
         <argument
             android:name="interested"
-            app:argType="string[]"
+            app:argType="kr.khs.studyfarm.login_process.select.SelectInfo[]"
             app:nullable="true" />
     </fragment>
 </navigation>

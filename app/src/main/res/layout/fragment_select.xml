@@ -63,24 +63,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:visibility="@{viewModel.chipVisible[0]}"
-                    app:chipText="@{viewModel._selectCity[0]}"
-                    app:chipArray="@{viewModel._selectCity}"
+                    app:chipText="@{viewModel._selectData[0]}"
+                    app:chipArray="@{viewModel._selectData}"
                     app:chipUpdate="@{viewModel.chipUpdateListener}"/>
 
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:visibility="@{viewModel.chipVisible[1]}"
-                    app:chipText="@{viewModel._selectCity[1]}"
-                    app:chipArray="@{viewModel._selectCity}"
+                    app:chipText="@{viewModel._selectData[1]}"
+                    app:chipArray="@{viewModel._selectData}"
                     app:chipUpdate="@{viewModel.chipUpdateListener}"/>
 
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:visibility="@{viewModel.chipVisible[2]}"
-                    app:chipText="@{viewModel._selectCity[2]}"
-                    app:chipArray="@{viewModel._selectCity}"
+                    app:chipText="@{viewModel._selectData[2]}"
+                    app:chipArray="@{viewModel._selectData}"
                     app:chipUpdate="@{viewModel.chipUpdateListener}"/>
             </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>
