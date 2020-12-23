@@ -9,10 +9,12 @@ import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.*
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.Rule
+import kr.khs.studyfarm.addAccessToken
 import kr.khs.studyfarm.network.*
 import kr.khs.studyfarm.network.request.LoginData
 import kr.khs.studyfarm.network.response.Response
 import kr.khs.studyfarm.network.response.ResponseError
+import java.util.AbstractMap
 
 class LoginViewModel(val context : Context) : ViewModel() {
 
@@ -55,10 +57,14 @@ class LoginViewModel(val context : Context) : ViewModel() {
             try {
                 _apiStatus.value = ApiStatus.LOADING
                 _response.value = StudyFarmApi.retrofitService.loginUser(LoginData(email.get()!!, password.get()!!))
+                val abMap = _response.value!!.result as AbstractMap<*, *>
+                val token = abMap["token"] as String
+                addAccessToken(context, token)
                 _apiStatus.value = ApiStatus.DONE
             }
             catch (t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
+                t.printStackTrace()
                 _toast.value = context.getString(R.string.login_error)
             }
         }
