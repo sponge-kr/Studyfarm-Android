@@ -7,6 +7,7 @@ import android.os.Handler
 import android.view.Window
 import android.view.WindowManager
 import kr.khs.studyfarm.R
+import kr.khs.studyfarm.getAccessToken
 
 class SplashActivity : AppCompatActivity() {
     private val DELAY_TIME = 2000L
@@ -20,7 +21,14 @@ class SplashActivity : AppCompatActivity() {
 
         //TODO : Handler is deprecated library -> find alternative
         Handler().postDelayed({
-            startActivity(Intent(this, SignActivity::class.java))
+            val token = getAccessToken(applicationContext)
+
+            startActivity(Intent(this,
+                if(token == "noJwtToken")
+                    SignActivity::class.java
+                else
+                    MainActivity::class.java)
+            )
 
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
 
