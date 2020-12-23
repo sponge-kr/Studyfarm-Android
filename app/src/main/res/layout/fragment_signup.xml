@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.khs.studyfarm.login_process.sign_up.SignupViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".login_process.sign_up.SignupFragment">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signup_et_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="@dimen/vertical_margin"
+                app:nicknameCheck="@{viewModel.nicknameFocusChangeListener}"
+                app:validationBoolean="@{viewModel.duplicateNickname}"
+                app:errorMsgBoolean='@{"중복된 닉네임입니다."}'>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="별명"
+                    android:inputType="textPersonName"
+                    android:text="@={viewModel.nickname}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/vertical_margin"
+                app:errorEnabled="true"
+                android:id="@+id/signemail_et_email"
+                app:validation="@{viewModel.rule.EMAIL_RULE}"
+                app:errorMsg='@{"이메일 형식이 맞지 않습니다."}'>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="이메일 입력"
+                    android:inputType="textEmailAddress"
+                    android:text="@={viewModel.email}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signpw_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="@dimen/vertical_margin"
+                app:errorMsg='@{"비밀번호의 형식(8~15자, 특수문자 포함)이 맞지 않습니다."}'
+                app:setPasswordVisibilityToggle="@{true}"
+                app:validation="@{viewModel.rule.PASSWORD_RULE}">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="비밀번호 입력"
+                    android:inputType="textPassword"
+                    android:text="@={viewModel.password}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/signemail_btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/vertical_margin"
+                android:onClick="@{() -> viewModel.onNextBtnClicked()}"
+                android:text="다음" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/signemail_maintitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="메일 주소를 입력해 주세요"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/signemail_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="로그인을 하거나 회원가입을 진행할 수 있도록\n본인인증을 위한 인증메일이 전송됩니다."
+            app:layout_constraintStart_toStartOf="@+id/signemail_maintitle"
+            app:layout_constraintTop_toBottomOf="@+id/signemail_maintitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
