@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentMainBinding
+import kr.khs.studyfarm.view.MainActivity
 
 class MainFragment : Fragment() {
 
@@ -20,6 +21,10 @@ class MainFragment : Fragment() {
         val binding : FragmentMainBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_main, container, false
         )
+
+        (activity as MainActivity).supportActionBar?.apply {
+            setLogo(R.drawable.sample_logo_black)
+        }
 
         setHasOptionsMenu(true)
 
