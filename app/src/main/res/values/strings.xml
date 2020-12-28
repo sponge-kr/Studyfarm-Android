@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">StudyFarm</string>
 
-<!--    for sign up toast message -->
+    <!--    for sign up toast message -->
     <string name="agreement_necessary">필수 약관에 모두 동의해주셔야합니다.</string>
     <string name="login_error">아이디 혹은 비밀번호가 일치하지 않습니다.</string>
     <string name="select_maxCity">지역은 최대 3곳까지 선택할 수 있습니다.</string>
@@ -17,4 +17,6 @@
     <string name="signup_infoSubTitle2">나와 딱 맞는 스터디를 가입할 수 있어요!</string>
     <string name="signup_maxStudy">관심 스터디는 최대 3개까지 선택할 수 있습니다.</string>
     <string name="select_duplicateStudy">동일한 스터디가 이미 선택되어 있습니다.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
