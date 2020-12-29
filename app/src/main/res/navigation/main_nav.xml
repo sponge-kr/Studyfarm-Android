@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_nav"
-    app:startDestination="@id/mainFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/bottom_home">
 
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/bottom_home"
         android:name="kr.khs.studyfarm.mainpage.MainFragment"
         android:label="MainFragment" />
+    <fragment
+        android:id="@+id/bottom_explore"
+        android:name="kr.khs.studyfarm.Blank1Fragment"
+        android:label="fragment_blank1"
+        tools:layout="@layout/fragment_blank1" />
+    <fragment
+        android:id="@+id/bottom_more"
+        android:name="kr.khs.studyfarm.Blank2Fragment"
+        android:label="fragment_blank2"
+        tools:layout="@layout/fragment_blank2" />
 </navigation>
