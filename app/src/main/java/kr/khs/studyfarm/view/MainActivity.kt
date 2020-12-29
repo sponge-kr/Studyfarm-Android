@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kr.khs.studyfarm.R
 
 class MainActivity : AppCompatActivity() {
@@ -16,8 +17,11 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.main_btm_navi)
+
         val navController = this.findNavController(R.id.main_navhost)
         NavigationUI.setupActionBarWithNavController(this, navController)
+        NavigationUI.setupWithNavController(bottomNavigationView, navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
