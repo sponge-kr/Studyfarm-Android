@@ -7,11 +7,10 @@ import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.toolbar.view.*
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentMainBinding
 import kr.khs.studyfarm.view.MainActivity
+import kr.khs.studyfarm.vp.VPAdapter
 
 class MainFragment : Fragment() {
 
@@ -34,6 +33,15 @@ class MainFragment : Fragment() {
         val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
         binding.viewModel = viewModel
+
+        // viewpager 연결
+        binding.mainVpInterested.adapter = VPAdapter(childFragmentManager)
+
+        // viewpager - tab layout 연결
+        binding.mainTab.setupWithViewPager(binding.mainVpInterested)
+
+        binding.mainVpStudynoti.adapter = VPAdapter(childFragmentManager)
+
 
         return binding.root
     }
