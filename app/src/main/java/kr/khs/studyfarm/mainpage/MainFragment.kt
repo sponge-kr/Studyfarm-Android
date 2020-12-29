@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import kr.khs.studyfarm.R
@@ -45,7 +46,7 @@ class MainFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.action_user -> Toast.makeText(context, "유저 프로필", Toast.LENGTH_SHORT).show()
-            R.id.action_notification -> Toast.makeText(context, "알림", Toast.LENGTH_SHORT).show()
+            R.id.action_notification -> findNavController().navigate(MainFragmentDirections.actionBottomHomeToNotificationFragment())
         }
         return super.onOptionsItemSelected(item)
     }
