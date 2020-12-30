@@ -1,13 +1,11 @@
 package kr.khs.studyfarm
 
+import android.content.res.Resources
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.AdapterView
-import android.widget.RatingBar
+import android.widget.*
 import com.shawnlin.numberpicker.NumberPicker
-import android.widget.Spinner
-import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.chip.Chip
@@ -191,4 +189,9 @@ fun ratingBarSetting(view : RatingBar, value : Float) {
         rating = value
         this.stepSize = 1.0f
     }
+}
+
+@BindingAdapter("app:resources", "app:whoLogined")
+fun greetingMessage(view : TextView, res : Resources, nickname : String) {
+    view.text = String.format(res.getString(R.string.main_greeting), nickname)
 }

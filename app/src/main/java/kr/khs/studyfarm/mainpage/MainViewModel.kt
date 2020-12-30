@@ -1,6 +1,7 @@
 package kr.khs.studyfarm.mainpage
 
 import android.content.Context
+import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,6 +17,10 @@ import kr.khs.studyfarm.network.response.ResponseError
 import kr.khs.studyfarm.network.response.UserInfo
 
 class MainViewModel(private val context : Context) : ViewModel() {
+
+    val nickName = ObservableField<String>()
+
+    val resources = context.resources
 
     private val _response = MutableLiveData<GetUserResponse>()
     val response : LiveData<GetUserResponse>
@@ -37,23 +42,24 @@ class MainViewModel(private val context : Context) : ViewModel() {
     private val job = Job()
     private val coroutineScope = CoroutineScope(job + Dispatchers.Main)
 
-    init {
-        getUserInfo()
-    }
-
     fun getUserInfo() {
         coroutineScope.launch {
             try {
                 _apiStatus.value = ApiStatus.LOADING
                 _response.value = StudyFarmApi.retrofitService.getUserInfo("Bearer " + getAccessToken(context), getUserSeq(context))
                 val user = _response.value!!.result
-                println(_response.value!!.result.email)
+                nickName.set(user.nickname)
             }
             catch(t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
                 t.printStackTrace()
             }
         }
+    }
+
+    init {
+        nickName.set("OO")
+        getUserInfo()
     }
 
     override fun onCleared() {
