@@ -22,6 +22,7 @@
 
     <!--    for menu-->
     <string name="action_settings">설정</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_greeting">%s님\n오늘도 열공하세요!</string>
 </resources>

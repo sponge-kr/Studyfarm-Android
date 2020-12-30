@@ -30,7 +30,7 @@ class MainFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        val viewModelFactory = MainViewModelFactory()
+        val viewModelFactory = MainViewModelFactory(requireContext())
 
         val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
