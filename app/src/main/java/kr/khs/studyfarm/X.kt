@@ -5,6 +5,7 @@ import java.util.regex.Pattern
 
 private val spfJwt = "jwtTokens"
 private val tokenKey = "jwt"
+private val seqKey = "seq"
 
 fun isEmailValidate(str : String) = Pattern.compile(
     "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\\.[a-zA-Z]{2,3}\$"
@@ -21,6 +22,25 @@ fun isPasswordValidate(str: String) = Pattern.compile(
 
 enum class Gender (val MW : Int) {
     Not(-1), Man(0), Woman(1)
+}
+
+fun addUserSeq(context : Context, seq : Int) {
+    val spf = context.getSharedPreferences(spfJwt, Context.MODE_PRIVATE)
+    val edit = spf.edit()
+
+    try {
+        edit.putInt(seqKey, seq)
+        edit.apply()
+    }
+    catch(e : Exception) {
+        e.printStackTrace()
+    }
+}
+
+fun getUserSeq(context : Context) : Int {
+    val spf = context.getSharedPreferences(spfJwt, Context.MODE_PRIVATE)
+
+    return spf.getInt(seqKey, 0)
 }
 
 fun addAccessToken(context : Context, jwt : String) {
