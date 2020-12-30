@@ -22,6 +22,8 @@ class MainFragment : Fragment() {
             inflater, R.layout.fragment_main, container, false
         )
 
+        binding.lifecycleOwner = this
+
         (activity as MainActivity).supportActionBar?.apply {
             setLogo(R.drawable.sample_logo_black)
         }

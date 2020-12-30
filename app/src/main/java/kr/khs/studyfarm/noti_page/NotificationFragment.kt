@@ -20,6 +20,8 @@ class NotificationFragment : Fragment() {
             inflater, R.layout.fragment_notification, container, false
         )
 
+        binding.lifecycleOwner = this
+
         val viewmodelFactory = NotificationViewModelFactory()
 
         val viewModel = ViewModelProvider(this, viewmodelFactory).get(NotificationViewModel::class.java)
