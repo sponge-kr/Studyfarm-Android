@@ -2,25 +2,25 @@ package kr.khs.studyfarm.mainpage
 
 import android.content.Context
 import androidx.databinding.ObservableField
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import kotlinx.coroutines.*
 import kr.khs.studyfarm.getAccessToken
 import kr.khs.studyfarm.getUserSeq
 import kr.khs.studyfarm.network.ApiStatus
 import kr.khs.studyfarm.network.StudyFarmApi
-import kr.khs.studyfarm.network.response.GetUserResponse
-import kr.khs.studyfarm.network.response.Response
-import kr.khs.studyfarm.network.response.ResponseError
-import kr.khs.studyfarm.network.response.UserInfo
+import kr.khs.studyfarm.network.response.*
 
 class MainViewModel(private val context : Context) : ViewModel() {
 
     val nickName = ObservableField<String>()
 
     val resources = context.resources
+
+    private val user = Transformations.map(response) {
+        it.result
+    }
+
+    val interestings = MutableLiveData<List<UserInterestingInfo>>()
 
     private val _response = MutableLiveData<GetUserResponse>()
     val response : LiveData<GetUserResponse>
@@ -48,6 +48,7 @@ class MainViewModel(private val context : Context) : ViewModel() {
                 _apiStatus.value = ApiStatus.LOADING
                 _response.value = StudyFarmApi.retrofitService.getUserInfo("Bearer " + getAccessToken(context), getUserSeq(context))
                 val user = _response.value!!.result
+                interestings.value = user.interesting
                 nickName.set(user.nickname)
             }
             catch(t : Throwable) {
@@ -59,6 +60,7 @@ class MainViewModel(private val context : Context) : ViewModel() {
 
     init {
         nickName.set("OO")
+        interestings.value = listOf()
         getUserInfo()
     }
 

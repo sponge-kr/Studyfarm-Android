@@ -1,4 +1,4 @@
-package kr.khs.studyfarm.vp
+package kr.khs.studyfarm.mainpage
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
