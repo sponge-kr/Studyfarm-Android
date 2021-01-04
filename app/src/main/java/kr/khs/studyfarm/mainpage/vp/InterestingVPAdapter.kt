@@ -10,7 +10,7 @@ class InterestingVPAdapter(fm : FragmentManager, _interestings : List<UserIntere
     private val interesting = ArrayList<UserInterestingInfo>()
 
     init {
-        items.add(VP1Fragment())
+        items.add(InterestingVPFragment())
 
         interesting.add(UserInterestingInfo(name = "전체"))
     }
@@ -19,7 +19,7 @@ class InterestingVPAdapter(fm : FragmentManager, _interestings : List<UserIntere
         for(item in list) {
             if(!interesting.contains(item)) {
                 interesting.add(item)
-                items.add(VP1Fragment())
+                items.add(InterestingVPFragment())
             }
         }
         this.notifyDataSetChanged()

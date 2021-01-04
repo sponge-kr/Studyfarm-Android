@@ -5,56 +5,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import kr.khs.studyfarm.R
+import kr.khs.studyfarm.databinding.FragmentVpInterestingBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [VP1Fragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class VP1Fragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+// constructor 코드에 따라서 조회해서 recyclerview에 뿌리기, 0.0이면 전체
+class InterestingVPFragment(private val studyCode : Double = 0.0) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_vp_interesting, container, false)
+        val binding : FragmentVpInterestingBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_vp_interesting, container, false
+        )
+
+        binding.lifecycleOwner = this
+
+        val viewModelFactory = InterestingVPViewModelFactory()
+
+        val viewModel = ViewModelProvider(this, viewModelFactory).get(InterestingVPViewModel::class.java)
+
+        binding.viewModel = viewModel
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment VP1Fragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            VP1Fragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }
