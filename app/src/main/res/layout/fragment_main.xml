@@ -25,7 +25,7 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5"/>
 
         <TextView
             android:id="@+id/main_hello"
@@ -61,7 +61,10 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_tab" />
+            app:layout_constraintTop_toBottomOf="@+id/main_tab"
+            app:tabLayout="@{mainTab}"
+            app:vpAdapter="@{viewModel.interestingVPAdapter}"
+            app:interestings="@{viewModel.interestings}"/>
 
         <TextView
             android:id="@+id/textView5"

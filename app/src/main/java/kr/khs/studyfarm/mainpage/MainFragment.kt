@@ -30,7 +30,7 @@ class MainFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        val viewModelFactory = MainViewModelFactory(requireContext())
+        val viewModelFactory = MainViewModelFactory(childFragmentManager, requireContext())
 
         val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
@@ -40,15 +40,15 @@ class MainFragment : Fragment() {
 //        binding.mainVpStudynoti.adapter = VPAdapter(childFragmentManager)
 
         // viewpager - tab layout 연결
-        val interestingAdapter = InterestingVPAdapter(childFragmentManager, listOf())
-        binding.mainVpInterested.adapter = interestingAdapter
-        binding.mainTab.setupWithViewPager(binding.mainVpInterested)
-
-        viewModel.interestings.observe(viewLifecycleOwner, {
-            if(it.isNotEmpty()) {
-                interestingAdapter.updateTitles(it)
-            }
-        })
+//        val interestingAdapter = InterestingVPAdapter(childFragmentManager, listOf())
+//        binding.mainVpInterested.adapter = interestingAdapter
+//        binding.mainTab.setupWithViewPager(binding.mainVpInterested)
+//
+//        viewModel.interestings.observe(viewLifecycleOwner, {
+//            if(it.isNotEmpty()) {
+//                interestingAdapter.updateLists(it)
+//            }
+//        })
 
         return binding.root
     }

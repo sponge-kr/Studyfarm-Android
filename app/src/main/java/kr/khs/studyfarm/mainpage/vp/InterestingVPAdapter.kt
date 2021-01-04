@@ -15,7 +15,7 @@ class InterestingVPAdapter(fm : FragmentManager, _interestings : List<UserIntere
         interesting.add(UserInterestingInfo(name = "전체"))
     }
 
-    fun updateTitles(list : List<UserInterestingInfo>) {
+    fun updateLists(list : List<UserInterestingInfo>) {
         for(item in list) {
             if(!interesting.contains(item)) {
                 interesting.add(item)

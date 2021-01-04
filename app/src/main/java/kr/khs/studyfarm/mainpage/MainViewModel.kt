@@ -1,16 +1,19 @@
 package kr.khs.studyfarm.mainpage
 
 import android.content.Context
+import androidx.annotation.RawRes
 import androidx.databinding.ObservableField
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.*
 import kotlinx.coroutines.*
 import kr.khs.studyfarm.getAccessToken
 import kr.khs.studyfarm.getUserSeq
+import kr.khs.studyfarm.mainpage.vp.InterestingVPAdapter
 import kr.khs.studyfarm.network.ApiStatus
 import kr.khs.studyfarm.network.StudyFarmApi
 import kr.khs.studyfarm.network.response.*
 
-class MainViewModel(private val context : Context) : ViewModel() {
+class MainViewModel(private val fm : FragmentManager, private val context : Context) : ViewModel() {
 
     val nickName = ObservableField<String>()
 
@@ -21,6 +24,8 @@ class MainViewModel(private val context : Context) : ViewModel() {
     }
 
     val interestings = MutableLiveData<List<UserInterestingInfo>>()
+
+    val interestingVPAdapter = InterestingVPAdapter(fm, listOf())
 
     private val _response = MutableLiveData<GetUserResponse>()
     val response : LiveData<GetUserResponse>
@@ -70,10 +75,10 @@ class MainViewModel(private val context : Context) : ViewModel() {
     }
 }
 
-class MainViewModelFactory(private val context : Context) : ViewModelProvider.Factory {
+class MainViewModelFactory(private val fm : FragmentManager, private val context : Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(MainViewModel::class.java))
-            return MainViewModel(context) as T
+            return MainViewModel(fm, context) as T
         throw IllegalArgumentException("Unknown Class Name")
     }
 
