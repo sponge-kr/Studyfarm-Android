@@ -5,11 +5,11 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentMainBinding
+import kr.khs.studyfarm.mainpage.vp.InterestingVPAdapter
 import kr.khs.studyfarm.view.MainActivity
 
 class MainFragment : Fragment() {
@@ -40,7 +40,7 @@ class MainFragment : Fragment() {
 //        binding.mainVpStudynoti.adapter = VPAdapter(childFragmentManager)
 
         // viewpager - tab layout 연결
-        val interestingAdapter = VPAdapter(childFragmentManager, listOf())
+        val interestingAdapter = InterestingVPAdapter(childFragmentManager, listOf())
         binding.mainVpInterested.adapter = interestingAdapter
         binding.mainTab.setupWithViewPager(binding.mainVpInterested)
 

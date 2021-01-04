@@ -1,4 +1,4 @@
-package kr.khs.studyfarm.mainpage
+package kr.khs.studyfarm.mainpage.vp
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -35,7 +35,7 @@ class VP1Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_vp1, container, false)
+        return inflater.inflate(R.layout.fragment_vp_interesting, container, false)
     }
 
     companion object {

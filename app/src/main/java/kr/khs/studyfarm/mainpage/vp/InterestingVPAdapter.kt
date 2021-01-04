@@ -1,11 +1,11 @@
-package kr.khs.studyfarm.mainpage
+package kr.khs.studyfarm.mainpage.vp
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import kr.khs.studyfarm.network.response.UserInterestingInfo
 
-class VPAdapter(fm : FragmentManager, _interestings : List<UserInterestingInfo>) : FragmentPagerAdapter(fm, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class InterestingVPAdapter(fm : FragmentManager, _interestings : List<UserInterestingInfo>) : FragmentPagerAdapter(fm, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     private val items : ArrayList<Fragment> = ArrayList()
     private val interesting = ArrayList<UserInterestingInfo>()
 
