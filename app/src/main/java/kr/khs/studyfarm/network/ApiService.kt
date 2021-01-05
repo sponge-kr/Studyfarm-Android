@@ -2,6 +2,7 @@ package kr.khs.studyfarm.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kr.khs.studyfarm.network.request.KakaoSignupData
 import kr.khs.studyfarm.network.request.LoginData
 import kr.khs.studyfarm.network.request.User
 import kr.khs.studyfarm.network.request.UserInfo
@@ -80,6 +81,16 @@ interface StudyFarmApiService {
         "Accept: application/hal+json")
     @GET("user/check-active")
     suspend fun checkEmailActive(@Query("email") email : String) : Response
+
+    @Headers("Content-Type: application/hal+json;charset=UTF-8",
+        "Accept: application/hal+json")
+    @POST("auth/login/kakao")
+    suspend fun loginByKakao(@Header("access_token") token : String) : Response
+
+    @Headers("Content-Type: application/hal+json;charset=UTF-8",
+        "Accept: application/hal+json")
+    @POST("user/kakao")
+    suspend fun signupByKakao(@Header("access_token") token : String, @Body kakaoSignup : KakaoSignupData) : Response
 }
 
 object StudyFarmApi {

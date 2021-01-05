@@ -36,6 +36,12 @@ android {
     compileOptions {
         targetCompatibility = "8"
         sourceCompatibility = "8"
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 
@@ -77,4 +83,7 @@ dependencies {
 
     //age picker
     implementation 'com.shawnlin:number-picker:2.4.11'
+
+    //kakao login
+    implementation "com.kakao.sdk:v2-user:2.2.0"
 }

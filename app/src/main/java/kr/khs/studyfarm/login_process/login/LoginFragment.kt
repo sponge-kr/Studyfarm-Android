@@ -32,12 +32,13 @@ class LoginFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        viewModel.response.observe(viewLifecycleOwner, Observer {
-            if(it.code == 200.0) {
+        viewModel.loginSuccess.observe(viewLifecycleOwner, Observer {
+            if(it) {
                 Toast.makeText(context, "로그인 성공", Toast.LENGTH_SHORT).show()
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
+                viewModel.doneLogin()
             }
         })
 
