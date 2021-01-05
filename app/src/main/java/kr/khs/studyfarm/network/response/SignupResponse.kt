@@ -8,21 +8,22 @@ data class Href(
 )
 
 data class Links(
-    val self : Href,
-    val edit : Href,
-    val get : Href,
-    val delete : Href,
+    val self : Href?,
+    val edit : Href?,
+    val get : Href?,
+    val delete : Href?,
     @Json(name = "change-password")
-    val changePassword : Href,
+    val changePassword : Href?,
     @Json(name = "change-nickname")
-    val changeNickName : Href,
-    val docs : Href
+    val changeNickName : Href?,
+    val docs : Href?
 )
 
 data class ResponseSignUp(
     @Json(name = "users_seq")
     val userSeq : Double,
     val email : String,
+    val nickname : String,
     @Json(name = "user_created_at")
     val userCreatedAt : String,
     @Json(name = "user_updated_at")
@@ -30,7 +31,6 @@ data class ResponseSignUp(
     val name : String,
     val phone : String,
     val age : Double,
-    val nickname : String,
     @Json(name = "user_state")
     val userState : Double,
     @Json(name = "user_city")

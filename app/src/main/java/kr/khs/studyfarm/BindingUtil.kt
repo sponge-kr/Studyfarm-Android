@@ -1,19 +1,22 @@
 package kr.khs.studyfarm
 
+import android.content.res.Resources
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.AdapterView
-import android.widget.RatingBar
+import android.widget.*
+import androidx.annotation.RawRes
 import com.shawnlin.numberpicker.NumberPicker
-import android.widget.Spinner
-import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputLayout
 import kr.khs.studyfarm.login_process.select.SelectInfo
+import kr.khs.studyfarm.mainpage.vp.InterestingVPAdapter
+import kr.khs.studyfarm.network.response.UserInterestingInfo
 import java.util.*
 
 //이메일, 비밀번호 등 textinputlayout가 주어진 조건에 부합하는지 체크
@@ -191,4 +194,23 @@ fun ratingBarSetting(view : RatingBar, value : Float) {
         rating = value
         this.stepSize = 1.0f
     }
+}
+
+@BindingAdapter("app:resources", "app:whoLogined")
+fun greetingMessage(view : TextView, res : Resources, nickname : String) {
+    view.text = String.format(res.getString(R.string.main_greeting), nickname)
+}
+
+// Main Interesting View Pager add adapter, and connect to Tab Layout
+@BindingAdapter("app:tabLayout", "app:vpAdapter")
+fun ViewPager.addAdapterNTabLayout(tabLayout : TabLayout, adapter : InterestingVPAdapter) {
+    this.adapter = adapter
+    tabLayout.setupWithViewPager(this)
+}
+
+// Main Interesting View Pager Data Binding
+@BindingAdapter("app:interestings")
+fun ViewPager.updateItems(list : List<UserInterestingInfo>) {
+    if(list.isNotEmpty())
+        (this.adapter as InterestingVPAdapter).updateLists(list)
 }

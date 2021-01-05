@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentMainBinding
+import kr.khs.studyfarm.mainpage.vp.InterestingVPAdapter
 import kr.khs.studyfarm.view.MainActivity
-import kr.khs.studyfarm.vp.VPAdapter
 
 class MainFragment : Fragment() {
 
@@ -30,20 +30,25 @@ class MainFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        val viewModelFactory = MainViewModelFactory()
+        val viewModelFactory = MainViewModelFactory(childFragmentManager, requireContext())
 
         val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
         binding.viewModel = viewModel
 
         // viewpager 연결
-        binding.mainVpInterested.adapter = VPAdapter(childFragmentManager)
+//        binding.mainVpStudynoti.adapter = VPAdapter(childFragmentManager)
 
         // viewpager - tab layout 연결
-        binding.mainTab.setupWithViewPager(binding.mainVpInterested)
-
-        binding.mainVpStudynoti.adapter = VPAdapter(childFragmentManager)
-
+//        val interestingAdapter = InterestingVPAdapter(childFragmentManager, listOf())
+//        binding.mainVpInterested.adapter = interestingAdapter
+//        binding.mainTab.setupWithViewPager(binding.mainVpInterested)
+//
+//        viewModel.interestings.observe(viewLifecycleOwner, {
+//            if(it.isNotEmpty()) {
+//                interestingAdapter.updateLists(it)
+//            }
+//        })
 
         return binding.root
     }

@@ -10,6 +10,7 @@ import kotlinx.coroutines.*
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.Rule
 import kr.khs.studyfarm.addAccessToken
+import kr.khs.studyfarm.addUserSeq
 import kr.khs.studyfarm.network.*
 import kr.khs.studyfarm.network.request.LoginData
 import kr.khs.studyfarm.network.response.Response
@@ -59,7 +60,10 @@ class LoginViewModel(val context : Context) : ViewModel() {
                 _response.value = StudyFarmApi.retrofitService.loginUser(LoginData(email.get()!!, password.get()!!))
                 val abMap = _response.value!!.result as AbstractMap<*, *>
                 val token = abMap["token"] as String
+                val user = abMap["user"] as AbstractMap<*, *>
+                val seq = user["users_seq"] as Double
                 addAccessToken(context, token)
+                addUserSeq(context, seq.toInt())
                 _apiStatus.value = ApiStatus.DONE
             }
             catch (t : Throwable) {
