@@ -55,7 +55,7 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/main_vp_interested"
             android:layout_width="0dp"
-            android:layout_height="@dimen/vp_height"
+            android:layout_height="@dimen/vp_height_parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"

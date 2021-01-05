@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 class InterestingVPViewModel : ViewModel() {
+
 }
 
 class InterestingVPViewModelFactory : ViewModelProvider.Factory {

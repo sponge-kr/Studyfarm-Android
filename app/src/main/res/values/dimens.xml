@@ -4,4 +4,5 @@
     <dimen name="padding">8dp</dimen>
     <dimen name="vp_height">200dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="vp_height_parent">232dp</dimen>
 </resources>
