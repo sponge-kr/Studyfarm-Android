@@ -35,9 +35,9 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
     private final androidx.constraintlayout.widget.ConstraintLayout mboundView8;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback11;
+    private final android.view.View.OnClickListener mCallback6;
     @Nullable
-    private final android.view.View.OnClickListener mCallback12;
+    private final android.view.View.OnClickListener mCallback7;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -83,8 +83,8 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
         this.signupStep2.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback11 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
-        mCallback12 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
+        mCallback6 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
+        mCallback7 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
         invalidateAll();
     }
 
@@ -432,8 +432,8 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
         if ((dirtyFlags & 0x80L) != 0) {
             // api target 1
 
-            this.mboundView14.setOnClickListener(mCallback12);
-            this.signupBtnAddcity.setOnClickListener(mCallback11);
+            this.mboundView14.setOnClickListener(mCallback7);
+            this.signupBtnAddcity.setOnClickListener(mCallback6);
         }
         if ((dirtyFlags & 0xc1L) != 0) {
             // api target 1

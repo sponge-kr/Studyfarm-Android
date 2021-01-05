@@ -29,9 +29,9 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
     private final kr.khs.studyfarm.databinding.LayoutSignupStep2Binding mboundView02;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback3;
+    private final android.view.View.OnClickListener mCallback12;
     @Nullable
-    private final android.view.View.OnClickListener mCallback2;
+    private final android.view.View.OnClickListener mCallback11;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -58,8 +58,8 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
         this.signupSubtitle.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback3 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
-        mCallback2 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
+        mCallback12 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
+        mCallback11 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -235,8 +235,8 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
         if ((dirtyFlags & 0x10L) != 0) {
             // api target 1
 
-            this.signupBtnNext.setOnClickListener(mCallback2);
-            this.signupBtnSkip.setOnClickListener(mCallback3);
+            this.signupBtnNext.setOnClickListener(mCallback11);
+            this.signupBtnSkip.setOnClickListener(mCallback12);
         }
         if ((dirtyFlags & 0x1aL) != 0) {
             // api target 1

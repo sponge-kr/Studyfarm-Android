@@ -22,9 +22,9 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
     // views
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback13;
+    private final android.view.View.OnClickListener mCallback8;
     @Nullable
-    private final android.view.View.OnClickListener mCallback14;
+    private final android.view.View.OnClickListener mCallback9;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -49,8 +49,8 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
         this.signupStep3.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback13 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
-        mCallback14 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
+        mCallback8 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
+        mCallback9 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
         invalidateAll();
     }
 
@@ -223,8 +223,8 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
         if ((dirtyFlags & 0x10L) != 0) {
             // api target 1
 
-            this.signupSexMan.setOnClickListener(mCallback13);
-            this.signupSexWoman.setOnClickListener(mCallback14);
+            this.signupSexMan.setOnClickListener(mCallback8);
+            this.signupSexWoman.setOnClickListener(mCallback9);
         }
         if ((dirtyFlags & 0x1aL) != 0) {
             // api target 1

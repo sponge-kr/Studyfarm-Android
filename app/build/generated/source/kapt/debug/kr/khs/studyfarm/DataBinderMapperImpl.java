@@ -17,12 +17,17 @@ import java.util.HashMap;
 import java.util.List;
 import kr.khs.studyfarm.databinding.BottomsheetAgreementBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentLoginBindingImpl;
+import kr.khs.studyfarm.databinding.FragmentMainBindingImpl;
+import kr.khs.studyfarm.databinding.FragmentNotificationBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentSelectBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentSignupAuthBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentSignupBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentSignupInfoBindingImpl;
+import kr.khs.studyfarm.databinding.FragmentStudyInfoBindingImpl;
+import kr.khs.studyfarm.databinding.FragmentVpInterestingBindingImpl;
 import kr.khs.studyfarm.databinding.LayoutSignupStep1BindingImpl;
 import kr.khs.studyfarm.databinding.LayoutSignupStep2BindingImpl;
+import kr.khs.studyfarm.databinding.ListItemInterestingstudyBindingImpl;
 import kr.khs.studyfarm.databinding.ListItemSelectBindingImpl;
 
 public class DataBinderMapperImpl extends DataBinderMapper {
@@ -30,31 +35,46 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_FRAGMENTLOGIN = 2;
 
-  private static final int LAYOUT_FRAGMENTSELECT = 3;
+  private static final int LAYOUT_FRAGMENTMAIN = 3;
 
-  private static final int LAYOUT_FRAGMENTSIGNUP = 4;
+  private static final int LAYOUT_FRAGMENTNOTIFICATION = 4;
 
-  private static final int LAYOUT_FRAGMENTSIGNUPAUTH = 5;
+  private static final int LAYOUT_FRAGMENTSELECT = 5;
 
-  private static final int LAYOUT_FRAGMENTSIGNUPINFO = 6;
+  private static final int LAYOUT_FRAGMENTSIGNUP = 6;
 
-  private static final int LAYOUT_LAYOUTSIGNUPSTEP1 = 7;
+  private static final int LAYOUT_FRAGMENTSIGNUPAUTH = 7;
 
-  private static final int LAYOUT_LAYOUTSIGNUPSTEP2 = 8;
+  private static final int LAYOUT_FRAGMENTSIGNUPINFO = 8;
 
-  private static final int LAYOUT_LISTITEMSELECT = 9;
+  private static final int LAYOUT_FRAGMENTSTUDYINFO = 9;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(9);
+  private static final int LAYOUT_FRAGMENTVPINTERESTING = 10;
+
+  private static final int LAYOUT_LAYOUTSIGNUPSTEP1 = 11;
+
+  private static final int LAYOUT_LAYOUTSIGNUPSTEP2 = 12;
+
+  private static final int LAYOUT_LISTITEMINTERESTINGSTUDY = 13;
+
+  private static final int LAYOUT_LISTITEMSELECT = 14;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(14);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.bottomsheet_agreement, LAYOUT_BOTTOMSHEETAGREEMENT);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_login, LAYOUT_FRAGMENTLOGIN);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_main, LAYOUT_FRAGMENTMAIN);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_notification, LAYOUT_FRAGMENTNOTIFICATION);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_select, LAYOUT_FRAGMENTSELECT);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_signup, LAYOUT_FRAGMENTSIGNUP);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_signup_auth, LAYOUT_FRAGMENTSIGNUPAUTH);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_signup_info, LAYOUT_FRAGMENTSIGNUPINFO);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_study_info, LAYOUT_FRAGMENTSTUDYINFO);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_vp_interesting, LAYOUT_FRAGMENTVPINTERESTING);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.layout_signup_step1, LAYOUT_LAYOUTSIGNUPSTEP1);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.layout_signup_step2, LAYOUT_LAYOUTSIGNUPSTEP2);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.list_item_interestingstudy, LAYOUT_LISTITEMINTERESTINGSTUDY);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.list_item_select, LAYOUT_LISTITEMSELECT);
   }
 
@@ -78,6 +98,18 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new FragmentLoginBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for fragment_login is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTMAIN: {
+          if ("layout/fragment_main_0".equals(tag)) {
+            return new FragmentMainBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_main is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTNOTIFICATION: {
+          if ("layout/fragment_notification_0".equals(tag)) {
+            return new FragmentNotificationBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_notification is invalid. Received: " + tag);
         }
         case  LAYOUT_FRAGMENTSELECT: {
           if ("layout/fragment_select_0".equals(tag)) {
@@ -103,6 +135,18 @@ public class DataBinderMapperImpl extends DataBinderMapper {
           }
           throw new IllegalArgumentException("The tag for fragment_signup_info is invalid. Received: " + tag);
         }
+        case  LAYOUT_FRAGMENTSTUDYINFO: {
+          if ("layout/fragment_study_info_0".equals(tag)) {
+            return new FragmentStudyInfoBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_study_info is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTVPINTERESTING: {
+          if ("layout/fragment_vp_interesting_0".equals(tag)) {
+            return new FragmentVpInterestingBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_vp_interesting is invalid. Received: " + tag);
+        }
         case  LAYOUT_LAYOUTSIGNUPSTEP1: {
           if ("layout/layout_signup_step1_0".equals(tag)) {
             return new LayoutSignupStep1BindingImpl(component, view);
@@ -114,6 +158,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new LayoutSignupStep2BindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for layout_signup_step2 is invalid. Received: " + tag);
+        }
+        case  LAYOUT_LISTITEMINTERESTINGSTUDY: {
+          if ("layout/list_item_interestingstudy_0".equals(tag)) {
+            return new ListItemInterestingstudyBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for list_item_interestingstudy is invalid. Received: " + tag);
         }
         case  LAYOUT_LISTITEMSELECT: {
           if ("layout/list_item_select_0".equals(tag)) {
@@ -178,17 +228,22 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(9);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(14);
 
     static {
       sKeys.put("layout/bottomsheet_agreement_0", kr.khs.studyfarm.R.layout.bottomsheet_agreement);
       sKeys.put("layout/fragment_login_0", kr.khs.studyfarm.R.layout.fragment_login);
+      sKeys.put("layout/fragment_main_0", kr.khs.studyfarm.R.layout.fragment_main);
+      sKeys.put("layout/fragment_notification_0", kr.khs.studyfarm.R.layout.fragment_notification);
       sKeys.put("layout/fragment_select_0", kr.khs.studyfarm.R.layout.fragment_select);
       sKeys.put("layout/fragment_signup_0", kr.khs.studyfarm.R.layout.fragment_signup);
       sKeys.put("layout/fragment_signup_auth_0", kr.khs.studyfarm.R.layout.fragment_signup_auth);
       sKeys.put("layout/fragment_signup_info_0", kr.khs.studyfarm.R.layout.fragment_signup_info);
+      sKeys.put("layout/fragment_study_info_0", kr.khs.studyfarm.R.layout.fragment_study_info);
+      sKeys.put("layout/fragment_vp_interesting_0", kr.khs.studyfarm.R.layout.fragment_vp_interesting);
       sKeys.put("layout/layout_signup_step1_0", kr.khs.studyfarm.R.layout.layout_signup_step1);
       sKeys.put("layout/layout_signup_step2_0", kr.khs.studyfarm.R.layout.layout_signup_step2);
+      sKeys.put("layout/list_item_interestingstudy_0", kr.khs.studyfarm.R.layout.list_item_interestingstudy);
       sKeys.put("layout/list_item_select_0", kr.khs.studyfarm.R.layout.list_item_select);
     }
   }
