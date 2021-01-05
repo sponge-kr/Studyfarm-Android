@@ -3,5 +3,10 @@
     "name": "login_nav",
     "navigationXmlIds": [],
     "deepLinks": []
+  },
+  {
+    "name": "main_nav",
+    "navigationXmlIds": [],
+    "deepLinks": []
   }
 ]

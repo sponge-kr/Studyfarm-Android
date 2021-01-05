@@ -85,10 +85,11 @@ interface StudyFarmApiService {
 
     @Headers("Content-Type: application/hal+json;charset=UTF-8",
         "Accept: application/hal+json")
-  
     @GET("user/{userSeq}")
     suspend fun getUserInfo(@Header("Authorization") token : String, @Path ("userSeq") userSeq : Int) : GetUserResponse
 
+    @Headers("Content-Type: application/hal+json;charset=UTF-8",
+        "Accept: application/hal+json")
     @POST("auth/login/kakao")
     suspend fun loginByKakao(@Header("access_token") token : String) : Response
 

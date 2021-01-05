@@ -646,6 +646,7 @@
     <dimen name="design_textinput_caption_translate_y">5dp</dimen>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
+    <dimen name="fab_margin">16dp</dimen>
     <dimen name="fastscroll_default_thickness">8dp</dimen>
     <dimen name="fastscroll_margin">0dp</dimen>
     <dimen name="fastscroll_minimum_range">50dp</dimen>
@@ -887,6 +888,8 @@
     <dimen name="tooltip_y_offset_non_touch">0dp</dimen>
     <dimen name="tooltip_y_offset_touch">16dp</dimen>
     <dimen name="vertical_margin">8dp</dimen>
+    <dimen name="vp_height">200dp</dimen>
+    <dimen name="vp_height_parent">232dp</dimen>
     <item name="material_ic_keyboard_arrow_next_black_24dp" type="drawable">@drawable/material_ic_keyboard_arrow_right_black_24dp</item>
     <item name="material_ic_keyboard_arrow_previous_black_24dp" type="drawable">@drawable/material_ic_keyboard_arrow_left_black_24dp</item>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
@@ -1039,6 +1042,7 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with <ns1:g example="Mail" id="application_name">%s</ns1:g></string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="action_settings">설정</string>
     <string name="agreement_necessary">필수 약관에 모두 동의해주셔야합니다.</string>
     <string name="app_name">StudyFarm</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
@@ -1054,12 +1058,14 @@
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior" translatable="false">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
     <string description="Content description for an icon that appears in the title area of a dialog" name="icon_content_description">Dialog Icon</string>
     <string name="item_view_role_description">Tab</string>
     <string name="kakao_key">df7d774e42d9231c6c056b0b57a56350</string>
     <string name="kakao_scheme">kakaodf7d774e42d9231c6c056b0b57a56350</string>
     <string name="login_error">아이디 혹은 비밀번호가 일치하지 않습니다.</string>
+    <string name="main_greeting">%s님\n오늘도 열공하세요!</string>
     <string name="material_clock_display_divider" translatable="false">:</string>
     <string description="Description for the toggle to choose between AM and PM [CHAR_LIMIT=NONE] " name="material_clock_toggle_content_description">Select AM or PM</string>
     <string description="Description for button to switch to select the hour [CHAR_LIMIT=NONE]" name="material_hour_selection">Select hour</string>
@@ -1118,6 +1124,7 @@
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
     <string name="sample_kakao_key">MY_KAKAO_KEY</string>
+    <string name="sample_kakao_scheme">kakao+MY_KAKAO_KEY</string>
     <string name="search_menu_title">Search</string>
     <string name="select_duplicateCity">동일한 지역이 이미 선택되어 있습니다.</string>
     <string name="select_duplicateStudy">동일한 스터디가 이미 선택되어 있습니다.</string>
@@ -1149,7 +1156,7 @@
     <item name="android:windowEnterAnimation">@anim/mtrl_bottom_sheet_slide_in</item>
     <item name="android:windowExitAnimation">@anim/mtrl_bottom_sheet_slide_out</item>
   </style>
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.Bridge">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

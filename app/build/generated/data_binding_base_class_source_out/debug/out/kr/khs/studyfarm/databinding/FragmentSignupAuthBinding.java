@@ -25,9 +25,6 @@ public abstract class FragmentSignupAuthBinding extends ViewDataBinding {
   public final Button signemailBtnNext2;
 
   @NonNull
-  public final Button signupauthBtnAuth;
-
-  @NonNull
   public final TextView signupauthEmail;
 
   @NonNull
@@ -42,22 +39,29 @@ public abstract class FragmentSignupAuthBinding extends ViewDataBinding {
   @NonNull
   public final TextView textView4;
 
+  @NonNull
+  public final TextView textView6;
+
+  @NonNull
+  public final TextView textView7;
+
   @Bindable
   protected SignupAuthViewModel mViewModel;
 
   protected FragmentSignupAuthBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      ConstraintLayout constraintLayout, Button signemailBtnNext2, Button signupauthBtnAuth,
-      TextView signupauthEmail, TextView signupauthInquire, TextView signupauthMaintitle,
-      TextView signupauthSubtitle, TextView textView4) {
+      ConstraintLayout constraintLayout, Button signemailBtnNext2, TextView signupauthEmail,
+      TextView signupauthInquire, TextView signupauthMaintitle, TextView signupauthSubtitle,
+      TextView textView4, TextView textView6, TextView textView7) {
     super(_bindingComponent, _root, _localFieldCount);
     this.constraintLayout = constraintLayout;
     this.signemailBtnNext2 = signemailBtnNext2;
-    this.signupauthBtnAuth = signupauthBtnAuth;
     this.signupauthEmail = signupauthEmail;
     this.signupauthInquire = signupauthInquire;
     this.signupauthMaintitle = signupauthMaintitle;
     this.signupauthSubtitle = signupauthSubtitle;
     this.textView4 = textView4;
+    this.textView6 = textView6;
+    this.textView7 = textView7;
   }
 
   public abstract void setViewModel(@Nullable SignupAuthViewModel viewModel);

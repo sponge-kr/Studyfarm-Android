@@ -20,9 +20,9 @@ public class BottomsheetAgreementBindingImpl extends BottomsheetAgreementBinding
     private final androidx.constraintlayout.widget.ConstraintLayout mboundView0;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback8;
+    private final android.view.View.OnClickListener mCallback2;
     @Nullable
-    private final android.view.View.OnClickListener mCallback9;
+    private final android.view.View.OnClickListener mCallback3;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -213,8 +213,8 @@ public class BottomsheetAgreementBindingImpl extends BottomsheetAgreementBinding
         this.mboundView0.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback8 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
-        mCallback9 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
+        mCallback2 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
+        mCallback3 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
         invalidateAll();
     }
 
@@ -322,12 +322,12 @@ public class BottomsheetAgreementBindingImpl extends BottomsheetAgreementBinding
         if ((dirtyFlags & 0x4L) != 0) {
             // api target 1
 
-            this.agreementBtnNext.setOnClickListener(mCallback9);
+            this.agreementBtnNext.setOnClickListener(mCallback3);
             androidx.databinding.adapters.CompoundButtonBindingAdapter.setListeners(this.agreementCheck1, (android.widget.CompoundButton.OnCheckedChangeListener)null, agreementCheck1androidCheckedAttrChanged);
             androidx.databinding.adapters.CompoundButtonBindingAdapter.setListeners(this.agreementCheck2, (android.widget.CompoundButton.OnCheckedChangeListener)null, agreementCheck2androidCheckedAttrChanged);
             androidx.databinding.adapters.CompoundButtonBindingAdapter.setListeners(this.agreementCheck3, (android.widget.CompoundButton.OnCheckedChangeListener)null, agreementCheck3androidCheckedAttrChanged);
             androidx.databinding.adapters.CompoundButtonBindingAdapter.setListeners(this.agreementCheck4, (android.widget.CompoundButton.OnCheckedChangeListener)null, agreementCheck4androidCheckedAttrChanged);
-            this.agreementCheckAll.setOnClickListener(mCallback8);
+            this.agreementCheckAll.setOnClickListener(mCallback2);
         }
         if ((dirtyFlags & 0x7L) != 0) {
             // api target 1

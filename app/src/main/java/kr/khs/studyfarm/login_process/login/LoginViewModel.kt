@@ -102,9 +102,10 @@ class LoginViewModel(val context : Context) : ViewModel() {
             }
             catch(t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
-//                t.printStackTrace()
                 // 401일 경우 가입되지 않은 유저
-                kakaoSignUp(kakaoToken)
+
+                if(t.message!!.contains("HTTP 401"))
+                    kakaoSignUp(kakaoToken)
             }
         }
     }
