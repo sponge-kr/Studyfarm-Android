@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sample_kakao_key">MY_KAKAO_KEY</string>
+    <string name="sample_kakao_scheme">kakao+MY_KAKAO_KEY</string>
+</resources>

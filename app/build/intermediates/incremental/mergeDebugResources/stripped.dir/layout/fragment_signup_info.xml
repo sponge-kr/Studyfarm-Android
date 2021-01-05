@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+                                                       
+                                                  
+                                                         
+
+    
+                 
+                            
+                                                                                     
+           
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".login_process.sign_up_info.SignupInfoFragment" android:tag="layout/fragment_signup_info_0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+        <TextView
+            android:id="@+id/signup_maintitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:tag="binding_1"              
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/signup_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:tag="binding_2"             
+            app:layout_constraintStart_toStartOf="@+id/signup_maintitle"
+            app:layout_constraintTop_toBottomOf="@+id/signup_maintitle" />
+
+        <include
+            layout="@layout/layout_signup_step1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toTopOf="@+id/signup_btn_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_subtitle"
+                                          />
+
+        <include
+            layout="@layout/layout_signup_step2"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toTopOf="@+id/signup_btn_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_subtitle"
+                                          />
+
+        <Button
+            android:id="@+id/signup_btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="64dp"
+            android:tag="binding_3"                                
+            android:text="다음"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/signup_btn_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="다음에 할래요."
+            android:tag="binding_4"                            
+                                                                   
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_btn_next" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+         

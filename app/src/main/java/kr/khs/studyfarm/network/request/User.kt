@@ -52,3 +52,9 @@ data class LoginData(
     val email : String,
     val password : String
 )
+
+data class KakaoSignupData(
+    val nickname : String,
+    @Json(name = "service_use_agree")
+    val serviceUseAgree : Boolean = true
+)
