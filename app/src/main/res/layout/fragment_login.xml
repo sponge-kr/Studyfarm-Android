@@ -112,13 +112,14 @@
             app:layout_constraintTop_toBottomOf="@+id/signemail_tv_social" />
 
         <Button
-            android:id="@+id/apple"
+            android:id="@+id/kakao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="A"
+            android:text="K"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/naver"
-            app:layout_constraintTop_toTopOf="@+id/naver" />
+            app:layout_constraintTop_toTopOf="@+id/naver"
+            android:onClick="@{() -> viewModel.loginByKakao()}"/>
 
         <TextView
             android:id="@+id/signemail_tv_social"

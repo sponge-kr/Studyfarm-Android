@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_select.xml",
+        "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/fragment_select.xml"
+    },
+    {
+        "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/layout_signup_step1.xml",
+        "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/layout_signup_step1.xml"
+    },
+    {
+        "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_signup_info.xml",
+        "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/fragment_signup_info.xml"
+    },
+    {
+        "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_signup.xml",
+        "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/fragment_signup.xml"
+    },
+    {
+        "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/bottomsheet_agreement.xml",
+        "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/bottomsheet_agreement.xml"
+    },
+    {
+        "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_signup_auth.xml",
+        "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/fragment_signup_auth.xml"
+    },
+    {
+        "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/layout_signup_step2.xml",
+        "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/layout_signup_step2.xml"
+    },
+    {
+        "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_login.xml",
+        "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/fragment_login.xml"
+    },
+    {
+        "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/list_item_select.xml",
+        "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/list_item_select.xml"
+    }
+]
