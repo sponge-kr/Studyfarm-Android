@@ -6,6 +6,7 @@ import kr.khs.studyfarm.network.request.KakaoSignupData
 import kr.khs.studyfarm.network.request.LoginData
 import kr.khs.studyfarm.network.request.User
 import kr.khs.studyfarm.network.request.UserInfo
+import kr.khs.studyfarm.network.response.GetUserResponse
 import kr.khs.studyfarm.network.response.Response
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -84,6 +85,10 @@ interface StudyFarmApiService {
 
     @Headers("Content-Type: application/hal+json;charset=UTF-8",
         "Accept: application/hal+json")
+  
+    @GET("user/{userSeq}")
+    suspend fun getUserInfo(@Header("Authorization") token : String, @Path ("userSeq") userSeq : Int) : GetUserResponse
+
     @POST("auth/login/kakao")
     suspend fun loginByKakao(@Header("access_token") token : String) : Response
 
@@ -91,6 +96,7 @@ interface StudyFarmApiService {
         "Accept: application/hal+json")
     @POST("user/kakao")
     suspend fun signupByKakao(@Header("access_token") token : String, @Body kakaoSignup : KakaoSignupData) : Response
+
 }
 
 object StudyFarmApi {

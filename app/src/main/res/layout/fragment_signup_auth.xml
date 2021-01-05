@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="메일함에서 인증 확인을 눌러주세요"
+            android:text=""
             app:layout_constraintStart_toStartOf="@+id/signupauth_maintitle"
             app:layout_constraintTop_toBottomOf="@+id/signupauth_maintitle" />
 
@@ -62,23 +62,36 @@
                 android:id="@+id/signupauth_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@{viewModel.email}"
+                android:layout_margin="16dp"
+                android:text="메일함에서 인증 확인을 눌러주세요."
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/signupauth_btn_auth"
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="메일이 받지 못하셨나요?"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/signupauth_email"
+                app:layout_constraintStart_toStartOf="@+id/signupauth_email"
+                app:layout_constraintTop_toBottomOf="@+id/signupauth_email" />
+
+            <TextView
+                android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="인증 확인"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signupauth_email"/>
+                android:text="인증 메일 다시 받기"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/signupauth_email"
+                app:layout_constraintStart_toStartOf="@+id/signupauth_email"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_share"
+        android:enabled="true"
+        android:icon="?attr/actionModeShareDrawable"
+        android:title="공유하기"
+        android:visible="true"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_study_notify"
+        android:enabled="true"
+        android:title="이 스터디 알림 설정"
+        android:visible="true"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_study_withdraw"
+        android:enabled="true"
+        android:title="탈퇴하기"
+        android:visible="true"
+        app:showAsAction="never" />
+
+</menu>

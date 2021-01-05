@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/signupFragment"
         android:name="kr.khs.studyfarm.login_process.sign_up.SignupFragment"
-        android:label="fragment_signup"
+        android:label=""
         tools:layout="@layout/fragment_signup">
         <action
             android:id="@+id/action_signupFragment_to_loginFragment"
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/signupInfoFragment"
         android:name="kr.khs.studyfarm.login_process.sign_up_info.SignupInfoFragment"
-        android:label="SignupInfoFragment">
+        android:label="">
         <action
             android:id="@+id/action_signupInfoFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -46,7 +46,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="kr.khs.studyfarm.login_process.login.LoginFragment"
-        android:label="fragment_login"
+        android:label=""
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_signupFragment"
@@ -55,7 +55,7 @@
     <fragment
         android:id="@+id/signupAuthFragment"
         android:name="kr.khs.studyfarm.login_process.sign_up_auth.SignupAuthFragment"
-        android:label="SignupAuthFragment" >
+        android:label="" >
         <action
             android:id="@+id/action_signupAuthFragment_to_signupInfoFragment"
             app:destination="@id/signupInfoFragment" />
@@ -69,7 +69,7 @@
     <dialog
         android:id="@+id/agreementFragment"
         android:name="kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementFragment"
-        android:label="AgreementFragment" >
+        android:label="" >
         <argument
             android:name="email"
             app:argType="string" />
@@ -86,7 +86,7 @@
     <fragment
         android:id="@+id/selectFragment"
         android:name="kr.khs.studyfarm.login_process.select.SelectFragment"
-        android:label="SelectFragment" >
+        android:label="" >
         <action
             android:id="@+id/action_selectFragment_to_signupInfoFragment"
             app:destination="@id/signupInfoFragment"
