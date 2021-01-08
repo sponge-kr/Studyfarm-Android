@@ -4,7 +4,6 @@ package kr.khs.studyfarm.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -24,9 +23,6 @@ import kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel;
 public abstract class LayoutSignupStep2Binding extends ViewDataBinding {
   @NonNull
   public final NumberPicker signupAgePicker;
-
-  @NonNull
-  public final ImageView signupIvProfile;
 
   @NonNull
   public final RadioButton signupSexMan;
@@ -53,12 +49,11 @@ public abstract class LayoutSignupStep2Binding extends ViewDataBinding {
   protected Gender mGender;
 
   protected LayoutSignupStep2Binding(Object _bindingComponent, View _root, int _localFieldCount,
-      NumberPicker signupAgePicker, ImageView signupIvProfile, RadioButton signupSexMan,
-      RadioButton signupSexWoman, ConstraintLayout signupStep3, RadioGroup singupRadiogroupSex,
-      TextView step31, TextView step32) {
+      NumberPicker signupAgePicker, RadioButton signupSexMan, RadioButton signupSexWoman,
+      ConstraintLayout signupStep3, RadioGroup singupRadiogroupSex, TextView step31,
+      TextView step32) {
     super(_bindingComponent, _root, _localFieldCount);
     this.signupAgePicker = signupAgePicker;
-    this.signupIvProfile = signupIvProfile;
     this.signupSexMan = signupSexMan;
     this.signupSexWoman = signupSexWoman;
     this.signupStep3 = signupStep3;

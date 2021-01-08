@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.BottomsheetAgreementBinding
+import kr.khs.studyfarm.network.ApiStatus
 
 class AgreementFragment : BottomSheetDialogFragment() {
 
@@ -59,6 +60,15 @@ class AgreementFragment : BottomSheetDialogFragment() {
                     viewModel.seq
                 ))
                 viewModel.doneNextBtnClicked()
+            }
+        })
+
+        viewModel.apiStatus.observe(viewLifecycleOwner, Observer {
+            if(it == ApiStatus.LOADING) {
+                kr.khs.studyfarm.dialog.onLoadingDialog(requireActivity())
+            }
+            else if(kr.khs.studyfarm.dialog.loadingDialog != null && kr.khs.studyfarm.dialog.loadingDialog!!.isShowing) {
+                kr.khs.studyfarm.dialog.offLoadingDialog()
             }
         })
 

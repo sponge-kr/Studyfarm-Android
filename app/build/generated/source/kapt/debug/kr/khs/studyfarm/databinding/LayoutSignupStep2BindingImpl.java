@@ -14,10 +14,9 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.signup_iv_profile, 4);
-        sViewsWithIds.put(R.id.step3_1, 5);
-        sViewsWithIds.put(R.id.step3_2, 6);
-        sViewsWithIds.put(R.id.singup_radiogroup_sex, 7);
+        sViewsWithIds.put(R.id.step3_1, 4);
+        sViewsWithIds.put(R.id.step3_2, 5);
+        sViewsWithIds.put(R.id.singup_radiogroup_sex, 6);
     }
     // views
     // variables
@@ -30,18 +29,17 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
     // Inverse Binding Event Handlers
 
     public LayoutSignupStep2BindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 8, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 7, sIncludes, sViewsWithIds));
     }
     private LayoutSignupStep2BindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 2
             , (com.shawnlin.numberpicker.NumberPicker) bindings[1]
-            , (android.widget.ImageView) bindings[4]
             , (android.widget.RadioButton) bindings[2]
             , (android.widget.RadioButton) bindings[3]
             , (androidx.constraintlayout.widget.ConstraintLayout) bindings[0]
-            , (android.widget.RadioGroup) bindings[7]
+            , (android.widget.RadioGroup) bindings[6]
+            , (android.widget.TextView) bindings[4]
             , (android.widget.TextView) bindings[5]
-            , (android.widget.TextView) bindings[6]
             );
         this.signupAgePicker.setTag(null);
         this.signupSexMan.setTag(null);
