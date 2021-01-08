@@ -1805,6 +1805,7 @@ id action_bar_spinner
 id action_bar_subtitle
 id action_bar_title
 id action_bottom_home_to_notificationFragment
+id action_bottom_home_to_profileFragment
 id action_container
 id action_context_bar
 id action_divider
@@ -1858,7 +1859,6 @@ id bidirectional
 id blocking
 id bottom
 id bottom_explore
-id bottom_home
 id bottom_more
 id bounce
 id browser_actions_header_text
@@ -2000,6 +2000,7 @@ id main_fab
 id main_hello
 id main_nav
 id main_navhost
+id main_page
 id main_tab
 id main_vp_interested
 id main_vp_studynoti
@@ -2090,6 +2091,7 @@ id percent
 id pin
 id position
 id postLayout
+id profileFragment
 id progress_circular
 id progress_horizontal
 id radio
@@ -2368,6 +2370,7 @@ layout fragment_blank2
 layout fragment_login
 layout fragment_main
 layout fragment_notification
+layout fragment_profile
 layout fragment_select
 layout fragment_signup
 layout fragment_signup_auth

@@ -60,7 +60,7 @@ class MainFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.action_user -> Toast.makeText(context, "유저 프로필", Toast.LENGTH_SHORT).show()
+            R.id.action_user -> findNavController().navigate(MainFragmentDirections.actionBottomHomeToProfileFragment())
             R.id.action_notification -> findNavController().navigate(MainFragmentDirections.actionBottomHomeToNotificationFragment())
         }
         return super.onOptionsItemSelected(item)
