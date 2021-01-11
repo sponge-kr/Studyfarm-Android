@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentSelectBinding
+import kr.khs.studyfarm.dialog
+import kr.khs.studyfarm.network.ApiStatus
 
 class SelectFragment : Fragment() {
 
@@ -76,6 +78,15 @@ class SelectFragment : Fragment() {
 
         viewModel.childrenList.observe(viewLifecycleOwner, Observer {
             cityAdapter.submitList(it)
+        })
+
+        viewModel.apiStatus.observe(viewLifecycleOwner, Observer {
+            if(it == ApiStatus.LOADING) {
+                dialog.onLoadingDialog(requireActivity())
+            }
+            else if(dialog.loadingDialog != null && dialog.loadingDialog!!.isShowing) {
+                dialog.offLoadingDialog()
+            }
         })
 
         return binding.root

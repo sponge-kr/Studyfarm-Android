@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentLoginBinding
+import kr.khs.studyfarm.dialog
+import kr.khs.studyfarm.network.ApiStatus
 import kr.khs.studyfarm.view.MainActivity
 
 class LoginFragment : Fragment() {
@@ -53,6 +55,15 @@ class LoginFragment : Fragment() {
             if(it) {
                 findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignupFragment())
                 viewModel.doneGoToSignUp()
+            }
+        })
+
+        viewModel.apiStatus.observe(viewLifecycleOwner, Observer {
+            if(it == ApiStatus.LOADING) {
+                dialog.onLoadingDialog(requireActivity())
+            }
+            else if(dialog.loadingDialog != null && dialog.loadingDialog!!.isShowing) {
+                dialog.offLoadingDialog()
             }
         })
 

@@ -12,7 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentSignupAuthBinding
+import kr.khs.studyfarm.dialog
 import kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementFragmentArgs
+import kr.khs.studyfarm.network.ApiStatus
 
 class SignupAuthFragment : Fragment() {
 
@@ -52,6 +54,15 @@ class SignupAuthFragment : Fragment() {
             if(it != "") {
                 Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
                 viewModel.doneToast()
+            }
+        })
+
+        viewModel.apiStatus.observe(viewLifecycleOwner, Observer {
+            if(it == ApiStatus.LOADING) {
+                dialog.onLoadingDialog(requireActivity())
+            }
+            else if(dialog.loadingDialog != null && dialog.loadingDialog!!.isShowing) {
+                dialog.offLoadingDialog()
             }
         })
 

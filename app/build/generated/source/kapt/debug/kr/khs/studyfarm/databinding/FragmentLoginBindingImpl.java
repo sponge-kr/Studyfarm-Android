@@ -31,11 +31,11 @@ public class FragmentLoginBindingImpl extends FragmentLoginBinding implements kr
     private final com.google.android.material.textfield.TextInputEditText mboundView4;
     // variables
     @Nullable
+    private final android.view.View.OnClickListener mCallback17;
+    @Nullable
     private final android.view.View.OnClickListener mCallback15;
     @Nullable
-    private final android.view.View.OnClickListener mCallback13;
-    @Nullable
-    private final android.view.View.OnClickListener mCallback14;
+    private final android.view.View.OnClickListener mCallback16;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -145,9 +145,9 @@ public class FragmentLoginBindingImpl extends FragmentLoginBinding implements kr
         this.signpwPassword.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback15 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 3);
-        mCallback13 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
-        mCallback14 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
+        mCallback17 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 3);
+        mCallback15 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
+        mCallback16 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
         invalidateAll();
     }
 
@@ -286,11 +286,11 @@ public class FragmentLoginBindingImpl extends FragmentLoginBinding implements kr
         if ((dirtyFlags & 0x8L) != 0) {
             // api target 1
 
-            this.kakao.setOnClickListener(mCallback14);
-            this.loginBtnSignup.setOnClickListener(mCallback15);
+            this.kakao.setOnClickListener(mCallback16);
+            this.loginBtnSignup.setOnClickListener(mCallback17);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.mboundView2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, mboundView2androidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.mboundView4, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, mboundView4androidTextAttrChanged);
-            this.signemailBtnNext.setOnClickListener(mCallback13);
+            this.signemailBtnNext.setOnClickListener(mCallback15);
             kr.khs.studyfarm.BindingUtilKt.setPasswordVisibility(this.signpwPassword, true);
         }
         if ((dirtyFlags & 0xdL) != 0) {
