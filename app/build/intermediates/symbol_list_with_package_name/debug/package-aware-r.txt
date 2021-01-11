@@ -1841,7 +1841,9 @@ id action_bottom_home_to_profileFragment
 id action_container
 id action_context_bar
 id action_divider
+id action_findPWFragment_to_setPWFragment
 id action_image
+id action_loginFragment_to_findPWFragment
 id action_loginFragment_to_signupFragment
 id action_menu_divider
 id action_menu_presenter
@@ -1851,6 +1853,7 @@ id action_mode_close_button
 id action_notification
 id action_profileFragment_to_selectFragment2
 id action_selectFragment_to_signupInfoFragment
+id action_setPWFragment_to_loginFragment
 id action_share
 id action_signupAuthFragment_to_signupInfoFragment
 id action_signupFragment_to_agreementFragment
@@ -1975,6 +1978,7 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id findPWFragment
 id fitToContents
 id fixed
 id flip
@@ -2022,6 +2026,7 @@ id line1
 id line3
 id linear
 id linearLayout
+id linearLayout2
 id listMode
 id list_item
 id loading_img
@@ -2175,6 +2180,7 @@ id selectedTextAlignCenter
 id selectedTextAlignLeft
 id selectedTextAlignRight
 id selection_type
+id setPWFragment
 id shortcut
 id showCustom
 id showHome
@@ -2410,11 +2416,13 @@ layout design_text_input_start_icon
 layout dialog_loading
 layout fragment_blank1
 layout fragment_blank2
+layout fragment_find_pw
 layout fragment_login
 layout fragment_main
 layout fragment_notification
 layout fragment_profile
 layout fragment_select
+layout fragment_set_pw
 layout fragment_signup
 layout fragment_signup_auth
 layout fragment_signup_info

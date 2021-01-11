@@ -36,6 +36,10 @@ class LoginViewModel(val context : Context) : ViewModel() {
     val gotoSignUp : LiveData<Boolean>
         get() = _gotoSignUp
 
+    private val _gotoFindPW = MutableLiveData<Boolean>()
+    val gotoFindPW : LiveData<Boolean>
+        get() = _gotoFindPW
+
     private val _loginSuccess = MutableLiveData<Boolean>()
     val loginSuccess : LiveData<Boolean>
         get() = _loginSuccess
@@ -163,6 +167,14 @@ class LoginViewModel(val context : Context) : ViewModel() {
         _gotoSignUp.value = false
     }
 
+    fun doGoToFindPW() {
+        _gotoFindPW.value = true
+    }
+
+    fun doneGoToFindPW() {
+        _gotoFindPW.value = false
+    }
+
     fun doneLogin() {
         _loginSuccess.value = false
     }
@@ -176,6 +188,7 @@ class LoginViewModel(val context : Context) : ViewModel() {
         password.set("gmltmd!23")
         _gotoSignUp.value = false
         _loginSuccess.value = false
+        _gotoFindPW.value = false
     }
 
 

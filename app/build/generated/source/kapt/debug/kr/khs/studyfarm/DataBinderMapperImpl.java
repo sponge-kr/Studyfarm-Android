@@ -16,11 +16,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import kr.khs.studyfarm.databinding.BottomsheetAgreementBindingImpl;
+import kr.khs.studyfarm.databinding.FragmentFindPwBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentLoginBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentMainBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentNotificationBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentProfileBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentSelectBindingImpl;
+import kr.khs.studyfarm.databinding.FragmentSetPwBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentSignupAuthBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentSignupBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentSignupInfoBindingImpl;
@@ -34,43 +36,49 @@ import kr.khs.studyfarm.databinding.ListItemSelectBindingImpl;
 public class DataBinderMapperImpl extends DataBinderMapper {
   private static final int LAYOUT_BOTTOMSHEETAGREEMENT = 1;
 
-  private static final int LAYOUT_FRAGMENTLOGIN = 2;
+  private static final int LAYOUT_FRAGMENTFINDPW = 2;
 
-  private static final int LAYOUT_FRAGMENTMAIN = 3;
+  private static final int LAYOUT_FRAGMENTLOGIN = 3;
 
-  private static final int LAYOUT_FRAGMENTNOTIFICATION = 4;
+  private static final int LAYOUT_FRAGMENTMAIN = 4;
 
-  private static final int LAYOUT_FRAGMENTPROFILE = 5;
+  private static final int LAYOUT_FRAGMENTNOTIFICATION = 5;
 
-  private static final int LAYOUT_FRAGMENTSELECT = 6;
+  private static final int LAYOUT_FRAGMENTPROFILE = 6;
 
-  private static final int LAYOUT_FRAGMENTSIGNUP = 7;
+  private static final int LAYOUT_FRAGMENTSELECT = 7;
 
-  private static final int LAYOUT_FRAGMENTSIGNUPAUTH = 8;
+  private static final int LAYOUT_FRAGMENTSETPW = 8;
 
-  private static final int LAYOUT_FRAGMENTSIGNUPINFO = 9;
+  private static final int LAYOUT_FRAGMENTSIGNUP = 9;
 
-  private static final int LAYOUT_FRAGMENTSTUDYINFO = 10;
+  private static final int LAYOUT_FRAGMENTSIGNUPAUTH = 10;
 
-  private static final int LAYOUT_FRAGMENTVPINTERESTING = 11;
+  private static final int LAYOUT_FRAGMENTSIGNUPINFO = 11;
 
-  private static final int LAYOUT_LAYOUTSIGNUPSTEP1 = 12;
+  private static final int LAYOUT_FRAGMENTSTUDYINFO = 12;
 
-  private static final int LAYOUT_LAYOUTSIGNUPSTEP2 = 13;
+  private static final int LAYOUT_FRAGMENTVPINTERESTING = 13;
 
-  private static final int LAYOUT_LISTITEMINTERESTINGSTUDY = 14;
+  private static final int LAYOUT_LAYOUTSIGNUPSTEP1 = 14;
 
-  private static final int LAYOUT_LISTITEMSELECT = 15;
+  private static final int LAYOUT_LAYOUTSIGNUPSTEP2 = 15;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(15);
+  private static final int LAYOUT_LISTITEMINTERESTINGSTUDY = 16;
+
+  private static final int LAYOUT_LISTITEMSELECT = 17;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(17);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.bottomsheet_agreement, LAYOUT_BOTTOMSHEETAGREEMENT);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_find_pw, LAYOUT_FRAGMENTFINDPW);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_login, LAYOUT_FRAGMENTLOGIN);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_main, LAYOUT_FRAGMENTMAIN);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_notification, LAYOUT_FRAGMENTNOTIFICATION);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_profile, LAYOUT_FRAGMENTPROFILE);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_select, LAYOUT_FRAGMENTSELECT);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_set_pw, LAYOUT_FRAGMENTSETPW);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_signup, LAYOUT_FRAGMENTSIGNUP);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_signup_auth, LAYOUT_FRAGMENTSIGNUPAUTH);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_signup_info, LAYOUT_FRAGMENTSIGNUPINFO);
@@ -96,6 +104,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new BottomsheetAgreementBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for bottomsheet_agreement is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTFINDPW: {
+          if ("layout/fragment_find_pw_0".equals(tag)) {
+            return new FragmentFindPwBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_find_pw is invalid. Received: " + tag);
         }
         case  LAYOUT_FRAGMENTLOGIN: {
           if ("layout/fragment_login_0".equals(tag)) {
@@ -126,6 +140,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new FragmentSelectBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for fragment_select is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTSETPW: {
+          if ("layout/fragment_set_pw_0".equals(tag)) {
+            return new FragmentSetPwBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_set_pw is invalid. Received: " + tag);
         }
         case  LAYOUT_FRAGMENTSIGNUP: {
           if ("layout/fragment_signup_0".equals(tag)) {
@@ -238,15 +258,17 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(15);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(17);
 
     static {
       sKeys.put("layout/bottomsheet_agreement_0", kr.khs.studyfarm.R.layout.bottomsheet_agreement);
+      sKeys.put("layout/fragment_find_pw_0", kr.khs.studyfarm.R.layout.fragment_find_pw);
       sKeys.put("layout/fragment_login_0", kr.khs.studyfarm.R.layout.fragment_login);
       sKeys.put("layout/fragment_main_0", kr.khs.studyfarm.R.layout.fragment_main);
       sKeys.put("layout/fragment_notification_0", kr.khs.studyfarm.R.layout.fragment_notification);
       sKeys.put("layout/fragment_profile_0", kr.khs.studyfarm.R.layout.fragment_profile);
       sKeys.put("layout/fragment_select_0", kr.khs.studyfarm.R.layout.fragment_select);
+      sKeys.put("layout/fragment_set_pw_0", kr.khs.studyfarm.R.layout.fragment_set_pw);
       sKeys.put("layout/fragment_signup_0", kr.khs.studyfarm.R.layout.fragment_signup);
       sKeys.put("layout/fragment_signup_auth_0", kr.khs.studyfarm.R.layout.fragment_signup_auth);
       sKeys.put("layout/fragment_signup_info_0", kr.khs.studyfarm.R.layout.fragment_signup_info);

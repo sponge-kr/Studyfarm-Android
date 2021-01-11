@@ -16,6 +16,10 @@
         "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/fragment_main.xml"
     },
     {
+        "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_find_pw.xml",
+        "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/fragment_find_pw.xml"
+    },
+    {
         "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/list_item_select.xml",
         "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/list_item_select.xml"
     },
@@ -46,6 +50,10 @@
     {
         "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_signup_auth.xml",
         "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/fragment_signup_auth.xml"
+    },
+    {
+        "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_set_pw.xml",
+        "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/fragment_set_pw.xml"
     },
     {
         "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/layout_signup_step2.xml",

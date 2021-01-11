@@ -60,6 +60,13 @@ class LoginFragment : Fragment() {
             }
         })
 
+        viewModel.gotoFindPW.observe(viewLifecycleOwner, Observer {
+            if(it) {
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToFindPWFragment())
+                viewModel.doneGoToFindPW()
+            }
+        })
+
         viewModel.apiStatus.observe(viewLifecycleOwner, Observer {
             if(it == ApiStatus.LOADING) {
                 dialog.onLoadingDialog(requireActivity())
