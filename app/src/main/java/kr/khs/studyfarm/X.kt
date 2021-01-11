@@ -2,10 +2,12 @@ package kr.khs.studyfarm
 
 import android.app.Activity
 import android.content.Context
+import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.ColorDrawable
 import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialog
 import java.util.regex.Pattern
 
@@ -111,4 +113,13 @@ object dialog {
             loadingDialog?.dismiss()
         }
     }
+}
+
+fun createAlertDialog(context : Context, msg : String, btnMsg : String) {
+    val builder = AlertDialog.Builder(context).apply {
+        setMessage(msg)
+        setPositiveButton(btnMsg) { dialog, which ->
+            dialog.dismiss()
+        }
+    }.create().show()
 }
