@@ -55,6 +55,7 @@ class MainViewModel(private val fm : FragmentManager, private val context : Cont
                 val user = _response.value!!.result
                 interestings.value = user.interesting
                 nickName.set(user.nickname)
+                _apiStatus.value = ApiStatus.DONE
             }
             catch(t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
