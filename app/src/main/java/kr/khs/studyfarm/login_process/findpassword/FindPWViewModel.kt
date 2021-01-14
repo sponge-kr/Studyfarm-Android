@@ -108,18 +108,15 @@ class FindPWViewModel : ViewModel() {
                 _apiStatus.value = ApiStatus.LOADING
                 val emailData = EmailData(textField.get()!!)
                 _response.value = StudyFarmApi.retrofitService.sendCode(emailData)
-                val abMap = _response.value!!.result as AbstractMap<*, *>
                 _apiStatus.value = ApiStatus.DONE
                 clear()
                 _step.value = _step.value?.plus(1)
             }
             catch (t : Throwable) {
+                // TODO: 1/14/21 error parsing 
                 _apiStatus.value = ApiStatus.ERROR
                 t.printStackTrace()
             }
-            //for testing
-            clear()
-            _step.value = _step.value?.plus(1)
         }
     }
 
@@ -134,14 +131,14 @@ class FindPWViewModel : ViewModel() {
                 _response.value = StudyFarmApi.retrofitService.checkCode(email, textField.get()!!)
                 val abMap = _response.value!!.result as AbstractMap<*, *>
                 _apiStatus.value = ApiStatus.DONE
+                //{"code":200,"message":"성공하였습니다.","result":{"check_result":false,"links":{"self":{"href":"http://3.214.168.45:8080/api/v1/user/check-code"}}},"responseTime":"2021-01-14 03:19:02"}
+                //check_result = true 일 경우만
 //                doSetPW()
             }
             catch (t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
                 t.printStackTrace()
             }
-            //for testing
-            doSetPW()
         }
     }
 
