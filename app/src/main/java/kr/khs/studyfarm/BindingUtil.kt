@@ -214,3 +214,8 @@ fun ViewPager.updateItems(list : List<UserInterestingInfo>) {
     if(list.isNotEmpty())
         (this.adapter as InterestingVPAdapter).updateLists(list)
 }
+
+@BindingAdapter("app:layout_visibility")
+fun View.setVisible(visible : Boolean) {
+    this.visibility = if(visible) View.VISIBLE else View.GONE
+}
