@@ -103,6 +103,7 @@ class LoginViewModel(val context : Context) : ViewModel() {
                 addUserSeq(context, seq.toInt())
               
                 _loginSuccess.value = true
+                _apiStatus.value = ApiStatus.DONE
             }
             catch(t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
