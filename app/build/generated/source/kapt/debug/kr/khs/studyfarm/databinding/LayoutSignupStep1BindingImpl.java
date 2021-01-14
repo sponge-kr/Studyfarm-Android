@@ -36,7 +36,7 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
     private final androidx.constraintlayout.widget.ConstraintLayout mboundView9;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback6;
+    private final android.view.View.OnClickListener mCallback8;
     @Nullable
     private final android.view.View.OnClickListener mCallback7;
     // values
@@ -85,8 +85,8 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
         this.signupStep2.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback6 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
-        mCallback7 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
+        mCallback8 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
+        mCallback7 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -434,8 +434,8 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
         if ((dirtyFlags & 0x80L) != 0) {
             // api target 1
 
-            this.mboundView5.setOnClickListener(mCallback7);
-            this.signupBtnAddcity.setOnClickListener(mCallback6);
+            this.mboundView5.setOnClickListener(mCallback8);
+            this.signupBtnAddcity.setOnClickListener(mCallback7);
         }
         if ((dirtyFlags & 0xc1L) != 0) {
             // api target 1
@@ -468,23 +468,6 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
     // callback impls
     public final void _internalCallbackOnClick(int sourceId , android.view.View callbackArg_0) {
         switch(sourceId) {
-            case 1: {
-                // localize variables for thread safety
-                // viewModel
-                kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel viewModel = mViewModel;
-                // viewModel != null
-                boolean viewModelJavaLangObjectNull = false;
-
-
-
-                viewModelJavaLangObjectNull = (viewModel) != (null);
-                if (viewModelJavaLangObjectNull) {
-
-
-                    viewModel.doSelectCity();
-                }
-                break;
-            }
             case 2: {
                 // localize variables for thread safety
                 // viewModel
@@ -499,6 +482,23 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
 
 
                     viewModel.doSelectInteresting();
+                }
+                break;
+            }
+            case 1: {
+                // localize variables for thread safety
+                // viewModel
+                kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel viewModel = mViewModel;
+                // viewModel != null
+                boolean viewModelJavaLangObjectNull = false;
+
+
+
+                viewModelJavaLangObjectNull = (viewModel) != (null);
+                if (viewModelJavaLangObjectNull) {
+
+
+                    viewModel.doSelectCity();
                 }
                 break;
             }

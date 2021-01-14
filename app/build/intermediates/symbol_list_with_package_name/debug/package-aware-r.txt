@@ -1979,6 +1979,10 @@ id fill_horizontal
 id fill_vertical
 id filled
 id findPWFragment
+id findpw_btn_send
+id findpw_et_field
+id findpw_subtitle
+id findpw_title
 id fitToContents
 id fixed
 id flip
@@ -2181,6 +2185,9 @@ id selectedTextAlignLeft
 id selectedTextAlignRight
 id selection_type
 id setPWFragment
+id setpw_btn_ok
+id setpw_password
+id setpw_title
 id shortcut
 id showCustom
 id showHome
@@ -2428,6 +2435,8 @@ layout fragment_signup_auth
 layout fragment_signup_info
 layout fragment_study_info
 layout fragment_vp_interesting
+layout layout_findpw_step1
+layout layout_findpw_step2
 layout layout_signup_step1
 layout layout_signup_step2
 layout list_item_interestingstudy

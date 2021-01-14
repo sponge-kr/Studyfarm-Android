@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -13,11 +14,52 @@
         android:layout_height="match_parent"
         tools:context=".login_process.findpassword.SetPWFragment">
 
-        <!-- TODO: Update blank fragment layout -->
+        <Button
+            android:id="@+id/setpw_btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="@{() -> viewModel.onBtnClick()}"
+            android:text="확인"
+            app:layout_constraintEnd_toEndOf="@+id/setpw_password"
+            app:layout_constraintStart_toStartOf="@+id/setpw_password"
+            app:layout_constraintTop_toBottomOf="@+id/setpw_password" />
+
         <TextView
+            android:id="@+id/setpw_title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:text="비밀번호 찾기\n\n새 비밀번호 입력"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/setpw_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/setpw_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/vertical_margin"
+            app:errorMsg='@{"비밀번호의 형식이 맞지 않습니다."}'
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setPasswordVisibilityToggle="@{true}"
+            app:validation="@{viewModel.rule.PASSWORD_RULE}"
+            android:layout_margin="@dimen/vertical_margin">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="비밀번호 입력"
+                android:inputType="textPassword"
+                android:text="@={viewModel.password}" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

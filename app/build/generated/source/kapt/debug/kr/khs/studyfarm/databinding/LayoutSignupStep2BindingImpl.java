@@ -21,7 +21,7 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
     // views
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback8;
+    private final android.view.View.OnClickListener mCallback10;
     @Nullable
     private final android.view.View.OnClickListener mCallback9;
     // values
@@ -47,8 +47,8 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
         this.signupStep3.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback8 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
-        mCallback9 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
+        mCallback10 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
+        mCallback9 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -221,8 +221,8 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
         if ((dirtyFlags & 0x10L) != 0) {
             // api target 1
 
-            this.signupSexMan.setOnClickListener(mCallback8);
-            this.signupSexWoman.setOnClickListener(mCallback9);
+            this.signupSexMan.setOnClickListener(mCallback9);
+            this.signupSexWoman.setOnClickListener(mCallback10);
         }
         if ((dirtyFlags & 0x1aL) != 0) {
             // api target 1
@@ -234,27 +234,6 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
     // callback impls
     public final void _internalCallbackOnClick(int sourceId , android.view.View callbackArg_0) {
         switch(sourceId) {
-            case 1: {
-                // localize variables for thread safety
-                // gender
-                kr.khs.studyfarm.Gender gender = mGender;
-                // viewModel
-                kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel viewModel = mViewModel;
-                // viewModel != null
-                boolean viewModelJavaLangObjectNull = false;
-
-
-
-                viewModelJavaLangObjectNull = (viewModel) != (null);
-                if (viewModelJavaLangObjectNull) {
-
-
-
-
-                    viewModel.selectGender(kr.khs.studyfarm.Gender.Man);
-                }
-                break;
-            }
             case 2: {
                 // localize variables for thread safety
                 // gender
@@ -273,6 +252,27 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
 
 
                     viewModel.selectGender(kr.khs.studyfarm.Gender.Woman);
+                }
+                break;
+            }
+            case 1: {
+                // localize variables for thread safety
+                // gender
+                kr.khs.studyfarm.Gender gender = mGender;
+                // viewModel
+                kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel viewModel = mViewModel;
+                // viewModel != null
+                boolean viewModelJavaLangObjectNull = false;
+
+
+
+                viewModelJavaLangObjectNull = (viewModel) != (null);
+                if (viewModelJavaLangObjectNull) {
+
+
+
+
+                    viewModel.selectGender(kr.khs.studyfarm.Gender.Man);
                 }
                 break;
             }
