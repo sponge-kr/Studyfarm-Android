@@ -17,25 +17,26 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
         sViewsWithIds.put(R.id.step2_1, 15);
         sViewsWithIds.put(R.id.signup_horizonscroll_city, 16);
         sViewsWithIds.put(R.id.step2_2, 17);
+        sViewsWithIds.put(R.id.linearLayout2, 18);
     }
     // views
     @NonNull
-    private final android.widget.RatingBar mboundView10;
+    private final android.widget.RatingBar mboundView11;
     @NonNull
-    private final androidx.constraintlayout.widget.ConstraintLayout mboundView11;
+    private final androidx.constraintlayout.widget.ConstraintLayout mboundView12;
     @NonNull
-    private final android.widget.RatingBar mboundView13;
+    private final android.widget.RatingBar mboundView14;
     @NonNull
-    private final android.widget.Button mboundView14;
+    private final android.widget.TextView mboundView5;
     @NonNull
-    private final androidx.constraintlayout.widget.ConstraintLayout mboundView5;
+    private final androidx.constraintlayout.widget.ConstraintLayout mboundView6;
     @NonNull
-    private final android.widget.RatingBar mboundView7;
+    private final android.widget.RatingBar mboundView8;
     @NonNull
-    private final androidx.constraintlayout.widget.ConstraintLayout mboundView8;
+    private final androidx.constraintlayout.widget.ConstraintLayout mboundView9;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback6;
+    private final android.view.View.OnClickListener mCallback8;
     @Nullable
     private final android.view.View.OnClickListener mCallback7;
     // values
@@ -43,36 +44,37 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
     // Inverse Binding Event Handlers
 
     public LayoutSignupStep1BindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 18, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 19, sIncludes, sViewsWithIds));
     }
     private LayoutSignupStep1BindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 6
-            , (android.widget.Button) bindings[4]
-            , (com.google.android.material.chip.Chip) bindings[1]
+            , (android.widget.LinearLayout) bindings[18]
+            , (android.widget.TextView) bindings[1]
             , (com.google.android.material.chip.Chip) bindings[2]
             , (com.google.android.material.chip.Chip) bindings[3]
-            , (com.google.android.material.chip.Chip) bindings[6]
-            , (com.google.android.material.chip.Chip) bindings[9]
-            , (com.google.android.material.chip.Chip) bindings[12]
+            , (com.google.android.material.chip.Chip) bindings[4]
+            , (com.google.android.material.chip.Chip) bindings[7]
+            , (com.google.android.material.chip.Chip) bindings[10]
+            , (com.google.android.material.chip.Chip) bindings[13]
             , (android.widget.HorizontalScrollView) bindings[16]
             , (androidx.constraintlayout.widget.ConstraintLayout) bindings[0]
             , (android.widget.TextView) bindings[15]
             , (android.widget.TextView) bindings[17]
             );
-        this.mboundView10 = (android.widget.RatingBar) bindings[10];
-        this.mboundView10.setTag(null);
-        this.mboundView11 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[11];
+        this.mboundView11 = (android.widget.RatingBar) bindings[11];
         this.mboundView11.setTag(null);
-        this.mboundView13 = (android.widget.RatingBar) bindings[13];
-        this.mboundView13.setTag(null);
-        this.mboundView14 = (android.widget.Button) bindings[14];
+        this.mboundView12 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[12];
+        this.mboundView12.setTag(null);
+        this.mboundView14 = (android.widget.RatingBar) bindings[14];
         this.mboundView14.setTag(null);
-        this.mboundView5 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[5];
+        this.mboundView5 = (android.widget.TextView) bindings[5];
         this.mboundView5.setTag(null);
-        this.mboundView7 = (android.widget.RatingBar) bindings[7];
-        this.mboundView7.setTag(null);
-        this.mboundView8 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[8];
+        this.mboundView6 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[6];
+        this.mboundView6.setTag(null);
+        this.mboundView8 = (android.widget.RatingBar) bindings[8];
         this.mboundView8.setTag(null);
+        this.mboundView9 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[9];
+        this.mboundView9.setTag(null);
         this.signupBtnAddcity.setTag(null);
         this.signupChipCity1.setTag(null);
         this.signupChipCity2.setTag(null);
@@ -83,8 +85,8 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
         this.signupStep2.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback6 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
-        mCallback7 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
+        mCallback8 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
+        mCallback7 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -418,22 +420,22 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
         if ((dirtyFlags & 0xc2L) != 0) {
             // api target 1
 
-            kr.khs.studyfarm.BindingUtilKt.ratingBarSetting(this.mboundView10, androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating1);
-            kr.khs.studyfarm.BindingUtilKt.ratingBarSetting(this.mboundView13, androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating2);
-            kr.khs.studyfarm.BindingUtilKt.ratingBarSetting(this.mboundView7, androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating0);
+            kr.khs.studyfarm.BindingUtilKt.ratingBarSetting(this.mboundView11, androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating1);
+            kr.khs.studyfarm.BindingUtilKt.ratingBarSetting(this.mboundView14, androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating2);
+            kr.khs.studyfarm.BindingUtilKt.ratingBarSetting(this.mboundView8, androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating0);
         }
         if ((dirtyFlags & 0xe0L) != 0) {
             // api target 1
 
-            this.mboundView11.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities2);
-            this.mboundView5.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities0);
-            this.mboundView8.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities1);
+            this.mboundView12.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities2);
+            this.mboundView6.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities0);
+            this.mboundView9.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities1);
         }
         if ((dirtyFlags & 0x80L) != 0) {
             // api target 1
 
-            this.mboundView14.setOnClickListener(mCallback7);
-            this.signupBtnAddcity.setOnClickListener(mCallback6);
+            this.mboundView5.setOnClickListener(mCallback8);
+            this.signupBtnAddcity.setOnClickListener(mCallback7);
         }
         if ((dirtyFlags & 0xc1L) != 0) {
             // api target 1
@@ -466,23 +468,6 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
     // callback impls
     public final void _internalCallbackOnClick(int sourceId , android.view.View callbackArg_0) {
         switch(sourceId) {
-            case 1: {
-                // localize variables for thread safety
-                // viewModel
-                kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel viewModel = mViewModel;
-                // viewModel != null
-                boolean viewModelJavaLangObjectNull = false;
-
-
-
-                viewModelJavaLangObjectNull = (viewModel) != (null);
-                if (viewModelJavaLangObjectNull) {
-
-
-                    viewModel.doSelectCity();
-                }
-                break;
-            }
             case 2: {
                 // localize variables for thread safety
                 // viewModel
@@ -497,6 +482,23 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
 
 
                     viewModel.doSelectInteresting();
+                }
+                break;
+            }
+            case 1: {
+                // localize variables for thread safety
+                // viewModel
+                kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel viewModel = mViewModel;
+                // viewModel != null
+                boolean viewModelJavaLangObjectNull = false;
+
+
+
+                viewModelJavaLangObjectNull = (viewModel) != (null);
+                if (viewModelJavaLangObjectNull) {
+
+
+                    viewModel.doSelectCity();
                 }
                 break;
             }

@@ -2,10 +2,9 @@ package kr.khs.studyfarm.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import kr.khs.studyfarm.network.request.KakaoSignupData
-import kr.khs.studyfarm.network.request.LoginData
-import kr.khs.studyfarm.network.request.User
-import kr.khs.studyfarm.network.request.UserInfo
+import kr.khs.studyfarm.network.request.*
+import kr.khs.studyfarm.network.response.CheckTokenResponse
+import kr.khs.studyfarm.network.response.GetCodeResponse
 import kr.khs.studyfarm.network.response.GetUserResponse
 import kr.khs.studyfarm.network.response.Response
 import okhttp3.Interceptor
@@ -98,6 +97,20 @@ interface StudyFarmApiService {
     @POST("user/kakao")
     suspend fun signupByKakao(@Header("access_token") token : String, @Body kakaoSignup : KakaoSignupData) : Response
 
+    @Headers("Content-Type: application/hal+json;charset=UTF-8",
+        "Accept: application/hal+json")
+    @GET("auth/check-token")
+    suspend fun checkToken(@Header("check_token") token : String) : CheckTokenResponse
+
+    @Headers("Content-Type: application/hal+json;charset=UTF-8",
+        "Accept: application/hal+json")
+    @POST("utils/send-mail/code")
+    suspend fun sendCode(@Body email : EmailData) : Response
+
+    @Headers("Content-Type: application/hal+json;charset=UTF-8",
+        "Accept: application/hal+json")
+    @GET("auth/check-code")
+    suspend fun checkCode(@Query("email") email : String, @Query("code") code : String) : GetCodeResponse
 }
 
 object StudyFarmApi {

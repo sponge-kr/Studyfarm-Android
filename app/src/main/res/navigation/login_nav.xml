@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_loginFragment_to_signupFragment"
             app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_findPWFragment"
+            app:destination="@id/findPWFragment" />
     </fragment>
     <fragment
         android:id="@+id/signupAuthFragment"
@@ -106,5 +109,23 @@
             android:name="interested"
             app:argType="kr.khs.studyfarm.login_process.select.SelectInfo[]"
             app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/findPWFragment"
+        android:name="kr.khs.studyfarm.login_process.findpassword.FindPWFragment"
+        android:label="비밀번호 찾기" >
+        <action
+            android:id="@+id/action_findPWFragment_to_setPWFragment"
+            app:destination="@id/setPWFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setPWFragment"
+        android:name="kr.khs.studyfarm.login_process.findpassword.SetPWFragment"
+        android:label="SetPWFragment" >
+        <action
+            android:id="@+id/action_setPWFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
