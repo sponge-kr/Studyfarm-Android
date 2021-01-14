@@ -26,19 +26,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/findpw_et_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            android:text="@={viewModel.textField}"
+            app:errorEnabled="true"
+            app:validation="@{viewModel.rule.EMAIL_RULE}"
+            app:errorMsg='@{"이메일 형식이 맞지 않습니다."}'
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="@={viewModel.textField}"
+                android:inputType="textEmailAddress"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/findpw_btn_send"
