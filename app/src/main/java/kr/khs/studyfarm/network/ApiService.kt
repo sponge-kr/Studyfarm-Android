@@ -4,6 +4,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kr.khs.studyfarm.network.request.*
 import kr.khs.studyfarm.network.response.CheckTokenResponse
+import kr.khs.studyfarm.network.response.GetCodeResponse
 import kr.khs.studyfarm.network.response.GetUserResponse
 import kr.khs.studyfarm.network.response.Response
 import okhttp3.Interceptor
@@ -109,7 +110,7 @@ interface StudyFarmApiService {
     @Headers("Content-Type: application/hal+json;charset=UTF-8",
         "Accept: application/hal+json")
     @GET("auth/check-code")
-    suspend fun checkCode(@Query("email") email : String, @Query("code") code : String) : Response
+    suspend fun checkCode(@Query("email") email : String, @Query("code") code : String) : GetCodeResponse
 }
 
 object StudyFarmApi {

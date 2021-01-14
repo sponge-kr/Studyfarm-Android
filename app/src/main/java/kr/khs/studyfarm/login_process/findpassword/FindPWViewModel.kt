@@ -11,8 +11,11 @@ import kr.khs.studyfarm.network.ApiStatus
 import kr.khs.studyfarm.network.StudyFarmApi
 import kr.khs.studyfarm.network.StudyFarmApiService
 import kr.khs.studyfarm.network.request.EmailData
+import kr.khs.studyfarm.network.response.GetCodeResponse
 import kr.khs.studyfarm.network.response.Response
 import kr.khs.studyfarm.network.response.ResponseError
+import kr.khs.studyfarm.network.response.errorHandling
+import retrofit2.HttpException
 
 class FindPWViewModel : ViewModel() {
     private val PROCESS_SIZE = 2
@@ -61,6 +64,10 @@ class FindPWViewModel : ViewModel() {
     private val _response = MutableLiveData<Response>()
     val response : LiveData<Response>
         get() = _response
+
+    private val _response2 = MutableLiveData<GetCodeResponse>()
+    val response2 : LiveData<GetCodeResponse>
+        get() = _response2
 
     private val _error = MutableLiveData<ResponseError>()
     val error : LiveData<ResponseError>
@@ -113,9 +120,8 @@ class FindPWViewModel : ViewModel() {
                 _step.value = _step.value?.plus(1)
             }
             catch (t : Throwable) {
-                // TODO: 1/14/21 error parsing 
                 _apiStatus.value = ApiStatus.ERROR
-                t.printStackTrace()
+                _toast.value = errorHandling(t).message
             }
         }
     }
@@ -128,12 +134,13 @@ class FindPWViewModel : ViewModel() {
         coroutineScope.launch {
             try {
                 _apiStatus.value = ApiStatus.LOADING
-                _response.value = StudyFarmApi.retrofitService.checkCode(email, textField.get()!!)
-                val abMap = _response.value!!.result as AbstractMap<*, *>
+                _response2.value = StudyFarmApi.retrofitService.checkCode(email, textField.get()!!)
                 _apiStatus.value = ApiStatus.DONE
-                //{"code":200,"message":"성공하였습니다.","result":{"check_result":false,"links":{"self":{"href":"http://3.214.168.45:8080/api/v1/user/check-code"}}},"responseTime":"2021-01-14 03:19:02"}
-                //check_result = true 일 경우만
-//                doSetPW()
+
+                if(response2.value!!.result.checkResult)
+                    doSetPW()
+                else
+                    _toast.value = "올바르지 않은 인증코드입니다."
             }
             catch (t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR

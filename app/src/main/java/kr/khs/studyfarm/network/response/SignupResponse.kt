@@ -97,3 +97,10 @@ data class CheckTokenResult(
     @Json(name = "check_result")
     val checkResult : Boolean
 )
+
+data class GetCodeResponse(
+    val code : Double,
+    val message : String,
+    val responseTime : String,
+    val result : CheckTokenResult
+)
