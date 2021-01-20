@@ -33,6 +33,17 @@
 <!--            app:layout_constraintStart_toStartOf="@+id/signup_datepicker"-->
 <!--            app:layout_constraintTop_toBottomOf="@+id/signup_datepicker" />-->
 
+        <View
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/signup_age_picker"
+            app:layout_constraintStart_toStartOf="@+id/signup_age_picker"
+            app:layout_constraintTop_toTopOf="@+id/signup_age_picker" />
+
         <TextView
             android:id="@+id/step3_1"
             android:layout_width="wrap_content"
@@ -64,7 +75,9 @@
             app:np_max="100"
             app:np_min="1"
             app:np_dividerColor="@color/colorPrimary"
-            app:agePickerSettting="@{viewModel.age}"/>
+            app:agePickerSettting="@{viewModel.age}">
+
+        </com.shawnlin.numberpicker.NumberPicker>
 
         <RadioGroup
             android:id="@+id/singup_radiogroup_sex"

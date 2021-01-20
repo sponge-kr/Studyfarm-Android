@@ -1696,6 +1696,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable circle
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
@@ -2011,6 +2012,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageView
 id incoming
 id info
 id invisible
@@ -2272,6 +2274,7 @@ id test_checkbox_android_button_tint
 id test_checkbox_app_button_tint
 id test_radiobutton_android_button_tint
 id test_radiobutton_app_button_tint
+id testpicker
 id text
 id text2
 id textAlignCenter
@@ -2401,6 +2404,7 @@ layout activity_main
 layout activity_sign
 layout activity_splash
 layout activity_talk_auth_code
+layout activity_test
 layout bottomsheet_agreement
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
@@ -2570,6 +2574,7 @@ string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string hello_blank_fragment
+string hello_world
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string item_view_role_description
