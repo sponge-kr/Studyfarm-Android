@@ -1,2 +1,4 @@
 /build
 /src/main/res/values/keys.xml
+/src/main/res/layout/activity_test.xml
+/src/main/java/kr/khs/studyfarm/view/TestActivity.kt

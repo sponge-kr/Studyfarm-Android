@@ -22,6 +22,9 @@ import kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel;
 
 public abstract class LayoutSignupStep2Binding extends ViewDataBinding {
   @NonNull
+  public final View imageView;
+
+  @NonNull
   public final NumberPicker signupAgePicker;
 
   @NonNull
@@ -49,10 +52,11 @@ public abstract class LayoutSignupStep2Binding extends ViewDataBinding {
   protected Gender mGender;
 
   protected LayoutSignupStep2Binding(Object _bindingComponent, View _root, int _localFieldCount,
-      NumberPicker signupAgePicker, RadioButton signupSexMan, RadioButton signupSexWoman,
-      ConstraintLayout signupStep3, RadioGroup singupRadiogroupSex, TextView step31,
-      TextView step32) {
+      View imageView, NumberPicker signupAgePicker, RadioButton signupSexMan,
+      RadioButton signupSexWoman, ConstraintLayout signupStep3, RadioGroup singupRadiogroupSex,
+      TextView step31, TextView step32) {
     super(_bindingComponent, _root, _localFieldCount);
+    this.imageView = imageView;
     this.signupAgePicker = signupAgePicker;
     this.signupSexMan = signupSexMan;
     this.signupSexWoman = signupSexWoman;

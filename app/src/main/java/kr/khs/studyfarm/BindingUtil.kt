@@ -185,6 +185,7 @@ fun setVisibility(view : Chip, visible : Boolean, city : SelectInfo?, arr : Arra
 fun numberPickerSetting(view : NumberPicker, age : Int) {
     view.apply {
         value = age
+        dividerColor = resources.getColor(android.R.color.transparent)
     }
 }
 

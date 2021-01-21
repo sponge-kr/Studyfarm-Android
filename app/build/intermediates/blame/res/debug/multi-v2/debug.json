@@ -3586,6 +3586,28 @@
             ]
         },
         {
+            "outputFile": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/res/merged/debug/values-round-v23_values-round-v23.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/values-round/strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "58",
+                        "endOffsets": "70"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "58",
+                        "endOffsets": "109"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/res/merged/debug/values-ca_values-ca.arsc.flat",
             "map": [
                 {
