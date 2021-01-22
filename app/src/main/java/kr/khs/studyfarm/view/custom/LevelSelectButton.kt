@@ -73,9 +73,9 @@ class LevelSelectButton @JvmOverloads constructor(
             context.obtainStyledAttributes(this, R.styleable.LevelSelectButton)
         }?.run {
             levelOneName = getString(R.styleable.LevelSelectButton_levelOneName) ?: levelOneName
-            levelTwoName = getString(R.styleable.LevelSelectButton_levelOneName) ?: levelTwoName
-            levelThreeName = getString(R.styleable.LevelSelectButton_levelOneName) ?: levelThreeName
-            levelFourName = getString(R.styleable.LevelSelectButton_levelOneName) ?: levelFourName
+            levelTwoName = getString(R.styleable.LevelSelectButton_levelTwoName) ?: levelTwoName
+            levelThreeName = getString(R.styleable.LevelSelectButton_levelThreeName) ?: levelThreeName
+            levelFourName = getString(R.styleable.LevelSelectButton_levelFourName) ?: levelFourName
         }
     }
 
