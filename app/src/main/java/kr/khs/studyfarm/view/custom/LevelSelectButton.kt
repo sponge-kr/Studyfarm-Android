@@ -224,7 +224,11 @@ class LevelSelectButton @JvmOverloads constructor(
         }
     }
 
-    fun getSelectLevel() = selectNumber
+    fun getSelectLevel() =
+        if(isRange)
+            startIdx * 10 + endIdx
+        else
+            selectNumber
 }
 
 //class LevelSelectButton1 @JvmOverloads constructor(
