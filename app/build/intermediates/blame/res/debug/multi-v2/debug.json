@@ -6626,9 +6626,11 @@
                 {
                     "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/values/colors.xml",
                     "from": {
-                        "startLines": "-1,-1,-1",
-                        "startColumns": "-1,-1,-1",
-                        "startOffsets": "-1,-1,-1"
+                        "startLines": "-1,6,7",
+                        "startColumns": "-1,4,4",
+                        "startOffsets": "-1,221,268",
+                        "endColumns": "-1,46,50",
+                        "endOffsets": "-1,263,314"
                     },
                     "to": {
                         "startLines": "413,414,415",
@@ -6819,25 +6821,6 @@
                         "startOffsets": "3342,3443,32695",
                         "endColumns": "55,47,51",
                         "endOffsets": "3393,3486,32742"
-                    }
-                },
-                {
-                    "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/values/attrs.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "7",
-                        "endColumns": "24",
-                        "endOffsets": "379"
-                    },
-                    "to": {
-                        "startLines": "6243",
-                        "startColumns": "4",
-                        "startOffsets": "373047",
-                        "endLines": "6248",
-                        "endColumns": "24",
-                        "endOffsets": "373367"
                     }
                 },
                 {

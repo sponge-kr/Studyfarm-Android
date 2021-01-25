@@ -41,6 +41,11 @@ class LevelSelectButton @JvmOverloads constructor(
 
     private var selectNumber = 0
 
+    private var isRange = false
+
+    private var startIdx = 0
+    private var endIdx = 0
+
     init {
         val inflaterService = Context.LAYOUT_INFLATER_SERVICE
         val layoutInflater = getContext().getSystemService(inflaterService) as LayoutInflater
@@ -76,6 +81,8 @@ class LevelSelectButton @JvmOverloads constructor(
             levelTwoName = getString(R.styleable.LevelSelectButton_levelTwoName) ?: levelTwoName
             levelThreeName = getString(R.styleable.LevelSelectButton_levelThreeName) ?: levelThreeName
             levelFourName = getString(R.styleable.LevelSelectButton_levelFourName) ?: levelFourName
+
+            isRange = getBoolean(R.styleable.LevelSelectButton_range, isRange)
         }
     }
 
@@ -93,36 +100,128 @@ class LevelSelectButton @JvmOverloads constructor(
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun btnClick(idx : Int) {
+        if(isRange) {
+            if(startIdx == 0 && endIdx == 0) {
+                startIdx = idx
+            }
+            else if(startIdx != 0 && endIdx == 0) {
+                when {
+                    startIdx == idx -> startIdx = 0
+                    startIdx > idx -> {
+                        endIdx = startIdx
+                        startIdx = idx
+                    }
+                    else -> {
+                        endIdx = idx
+                    }
+                }
+            }
+            else { // startIdx != 0 && endIdx != 0
+                if(startIdx == idx) {
+                    startIdx = endIdx
+                    endIdx = 0
+                }
+                else if(endIdx == idx) {
+                    endIdx = 0
+                }
+                else if(startIdx > idx)
+                    startIdx = idx
+                else if(endIdx < idx)
+                    endIdx = idx
+                // 사이를 선택했다면 어떻게 처리가 될 것인지
+            }
 
-        selectNumber = idx
+            btnLevelOne.background = resources.getDrawable(
+                if (startIdx == 1 || endIdx == 1)
+                    R.drawable.custom_circle_select_o
+                else
+                    R.drawable.custom_circle_select_x,
+                null
+            )
 
-        btnLevelOne.background = resources.getDrawable(
-            if(idx == 1)
-                R.drawable.custom_circle_select_o
-            else
-                R.drawable.custom_circle_select_x,
-            null)
+            btnLevelTwo.background = resources.getDrawable(
+                if (startIdx == 2 || endIdx == 2)
+                    R.drawable.custom_circle_select_o
+                else
+                    R.drawable.custom_circle_select_x,
+                null
+            )
 
-        btnLevelTwo.background = resources.getDrawable(
-            if(idx == 2)
-                R.drawable.custom_circle_select_o
-            else
-                R.drawable.custom_circle_select_x,
-            null)
+            btnLevelThree.background = resources.getDrawable(
+                if (startIdx == 3 || endIdx == 3)
+                    R.drawable.custom_circle_select_o
+                else
+                    R.drawable.custom_circle_select_x,
+                null
+            )
 
-        btnLevelThree.background = resources.getDrawable(
-            if(idx == 3)
-                R.drawable.custom_circle_select_o
-            else
-                R.drawable.custom_circle_select_x,
-            null)
+            btnLevelFour.background = resources.getDrawable(
+                if (startIdx == 4 || endIdx == 4)
+                    R.drawable.custom_circle_select_o
+                else
+                    R.drawable.custom_circle_select_x,
+                null
+            )
 
-        btnLevelFour.background = resources.getDrawable(
-            if(idx == 4)
-                R.drawable.custom_circle_select_o
-            else
-                R.drawable.custom_circle_select_x,
-            null)
+            lineOne.setBackgroundColor(resources.getColor(
+                if(startIdx <= 1 && endIdx > 1 && startIdx != 0 && endIdx != 0)
+                    R.color.colorPrimary
+                else
+                    android.R.color.darker_gray
+                , null)
+            )
+
+            lineTwo.setBackgroundColor(resources.getColor(
+                if(startIdx <= 2 && endIdx > 2 && startIdx != 0 && endIdx != 0)
+                    R.color.colorPrimary
+                else
+                    android.R.color.darker_gray
+                , null)
+            )
+
+            lineThree.setBackgroundColor(resources.getColor(
+                if(startIdx <= 3 && endIdx > 3 && startIdx != 0 && endIdx != 0)
+                    R.color.colorPrimary
+                else
+                    android.R.color.darker_gray
+                , null)
+            )
+        }
+        else {
+            selectNumber = idx
+
+            btnLevelOne.background = resources.getDrawable(
+                if (idx == 1)
+                    R.drawable.custom_circle_select_o
+                else
+                    R.drawable.custom_circle_select_x,
+                null
+            )
+
+            btnLevelTwo.background = resources.getDrawable(
+                if (idx == 2)
+                    R.drawable.custom_circle_select_o
+                else
+                    R.drawable.custom_circle_select_x,
+                null
+            )
+
+            btnLevelThree.background = resources.getDrawable(
+                if (idx == 3)
+                    R.drawable.custom_circle_select_o
+                else
+                    R.drawable.custom_circle_select_x,
+                null
+            )
+
+            btnLevelFour.background = resources.getDrawable(
+                if (idx == 4)
+                    R.drawable.custom_circle_select_o
+                else
+                    R.drawable.custom_circle_select_x,
+                null
+            )
+        }
     }
 
     fun getSelectLevel() = selectNumber
