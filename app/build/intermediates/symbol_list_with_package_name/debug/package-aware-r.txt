@@ -2020,7 +2020,6 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
-id imageView
 id incoming
 id info
 id invisible
@@ -2157,13 +2156,6 @@ id pin
 id position
 id postLayout
 id profileFragment
-id profile_age
-id profile_age_picker
-id profile_gender
-id profile_gender_man
-id profile_gender_woman
-id profile_local
-id profile_radiogroup_gender
 id progress_circular
 id progress_horizontal
 id radio
@@ -2226,7 +2218,6 @@ id signpw_password
 id signupAuthFragment
 id signupFragment
 id signupInfoFragment
-id signup_age_picker
 id signup_btn_addcity
 id signup_btn_next
 id signup_btn_skip
@@ -2241,6 +2232,7 @@ id signup_horizonscroll_city
 id signup_maintitle
 id signup_sex_man
 id signup_sex_woman
+id signup_spinner_birthyear
 id signup_step2
 id signup_step3
 id signup_subtitle

@@ -62,27 +62,27 @@
 35        <activity android:name="kr.khs.studyfarm.view.SplashActivity" >
 35-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:17:9-23:20
 35-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:17:19-54
-36
-37            <!-- <intent-filter> -->
-38            <!-- <action android:name="android.intent.action.MAIN" /> -->
-39
-40
-41            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-42            <!-- </intent-filter> -->
-43        </activity>
-44        <activity android:name="kr.khs.studyfarm.view.TestActivity" >
-44-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:24:9-30:20
-44-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:24:19-52
-45            <intent-filter>
-45-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:25:13-29:29
-46                <action android:name="android.intent.action.MAIN" />
-46-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:26:17-69
-46-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:26:25-66
+36            <intent-filter>
+36-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:18:13-22:29
+37                <action android:name="android.intent.action.MAIN" />
+37-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:19:17-69
+37-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:19:25-66
+38
+39                <category android:name="android.intent.category.LAUNCHER" />
+39-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:21:17-77
+39-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:21:27-74
+40            </intent-filter>
+41        </activity>
+42        <activity android:name="kr.khs.studyfarm.view.TestActivity" >
+42-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:24:9-30:20
+42-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:24:19-52
+43
+44            <!-- <intent-filter> -->
+45            <!-- <action android:name="android.intent.action.MAIN" /> -->
+46
 47
-48                <category android:name="android.intent.category.LAUNCHER" />
-48-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:28:17-77
-48-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:28:27-74
-49            </intent-filter>
+48            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+49            <!-- </intent-filter> -->
 50        </activity>
 51        <activity android:name="kr.khs.studyfarm.view.SignActivity" />
 51-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:31:9-55

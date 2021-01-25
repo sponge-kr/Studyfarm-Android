@@ -33,17 +33,6 @@
 <!--            app:layout_constraintStart_toStartOf="@+id/signup_datepicker"-->
 <!--            app:layout_constraintTop_toBottomOf="@+id/signup_datepicker" />-->
 
-        <View
-            android:id="@+id/imageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@drawable/circle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/signup_age_picker"
-            app:layout_constraintStart_toStartOf="@+id/signup_age_picker"
-            app:layout_constraintTop_toTopOf="@+id/signup_age_picker" />
-
         <TextView
             android:id="@+id/step3_1"
             android:layout_width="wrap_content"
@@ -63,21 +52,20 @@
             app:layout_constraintStart_toStartOf="@+id/singup_radiogroup_sex"
             app:layout_constraintTop_toBottomOf="@+id/singup_radiogroup_sex" />
 
-        <com.shawnlin.numberpicker.NumberPicker
-            android:id="@+id/signup_age_picker"
-            android:layout_width="300dp"
-            android:layout_height="64dp"
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/signup_spinner_birthyear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:birthYearAdapter="@{viewModel.yearSpinnerAdapter}"
+            app:birthYearSelectedListener="@{viewModel.yearSpinnerOnItemSelectedListener}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/step3_2"
-            app:np_orientation="horizontal"
-            app:np_max="100"
-            app:np_min="1"
-            app:np_dividerColor="@color/colorPrimary"
-            app:agePickerSettting="@{viewModel.age}">
+            app:layout_constraintTop_toBottomOf="@id/step3_2">
 
-        </com.shawnlin.numberpicker.NumberPicker>
+        </androidx.appcompat.widget.AppCompatSpinner>
 
         <RadioGroup
             android:id="@+id/singup_radiogroup_sex"

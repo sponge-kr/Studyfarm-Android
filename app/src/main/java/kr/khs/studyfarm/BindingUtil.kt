@@ -181,12 +181,10 @@ fun setVisibility(view : Chip, visible : Boolean, city : SelectInfo?, arr : Arra
     }
 }
 
-@BindingAdapter("app:agePickerSettting")
-fun numberPickerSetting(view : NumberPicker, age : Int) {
-    view.apply {
-        value = age
-        dividerColor = resources.getColor(android.R.color.transparent)
-    }
+@BindingAdapter("app:birthYearAdapter", "app:birthYearSelectedListener")
+fun numberPickerSetting(view: Spinner, adapter: ArrayAdapter<Int>, listener : AdapterView.OnItemSelectedListener) {
+    view.adapter = adapter
+    view.onItemSelectedListener = listener
 }
 
 @BindingAdapter("app:ratingBarSetting")
