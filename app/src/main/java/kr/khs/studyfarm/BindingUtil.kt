@@ -9,6 +9,8 @@ import androidx.annotation.RawRes
 import com.shawnlin.numberpicker.NumberPicker
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingAdapter
+import androidx.databinding.InverseBindingListener
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -227,3 +229,12 @@ fun LevelSelectButton.setting(level : Int) {
         this.setSelectLevel(level)
     }
 }
+
+// 참고 : https://pyxispub.uzuki.live/?p=917
+@BindingAdapter("app:levelSelectButtonChanged")
+fun LevelSelectButton.onChange(listener : InverseBindingListener) {
+    listener.onChange()
+}
+
+@InverseBindingAdapter(attribute = "app:levelSelectButtonSetting", event = "app:levelSelectButtonChanged")
+fun LevelSelectButton.getLevel() = this.getSelectLevel()
