@@ -139,7 +139,8 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
                 if(i % 2 == 0)
                     interesting[i / 2]
                 else
-                    interestingRating.get()!![i / 2].toInt()
+//                    interestingRating.value!![i / 2]
+                    interestingRating.get()!![i / 2]
             }
             val userInfo = UserInfo(
                 birthYear = birthYear.get() ?: 0,
@@ -192,6 +193,7 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
         _cityOrInterested.value = 0
         birthYear.set(2000)
         interestingRating.set(Array(MAX_CHOICE) { 0 })
+//        interestingRating.value = Array(MAX_CHOICE) { 0 }
     }
 
     override fun onCleared() {
