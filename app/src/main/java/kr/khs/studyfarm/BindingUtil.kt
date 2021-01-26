@@ -17,6 +17,7 @@ import com.google.android.material.textfield.TextInputLayout
 import kr.khs.studyfarm.login_process.select.SelectInfo
 import kr.khs.studyfarm.mainpage.vp.InterestingVPAdapter
 import kr.khs.studyfarm.network.response.UserInterestingInfo
+import kr.khs.studyfarm.view.custom.LevelSelectButton
 import java.util.*
 
 //이메일, 비밀번호 등 textinputlayout가 주어진 조건에 부합하는지 체크
@@ -217,4 +218,12 @@ fun ViewPager.updateItems(list : List<UserInterestingInfo>) {
 @BindingAdapter("app:layout_visibility")
 fun View.setVisible(visible : Boolean) {
     this.visibility = if(visible) View.VISIBLE else View.GONE
+}
+
+@BindingAdapter("app:levelSelectButtonSetting")
+fun LevelSelectButton.setting(level : Int) {
+    val old = this.getSelectLevel()
+    if(old != level) {
+        this.setSelectLevel(level)
+    }
 }
