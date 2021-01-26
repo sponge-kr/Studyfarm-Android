@@ -120,15 +120,12 @@ class LevelSelectButton @JvmOverloads constructor(
     private fun btnClick(idx : Int) {
         if(isRange) {
             if(idx == 0) {
-                print("1 : $selectNumber, $idx")
                 selectNumber = 0
             }
             else if(startIdx == 0 && endIdx == 0) {
-                print("2 : $selectNumber, $idx")
                 selectNumber = if(idx / 10 > 0) (idx / 10) * 10 + idx % 10 else idx * 10
             }
             else if(startIdx != 0 && endIdx == 0) {
-                print("3 : $selectNumber, $idx")
                 selectNumber = when {
                     startIdx == idx -> 0
                     else -> {
@@ -137,7 +134,6 @@ class LevelSelectButton @JvmOverloads constructor(
                 }
             }
             else { // startIdx != 0 && endIdx != 0
-                print("4 : $selectNumber, $idx")
                 if(startIdx == idx) {
                     selectNumber = (selectNumber % 10) * 10
                 }
@@ -244,14 +240,9 @@ class LevelSelectButton @JvmOverloads constructor(
                 null
             )
         }
-        println(", $selectNumber")
     }
 
     fun setSelectLevel(idx : Int) = btnClick(idx)
 
-    fun getSelectLevel() =
-        if(isRange)
-            startIdx * 10 + endIdx
-        else
-            selectNumber
+    fun getSelectLevel() = selectNumber
 }
