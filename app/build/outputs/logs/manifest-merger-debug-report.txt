@@ -138,20 +138,20 @@ activity#kr.khs.studyfarm.view.SplashActivity
 ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:17:9-23:20
 	android:name
 		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:17:19-54
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:18:13-22:29
+action#android.intent.action.MAIN
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:19:17-69
+	android:name
+		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:19:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:21:17-77
+	android:name
+		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:21:27-74
 activity#kr.khs.studyfarm.view.TestActivity
 ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:24:9-30:20
 	android:name
 		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:24:19-52
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:25:13-29:29
-action#android.intent.action.MAIN
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:26:17-69
-	android:name
-		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:26:25-66
-category#android.intent.category.LAUNCHER
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:28:17-77
-	android:name
-		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:28:27-74
 activity#kr.khs.studyfarm.view.SignActivity
 ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:31:9-55
 	android:name

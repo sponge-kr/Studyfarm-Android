@@ -18,215 +18,73 @@
         android:layout_height="match_parent"
         tools:context=".setting.ProfileFragment">
 
-        <TextView
-            android:id="@+id/profile_gender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="성별"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/profile_age"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="나이"
-            app:layout_constraintStart_toStartOf="@+id/profile_radiogroup_gender"
-            app:layout_constraintTop_toBottomOf="@+id/profile_radiogroup_gender" />
-
-        <com.shawnlin.numberpicker.NumberPicker
-            android:id="@+id/profile_age_picker"
-            android:layout_width="300dp"
-            android:layout_height="64dp"
-            app:agePickerSettting="@{viewModel.age}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profile_age"
-            app:np_dividerColor="@color/colorPrimary"
-            app:np_max="100"
-            app:np_min="1"
-            app:np_orientation="horizontal" />
-
-        <RadioGroup
-            android:id="@+id/profile_radiogroup_gender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="@+id/profile_gender"
-            app:layout_constraintTop_toBottomOf="@+id/profile_gender">
-
-            <RadioButton
-                android:id="@+id/profile_gender_man"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="남성"
-                android:checked="@{viewModel.gender.equals(gender.Man)}"
-                android:onClick="@{() -> viewModel.selectGender(gender.Man)}" />
-
-            <RadioButton
-                android:id="@+id/profile_gender_woman"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="여성"
-                android:checked="@{viewModel.gender.equals(gender.Woman)}"
-                android:onClick="@{() -> viewModel.selectGender(gender.Woman)}" />
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/profile_local"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="지역"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_age_picker" />
-
-<!--        <HorizontalScrollView-->
-<!--            android:layout_width="match_parent"-->
+<!--        <TextView-->
+<!--            android:id="@+id/profile_gender"-->
+<!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="@dimen/vertical_margin"-->
-<!--            android:id="@+id/profile_horizontalscroll_city"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/profile_local"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/profile_local">-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal">-->
-<!--                <com.google.android.material.chip.Chip-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:visibility="@{viewModel.cityVisiblities[0]}"-->
-<!--                    android:text="@{viewModel.cityTexts[0]}"-->
-<!--                    android:layout_margin="@dimen/vertical_margin"-->
-<!--                    android:id="@+id/profile_chip_city1" />-->
-
-<!--                <com.google.android.material.chip.Chip-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:visibility="@{viewModel.cityVisiblities[1]}"-->
-<!--                    android:text="@{viewModel.cityTexts[1]}"-->
-<!--                    android:layout_margin="@dimen/vertical_margin"-->
-<!--                    android:id="@+id/profile_chip_city2" />-->
-
-<!--                <com.google.android.material.chip.Chip-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:visibility="@{viewModel.cityVisiblities[2]}"-->
-<!--                    android:text="@{viewModel.cityTexts[2]}"-->
-<!--                    android:layout_margin="@dimen/vertical_margin"-->
-<!--                    android:id="@+id/profile_chip_city3" />-->
-
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="추가하기"-->
-<!--                    android:layout_margin="@dimen/vertical_margin"-->
-<!--                    android:id="@+id/signup_btn_addcity"-->
-<!--                    android:onClick="@{() -> viewModel.doSelectCity()}"/>-->
-<!--            </LinearLayout>-->
-<!--        </HorizontalScrollView>-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:text="성별"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
 <!--        <TextView-->
-<!--            android:id="@+id/profile_interesting"-->
+<!--            android:id="@+id/profile_age"-->
 <!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content"-->
 <!--            android:layout_marginTop="16dp"-->
-<!--            android:text="관심 스터디"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/profile_horizontalscroll_city"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/profile_horizontalscroll_city" />-->
+<!--            android:text="나이"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/profile_radiogroup_gender"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/profile_radiogroup_gender" />-->
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
+<!--        <com.shawnlin.numberpicker.NumberPicker-->
+<!--            android:id="@+id/profile_age_picker"-->
+<!--            android:layout_width="300dp"-->
+<!--            android:layout_height="64dp"-->
+<!--            app:agePickerSettting="@{viewModel.age}"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/profile_age"-->
+<!--            app:np_dividerColor="@color/colorPrimary"-->
+<!--            app:np_max="100"-->
+<!--            app:np_min="1"-->
+<!--            app:np_orientation="horizontal" />-->
+
+<!--        <RadioGroup-->
+<!--            android:id="@+id/profile_radiogroup_gender"-->
+<!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="vertical"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/profile_interesting"-->
-<!--            app:layout_constraintStart_toStartOf="@id/profile_interesting"-->
-<!--            android:padding="16dp">-->
-<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:visibility="@{viewModel.studyVisiblities[0]}">-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/profile_gender"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/profile_gender">-->
 
-<!--                <com.google.android.material.chip.Chip-->
-<!--                    android:id="@+id/profile_chip_study1"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:checkable="false"-->
-<!--                    android:text="@{viewModel.studyTexts[0]}"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                <RatingBar-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="8dp"-->
-<!--                    app:ratingBarSetting="@{viewModel.interestingRating[0]}"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/profile_chip_study1"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/profile_chip_study1" />-->
-<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:visibility="@{viewModel.studyVisiblities[1]}">-->
-
-<!--                <com.google.android.material.chip.Chip-->
-<!--                    android:id="@+id/profile_chip_study2"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:checkable="false"-->
-<!--                    android:text="@{viewModel.studyTexts[1]}"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                <RatingBar-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="8dp"-->
-<!--                    app:ratingBarSetting="@{viewModel.interestingRating[1]}"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/profile_chip_study2"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/profile_chip_study2" />-->
-<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:visibility="@{viewModel.studyVisiblities[2]}">-->
-
-<!--                <com.google.android.material.chip.Chip-->
-<!--                    android:id="@+id/profile_chip_study3"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:checkable="false"-->
-<!--                    android:text="@{viewModel.studyTexts[2]}"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                <RatingBar-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="8dp"-->
-<!--                    app:ratingBarSetting="@{viewModel.interestingRating[2]}"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/profile_chip_study3"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/profile_chip_study3" />-->
-<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--            <Button-->
+<!--            <RadioButton-->
+<!--                android:id="@+id/profile_gender_man"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                android:text="추가하기"-->
-<!--                android:onClick="@{() -> viewModel.doSelectInteresting()}" />-->
-<!--        </LinearLayout>-->
+<!--                android:text="남성"-->
+<!--                android:checked="@{viewModel.gender.equals(gender.Man)}"-->
+<!--                android:onClick="@{() -> viewModel.selectGender(gender.Man)}" />-->
+
+<!--            <RadioButton-->
+<!--                android:id="@+id/profile_gender_woman"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="여성"-->
+<!--                android:checked="@{viewModel.gender.equals(gender.Woman)}"-->
+<!--                android:onClick="@{() -> viewModel.selectGender(gender.Woman)}" />-->
+<!--        </RadioGroup>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/profile_local"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:text="지역"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/profile_age_picker" />-->
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

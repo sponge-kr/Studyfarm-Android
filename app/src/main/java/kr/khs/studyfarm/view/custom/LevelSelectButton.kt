@@ -12,11 +12,18 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.databinding.DataBindingComponent
+import androidx.databinding.DataBindingUtil
 import kr.khs.studyfarm.R
+import kr.khs.studyfarm.databinding.ButtonLevelSelectBindingImpl
+import kotlin.math.max
+import kotlin.math.min
 
 class LevelSelectButton @JvmOverloads constructor(
     context : Context, attrs : AttributeSet? = null, defStyle: Int = 0
 ) : ConstraintLayout(context, attrs, defStyle) {
+
+    private var binding : ButtonLevelSelectBindingImpl
 
     private val dotCount = 4
 
@@ -43,14 +50,25 @@ class LevelSelectButton @JvmOverloads constructor(
 
     private var isRange = false
 
-    private var startIdx = 0
-    private var endIdx = 0
+//    private var startIdx = 0
+//    private var endIdx = 0
+
+    private val startIdx : Int
+        get() = selectNumber / 10
+
+    private val endIdx : Int
+        get() = selectNumber % 10
 
     init {
-        val inflaterService = Context.LAYOUT_INFLATER_SERVICE
-        val layoutInflater = getContext().getSystemService(inflaterService) as LayoutInflater
-        val view = layoutInflater.inflate(R.layout.button_level_select, this, false)
-        addView(view)
+        val inflater = LayoutInflater.from(context)
+        binding = DataBindingUtil.inflate(
+            inflater, R.layout.button_level_select, this, true
+        )
+        binding.view = this
+//        val inflaterService = Context.LAYOUT_INFLATER_SERVICE
+//        val layoutInflater = getContext().getSystemService(inflaterService) as LayoutInflater
+//        val view = layoutInflater.inflate(R.layout.button_level_select, this, false)
+//        addView(view)
 
         initViews()
         initAttrs(attrs)
@@ -101,33 +119,33 @@ class LevelSelectButton @JvmOverloads constructor(
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun btnClick(idx : Int) {
         if(isRange) {
-            if(startIdx == 0 && endIdx == 0) {
-                startIdx = idx
+            if(idx == 0) {
+                selectNumber = 0
+            }
+            else if(startIdx == 0 && endIdx == 0) {
+                selectNumber = if(idx / 10 > 0) (idx / 10) * 10 + idx % 10 else idx * 10
             }
             else if(startIdx != 0 && endIdx == 0) {
-                when {
-                    startIdx == idx -> startIdx = 0
-                    startIdx > idx -> {
-                        endIdx = startIdx
-                        startIdx = idx
-                    }
+                selectNumber = when {
+                    startIdx == idx -> 0
                     else -> {
-                        endIdx = idx
+                        min(startIdx, idx) * 10 + max(startIdx, idx)
                     }
                 }
             }
             else { // startIdx != 0 && endIdx != 0
                 if(startIdx == idx) {
-                    startIdx = endIdx
-                    endIdx = 0
+                    selectNumber = (selectNumber % 10) * 10
                 }
                 else if(endIdx == idx) {
-                    endIdx = 0
+                    selectNumber = (selectNumber / 10) * 10
                 }
-                else if(startIdx > idx)
-                    startIdx = idx
-                else if(endIdx < idx)
-                    endIdx = idx
+                else if(startIdx > idx) {
+                    selectNumber = (selectNumber % 10) + idx * 10
+                }
+                else if(endIdx < idx) {
+                    selectNumber = (selectNumber / 10) * 10 + idx
+                }
                 // 사이를 선택했다면 어떻게 처리가 될 것인지
             }
 
@@ -224,105 +242,7 @@ class LevelSelectButton @JvmOverloads constructor(
         }
     }
 
-    fun getSelectLevel() =
-        if(isRange)
-            startIdx * 10 + endIdx
-        else
-            selectNumber
-}
+    fun setSelectLevel(idx : Int) = btnClick(idx)
 
-//class LevelSelectButton1 @JvmOverloads constructor(
-//    context : Context, attrs : AttributeSet? = null, defStyle : Int = 0
-//) : View(context, attrs, defStyle) {
-//
-//    private val dotCount = 4
-//
-//    private var levelOneName = "Level1"
-//    private var levelTwoName = "Level2"
-//    private var levelThreeName = "Level3"
-//    private var levelFourName = "Level4"
-//
-//    private var lineColor = Color.CYAN
-//    private var lineSize = 10.0f
-//
-//    private var dotSize = 20.0f
-//
-//    private var linePaint = Paint()
-//
-//    private var dotPaint = Paint()
-//
-//    init {
-//        init(attrs)
-//        setPaint()
-//    }
-//
-//    private fun init(attrs : AttributeSet?) {
-//        attrs?.run {
-//            context.obtainStyledAttributes(this, R.styleable.LevelSelectButton)
-//        }?.run {
-//            levelOneName = getString(R.styleable.LevelSelectButton_levelOneName) ?: "Level 1"
-//            levelTwoName = getString(R.styleable.LevelSelectButton_levelOneName) ?: "Level 2"
-//            levelThreeName = getString(R.styleable.LevelSelectButton_levelOneName) ?: "Level 3"
-//            levelFourName = getString(R.styleable.LevelSelectButton_levelOneName) ?: "Level 4"
-//
-//            lineColor = getColor(R.styleable.LevelSelectButton_lineColor, lineColor)
-//            lineSize = getDimension(R.styleable.LevelSelectButton_lineSize, lineSize)
-//
-//            dotSize = getDimension(R.styleable.LevelSelectButton_dotSize, dotSize)
-//        }
-//
-//    }
-//
-//    private fun setPaint() {
-//        linePaint.run {
-//            color = Color.GRAY
-//            isAntiAlias = true
-//            style = Paint.Style.FILL
-//            strokeCap = Paint.Cap.ROUND
-//            strokeJoin = Paint.Join.ROUND
-//            strokeWidth = lineSize
-//        }
-//
-//        dotPaint.run {
-//            color = Color.GRAY
-//            isAntiAlias = true
-//            style = Paint.Style.FILL
-//            strokeCap = Paint.Cap.ROUND
-//            strokeJoin = Paint.Join.ROUND
-//            strokeWidth = dotSize
-//        }
-//    }
-//
-//    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-//        val heightDimension = dotSize.toInt() * 2
-//        setMeasuredDimension(widthMeasureSpec, heightDimension)
-//    }
-//
-//    override fun onDraw(canvas: Canvas?) {
-//        super.onDraw(canvas)
-//
-//        val dotSpacing = 20
-//
-//        val dotCount = dotCount
-//        val dotAreaSize = (dotSize + dotSpacing) * dotCount
-//
-//        val startOffset = dotSize
-//
-//        val startXPos = startOffset + dotSpacing / 2f
-//        val startYPos = measuredHeight / 2f
-//
-//        val drawOffset = (measuredWidth - dotSize * dotCount) / (dotCount - 1)
-//
-//        for(i in 0 until dotCount) {
-//            val xPos = startXPos + drawOffset * i
-//            val yPos = startYPos
-//            canvas?.drawCircle(xPos, yPos, dotSize, dotPaint)
-//            if(i > 1) {
-//                val lineXPos = xPos + drawOffset * (i - 1)
-//                val lineYPos = yPos + drawOffset * (i - 1)
-//                canvas?.drawLine(lineXPos, lineYPos, xPos, yPos, linePaint)
-//            }
-//        }
-//    }
-//
-//}
+    fun getSelectLevel() = selectNumber
+}

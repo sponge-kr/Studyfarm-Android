@@ -1,134 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/levelselect_tv_level4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="Level4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/levelselect_button_level4" />
+    <data>
+        <variable
+            name="view"
+            type="kr.khs.studyfarm.view.custom.LevelSelectButton" />
+    </data>
 
-    <TextView
-        android:id="@+id/levelselect_tv_level3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Level3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/levelselect_line3"
-        app:layout_constraintStart_toStartOf="@+id/levelselect_button_level3"
-        app:layout_constraintTop_toBottomOf="@+id/levelselect_button_level3" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/levelselect_tv_level2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Level2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/levelselect_button_level2"
-        app:layout_constraintStart_toStartOf="@+id/levelselect_button_level2"
-        app:layout_constraintTop_toBottomOf="@+id/levelselect_button_level2" />
+        <TextView
+            android:id="@+id/levelselect_tv_level4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Level4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/levelselect_button_level4" />
 
-    <View
-        android:id="@+id/levelselect_line3"
-        android:layout_width="0dp"
-        android:layout_height="8dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toBottomOf="@+id/levelselect_button_level1"
-        app:layout_constraintEnd_toStartOf="@+id/levelselect_button_level4"
-        app:layout_constraintStart_toEndOf="@+id/levelselect_button_level3"
-        app:layout_constraintTop_toTopOf="@+id/levelselect_button_level3" />
+        <TextView
+            android:id="@+id/levelselect_tv_level3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Level3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/levelselect_line3"
+            app:layout_constraintStart_toStartOf="@+id/levelselect_button_level3"
+            app:layout_constraintTop_toBottomOf="@+id/levelselect_button_level3" />
 
-    <ImageView
-        android:id="@+id/levelselect_button_level1"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/custom_circle_select_x"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/levelselect_tv_level1"
-        app:layout_constraintStart_toStartOf="@id/levelselect_tv_level1"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/levelselect_tv_level2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Level2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/levelselect_button_level2"
+            app:layout_constraintStart_toStartOf="@+id/levelselect_button_level2"
+            app:layout_constraintTop_toBottomOf="@+id/levelselect_button_level2" />
 
-    <ImageView
-        android:id="@+id/levelselect_button_level2"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/custom_circle_select_x"
-        app:layout_constraintBottom_toBottomOf="@+id/levelselect_button_level1"
-        app:layout_constraintEnd_toStartOf="@+id/levelselct_horizon_center"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintStart_toEndOf="@+id/levelselect_button_level1"
-        app:layout_constraintTop_toTopOf="@+id/levelselect_button_level1" />
+        <View
+            android:id="@+id/levelselect_line3"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/levelselect_button_level1"
+            app:layout_constraintEnd_toStartOf="@+id/levelselect_button_level4"
+            app:layout_constraintStart_toEndOf="@+id/levelselect_button_level3"
+            app:layout_constraintTop_toTopOf="@+id/levelselect_button_level3" />
 
-    <ImageView
-        android:id="@+id/levelselect_button_level3"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/custom_circle_select_x"
-        app:layout_constraintBottom_toBottomOf="@+id/levelselect_button_level4"
-        app:layout_constraintEnd_toStartOf="@+id/levelselect_button_level4"
-        app:layout_constraintHorizontal_bias="0.33"
-        app:layout_constraintStart_toEndOf="@+id/levelselct_horizon_center"
-        app:layout_constraintTop_toTopOf="@+id/levelselect_button_level4" />
+        <ImageView
+            android:id="@+id/levelselect_button_level1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/custom_circle_select_x"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/levelselect_tv_level1"
+            app:layout_constraintStart_toStartOf="@id/levelselect_tv_level1"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/levelselect_button_level4"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/custom_circle_select_x"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/levelselect_tv_level4"
-        app:layout_constraintStart_toStartOf="@+id/levelselect_tv_level4"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/levelselect_button_level2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/custom_circle_select_x"
+            app:layout_constraintBottom_toBottomOf="@+id/levelselect_button_level1"
+            app:layout_constraintEnd_toStartOf="@+id/levelselct_horizon_center"
+            app:layout_constraintHorizontal_bias="0.66"
+            app:layout_constraintStart_toEndOf="@+id/levelselect_button_level1"
+            app:layout_constraintTop_toTopOf="@+id/levelselect_button_level1" />
 
-    <View
-        android:id="@+id/levelselct_horizon_center"
-        android:layout_width="1dp"
-        android:layout_height="0dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/levelselect_button_level3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/custom_circle_select_x"
+            app:layout_constraintBottom_toBottomOf="@+id/levelselect_button_level4"
+            app:layout_constraintEnd_toStartOf="@+id/levelselect_button_level4"
+            app:layout_constraintHorizontal_bias="0.33"
+            app:layout_constraintStart_toEndOf="@+id/levelselct_horizon_center"
+            app:layout_constraintTop_toTopOf="@+id/levelselect_button_level4" />
 
-    <View
-        android:id="@+id/levelselect_line1"
-        android:layout_width="0dp"
-        android:layout_height="8dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toBottomOf="@+id/levelselect_button_level1"
-        app:layout_constraintEnd_toStartOf="@+id/levelselect_button_level2"
-        app:layout_constraintStart_toEndOf="@+id/levelselect_button_level1"
-        app:layout_constraintTop_toTopOf="@+id/levelselect_button_level1" />
+        <ImageView
+            android:id="@+id/levelselect_button_level4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/custom_circle_select_x"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/levelselect_tv_level4"
+            app:layout_constraintStart_toStartOf="@+id/levelselect_tv_level4"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/levelselect_line2"
-        android:layout_width="0dp"
-        android:layout_height="8dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toBottomOf="@+id/levelselect_button_level2"
-        app:layout_constraintEnd_toStartOf="@+id/levelselect_button_level3"
-        app:layout_constraintStart_toEndOf="@+id/levelselect_button_level2"
-        app:layout_constraintTop_toTopOf="@+id/levelselect_button_level2" />
+        <View
+            android:id="@+id/levelselct_horizon_center"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/levelselect_tv_level1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="Level1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/levelselect_button_level1" />
+        <View
+            android:id="@+id/levelselect_line1"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/levelselect_button_level1"
+            app:layout_constraintEnd_toStartOf="@+id/levelselect_button_level2"
+            app:layout_constraintStart_toEndOf="@+id/levelselect_button_level1"
+            app:layout_constraintTop_toTopOf="@+id/levelselect_button_level1" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/levelselect_line2"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/levelselect_button_level2"
+            app:layout_constraintEnd_toStartOf="@+id/levelselect_button_level3"
+            app:layout_constraintStart_toEndOf="@+id/levelselect_button_level2"
+            app:layout_constraintTop_toTopOf="@+id/levelselect_button_level2" />
+
+        <TextView
+            android:id="@+id/levelselect_tv_level1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Level1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/levelselect_button_level1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

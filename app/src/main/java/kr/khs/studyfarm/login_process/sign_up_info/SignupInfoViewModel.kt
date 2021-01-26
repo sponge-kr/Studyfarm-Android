@@ -3,6 +3,8 @@ package kr.khs.studyfarm.login_process.sign_up_info
 import android.content.Context
 import android.os.Parcelable
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.databinding.ObservableField
 import androidx.lifecycle.*
 import kotlinx.android.parcel.Parcelize
@@ -15,6 +17,7 @@ import kr.khs.studyfarm.network.request.UserInfo
 import kr.khs.studyfarm.network.response.Response
 import kr.khs.studyfarm.network.response.ResponseError
 import kr.khs.studyfarm.network.response.errorHandling
+import java.util.*
 
 class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array<SelectInfo>?, __interesting : Array<SelectInfo>?) : ViewModel() {
 
@@ -37,7 +40,7 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
     val interesting : Array<Int>
         get() = Array(_interesting.value!!.size) { _interesting.value!![it].children!!.num }
 
-    val interestingRating = ObservableField<Array<Float>>()
+    val interestingRating = ObservableField<Array<Int>>()
 
     val cityTexts = Transformations.map(_cities) {
         Array(it.size) { idx -> it[idx].toString() }
@@ -62,9 +65,25 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
 
     val stepVisibility = ObservableField<IntArray>()
 
-    val age = ObservableField<Int>()
+    val birthYear = ObservableField<Int>()
 
     var gender = Gender.Not
+
+    val curYear = Calendar.getInstance()
+
+    val years = Array(curYear.get(Calendar.YEAR) - 1900) { 1900 + it }.reversedArray()
+
+    val yearSpinnerAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, years)
+
+    val yearSpinnerOnItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            birthYear.set(years[position])
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+
+        }
+    }
 
     val mainTitle = Transformations.map(step) {
         when(it) {
@@ -120,10 +139,11 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
                 if(i % 2 == 0)
                     interesting[i / 2]
                 else
-                    interestingRating.get()!![i / 2].toInt()
+//                    interestingRating.value!![i / 2]
+                    interestingRating.get()!![i / 2]
             }
             val userInfo = UserInfo(
-                age = age.get() ?: 0,
+                birthYear = birthYear.get() ?: 0,
                 cityInfo = citiesConverting,
                 gender = gender.MW,
                 interesting = temp,
@@ -143,7 +163,7 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
             }
             catch (t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
-                _error.value = errorHandling(t)
+                _toast.value = errorHandling(t).message
             }
         }
     }
@@ -171,8 +191,9 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
         step.value = 1
         _isSignupSuccess.value = false
         _cityOrInterested.value = 0
-        age.set(25)
-        interestingRating.set(Array(MAX_CHOICE) { 3.0f })
+        birthYear.set(2000)
+        interestingRating.set(Array(MAX_CHOICE) { 0 })
+//        interestingRating.value = Array(MAX_CHOICE) { 0 }
     }
 
     override fun onCleared() {

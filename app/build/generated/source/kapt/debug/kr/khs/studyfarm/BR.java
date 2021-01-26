@@ -9,5 +9,7 @@ public class BR {
 
   public static final int gender = 3;
 
-  public static final int viewModel = 4;
+  public static final int view = 4;
+
+  public static final int viewModel = 5;
 }

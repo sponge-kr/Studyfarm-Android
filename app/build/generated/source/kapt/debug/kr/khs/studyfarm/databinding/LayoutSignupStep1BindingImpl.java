@@ -21,17 +21,17 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
     }
     // views
     @NonNull
-    private final android.widget.RatingBar mboundView11;
+    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView11;
     @NonNull
     private final androidx.constraintlayout.widget.ConstraintLayout mboundView12;
     @NonNull
-    private final android.widget.RatingBar mboundView14;
+    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView14;
     @NonNull
     private final android.widget.TextView mboundView5;
     @NonNull
     private final androidx.constraintlayout.widget.ConstraintLayout mboundView6;
     @NonNull
-    private final android.widget.RatingBar mboundView8;
+    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView8;
     @NonNull
     private final androidx.constraintlayout.widget.ConstraintLayout mboundView9;
     // variables
@@ -61,17 +61,17 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
             , (android.widget.TextView) bindings[15]
             , (android.widget.TextView) bindings[17]
             );
-        this.mboundView11 = (android.widget.RatingBar) bindings[11];
+        this.mboundView11 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[11];
         this.mboundView11.setTag(null);
         this.mboundView12 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[12];
         this.mboundView12.setTag(null);
-        this.mboundView14 = (android.widget.RatingBar) bindings[14];
+        this.mboundView14 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[14];
         this.mboundView14.setTag(null);
         this.mboundView5 = (android.widget.TextView) bindings[5];
         this.mboundView5.setTag(null);
         this.mboundView6 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[6];
         this.mboundView6.setTag(null);
-        this.mboundView8 = (android.widget.RatingBar) bindings[8];
+        this.mboundView8 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[8];
         this.mboundView8.setTag(null);
         this.mboundView9 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[9];
         this.mboundView9.setTag(null);
@@ -135,7 +135,7 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
             case 0 :
                 return onChangeViewModelCityVisiblities((androidx.lifecycle.LiveData<java.lang.Integer[]>) object, fieldId);
             case 1 :
-                return onChangeViewModelInterestingRating((androidx.databinding.ObservableField<java.lang.Float[]>) object, fieldId);
+                return onChangeViewModelInterestingRating((androidx.databinding.ObservableField<java.lang.Integer[]>) object, fieldId);
             case 2 :
                 return onChangeViewModelStudyTexts((androidx.lifecycle.LiveData<java.lang.String[]>) object, fieldId);
             case 3 :
@@ -156,7 +156,7 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
         }
         return false;
     }
-    private boolean onChangeViewModelInterestingRating(androidx.databinding.ObservableField<java.lang.Float[]> ViewModelInterestingRating, int fieldId) {
+    private boolean onChangeViewModelInterestingRating(androidx.databinding.ObservableField<java.lang.Integer[]> ViewModelInterestingRating, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x2L;
@@ -209,10 +209,10 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
             dirtyFlags = mDirtyFlags;
             mDirtyFlags = 0;
         }
-        java.lang.Float viewModelInterestingRating1 = null;
+        java.lang.Integer viewModelInterestingRating1 = null;
         int viewModelStepVisibility0 = 0;
         int[] viewModelStepVisibilityGet = null;
-        float androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating0 = 0f;
+        int androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating0 = 0;
         java.lang.Integer viewModelCityVisiblities1 = null;
         java.lang.String viewModelStudyTexts2 = null;
         java.lang.Integer viewModelStudyVisiblities1 = null;
@@ -221,17 +221,17 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
         int androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities0 = 0;
         int androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities0 = 0;
         java.lang.String viewModelCityTexts0 = null;
-        java.lang.Float viewModelInterestingRating2 = null;
+        java.lang.Integer viewModelInterestingRating2 = null;
         androidx.lifecycle.LiveData<java.lang.Integer[]> viewModelCityVisiblities = null;
         java.lang.Integer[] viewModelCityVisiblitiesGetValue = null;
-        java.lang.Float[] viewModelInterestingRatingGet = null;
+        java.lang.Integer[] viewModelInterestingRatingGet = null;
         java.lang.Integer viewModelCityVisiblities2 = null;
         java.lang.String viewModelStudyTexts1 = null;
-        androidx.databinding.ObservableField<java.lang.Float[]> viewModelInterestingRating = null;
+        androidx.databinding.ObservableField<java.lang.Integer[]> viewModelInterestingRating = null;
         java.lang.String viewModelCityTexts1 = null;
         int androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities1 = 0;
         java.lang.Integer viewModelStudyVisiblities0 = null;
-        float androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating2 = 0f;
+        int androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating2 = 0;
         int androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities2 = 0;
         androidx.lifecycle.LiveData<java.lang.String[]> viewModelStudyTexts = null;
         java.lang.Integer[] viewModelStudyVisiblitiesGetValue = null;
@@ -241,12 +241,12 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
         androidx.lifecycle.LiveData<java.lang.Integer[]> viewModelStudyVisiblities = null;
         int androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities1 = 0;
         java.lang.String viewModelCityTexts2 = null;
-        java.lang.Float viewModelInterestingRating0 = null;
+        java.lang.Integer viewModelInterestingRating0 = null;
         int androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities2 = 0;
         java.lang.Integer viewModelCityVisiblities0 = null;
         java.lang.Integer viewModelStudyVisiblities2 = null;
         kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel viewModel = mViewModel;
-        float androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating1 = 0f;
+        int androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating1 = 0;
 
         if ((dirtyFlags & 0xffL) != 0) {
 
@@ -420,9 +420,9 @@ public class LayoutSignupStep1BindingImpl extends LayoutSignupStep1Binding imple
         if ((dirtyFlags & 0xc2L) != 0) {
             // api target 1
 
-            kr.khs.studyfarm.BindingUtilKt.ratingBarSetting(this.mboundView11, androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating1);
-            kr.khs.studyfarm.BindingUtilKt.ratingBarSetting(this.mboundView14, androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating2);
-            kr.khs.studyfarm.BindingUtilKt.ratingBarSetting(this.mboundView8, androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating0);
+            kr.khs.studyfarm.BindingUtilKt.setting(this.mboundView11, androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating1);
+            kr.khs.studyfarm.BindingUtilKt.setting(this.mboundView14, androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating2);
+            kr.khs.studyfarm.BindingUtilKt.setting(this.mboundView8, androidxDatabindingViewDataBindingSafeUnboxViewModelInterestingRating0);
         }
         if ((dirtyFlags & 0xe0L) != 0) {
             // api target 1

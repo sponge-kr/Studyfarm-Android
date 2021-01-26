@@ -11,7 +11,8 @@ data class User(
 )
 
 data class UserInfo(
-    val age: Int = 0,
+    @Json(name = "birth_year")
+    val birthYear: Int = 0,
     @Json(name = "city_info")
     val cityInfo: List<Int>,
 //    @Json(name = "simple_introduce")

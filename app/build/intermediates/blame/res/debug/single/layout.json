@@ -44,6 +44,10 @@
         "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/fragment_signup.xml"
     },
     {
+        "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/button_level_select.xml",
+        "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/button_level_select.xml"
+    },
+    {
         "merged": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/bottomsheet_agreement.xml",
         "source": "/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/res/layout/bottomsheet_agreement.xml"
     },
