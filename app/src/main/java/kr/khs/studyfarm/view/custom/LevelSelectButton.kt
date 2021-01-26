@@ -12,11 +12,18 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.databinding.DataBindingComponent
+import androidx.databinding.DataBindingUtil
 import kr.khs.studyfarm.R
+import kr.khs.studyfarm.databinding.ButtonLevelSelectBindingImpl
+import kotlin.math.max
+import kotlin.math.min
 
 class LevelSelectButton @JvmOverloads constructor(
     context : Context, attrs : AttributeSet? = null, defStyle: Int = 0
 ) : ConstraintLayout(context, attrs, defStyle) {
+
+    private var binding : ButtonLevelSelectBindingImpl
 
     private val dotCount = 4
 
@@ -43,14 +50,25 @@ class LevelSelectButton @JvmOverloads constructor(
 
     private var isRange = false
 
-    private var startIdx = 0
-    private var endIdx = 0
+//    private var startIdx = 0
+//    private var endIdx = 0
+
+    private val startIdx : Int
+        get() = selectNumber / 10
+
+    private val endIdx : Int
+        get() = selectNumber % 10
 
     init {
-        val inflaterService = Context.LAYOUT_INFLATER_SERVICE
-        val layoutInflater = getContext().getSystemService(inflaterService) as LayoutInflater
-        val view = layoutInflater.inflate(R.layout.button_level_select, this, false)
-        addView(view)
+        val inflater = LayoutInflater.from(context)
+        binding = DataBindingUtil.inflate(
+            inflater, R.layout.button_level_select, this, true
+        )
+        binding.view = this
+//        val inflaterService = Context.LAYOUT_INFLATER_SERVICE
+//        val layoutInflater = getContext().getSystemService(inflaterService) as LayoutInflater
+//        val view = layoutInflater.inflate(R.layout.button_level_select, this, false)
+//        addView(view)
 
         initViews()
         initAttrs(attrs)
@@ -101,33 +119,37 @@ class LevelSelectButton @JvmOverloads constructor(
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun btnClick(idx : Int) {
         if(isRange) {
-            if(startIdx == 0 && endIdx == 0) {
-                startIdx = idx
+            if(idx == 0) {
+                print("1 : $selectNumber, $idx")
+                selectNumber = 0
+            }
+            else if(startIdx == 0 && endIdx == 0) {
+                print("2 : $selectNumber, $idx")
+                selectNumber = if(idx / 10 > 0) (idx / 10) * 10 + idx % 10 else idx * 10
             }
             else if(startIdx != 0 && endIdx == 0) {
-                when {
-                    startIdx == idx -> startIdx = 0
-                    startIdx > idx -> {
-                        endIdx = startIdx
-                        startIdx = idx
-                    }
+                print("3 : $selectNumber, $idx")
+                selectNumber = when {
+                    startIdx == idx -> 0
                     else -> {
-                        endIdx = idx
+                        min(startIdx, idx) * 10 + max(startIdx, idx)
                     }
                 }
             }
             else { // startIdx != 0 && endIdx != 0
+                print("4 : $selectNumber, $idx")
                 if(startIdx == idx) {
-                    startIdx = endIdx
-                    endIdx = 0
+                    selectNumber = (selectNumber % 10) * 10
                 }
                 else if(endIdx == idx) {
-                    endIdx = 0
+                    selectNumber = (selectNumber / 10) * 10
                 }
-                else if(startIdx > idx)
-                    startIdx = idx
-                else if(endIdx < idx)
-                    endIdx = idx
+                else if(startIdx > idx) {
+                    selectNumber = (selectNumber % 10) + idx * 10
+                }
+                else if(endIdx < idx) {
+                    selectNumber = (selectNumber / 10) * 10 + idx
+                }
                 // 사이를 선택했다면 어떻게 처리가 될 것인지
             }
 
@@ -222,7 +244,10 @@ class LevelSelectButton @JvmOverloads constructor(
                 null
             )
         }
+        println(", $selectNumber")
     }
+
+    fun setSelectLevel(idx : Int) = btnClick(idx)
 
     fun getSelectLevel() =
         if(isRange)
