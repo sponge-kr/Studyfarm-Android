@@ -6,5 +6,6 @@
         <attr name="levelThreeName" format="reference|string" />
         <attr name="levelFourName" format="reference|string" />
         <attr name="range" format="reference|boolean" />
+        <attr name="select" format="reference|integer" />
     </declare-styleable>
 </resources>

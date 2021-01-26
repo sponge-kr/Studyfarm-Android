@@ -40,7 +40,7 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
     val interesting : Array<Int>
         get() = Array(_interesting.value!!.size) { _interesting.value!![it].children!!.num }
 
-    val interestingRating = ObservableField<Array<Float>>()
+    val interestingRating = ObservableField<Array<Int>>()
 
     val cityTexts = Transformations.map(_cities) {
         Array(it.size) { idx -> it[idx].toString() }
@@ -191,7 +191,7 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
         _isSignupSuccess.value = false
         _cityOrInterested.value = 0
         birthYear.set(2000)
-        interestingRating.set(Array(MAX_CHOICE) { 3.0f })
+        interestingRating.set(Array(MAX_CHOICE) { 0 })
     }
 
     override fun onCleared() {
