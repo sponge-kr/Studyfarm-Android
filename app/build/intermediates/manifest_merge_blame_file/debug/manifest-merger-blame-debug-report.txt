@@ -34,7 +34,7 @@
 19    </queries>
 20
 21    <application
-21-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:7:5-36:19
+21-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:7:5-43:19
 22        android:name="kr.khs.studyfarm.GlobalApplication"
 22-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:8:9-42
 23        android:allowBackup="true"
@@ -73,60 +73,71 @@
 39-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:21:27-74
 40            </intent-filter>
 41        </activity>
-42        <activity android:name="kr.khs.studyfarm.view.SignActivity" />
-42-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:24:9-55
+42        <activity android:name="kr.khs.studyfarm.view.TestActivity" >
+42-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:24:9-30:20
 42-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:24:19-52
-43        <activity
-43-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:25:9-35:20
-44            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
-44-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:25:19-76
-45            android:launchMode="singleTask"
-45-->[com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:19:13-44
-46            android:theme="@style/TransparentCompat" >
-46-->[com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:20:13-53
-47            <intent-filter>
-47-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:26:13-34:29
-48                <action android:name="android.intent.action.VIEW" />
-48-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:27:17-69
-48-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:27:25-66
-49
-50                <category android:name="android.intent.category.DEFAULT" />
-50-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:28:17-76
-50-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:28:27-73
-51                <category android:name="android.intent.category.BROWSABLE" />
-51-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:29:17-78
-51-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:29:27-75
-52
-53                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth“ -->
-54                <data
-54-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:32:17-33:61
-55                    android:host="oauth"
-55-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:32:23-43
-56                    android:scheme="@string/kakao_scheme" />
-56-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:33:21-58
-57            </intent-filter>
-58        </activity>
-59        <activity
-59-->[com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:12:9-16:56
-60            android:name="com.kakao.sdk.auth.TalkAuthCodeActivity"
-60-->[com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:13:13-67
-61            android:exported="false"
-61-->[com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:14:13-37
-62            android:launchMode="singleTask"
-62-->[com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:15:13-44
-63            android:theme="@style/TransparentCompat" />
-63-->[com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:16:13-53
-64
-65        <provider
-65-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/42b3d470ef24d9d8ad68347e390faacb/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
-66            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-66-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/42b3d470ef24d9d8ad68347e390faacb/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
-67            android:authorities="kr.khs.studyfarm.lifecycle-process"
-67-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/42b3d470ef24d9d8ad68347e390faacb/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
-68            android:exported="false"
-68-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/42b3d470ef24d9d8ad68347e390faacb/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
-69            android:multiprocess="true" />
-69-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/42b3d470ef24d9d8ad68347e390faacb/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
-70    </application>
-71
-72</manifest>
+43
+44            <!-- <intent-filter> -->
+45            <!-- <action android:name="android.intent.action.MAIN" /> -->
+46
+47
+48            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+49            <!-- </intent-filter> -->
+50        </activity>
+51        <activity android:name="kr.khs.studyfarm.view.SignActivity" />
+51-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:31:9-55
+51-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:31:19-52
+52        <activity
+52-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:32:9-42:20
+53            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+53-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:32:19-76
+54            android:launchMode="singleTask"
+54-->[com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:19:13-44
+55            android:theme="@style/TransparentCompat" >
+55-->[com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:20:13-53
+56            <intent-filter>
+56-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:33:13-41:29
+57                <action android:name="android.intent.action.VIEW" />
+57-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:34:17-69
+57-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:34:25-66
+58
+59                <category android:name="android.intent.category.DEFAULT" />
+59-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:35:17-76
+59-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:35:27-73
+60                <category android:name="android.intent.category.BROWSABLE" />
+60-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:36:17-78
+60-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:36:27-75
+61
+62                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth“ -->
+63                <data
+63-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:39:17-40:61
+64                    android:host="oauth"
+64-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:39:23-43
+65                    android:scheme="@string/kakao_scheme" />
+65-->/Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:40:21-58
+66            </intent-filter>
+67        </activity>
+68        <activity
+68-->[com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:12:9-16:56
+69            android:name="com.kakao.sdk.auth.TalkAuthCodeActivity"
+69-->[com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:13:13-67
+70            android:exported="false"
+70-->[com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:14:13-37
+71            android:launchMode="singleTask"
+71-->[com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:15:13-44
+72            android:theme="@style/TransparentCompat" />
+72-->[com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:16:13-53
+73
+74        <provider
+74-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/42b3d470ef24d9d8ad68347e390faacb/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+75            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+75-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/42b3d470ef24d9d8ad68347e390faacb/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+76            android:authorities="kr.khs.studyfarm.lifecycle-process"
+76-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/42b3d470ef24d9d8ad68347e390faacb/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+77            android:exported="false"
+77-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/42b3d470ef24d9d8ad68347e390faacb/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+78            android:multiprocess="true" />
+78-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/42b3d470ef24d9d8ad68347e390faacb/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+79    </application>
+80
+81</manifest>

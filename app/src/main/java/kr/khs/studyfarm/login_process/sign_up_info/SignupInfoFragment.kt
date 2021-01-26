@@ -12,7 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentSignupInfoBinding
+import kr.khs.studyfarm.dialog
 import kr.khs.studyfarm.login_process.sign_up.SignupFragmentDirections
+import kr.khs.studyfarm.network.ApiStatus
 
 class SignupInfoFragment : Fragment() {
 
@@ -64,6 +66,15 @@ class SignupInfoFragment : Fragment() {
                     SignupInfoFragmentArgs.fromBundle(requireArguments()).interested
                 ))
                 viewModel.doneSelect()
+            }
+        })
+
+        viewModel.apiStatus.observe(viewLifecycleOwner, Observer {
+            if(it == ApiStatus.LOADING) {
+                dialog.onLoadingDialog(requireActivity())
+            }
+            else if(dialog.loadingDialog != null && dialog.loadingDialog!!.isShowing) {
+                dialog.offLoadingDialog()
             }
         })
 

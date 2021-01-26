@@ -85,3 +85,22 @@ data class ResponseCheckNickname(
     val exist : Boolean,
     val links : NicknameLinks
 )
+
+data class CheckTokenResponse(
+    val code : Double,
+    val message : String,
+    val responseTime : String,
+    val result : CheckTokenResult
+)
+
+data class CheckTokenResult(
+    @Json(name = "check_result")
+    val checkResult : Boolean
+)
+
+data class GetCodeResponse(
+    val code : Double,
+    val message : String,
+    val responseTime : String,
+    val result : CheckTokenResult
+)

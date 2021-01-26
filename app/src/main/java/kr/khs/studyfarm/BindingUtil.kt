@@ -9,6 +9,8 @@ import androidx.annotation.RawRes
 import com.shawnlin.numberpicker.NumberPicker
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingAdapter
+import androidx.databinding.InverseBindingListener
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -17,6 +19,7 @@ import com.google.android.material.textfield.TextInputLayout
 import kr.khs.studyfarm.login_process.select.SelectInfo
 import kr.khs.studyfarm.mainpage.vp.InterestingVPAdapter
 import kr.khs.studyfarm.network.response.UserInterestingInfo
+import kr.khs.studyfarm.view.custom.LevelSelectButton
 import java.util.*
 
 //이메일, 비밀번호 등 textinputlayout가 주어진 조건에 부합하는지 체크
@@ -181,11 +184,10 @@ fun setVisibility(view : Chip, visible : Boolean, city : SelectInfo?, arr : Arra
     }
 }
 
-@BindingAdapter("app:agePickerSettting")
-fun numberPickerSetting(view : NumberPicker, age : Int) {
-    view.apply {
-        value = age
-    }
+@BindingAdapter("app:birthYearAdapter", "app:birthYearSelectedListener")
+fun numberPickerSetting(view: Spinner, adapter: ArrayAdapter<Int>, listener : AdapterView.OnItemSelectedListener) {
+    view.adapter = adapter
+    view.onItemSelectedListener = listener
 }
 
 @BindingAdapter("app:ratingBarSetting")
@@ -214,3 +216,25 @@ fun ViewPager.updateItems(list : List<UserInterestingInfo>) {
     if(list.isNotEmpty())
         (this.adapter as InterestingVPAdapter).updateLists(list)
 }
+
+@BindingAdapter("app:layout_visibility")
+fun View.setVisible(visible : Boolean) {
+    this.visibility = if(visible) View.VISIBLE else View.GONE
+}
+
+@BindingAdapter("app:levelSelectButtonSetting")
+fun LevelSelectButton.setting(level : Int) {
+    val old = this.getSelectLevel()
+    if(old != level) {
+        this.setSelectLevel(level)
+    }
+}
+
+// 참고 : https://pyxispub.uzuki.live/?p=917
+@BindingAdapter("app:levelSelectButtonChanged")
+fun LevelSelectButton.onChange(listener : InverseBindingListener) {
+    listener.onChange()
+}
+
+@InverseBindingAdapter(attribute = "app:levelSelectButtonSetting", event = "app:levelSelectButtonChanged")
+fun LevelSelectButton.getLevel() = this.getSelectLevel()

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LevelSelectButton">
+        <attr name="levelOneName" format="reference|string" />
+        <attr name="levelTwoName" format="reference|string" />
+        <attr name="levelThreeName" format="reference|string" />
+        <attr name="levelFourName" format="reference|string" />
+        <attr name="range" format="reference|boolean" />
+        <attr name="select" format="reference|integer" />
+    </declare-styleable>
+</resources>

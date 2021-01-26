@@ -29,9 +29,9 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
     private final kr.khs.studyfarm.databinding.LayoutSignupStep2Binding mboundView02;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback12;
+    private final android.view.View.OnClickListener mCallback14;
     @Nullable
-    private final android.view.View.OnClickListener mCallback11;
+    private final android.view.View.OnClickListener mCallback15;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -58,8 +58,8 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
         this.signupSubtitle.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback12 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
-        mCallback11 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
+        mCallback14 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
+        mCallback15 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
         invalidateAll();
     }
 
@@ -235,8 +235,8 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
         if ((dirtyFlags & 0x10L) != 0) {
             // api target 1
 
-            this.signupBtnNext.setOnClickListener(mCallback11);
-            this.signupBtnSkip.setOnClickListener(mCallback12);
+            this.signupBtnNext.setOnClickListener(mCallback14);
+            this.signupBtnSkip.setOnClickListener(mCallback15);
         }
         if ((dirtyFlags & 0x1aL) != 0) {
             // api target 1
@@ -260,7 +260,7 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
     // callback impls
     public final void _internalCallbackOnClick(int sourceId , android.view.View callbackArg_0) {
         switch(sourceId) {
-            case 2: {
+            case 1: {
                 // localize variables for thread safety
                 // viewModel
                 kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel viewModel = mViewModel;
@@ -277,7 +277,7 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
                 }
                 break;
             }
-            case 1: {
+            case 2: {
                 // localize variables for thread safety
                 // viewModel
                 kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel viewModel = mViewModel;

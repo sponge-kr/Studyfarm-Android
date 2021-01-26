@@ -12,7 +12,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
+import kr.khs.studyfarm.createAlertDialog
 import kr.khs.studyfarm.databinding.FragmentLoginBinding
+import kr.khs.studyfarm.dialog
+import kr.khs.studyfarm.network.ApiStatus
 import kr.khs.studyfarm.view.MainActivity
 
 class LoginFragment : Fragment() {
@@ -44,7 +47,8 @@ class LoginFragment : Fragment() {
 
         viewModel.toast.observe(viewLifecycleOwner, Observer {
             if(it != "") {
-                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                createAlertDialog(requireContext(), it, "알겠어요.")
                 viewModel.doneToast()
             }
         })
@@ -53,6 +57,22 @@ class LoginFragment : Fragment() {
             if(it) {
                 findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignupFragment())
                 viewModel.doneGoToSignUp()
+            }
+        })
+
+        viewModel.gotoFindPW.observe(viewLifecycleOwner, Observer {
+            if(it) {
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToFindPWFragment())
+                viewModel.doneGoToFindPW()
+            }
+        })
+
+        viewModel.apiStatus.observe(viewLifecycleOwner, Observer {
+            if(it == ApiStatus.LOADING) {
+                dialog.onLoadingDialog(requireActivity())
+            }
+            else if(dialog.loadingDialog != null && dialog.loadingDialog!!.isShowing) {
+                dialog.offLoadingDialog()
             }
         })
 

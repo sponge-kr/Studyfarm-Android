@@ -5,11 +5,14 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.FragmentMainBinding
+import kr.khs.studyfarm.dialog
 import kr.khs.studyfarm.mainpage.vp.InterestingVPAdapter
+import kr.khs.studyfarm.network.ApiStatus
 import kr.khs.studyfarm.view.MainActivity
 
 class MainFragment : Fragment() {
@@ -50,6 +53,15 @@ class MainFragment : Fragment() {
 //            }
 //        })
 
+        viewModel.apiStatus.observe(viewLifecycleOwner, Observer {
+            if(it == ApiStatus.LOADING) {
+                dialog.onLoadingDialog(requireActivity())
+            }
+            else if(dialog.loadingDialog != null && dialog.loadingDialog!!.isShowing) {
+                dialog.offLoadingDialog()
+            }
+        })
+
         return binding.root
     }
 
@@ -60,7 +72,7 @@ class MainFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.action_user -> Toast.makeText(context, "유저 프로필", Toast.LENGTH_SHORT).show()
+            R.id.action_user -> findNavController().navigate(MainFragmentDirections.actionBottomHomeToProfileFragment())
             R.id.action_notification -> findNavController().navigate(MainFragmentDirections.actionBottomHomeToNotificationFragment())
         }
         return super.onOptionsItemSelected(item)

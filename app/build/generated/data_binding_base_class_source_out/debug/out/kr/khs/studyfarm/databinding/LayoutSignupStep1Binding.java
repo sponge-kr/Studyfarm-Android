@@ -4,8 +4,8 @@ package kr.khs.studyfarm.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +21,10 @@ import kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel;
 
 public abstract class LayoutSignupStep1Binding extends ViewDataBinding {
   @NonNull
-  public final Button signupBtnAddcity;
+  public final LinearLayout linearLayout2;
+
+  @NonNull
+  public final TextView signupBtnAddcity;
 
   @NonNull
   public final Chip signupChipCity1;
@@ -57,11 +60,12 @@ public abstract class LayoutSignupStep1Binding extends ViewDataBinding {
   protected SignupInfoViewModel mViewModel;
 
   protected LayoutSignupStep1Binding(Object _bindingComponent, View _root, int _localFieldCount,
-      Button signupBtnAddcity, Chip signupChipCity1, Chip signupChipCity2, Chip signupChipCity3,
-      Chip signupChipStudy1, Chip signupChipStudy2, Chip signupChipStudy3,
-      HorizontalScrollView signupHorizonscrollCity, ConstraintLayout signupStep2, TextView step21,
-      TextView step22) {
+      LinearLayout linearLayout2, TextView signupBtnAddcity, Chip signupChipCity1,
+      Chip signupChipCity2, Chip signupChipCity3, Chip signupChipStudy1, Chip signupChipStudy2,
+      Chip signupChipStudy3, HorizontalScrollView signupHorizonscrollCity,
+      ConstraintLayout signupStep2, TextView step21, TextView step22) {
     super(_bindingComponent, _root, _localFieldCount);
+    this.linearLayout2 = linearLayout2;
     this.signupBtnAddcity = signupBtnAddcity;
     this.signupChipCity1 = signupChipCity1;
     this.signupChipCity2 = signupChipCity2;

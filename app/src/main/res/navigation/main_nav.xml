@@ -3,15 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/bottom_home">
+    app:startDestination="@id/main_page">
 
     <fragment
-        android:id="@+id/bottom_home"
+        android:id="@+id/main_page"
         android:name="kr.khs.studyfarm.mainpage.MainFragment"
         android:label="MainFragment" >
         <action
             android:id="@+id/action_bottom_home_to_notificationFragment"
             app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_bottom_home_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/bottom_explore"
@@ -27,4 +30,17 @@
         android:id="@+id/notificationFragment"
         android:name="kr.khs.studyfarm.noti_page.NotificationFragment"
         android:label="NotificationFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="kr.khs.studyfarm.setting.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_selectFragment2"
+            app:destination="@id/selectFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectFragment2"
+        android:name="kr.khs.studyfarm.login_process.select.SelectFragment"
+        android:label="SelectFragment" />
 </navigation>

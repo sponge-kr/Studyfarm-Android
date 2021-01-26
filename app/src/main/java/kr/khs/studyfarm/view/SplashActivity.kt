@@ -3,14 +3,22 @@ package kr.khs.studyfarm.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.view.Window
 import android.view.WindowManager
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import kotlinx.coroutines.*
 import kr.khs.studyfarm.R
+import kr.khs.studyfarm.createAlertDialog
 import kr.khs.studyfarm.getAccessToken
+import kr.khs.studyfarm.network.StudyFarmApi
 
 class SplashActivity : AppCompatActivity() {
-    private val DELAY_TIME = 2000L
+
+    private val job = Job()
+    private val coroutineScope = CoroutineScope(job + Dispatchers.Main)
+
+    val next = MutableLiveData<Class<out AppCompatActivity>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,22 +27,55 @@ class SplashActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_splash)
 
-        //TODO : Handler is deprecated library -> find alternative
-        Handler().postDelayed({
-            val token = getAccessToken(applicationContext)
+        val token = getAccessToken(applicationContext)
 
-            startActivity(Intent(this,
-                if(token == "noJwtToken")
-                    SignActivity::class.java
-                else
-                    MainActivity::class.java)
-            )
+        next.value = SplashActivity::class.java
 
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+        checkTokenAvailable(token)
 
-            finish()
+        next.observe(this, Observer {
+            if(it != SplashActivity::class.java) {
+                startActivity(Intent(this, it))
 
-        }, DELAY_TIME)
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+
+                finish()
+            }
+        })
+
+    }
+
+    private fun checkTokenAvailable(token : String) {
+        var isComplete = false
+        coroutineScope.launch {
+            if(token == "noJwtToken")
+                next.value = SignActivity::class.java
+            else {
+                try {
+                    val result = StudyFarmApi.retrofitService.checkToken(token)
+                    if (result.result.checkResult) {
+                        next.value = MainActivity::class.java
+                        isComplete = true
+                    }
+                } catch (t: Throwable) {
+                    t.printStackTrace()
+                }
+                finally {
+                    if(!isComplete) {
+                        createAlertDialog(this@SplashActivity,
+                            "로그인에 문제가 생겼습니다. 다시 로그인해주세요.",
+                            "로그인하러 가기"
+                        )
+                        next.value = SignActivity::class.java
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        coroutineScope.cancel()
     }
 
     override fun onBackPressed() { }

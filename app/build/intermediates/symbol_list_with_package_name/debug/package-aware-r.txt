@@ -579,6 +579,10 @@ attr layout_keyline
 attr layout_optimizationLevel
 attr layout_scrollFlags
 attr layout_scrollInterpolator
+attr levelFourName
+attr levelOneName
+attr levelThreeName
+attr levelTwoName
 attr liftOnScroll
 attr liftOnScrollTargetViewId
 attr limitBoundsTo
@@ -761,6 +765,7 @@ attr progressIndicatorStyle
 attr queryBackground
 attr queryHint
 attr radioButtonStyle
+attr range
 attr rangeFillColor
 attr ratingBarStyle
 attr ratingBarStyleIndicator
@@ -782,6 +787,7 @@ attr searchHintIcon
 attr searchIcon
 attr searchViewStyle
 attr seekBarStyle
+attr select
 attr selectableItemBackground
 attr selectableItemBackgroundBorderless
 attr selectionRequired
@@ -1696,6 +1702,9 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable circle
+drawable custom_circle_select_o
+drawable custom_circle_select_x
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
@@ -1710,6 +1719,38 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable loading_anim
+drawable loading_frame_0
+drawable loading_frame_1
+drawable loading_frame_10
+drawable loading_frame_11
+drawable loading_frame_12
+drawable loading_frame_13
+drawable loading_frame_14
+drawable loading_frame_15
+drawable loading_frame_16
+drawable loading_frame_17
+drawable loading_frame_18
+drawable loading_frame_19
+drawable loading_frame_2
+drawable loading_frame_20
+drawable loading_frame_21
+drawable loading_frame_22
+drawable loading_frame_23
+drawable loading_frame_24
+drawable loading_frame_25
+drawable loading_frame_26
+drawable loading_frame_27
+drawable loading_frame_28
+drawable loading_frame_29
+drawable loading_frame_3
+drawable loading_frame_30
+drawable loading_frame_4
+drawable loading_frame_5
+drawable loading_frame_6
+drawable loading_frame_7
+drawable loading_frame_8
+drawable loading_frame_9
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -1805,10 +1846,13 @@ id action_bar_spinner
 id action_bar_subtitle
 id action_bar_title
 id action_bottom_home_to_notificationFragment
+id action_bottom_home_to_profileFragment
 id action_container
 id action_context_bar
 id action_divider
+id action_findPWFragment_to_setPWFragment
 id action_image
+id action_loginFragment_to_findPWFragment
 id action_loginFragment_to_signupFragment
 id action_menu_divider
 id action_menu_presenter
@@ -1816,7 +1860,9 @@ id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
 id action_notification
+id action_profileFragment_to_selectFragment2
 id action_selectFragment_to_signupInfoFragment
+id action_setPWFragment_to_loginFragment
 id action_share
 id action_signupAuthFragment_to_signupInfoFragment
 id action_signupFragment_to_agreementFragment
@@ -1845,6 +1891,7 @@ id animateToEnd
 id animateToStart
 id asConfigured
 id ascending
+id asdf
 id async
 id auto
 id autoComplete
@@ -1858,7 +1905,6 @@ id bidirectional
 id blocking
 id bottom
 id bottom_explore
-id bottom_home
 id bottom_more
 id bounce
 id browser_actions_header_text
@@ -1942,6 +1988,11 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id findPWFragment
+id findpw_btn_send
+id findpw_et_field
+id findpw_subtitle
+id findpw_title
 id fitToContents
 id fixed
 id flip
@@ -1985,12 +2036,26 @@ id labeled
 id largeLabel
 id layout
 id left
+id levelselct_horizon_center
+id levelselect_button_level1
+id levelselect_button_level2
+id levelselect_button_level3
+id levelselect_button_level4
+id levelselect_line1
+id levelselect_line2
+id levelselect_line3
+id levelselect_tv_level1
+id levelselect_tv_level2
+id levelselect_tv_level3
+id levelselect_tv_level4
 id line1
 id line3
 id linear
 id linearLayout
+id linearLayout2
 id listMode
 id list_item
+id loading_img
 id loginFragment
 id login_btn_findpw
 id login_btn_signup
@@ -2000,6 +2065,7 @@ id main_fab
 id main_hello
 id main_nav
 id main_navhost
+id main_page
 id main_tab
 id main_vp_interested
 id main_vp_studynoti
@@ -2090,6 +2156,7 @@ id percent
 id pin
 id position
 id postLayout
+id profileFragment
 id progress_circular
 id progress_horizontal
 id radio
@@ -2122,6 +2189,7 @@ id search_plate
 id search_src_text
 id search_voice_btn
 id selectFragment
+id selectFragment2
 id select_dialog_listview
 id select_rv_first
 id select_rv_second
@@ -2131,6 +2199,10 @@ id selectedTextAlignCenter
 id selectedTextAlignLeft
 id selectedTextAlignRight
 id selection_type
+id setPWFragment
+id setpw_btn_ok
+id setpw_password
+id setpw_title
 id shortcut
 id showCustom
 id showHome
@@ -2147,7 +2219,6 @@ id signpw_password
 id signupAuthFragment
 id signupFragment
 id signupInfoFragment
-id signup_age_picker
 id signup_btn_addcity
 id signup_btn_next
 id signup_btn_skip
@@ -2159,10 +2230,10 @@ id signup_chip_study2
 id signup_chip_study3
 id signup_et_nickname
 id signup_horizonscroll_city
-id signup_iv_profile
 id signup_maintitle
 id signup_sex_man
 id signup_sex_woman
+id signup_spinner_birthyear
 id signup_step2
 id signup_step3
 id signup_subtitle
@@ -2228,6 +2299,7 @@ id textStart
 id textTop
 id textView
 id textView2
+id textView3
 id textView4
 id textView5
 id textView6
@@ -2344,9 +2416,11 @@ layout activity_main
 layout activity_sign
 layout activity_splash
 layout activity_talk_auth_code
+layout activity_test
 layout bottomsheet_agreement
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
+layout button_level_select
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2363,17 +2437,23 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dialog_loading
 layout fragment_blank1
 layout fragment_blank2
+layout fragment_find_pw
 layout fragment_login
 layout fragment_main
 layout fragment_notification
+layout fragment_profile
 layout fragment_select
+layout fragment_set_pw
 layout fragment_signup
 layout fragment_signup_auth
 layout fragment_signup_info
 layout fragment_study_info
 layout fragment_vp_interesting
+layout layout_findpw_step1
+layout layout_findpw_step2
 layout layout_signup_step1
 layout layout_signup_step2
 layout list_item_interestingstudy
@@ -2507,6 +2587,7 @@ string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string hello_blank_fragment
+string hello_world
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string item_view_role_description
@@ -3374,6 +3455,7 @@ styleable KeyPosition curveFit drawPath framePosition keyPositionType motionTarg
 styleable KeyTimeCycle android_alpha android_translationX android_translationY android_scaleX android_scaleY android_rotation android_rotationX android_rotationY android_translationZ android_elevation curveFit framePosition motionProgress motionTarget transitionEasing transitionPathRotate waveDecay waveOffset wavePeriod waveShape
 styleable KeyTrigger framePosition motionTarget motion_postLayoutCollision motion_triggerOnCollision onCross onNegativeCross onPositiveCross triggerId triggerReceiver triggerSlack
 styleable Layout android_orientation android_layout_width android_layout_height android_layout_marginLeft android_layout_marginTop android_layout_marginRight android_layout_marginBottom android_layout_marginStart android_layout_marginEnd barrierAllowsGoneWidgets barrierDirection barrierMargin chainUseRtl constraint_referenced_ids layout_constrainedHeight layout_constrainedWidth layout_constraintBaseline_creator layout_constraintBaseline_toBaselineOf layout_constraintBottom_creator layout_constraintBottom_toBottomOf layout_constraintBottom_toTopOf layout_constraintCircle layout_constraintCircleAngle layout_constraintCircleRadius layout_constraintDimensionRatio layout_constraintEnd_toEndOf layout_constraintEnd_toStartOf layout_constraintGuide_begin layout_constraintGuide_end layout_constraintGuide_percent layout_constraintHeight_default layout_constraintHeight_max layout_constraintHeight_min layout_constraintHeight_percent layout_constraintHorizontal_bias layout_constraintHorizontal_chainStyle layout_constraintHorizontal_weight layout_constraintLeft_creator layout_constraintLeft_toLeftOf layout_constraintLeft_toRightOf layout_constraintRight_creator layout_constraintRight_toLeftOf layout_constraintRight_toRightOf layout_constraintStart_toEndOf layout_constraintStart_toStartOf layout_constraintTop_creator layout_constraintTop_toBottomOf layout_constraintTop_toTopOf layout_constraintVertical_bias layout_constraintVertical_chainStyle layout_constraintVertical_weight layout_constraintWidth_default layout_constraintWidth_max layout_constraintWidth_min layout_constraintWidth_percent layout_editor_absoluteX layout_editor_absoluteY layout_goneMarginBottom layout_goneMarginEnd layout_goneMarginLeft layout_goneMarginRight layout_goneMarginStart layout_goneMarginTop maxHeight maxWidth minHeight minWidth
+styleable LevelSelectButton levelFourName levelOneName levelThreeName levelTwoName range select
 styleable LinearLayoutCompat android_gravity android_orientation android_baselineAligned android_baselineAlignedChildIndex android_weightSum divider dividerPadding measureWithLargestChild showDividers
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width android_layout_height android_layout_weight
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
