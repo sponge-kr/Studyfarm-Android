@@ -126,8 +126,8 @@
                     app:levelFourName="고급"
                     app:levelOneName="초급"
                     app:levelThreeName="중급"
-                    app:levelTwoName="초중급" />
-<!--                    app:ratingBarSetting="@{viewModel.interestingRating[0]}" />-->
+                    app:levelTwoName="초중급"
+                    app:levelSelectButtonSetting="@{viewModel.interestingRating[0]}" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -156,8 +156,8 @@
                     app:levelFourName="고급"
                     app:levelOneName="초급"
                     app:levelThreeName="중급"
-                    app:levelTwoName="초중급" />
-<!--                    app:ratingBarSetting="@{viewModel.interestingRating[1]}" />-->
+                    app:levelTwoName="초중급"
+                    app:levelSelectButtonSetting="@{viewModel.interestingRating[1]}" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -186,8 +186,8 @@
                     app:levelFourName="고급"
                     app:levelOneName="초급"
                     app:levelThreeName="중급"
-                    app:levelTwoName="초중급" />
-<!--                    app:ratingBarSetting="@{viewModel.interestingRating[2]}" />-->
+                    app:levelTwoName="초중급"
+                    app:levelSelectButtonSetting="@{viewModel.interestingRating[2]}" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
