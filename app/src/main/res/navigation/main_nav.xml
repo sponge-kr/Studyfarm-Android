@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_bottom_home_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_main_page_to_makeStudyFragment"
+            app:destination="@id/makeStudyFragment" />
     </fragment>
     <fragment
         android:id="@+id/bottom_explore"
@@ -43,4 +46,8 @@
         android:id="@+id/selectFragment2"
         android:name="kr.khs.studyfarm.login_process.select.SelectFragment"
         android:label="SelectFragment" />
+    <fragment
+        android:id="@+id/makeStudyFragment"
+        android:name="kr.khs.studyfarm.mainpage.make_study.MakeStudyFragment"
+        android:label="MakeStudyFragment" />
 </navigation>

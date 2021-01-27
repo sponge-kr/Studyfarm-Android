@@ -27,6 +27,10 @@ class MainViewModel(private val fm : FragmentManager, private val context : Cont
 
     val interestingVPAdapter = InterestingVPAdapter(fm, listOf())
 
+    private val _makeStudy = MutableLiveData<Boolean>()
+    val makeStudy : LiveData<Boolean>
+        get() = _makeStudy
+
     private val _response = MutableLiveData<GetUserResponse>()
     val response : LiveData<GetUserResponse>
         get() = _response
@@ -64,10 +68,19 @@ class MainViewModel(private val fm : FragmentManager, private val context : Cont
         }
     }
 
+    fun onMakeStudy() {
+        _makeStudy.value = true
+    }
+
+    fun doneMakeStudy() {
+        _makeStudy.value = false
+    }
+
     init {
         nickName.set("OO")
         interestings.value = listOf()
         getUserInfo()
+        _makeStudy.value = false
     }
 
     override fun onCleared() {

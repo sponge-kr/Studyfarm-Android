@@ -62,6 +62,13 @@ class MainFragment : Fragment() {
             }
         })
 
+        viewModel.makeStudy.observe(viewLifecycleOwner, Observer {
+            if(it) {
+                findNavController().navigate(MainFragmentDirections.actionMainPageToMakeStudyFragment())
+                viewModel.doneMakeStudy()
+            }
+        })
+
         return binding.root
     }
 
