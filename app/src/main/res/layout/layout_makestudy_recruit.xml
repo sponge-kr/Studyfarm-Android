@@ -1,95 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/recruit_title_recruit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="모집 정보"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.khs.studyfarm.mainpage.make_study.MakeStudyViewModel" />
+    </data>
 
-    <View
-        android:id="@+id/recruit_line1"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recruit_title_recruit" />
-
-    <TextView
-        android:id="@+id/recruit_tv_numberofpeople"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="모집 인원"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/recruit_title_recruit"
-        app:layout_constraintTop_toBottomOf="@+id/recruit_line1" />
-
-    <Spinner
-        android:id="@+id/recruit_spinner_numberofpeople"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/recruit_line1"
-        app:layout_constraintStart_toStartOf="@+id/recruit_line1"
-        app:layout_constraintTop_toBottomOf="@+id/recruit_tv_numberofpeople" />
-
-    <TextView
-        android:id="@+id/recruit_tv_typeofrecruit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="참가자 모집 유형"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/recruit_spinner_numberofpeople"
-        app:layout_constraintTop_toBottomOf="@+id/recruit_spinner_numberofpeople" />
-
-    <RadioGroup
-        android:id="@+id/recruit_radiogroup_typeofrecruit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/recruit_tv_typeofrecruit"
-        app:layout_constraintTop_toBottomOf="@+id/recruit_tv_typeofrecruit">
-
-        <RadioButton
-            android:id="@+id/recruit_radio_recruit_type1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="선착순 모집" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/recruit_tv_recruit_type1"
+            android:id="@+id/recruit_title_recruit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="\t\t선착순으로 모집 인원이 다 차면 모임이 생성돼요." />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="모집 정보"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/recruit_radio_recruit_type2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="검토후 승인" />
+        <View
+            android:id="@+id/recruit_line1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_title_recruit" />
 
         <TextView
-            android:id="@+id/recruit_tv_recruit_type2"
+            android:id="@+id/recruit_tv_numberofpeople"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="\t\t가입 신청한 사람을 검토하고, 승인된 사람들과 모임을 진행해요." />
+            android:layout_marginTop="32dp"
+            android:text="모집 인원"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/recruit_title_recruit"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_line1" />
 
-    </RadioGroup>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Spinner
+            android:id="@+id/recruit_spinner_numberofpeople"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/recruit_line1"
+            app:layout_constraintStart_toStartOf="@+id/recruit_line1"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_tv_numberofpeople" />
+
+        <TextView
+            android:id="@+id/recruit_tv_typeofrecruit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="참가자 모집 유형"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/recruit_spinner_numberofpeople"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_spinner_numberofpeople" />
+
+        <RadioGroup
+            android:id="@+id/recruit_radiogroup_typeofrecruit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/recruit_tv_typeofrecruit"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_tv_typeofrecruit">
+
+            <RadioButton
+                android:id="@+id/recruit_radio_recruit_type1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="선착순 모집" />
+
+            <TextView
+                android:id="@+id/recruit_tv_recruit_type1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\t\t선착순으로 모집 인원이 다 차면 모임이 생성돼요." />
+
+            <RadioButton
+                android:id="@+id/recruit_radio_recruit_type2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="검토후 승인" />
+
+            <TextView
+                android:id="@+id/recruit_tv_recruit_type2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\t\t가입 신청한 사람을 검토하고, 승인된 사람들과 모임을 진행해요." />
+
+        </RadioGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
