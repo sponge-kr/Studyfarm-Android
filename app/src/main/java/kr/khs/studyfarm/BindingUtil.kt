@@ -5,8 +5,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.*
-import androidx.annotation.RawRes
-import com.shawnlin.numberpicker.NumberPicker
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
@@ -213,7 +211,7 @@ fun ViewPager.addAdapterNTabLayout(tabLayout : TabLayout, adapter : InterestingV
 // Main Interesting View Pager Data Binding
 @BindingAdapter("app:interestings")
 fun ViewPager.updateItems(list : List<UserInterestingInfo>) {
-    if(list.isNotEmpty())
+    if(list.isNotEmpty() && this.adapter != null)
         (this.adapter as InterestingVPAdapter).updateLists(list)
 }
 
