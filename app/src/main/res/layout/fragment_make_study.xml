@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.khs.studyfarm.mainpage.make_study.MakeStudyViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingVertical="?attr/actionBarSize"
+        tools:context=".mainpage.make_study.MakeStudyFragment">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include
+                layout="@layout/layout_makestudy_recruit" />
+
+            <include
+                layout="@layout/layout_makestudy_detail" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

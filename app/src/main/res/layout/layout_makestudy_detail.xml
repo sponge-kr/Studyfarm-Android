@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/recruit_tv_studyexplain"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="스터디 정보는 '내 정보'에서 변경할 수 있어요."
+        app:layout_constraintEnd_toEndOf="@+id/recruit_spinner_typeofstudy"
+        app:layout_constraintStart_toStartOf="@+id/recruit_spinner_typeofstudy"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_spinner_typeofstudy" />
+
+    <Spinner
+        android:id="@+id/recruit_spinner_typeofstudy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/recruit_line2"
+        app:layout_constraintStart_toStartOf="@+id/recruit_tv_typeofstudy"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_tv_typeofstudy" />
+
+    <TextView
+        android:id="@+id/recruit_tv_typeofprogress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="참가자 모집 유형"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/recruit_title_detail"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_line2" />
+
+    <TextView
+        android:id="@+id/recruit_tv_typeofstudy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="어떤 스터디를 모집할까요?"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/recruit_title_detail"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_cl_offline" />
+
+    <TextView
+        android:id="@+id/recruit_tv_difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="어떤 스터디를 모집할까요?"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/recruit_title_detail"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_tv_studyexplain" />
+
+    <RadioGroup
+        android:id="@+id/recruit_radiogroup_typeofprogress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/recruit_title_detail"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_tv_typeofprogress">
+
+        <RadioButton
+            android:id="@+id/recruit_radio_progress_type1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="오프라인" />
+
+        <RadioButton
+            android:id="@+id/recruit_radio_progress_type2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="온라인" />
+
+    </RadioGroup>
+
+    <View
+        android:id="@+id/recruit_line2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_title_detail" />
+
+    <TextView
+        android:id="@+id/recruit_title_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="상세 정보"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recruit_cl_offline"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="@+id/recruit_line2"
+        app:layout_constraintStart_toStartOf="@+id/recruit_title_detail"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_radiogroup_typeofprogress">
+
+        <TextView
+            android:id="@+id/recruit_tv_region"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="모집 지역"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/recruit_title_recruit"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/recruit_tv_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="스터디 진행 장소"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_spinner_numberofpeople2" />
+
+        <TextView
+            android:id="@+id/recruit_tv_placesearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/border"
+            android:padding="5dp"
+            android:text="스터디룸 검색하기"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_tv_place" />
+
+        <Spinner
+            android:id="@+id/recruit_spinner_numberofpeople2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_tv_region" />
+
+        <TextView
+            android:id="@+id/recruit_tv_placeexplain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="모집지역과 스터디 진행 장소를 같은 지역으로 맞춰주세요.\n비대면 스터디의 경우 진행 플랫폼을 입력해주세요."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_tv_placesearch" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <kr.khs.studyfarm.view.custom.LevelSelectButton
+        android:id="@+id/recruit_lsb_difficulty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/recruit_line2"
+        app:layout_constraintStart_toStartOf="@+id/recruit_line2"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_tv_difficulty"
+        app:levelOneName="초급"
+        app:levelTwoName="초중급"
+        app:levelThreeName="중급"
+        app:levelFourName="고급"
+        app:range="true"/>
+
+        <TextView
+            android:id="@+id/recruit_tv_studydate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="스터디 진행 기간"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/recruit_title_detail"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_lsb_difficulty" />
+
+    <TextView
+        android:id="@+id/recruit_tv_studytitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="스터디 모임 이름"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/recruit_et_startdate"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_et_startdate" />
+
+    <TextView
+        android:id="@+id/recruit_tv_studyintroduce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="스터디 소개"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/recruit_et_studyname"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_et_studyname"/>
+
+    <TextView
+        android:id="@+id/recruit_tv_startdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="시작 일시"
+        app:layout_constraintStart_toStartOf="@+id/recruit_tv_studydate"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_tv_studydate" />
+
+    <TextView
+        android:id="@+id/recruit_tv_enddate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="마감 일시"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/recruit_tv_startdate"
+        app:layout_constraintTop_toTopOf="@+id/recruit_tv_startdate" />
+
+    <EditText
+        android:id="@+id/recruit_et_startdate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:inputType="date"
+        app:layout_constraintEnd_toStartOf="@+id/recruit_tv_enddate"
+        app:layout_constraintStart_toStartOf="@+id/recruit_tv_startdate"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_tv_startdate" />
+
+    <EditText
+        android:id="@+id/recruit_et_enddate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@+id/recruit_line2"
+        app:layout_constraintStart_toStartOf="@+id/recruit_tv_enddate"
+        app:layout_constraintTop_toTopOf="@+id/recruit_et_startdate" />
+
+    <EditText
+        android:id="@+id/recruit_et_studyname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/recruit_line2"
+        app:layout_constraintStart_toStartOf="@+id/recruit_tv_studytitle"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_tv_studytitle" />
+
+    <EditText
+        android:id="@+id/recruit_et_studyintroduce"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/recruit_line2"
+        app:layout_constraintStart_toStartOf="@+id/recruit_tv_studytitle"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_tv_studyintroduce"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
