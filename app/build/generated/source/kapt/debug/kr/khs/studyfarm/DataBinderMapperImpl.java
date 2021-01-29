@@ -20,6 +20,7 @@ import kr.khs.studyfarm.databinding.ButtonLevelSelectBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentFindPwBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentLoginBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentMainBindingImpl;
+import kr.khs.studyfarm.databinding.FragmentMakeStudyBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentNotificationBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentProfileBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentSelectBindingImpl;
@@ -31,6 +32,8 @@ import kr.khs.studyfarm.databinding.FragmentStudyInfoBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentVpInterestingBindingImpl;
 import kr.khs.studyfarm.databinding.LayoutFindpwStep1BindingImpl;
 import kr.khs.studyfarm.databinding.LayoutFindpwStep2BindingImpl;
+import kr.khs.studyfarm.databinding.LayoutMakestudyDetailBindingImpl;
+import kr.khs.studyfarm.databinding.LayoutMakestudyRecruitBindingImpl;
 import kr.khs.studyfarm.databinding.LayoutSignupStep1BindingImpl;
 import kr.khs.studyfarm.databinding.LayoutSignupStep2BindingImpl;
 import kr.khs.studyfarm.databinding.ListItemInterestingstudyBindingImpl;
@@ -47,37 +50,43 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_FRAGMENTMAIN = 5;
 
-  private static final int LAYOUT_FRAGMENTNOTIFICATION = 6;
+  private static final int LAYOUT_FRAGMENTMAKESTUDY = 6;
 
-  private static final int LAYOUT_FRAGMENTPROFILE = 7;
+  private static final int LAYOUT_FRAGMENTNOTIFICATION = 7;
 
-  private static final int LAYOUT_FRAGMENTSELECT = 8;
+  private static final int LAYOUT_FRAGMENTPROFILE = 8;
 
-  private static final int LAYOUT_FRAGMENTSETPW = 9;
+  private static final int LAYOUT_FRAGMENTSELECT = 9;
 
-  private static final int LAYOUT_FRAGMENTSIGNUP = 10;
+  private static final int LAYOUT_FRAGMENTSETPW = 10;
 
-  private static final int LAYOUT_FRAGMENTSIGNUPAUTH = 11;
+  private static final int LAYOUT_FRAGMENTSIGNUP = 11;
 
-  private static final int LAYOUT_FRAGMENTSIGNUPINFO = 12;
+  private static final int LAYOUT_FRAGMENTSIGNUPAUTH = 12;
 
-  private static final int LAYOUT_FRAGMENTSTUDYINFO = 13;
+  private static final int LAYOUT_FRAGMENTSIGNUPINFO = 13;
 
-  private static final int LAYOUT_FRAGMENTVPINTERESTING = 14;
+  private static final int LAYOUT_FRAGMENTSTUDYINFO = 14;
 
-  private static final int LAYOUT_LAYOUTFINDPWSTEP1 = 15;
+  private static final int LAYOUT_FRAGMENTVPINTERESTING = 15;
 
-  private static final int LAYOUT_LAYOUTFINDPWSTEP2 = 16;
+  private static final int LAYOUT_LAYOUTFINDPWSTEP1 = 16;
 
-  private static final int LAYOUT_LAYOUTSIGNUPSTEP1 = 17;
+  private static final int LAYOUT_LAYOUTFINDPWSTEP2 = 17;
 
-  private static final int LAYOUT_LAYOUTSIGNUPSTEP2 = 18;
+  private static final int LAYOUT_LAYOUTMAKESTUDYDETAIL = 18;
 
-  private static final int LAYOUT_LISTITEMINTERESTINGSTUDY = 19;
+  private static final int LAYOUT_LAYOUTMAKESTUDYRECRUIT = 19;
 
-  private static final int LAYOUT_LISTITEMSELECT = 20;
+  private static final int LAYOUT_LAYOUTSIGNUPSTEP1 = 20;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(20);
+  private static final int LAYOUT_LAYOUTSIGNUPSTEP2 = 21;
+
+  private static final int LAYOUT_LISTITEMINTERESTINGSTUDY = 22;
+
+  private static final int LAYOUT_LISTITEMSELECT = 23;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(23);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.bottomsheet_agreement, LAYOUT_BOTTOMSHEETAGREEMENT);
@@ -85,6 +94,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_find_pw, LAYOUT_FRAGMENTFINDPW);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_login, LAYOUT_FRAGMENTLOGIN);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_main, LAYOUT_FRAGMENTMAIN);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_make_study, LAYOUT_FRAGMENTMAKESTUDY);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_notification, LAYOUT_FRAGMENTNOTIFICATION);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_profile, LAYOUT_FRAGMENTPROFILE);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_select, LAYOUT_FRAGMENTSELECT);
@@ -96,6 +106,8 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_vp_interesting, LAYOUT_FRAGMENTVPINTERESTING);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.layout_findpw_step1, LAYOUT_LAYOUTFINDPWSTEP1);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.layout_findpw_step2, LAYOUT_LAYOUTFINDPWSTEP2);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.layout_makestudy_detail, LAYOUT_LAYOUTMAKESTUDYDETAIL);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.layout_makestudy_recruit, LAYOUT_LAYOUTMAKESTUDYRECRUIT);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.layout_signup_step1, LAYOUT_LAYOUTSIGNUPSTEP1);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.layout_signup_step2, LAYOUT_LAYOUTSIGNUPSTEP2);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.list_item_interestingstudy, LAYOUT_LISTITEMINTERESTINGSTUDY);
@@ -140,6 +152,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new FragmentMainBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for fragment_main is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTMAKESTUDY: {
+          if ("layout/fragment_make_study_0".equals(tag)) {
+            return new FragmentMakeStudyBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_make_study is invalid. Received: " + tag);
         }
         case  LAYOUT_FRAGMENTNOTIFICATION: {
           if ("layout/fragment_notification_0".equals(tag)) {
@@ -206,6 +224,18 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new LayoutFindpwStep2BindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for layout_findpw_step2 is invalid. Received: " + tag);
+        }
+        case  LAYOUT_LAYOUTMAKESTUDYDETAIL: {
+          if ("layout/layout_makestudy_detail_0".equals(tag)) {
+            return new LayoutMakestudyDetailBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for layout_makestudy_detail is invalid. Received: " + tag);
+        }
+        case  LAYOUT_LAYOUTMAKESTUDYRECRUIT: {
+          if ("layout/layout_makestudy_recruit_0".equals(tag)) {
+            return new LayoutMakestudyRecruitBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for layout_makestudy_recruit is invalid. Received: " + tag);
         }
         case  LAYOUT_LAYOUTSIGNUPSTEP1: {
           if ("layout/layout_signup_step1_0".equals(tag)) {
@@ -289,7 +319,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(20);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(23);
 
     static {
       sKeys.put("layout/bottomsheet_agreement_0", kr.khs.studyfarm.R.layout.bottomsheet_agreement);
@@ -297,6 +327,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/fragment_find_pw_0", kr.khs.studyfarm.R.layout.fragment_find_pw);
       sKeys.put("layout/fragment_login_0", kr.khs.studyfarm.R.layout.fragment_login);
       sKeys.put("layout/fragment_main_0", kr.khs.studyfarm.R.layout.fragment_main);
+      sKeys.put("layout/fragment_make_study_0", kr.khs.studyfarm.R.layout.fragment_make_study);
       sKeys.put("layout/fragment_notification_0", kr.khs.studyfarm.R.layout.fragment_notification);
       sKeys.put("layout/fragment_profile_0", kr.khs.studyfarm.R.layout.fragment_profile);
       sKeys.put("layout/fragment_select_0", kr.khs.studyfarm.R.layout.fragment_select);
@@ -308,6 +339,8 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/fragment_vp_interesting_0", kr.khs.studyfarm.R.layout.fragment_vp_interesting);
       sKeys.put("layout/layout_findpw_step1_0", kr.khs.studyfarm.R.layout.layout_findpw_step1);
       sKeys.put("layout/layout_findpw_step2_0", kr.khs.studyfarm.R.layout.layout_findpw_step2);
+      sKeys.put("layout/layout_makestudy_detail_0", kr.khs.studyfarm.R.layout.layout_makestudy_detail);
+      sKeys.put("layout/layout_makestudy_recruit_0", kr.khs.studyfarm.R.layout.layout_makestudy_recruit);
       sKeys.put("layout/layout_signup_step1_0", kr.khs.studyfarm.R.layout.layout_signup_step1);
       sKeys.put("layout/layout_signup_step2_0", kr.khs.studyfarm.R.layout.layout_signup_step2);
       sKeys.put("layout/list_item_interestingstudy_0", kr.khs.studyfarm.R.layout.list_item_interestingstudy);

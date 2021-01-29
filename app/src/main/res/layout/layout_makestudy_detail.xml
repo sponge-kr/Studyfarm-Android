@@ -73,13 +73,15 @@
                 android:id="@+id/recruit_radio_progress_type1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="오프라인" />
+                android:text="오프라인"
+                android:onClick="@{() -> viewModel.selectTypeOfProgress(1)}"/>
 
             <RadioButton
                 android:id="@+id/recruit_radio_progress_type2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="온라인" />
+                android:text="온라인"
+                android:onClick="@{() -> viewModel.selectTypeOfProgress(0)}"/>
 
         </RadioGroup>
 

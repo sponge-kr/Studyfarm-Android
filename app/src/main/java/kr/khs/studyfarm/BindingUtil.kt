@@ -182,7 +182,7 @@ fun setVisibility(view : Chip, visible : Boolean, city : SelectInfo?, arr : Arra
     }
 }
 
-@BindingAdapter("app:birthYearAdapter", "app:birthYearSelectedListener")
+@BindingAdapter("app:simpleSpinnerAdapter", "app:simpleSpinnerSelectedListener")
 fun numberPickerSetting(view: Spinner, adapter: ArrayAdapter<Int>, listener : AdapterView.OnItemSelectedListener) {
     view.adapter = adapter
     view.onItemSelectedListener = listener
