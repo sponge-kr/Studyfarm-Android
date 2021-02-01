@@ -2,20 +2,19 @@ package kr.khs.studyfarm.view.custom
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
+import kotlinx.android.synthetic.main.button_level_select.view.*
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.databinding.ButtonLevelSelectBindingImpl
+import kr.khs.studyfarm.setting
 import kotlin.math.max
 import kotlin.math.min
 
@@ -36,6 +35,8 @@ class LevelSelectButton @JvmOverloads constructor(
     private lateinit var textLevelTwo : TextView
     private lateinit var textLevelThree : TextView
     private lateinit var textLevelFour : TextView
+    val textLevelSelect : TextView
+        get() = binding.root.levelselect_tv_select
 
     private lateinit var lineOne : View
     private lateinit var lineTwo : View
@@ -46,7 +47,7 @@ class LevelSelectButton @JvmOverloads constructor(
     private var levelThreeName = "Level 3"
     private var levelFourName = "Level 4"
 
-    private var selectNumber = 0
+    val selectNumber = ObservableField<String>()
 
     private var isRange = false
 
@@ -54,10 +55,10 @@ class LevelSelectButton @JvmOverloads constructor(
 //    private var endIdx = 0
 
     private val startIdx : Int
-        get() = selectNumber / 10
+        get() = selectNumber.get()!!.toInt() / 10
 
     private val endIdx : Int
-        get() = selectNumber % 10
+        get() = selectNumber.get()!!.toInt() % 10
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -70,25 +71,27 @@ class LevelSelectButton @JvmOverloads constructor(
 //        val view = layoutInflater.inflate(R.layout.button_level_select, this, false)
 //        addView(view)
 
+        selectNumber.set("0")
+
         initViews()
         initAttrs(attrs)
         initSettings()
     }
 
     private fun initViews() {
-        btnLevelOne = findViewById(R.id.levelselect_button_level1)
-        btnLevelTwo = findViewById(R.id.levelselect_button_level2)
-        btnLevelThree = findViewById(R.id.levelselect_button_level3)
-        btnLevelFour = findViewById(R.id.levelselect_button_level4)
+        btnLevelOne = binding.root.findViewById(R.id.levelselect_button_level1)
+        btnLevelTwo = binding.root.findViewById(R.id.levelselect_button_level2)
+        btnLevelThree = binding.root.findViewById(R.id.levelselect_button_level3)
+        btnLevelFour = binding.root.findViewById(R.id.levelselect_button_level4)
 
-        textLevelOne = findViewById(R.id.levelselect_tv_level1)
-        textLevelTwo = findViewById(R.id.levelselect_tv_level2)
-        textLevelThree = findViewById(R.id.levelselect_tv_level3)
-        textLevelFour = findViewById(R.id.levelselect_tv_level4)
+        textLevelOne = binding.root.findViewById(R.id.levelselect_tv_level1)
+        textLevelTwo = binding.root.findViewById(R.id.levelselect_tv_level2)
+        textLevelThree = binding.root.findViewById(R.id.levelselect_tv_level3)
+        textLevelFour = binding.root.findViewById(R.id.levelselect_tv_level4)
 
-        lineOne = findViewById(R.id.levelselect_line1)
-        lineTwo = findViewById(R.id.levelselect_line2)
-        lineThree = findViewById(R.id.levelselect_line3)
+        lineOne = binding.root.findViewById(R.id.levelselect_line1)
+        lineTwo = binding.root.findViewById(R.id.levelselect_line2)
+        lineThree = binding.root.findViewById(R.id.levelselect_line3)
     }
 
     private fun initAttrs(attrs : AttributeSet?) {
@@ -118,36 +121,62 @@ class LevelSelectButton @JvmOverloads constructor(
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun btnClick(idx : Int) {
+        this.setting(idx.toString())
         if(isRange) {
+            var change = 0
             if(idx == 0) {
-                selectNumber = 0
+//                selectNumber.set(0)
+                change = 0
             }
             else if(startIdx == 0 && endIdx == 0) {
-                selectNumber = if(idx / 10 > 0) (idx / 10) * 10 + idx % 10 else idx * 10
+//                selectNumber.set(if(idx / 10 > 0) (idx / 10) * 10 + idx % 10 else idx * 10)
+                change = if(idx / 10 > 0) (idx / 10) * 10 + idx % 10 else idx * 10
             }
             else if(startIdx != 0 && endIdx == 0) {
-                selectNumber = when {
-                    startIdx == idx -> 0
+//                selectNumber.set( when {
+//                    startIdx == idx -> 0
+//                    else -> {
+//                        min(startIdx, idx) * 10 + max(startIdx, idx)
+//                    }
+//                })
+                change = when (startIdx) {
+                    idx -> 0
                     else -> {
                         min(startIdx, idx) * 10 + max(startIdx, idx)
                     }
                 }
             }
             else { // startIdx != 0 && endIdx != 0
-                if(startIdx == idx) {
-                    selectNumber = (selectNumber % 10) * 10
+//                selectNumber.set(
+//                    if(startIdx == idx) {
+//                        (selectNumber.get()!!.toInt()!!.toInt() % 10) * 10
+//                    }
+//                    else if(endIdx == idx) {
+//                        (selectNumber.get()!!.toInt() / 10) * 10
+//                    }
+//                    else if(startIdx > idx) {
+//                        (selectNumber.get()!!.toInt() % 10) + idx * 10
+//                    }
+//                    else /*if(endIdx < idx)*/ {
+//                        (selectNumber.get()!!.toInt() / 10) * 10 + idx
+//                    }
+//                // 사이를 선택했다면 어떻게 처리가 될 것인지
+//                )
+                change = if(startIdx == idx) {
+                    (selectNumber.get()!!.toInt()!!.toInt() % 10) * 10
                 }
                 else if(endIdx == idx) {
-                    selectNumber = (selectNumber / 10) * 10
+                    (selectNumber.get()!!.toInt() / 10) * 10
                 }
                 else if(startIdx > idx) {
-                    selectNumber = (selectNumber % 10) + idx * 10
+                    (selectNumber.get()!!.toInt() % 10) + idx * 10
                 }
-                else if(endIdx < idx) {
-                    selectNumber = (selectNumber / 10) * 10 + idx
+                else /*if(endIdx < idx)*/ {
+                    (selectNumber.get()!!.toInt() / 10) * 10 + idx
                 }
                 // 사이를 선택했다면 어떻게 처리가 될 것인지
             }
+            selectNumber.set(change.toString())
 
             btnLevelOne.background = resources.getDrawable(
                 if (startIdx == 1 || endIdx == 1)
@@ -206,7 +235,7 @@ class LevelSelectButton @JvmOverloads constructor(
             )
         }
         else {
-            selectNumber = idx
+            selectNumber.set(idx.toString())
 
             btnLevelOne.background = resources.getDrawable(
                 if (idx == 1)
@@ -244,5 +273,5 @@ class LevelSelectButton @JvmOverloads constructor(
 
     fun setSelectLevel(idx : Int) = btnClick(idx)
 
-    fun getSelectLevel() = selectNumber
+    fun getSelectLevel() = selectNumber.get()!!.toInt()
 }

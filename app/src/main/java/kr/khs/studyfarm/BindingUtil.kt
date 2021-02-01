@@ -14,6 +14,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.android.synthetic.main.button_level_select.view.*
 import kr.khs.studyfarm.login_process.select.SelectInfo
 import kr.khs.studyfarm.mainpage.vp.InterestingVPAdapter
 import kr.khs.studyfarm.network.response.UserInterestingInfo
@@ -183,7 +184,7 @@ fun setVisibility(view : Chip, visible : Boolean, city : SelectInfo?, arr : Arra
 }
 
 @BindingAdapter("app:simpleSpinnerAdapter", "app:simpleSpinnerSelectedListener")
-fun numberPickerSetting(view: Spinner, adapter: ArrayAdapter<Int>, listener : AdapterView.OnItemSelectedListener) {
+fun numberPickerSetting(view: Spinner, adapter: ArrayAdapter<*>, listener : AdapterView.OnItemSelectedListener) {
     view.adapter = adapter
     view.onItemSelectedListener = listener
 }
@@ -221,18 +222,31 @@ fun View.setVisible(visible : Boolean) {
 }
 
 @BindingAdapter("app:levelSelectButtonSetting")
-fun LevelSelectButton.setting(level : Int) {
-    val old = this.getSelectLevel()
+fun LevelSelectButton.setting(level : String) {
+    val old = this.levelselect_tv_select.text.toString()
     if(old != level) {
-        this.setSelectLevel(level)
+//        this.setSelectLevel(level.toInt())
+        this.levelselect_tv_select.text = level
     }
 }
 
 // 참고 : https://pyxispub.uzuki.live/?p=917
-@BindingAdapter("app:levelSelectButtonChanged")
+@BindingAdapter("app:levelSelectButtonAttrChanged")
 fun LevelSelectButton.onChange(listener : InverseBindingListener) {
-    listener.onChange()
+    val watcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { }
+
+        override fun afterTextChanged(s: Editable?) {
+            listener.onChange()
+            println("text watcher")
+        }
+    }
+    this.levelselect_tv_select.addTextChangedListener(watcher)
 }
 
-@InverseBindingAdapter(attribute = "app:levelSelectButtonSetting", event = "app:levelSelectButtonChanged")
-fun LevelSelectButton.getLevel() = this.getSelectLevel()
+@InverseBindingAdapter(attribute = "app:levelSelectButtonSetting", event = "app:levelSelectButtonAttrChanged")
+fun LevelSelectButton.getLevel() : String {
+    return this.levelselect_tv_select.text.toString()
+}
