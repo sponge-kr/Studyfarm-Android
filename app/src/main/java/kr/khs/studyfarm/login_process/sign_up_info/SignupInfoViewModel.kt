@@ -40,7 +40,7 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
     val interesting : Array<Int>
         get() = Array(_interesting.value!!.size) { _interesting.value!![it].children!!.num }
 
-    val interestingRating = ObservableField<Array<Int>>()
+    val interestingRating = ObservableField<Array<String>>()
 
     val cityTexts = Transformations.map(_cities) {
         Array(it.size) { idx -> it[idx].toString() }
@@ -140,7 +140,7 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
                     interesting[i / 2]
                 else
 //                    interestingRating.value!![i / 2]
-                    interestingRating.get()!![i / 2]
+                    interestingRating.get()!![i / 2].toInt()
             }
             val userInfo = UserInfo(
                 birthYear = birthYear.get() ?: 0,
@@ -192,7 +192,7 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
         _isSignupSuccess.value = false
         _cityOrInterested.value = 0
         birthYear.set(2000)
-        interestingRating.set(Array(MAX_CHOICE) { 0 })
+        interestingRating.set(Array(MAX_CHOICE) { "0" })
 //        interestingRating.value = Array(MAX_CHOICE) { 0 }
     }
 
