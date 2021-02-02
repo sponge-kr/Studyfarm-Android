@@ -1,6 +1,8 @@
 package kr.khs.studyfarm.network.response
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
 data class GetUserResponse(
     val code : Double,
@@ -33,6 +35,7 @@ data class UserInfo(
     val links : Links
 )
 
+@Parcelize
 data class UserInterestingInfo(
     val code : Double = 0.0,
     val name : String,
@@ -40,8 +43,9 @@ data class UserInterestingInfo(
     val skillLevel : Double = 0.0,
     @Json(name = "parent_code")
     val parentCode : Double = 0.0,
-)
+) : Parcelable
 
+@Parcelize
 data class UserCityInfo(
     @Json(name = "state_code")
     val stateCode : Double,
@@ -51,4 +55,8 @@ data class UserCityInfo(
     val cityCode : Double,
     @Json(name = "city_name")
     val cityName : String
-)
+) : Parcelable {
+    override fun toString(): String {
+        return "$stateName $cityName"
+    }
+}

@@ -54,5 +54,11 @@
             android:id="@+id/action_makeStudyFragment_to_main_page"
             app:destination="@id/main_page"
             app:popUpTo="@id/main_page" />
+        <argument
+            android:name="topics"
+            app:argType="kr.khs.studyfarm.network.response.UserInterestingInfo[]" />
+        <argument
+            android:name="areas"
+            app:argType="kr.khs.studyfarm.network.response.UserCityInfo[]" />
     </fragment>
 </navigation>

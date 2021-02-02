@@ -25,7 +25,11 @@ class MakeStudyFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        val viewModelFactory = MakeStudyViewModelFactory(requireContext())
+        val viewModelFactory = MakeStudyViewModelFactory(
+            requireContext(),
+            MakeStudyFragmentArgs.fromBundle(requireArguments()).topics,
+            MakeStudyFragmentArgs.fromBundle(requireArguments()).areas
+        )
 
         val viewModel = ViewModelProvider(this, viewModelFactory).get(MakeStudyViewModel::class.java)
 

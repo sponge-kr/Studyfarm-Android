@@ -11,12 +11,9 @@ import kr.khs.studyfarm.getAccessToken
 import kr.khs.studyfarm.network.ApiStatus
 import kr.khs.studyfarm.network.StudyFarmApi
 import kr.khs.studyfarm.network.request.MakeStudyData
-import kr.khs.studyfarm.network.response.GetUserResponse
-import kr.khs.studyfarm.network.response.Response
-import kr.khs.studyfarm.network.response.ResponseError
-import kr.khs.studyfarm.network.response.errorHandling
+import kr.khs.studyfarm.network.response.*
 
-class MakeStudyViewModel(val context : Context) : ViewModel() {
+class MakeStudyViewModel(val context : Context, topics : Array<UserInterestingInfo>, areas : Array<UserCityInfo>) : ViewModel() {
 
     var numberOfPeople = 0
 
@@ -54,13 +51,13 @@ class MakeStudyViewModel(val context : Context) : ViewModel() {
 
     val endDate = ObservableField<String>()
 
-    val state = arrayOf(0, 1, 2)
+    private var state : Array<Int> = Array(areas.size) { areas[it].stateCode.toInt() }
     private var _state = 0
 
-    private val city = arrayOf(0, 1, 2)
+    private  var city : Array<Int> = Array(areas.size) { areas[it].cityCode.toInt() }
     private var _city = 0
 
-    private val cityArray = /*Array(3) { "" }*/ arrayOf("데이터", "넣으면", "초기화")
+    private  var cityArray : Array<String> = Array(areas.size) { areas[it].toString() }
 
     val cityAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, cityArray)
 
@@ -74,8 +71,8 @@ class MakeStudyViewModel(val context : Context) : ViewModel() {
     }
 
     private var topic = 0
-    private val topicStr = /*Array(3) { "" }*/ arrayOf("데이터", "넣으면", "초기화")
-    private val topicNum = /*Array(3) { it }*/ arrayOf(0, 1, 2)
+    private  var topicStr : Array<String> = Array(topics.size) { topics[it].name }
+    private  var topicNum : Array<Int> = Array(topics.size) { topics[it].code.toInt() }
 
     val topicAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, topicStr)
 
@@ -198,6 +195,13 @@ class MakeStudyViewModel(val context : Context) : ViewModel() {
         startDate.set("1900-01-01")
         endDate.set("2021-01-01")
         _isMakeStudySuccess.value = false
+
+//        state = Array(areas.size) { areas[it].stateCode.toInt() }
+//        city = Array(areas.size) { areas[it].cityCode.toInt() }
+//        cityArray = Array(areas.size) { areas[it].toString() }
+
+//        topicNum = Array(topics.size) { topics[it].code.toInt() }
+//        topicStr = Array(topics.size) { topics[it].name }
     }
 
     override fun onCleared() {
@@ -206,11 +210,13 @@ class MakeStudyViewModel(val context : Context) : ViewModel() {
     }
 }
 
-class MakeStudyViewModelFactory(private val context : Context) : ViewModelProvider.Factory {
+class MakeStudyViewModelFactory(private val context : Context,
+                                private val topics : Array<UserInterestingInfo>,
+                                private val areas : Array<UserCityInfo>) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(MakeStudyViewModel::class.java))
-            return MakeStudyViewModel(context) as T
-        throw IllegalArgumentException("Unknwon Class Name")
+            return MakeStudyViewModel(context, topics, areas) as T
+        throw IllegalArgumentException("Unknown Class Name")
     }
 
 }

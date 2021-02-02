@@ -19,9 +19,11 @@ class MainViewModel(private val fm : FragmentManager, private val context : Cont
 
     val resources = context.resources
 
-    private val user = Transformations.map(response) {
-        it.result
-    }
+//    val user = Transformations.map(response) {
+//        it.result
+//    }
+
+    lateinit var user : UserInfo
 
     val interestings = MutableLiveData<List<UserInterestingInfo>>()
 
@@ -56,7 +58,7 @@ class MainViewModel(private val fm : FragmentManager, private val context : Cont
             try {
                 _apiStatus.value = ApiStatus.LOADING
                 _response.value = StudyFarmApi.retrofitService.getUserInfo("Bearer " + getAccessToken(context), getUserSeq(context))
-                val user = _response.value!!.result
+                user = _response.value!!.result
                 interestings.value = user.interesting
                 nickName.set(user.nickname)
                 _apiStatus.value = ApiStatus.DONE

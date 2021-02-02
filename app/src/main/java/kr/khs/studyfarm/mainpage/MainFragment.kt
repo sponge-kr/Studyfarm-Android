@@ -64,7 +64,10 @@ class MainFragment : Fragment() {
 
         viewModel.makeStudy.observe(viewLifecycleOwner, Observer {
             if(it) {
-                findNavController().navigate(MainFragmentDirections.actionMainPageToMakeStudyFragment())
+                findNavController().navigate(MainFragmentDirections.actionMainPageToMakeStudyFragment(
+                    viewModel.user.interesting.toTypedArray(),
+                    viewModel.user.userCityInfo.toTypedArray()
+                ))
                 viewModel.doneMakeStudy()
             }
         })
