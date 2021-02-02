@@ -19,10 +19,6 @@ class MainViewModel(private val fm : FragmentManager, private val context : Cont
 
     val resources = context.resources
 
-//    val user = Transformations.map(response) {
-//        it.result
-//    }
-
     lateinit var user : UserInfo
 
     val interestings = MutableLiveData<List<UserInterestingInfo>>()
