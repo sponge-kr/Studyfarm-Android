@@ -30,7 +30,9 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="@+id/recruit_line2"
             app:layout_constraintStart_toStartOf="@+id/recruit_tv_typeofstudy"
-            app:layout_constraintTop_toBottomOf="@+id/recruit_tv_typeofstudy" />
+            app:layout_constraintTop_toBottomOf="@+id/recruit_tv_typeofstudy"
+            app:simpleSpinnerAdapter="@{viewModel.topicAdapter}"
+            app:simpleSpinnerSelectedListener="@{viewModel.topicSpinnerOnItemSelectedListener}"/>
 
         <TextView
             android:id="@+id/recruit_tv_typeofprogress"
@@ -156,7 +158,9 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recruit_tv_region" />
+                app:layout_constraintTop_toBottomOf="@+id/recruit_tv_region"
+                app:simpleSpinnerAdapter="@{viewModel.cityAdapter}"
+                app:simpleSpinnerSelectedListener="@{viewModel.citySpinnerOnItemSelectedListener}"/>
 
             <TextView
                 android:id="@+id/recruit_tv_placeexplain"
@@ -179,7 +183,8 @@
             app:levelTwoName="초중급"
             app:levelThreeName="중급"
             app:levelFourName="고급"
-            app:range="true" />
+            app:range="true"
+            app:levelSelectButtonSetting="@={viewModel.step}"/>
 
         <TextView
             android:id="@+id/recruit_tv_studydate"
@@ -236,6 +241,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:inputType="date"
+            android:text="@={viewModel.startDate}"
             app:layout_constraintEnd_toStartOf="@+id/recruit_tv_enddate"
             app:layout_constraintStart_toStartOf="@+id/recruit_tv_startdate"
             app:layout_constraintTop_toBottomOf="@+id/recruit_tv_startdate" />
@@ -245,6 +251,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="date"
+            android:text="@={viewModel.endDate}"
             app:layout_constraintEnd_toEndOf="@+id/recruit_line2"
             app:layout_constraintStart_toStartOf="@+id/recruit_tv_enddate"
             app:layout_constraintTop_toTopOf="@+id/recruit_et_startdate" />
@@ -256,6 +263,7 @@
             android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="text"
+            android:text="@={viewModel.title}"
             app:layout_constraintEnd_toEndOf="@+id/recruit_line2"
             app:layout_constraintStart_toStartOf="@+id/recruit_tv_studytitle"
             app:layout_constraintTop_toBottomOf="@+id/recruit_tv_studytitle" />
@@ -267,9 +275,21 @@
             android:ems="10"
             android:inputType="text"
             android:layout_marginBottom="16dp"
+            android:text="@={viewModel.content}"
             app:layout_constraintEnd_toEndOf="@+id/recruit_line2"
             app:layout_constraintStart_toStartOf="@+id/recruit_tv_studytitle"
             app:layout_constraintTop_toBottomOf="@+id/recruit_tv_studyintroduce"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Button
+            android:id="@+id/recruit_btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:text="게시하기"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_et_studyintroduce"
+            app:layout_constraintStart_toStartOf="@+id/recruit_et_studyintroduce"
+            app:layout_constraintEnd_toEndOf="@+id/recruit_et_studyintroduce"
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
