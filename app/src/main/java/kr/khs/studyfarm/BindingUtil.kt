@@ -222,7 +222,11 @@ fun View.setVisible(visible : Boolean) {
 }
 
 @BindingAdapter("app:levelSelectButtonSetting")
-fun LevelSelectButton.setting(level : String) {
+fun LevelSelectButton.setting(level : String?) {
+    if(level.isNullOrBlank()) {
+        this.levelselect_tv_select.text = "0"
+        return
+    }
     val old = this.levelselect_tv_select.text.toString()
     if(old != level) {
 //        this.setSelectLevel(level.toInt())
@@ -240,7 +244,6 @@ fun LevelSelectButton.onChange(listener : InverseBindingListener) {
 
         override fun afterTextChanged(s: Editable?) {
             listener.onChange()
-            println("text watcher")
         }
     }
     this.levelselect_tv_select.addTextChangedListener(watcher)
