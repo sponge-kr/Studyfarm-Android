@@ -1855,6 +1855,7 @@ id action_image
 id action_loginFragment_to_findPWFragment
 id action_loginFragment_to_signupFragment
 id action_main_page_to_makeStudyFragment
+id action_makeStudyFragment_to_main_page
 id action_menu_divider
 id action_menu_presenter
 id action_mode_bar
@@ -2164,6 +2165,7 @@ id progress_circular
 id progress_horizontal
 id radio
 id ratio
+id recruit_btn_submit
 id recruit_cl_offline
 id recruit_et_enddate
 id recruit_et_startdate

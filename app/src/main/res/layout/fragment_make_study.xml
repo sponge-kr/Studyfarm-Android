@@ -24,6 +24,7 @@
 
             <include
                 layout="@layout/layout_makestudy_detail"
+                bind:layout_visibility="@{viewModel.deatilVisibility}"
                 bind:viewModel="@{viewModel}"/>
         </LinearLayout>
     </ScrollView>

@@ -49,5 +49,10 @@
     <fragment
         android:id="@+id/makeStudyFragment"
         android:name="kr.khs.studyfarm.mainpage.make_study.MakeStudyFragment"
-        android:label="MakeStudyFragment" />
+        android:label="MakeStudyFragment" >
+        <action
+            android:id="@+id/action_makeStudyFragment_to_main_page"
+            app:destination="@id/main_page"
+            app:popUpTo="@id/main_page" />
+    </fragment>
 </navigation>

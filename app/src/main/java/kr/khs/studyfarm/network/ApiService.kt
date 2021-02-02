@@ -111,6 +111,11 @@ interface StudyFarmApiService {
         "Accept: application/hal+json")
     @GET("auth/check-code")
     suspend fun checkCode(@Query("email") email : String, @Query("code") code : String) : GetCodeResponse
+
+    @Headers("Content-Type: application/hal+json;charset=UTF-8",
+        "Accept: application/hal+json")
+    @POST("study")
+    suspend fun makeStudy(@Header("Authorization") token : String, @Body makeStudyData : MakeStudyData) : Response
 }
 
 object StudyFarmApi {

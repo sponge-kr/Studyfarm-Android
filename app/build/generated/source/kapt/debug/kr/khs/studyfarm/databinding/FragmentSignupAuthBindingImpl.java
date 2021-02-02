@@ -28,7 +28,7 @@ public class FragmentSignupAuthBindingImpl extends FragmentSignupAuthBinding imp
     private final androidx.constraintlayout.widget.ConstraintLayout mboundView0;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback17;
+    private final android.view.View.OnClickListener mCallback18;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -53,7 +53,7 @@ public class FragmentSignupAuthBindingImpl extends FragmentSignupAuthBinding imp
         this.signemailBtnNext2.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback17 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
+        mCallback18 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -115,7 +115,7 @@ public class FragmentSignupAuthBindingImpl extends FragmentSignupAuthBinding imp
         if ((dirtyFlags & 0x2L) != 0) {
             // api target 1
 
-            this.signemailBtnNext2.setOnClickListener(mCallback17);
+            this.signemailBtnNext2.setOnClickListener(mCallback18);
         }
     }
     // Listener Stub Implementations
