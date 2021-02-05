@@ -60,5 +60,16 @@
         <argument
             android:name="areas"
             app:argType="kr.khs.studyfarm.network.response.UserCityInfo[]" />
+        <action
+            android:id="@+id/action_makeStudyFragment_to_findSCFragment"
+            app:destination="@id/findSCFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/findSCFragment"
+        android:name="kr.khs.studyfarm.mainpage.make_study.FindSCFragment"
+        android:label="FindSCFragment" >
+        <action
+            android:id="@+id/action_findSCFragment_to_makeStudyFragment"
+            app:destination="@id/makeStudyFragment" />
     </fragment>
 </navigation>
