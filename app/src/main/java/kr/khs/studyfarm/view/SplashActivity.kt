@@ -48,6 +48,7 @@ class SplashActivity : AppCompatActivity() {
     private fun checkTokenAvailable(token : String) {
         var isComplete = false
         coroutineScope.launch {
+            delay(2000)
             if(token == "noJwtToken")
                 next.value = SignActivity::class.java
             else {
