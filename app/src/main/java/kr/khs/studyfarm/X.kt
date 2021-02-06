@@ -6,9 +6,13 @@ import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.ColorDrawable
+import android.view.Gravity
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialog
+import androidx.core.view.marginStart
+import kr.khs.studyfarm.R.color.mainColor
 import java.util.regex.Pattern
 
 private val spfJwt = "jwtTokens"
@@ -117,9 +121,24 @@ object dialog {
 
 fun createAlertDialog(context : Context, msg : String, btnMsg : String) {
     val builder = AlertDialog.Builder(context).apply {
-        setMessage(msg)
+        setMessage("\n$msg\n")
         setPositiveButton(btnMsg) { dialog, which ->
             dialog.dismiss()
         }
-    }.create().show()
+    }.create()
+    builder.show()
+
+    val positiveBtn = builder.getButton(AlertDialog.BUTTON_POSITIVE).apply {
+        setBackgroundColor(context.getColor(mainColor))
+        setTextColor(context.getColor(android.R.color.white))
+        width = maxWidth
+    }
+    val positiveBtnLL = (positiveBtn.layoutParams as LinearLayout.LayoutParams).apply {
+        height = 120
+        gravity = Gravity.CENTER_HORIZONTAL
+        bottomMargin = 20
+    }
+
+    positiveBtnLL.gravity = Gravity.CENTER_HORIZONTAL
+    positiveBtn.layoutParams = positiveBtnLL
 }
