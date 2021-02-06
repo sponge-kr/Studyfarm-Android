@@ -33,13 +33,15 @@
                 app:errorEnabled="true"
                 android:id="@+id/signemail_et_email"
                 app:validation="@{viewModel.rule.EMAIL_RULE}"
-                app:errorMsg='@{"이메일 형식이 맞지 않습니다."}'>
+                app:errorMsg='@{"이메일 형식이 맞지 않습니다."}'
+                app:endIconMode="clear_text"
+                app:hintTextAppearance="@style/TextLabel">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="이메일 입력"
+                    android:hint="이메일"
                     android:inputType="textEmailAddress"
                     android:text="@={viewModel.email}" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -51,19 +53,21 @@
                 android:layout_marginVertical="@dimen/vertical_margin"
                 app:validation="@{viewModel.rule.PASSWORD_RULE}"
                 app:errorMsg='@{"비밀번호의 형식이 맞지 않습니다."}'
-                app:setPasswordVisibilityToggle="@{true}">
+                app:setPasswordVisibilityToggle="@{true}"
+                app:hintTextAppearance="@style/TextLabel">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="비밀번호 입력"
+                    android:hint="비밀번호"
                     android:inputType="textPassword"
                     android:text="@={viewModel.password}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/signemail_btn_next"
+                style="@style/ActiveButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/vertical_margin"
@@ -78,8 +82,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="로그인하기"
-            android:textSize="24sp"
+            android:text="나와 딱 맞는\n스터디를 찾고 계신가요?"
+            android:textSize="30sp"
+            android:textStyle="normal|bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="로그인 하려는 이메일 및 비밀번호를 입력해 주세요."
+            android:text="스터디가 Fun해지는 시간!\n시작이 반이다. 첫 걸음을 환영합니다.😁"
             app:layout_constraintStart_toStartOf="@+id/signemail_maintitle"
             app:layout_constraintTop_toBottomOf="@+id/signemail_maintitle" />
 
@@ -96,6 +101,7 @@
             android:id="@+id/google"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#E5E5E5"
             android:text="G"
             app:layout_constraintEnd_toStartOf="@+id/naver"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,6 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:background="#2AD289"
             android:text="N"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -115,17 +122,18 @@
             android:id="@+id/kakao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#FFC653"
+            android:onClick="@{() -> viewModel.loginByKakao()}"
             android:text="K"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/naver"
-            app:layout_constraintTop_toTopOf="@+id/naver"
-            android:onClick="@{() -> viewModel.loginByKakao()}"/>
+            app:layout_constraintTop_toTopOf="@+id/naver" />
 
         <TextView
             android:id="@+id/signemail_tv_social"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="소셜 계정으로 로그인하기"
+            android:text="다음 계정으로 이용"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -150,6 +158,28 @@
             android:onClick="@{() -> viewModel.doGoToFindPW()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#5D5D5D"
+            android:layout_margin="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/signemail_tv_social"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/signemail_tv_social"
+            app:layout_constraintTop_toTopOf="@+id/signemail_tv_social" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#5D5D5D"
+            android:layout_margin="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/signemail_tv_social"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/signemail_tv_social"
+            app:layout_constraintTop_toTopOf="@+id/signemail_tv_social" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
