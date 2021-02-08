@@ -85,7 +85,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/vertical_margin"
                 android:onClick="@{() -> viewModel.onNextBtnClicked()}"
-                android:text="다음" />
+                android:text="다음"
+                android:background="@color/mainColor"
+                app:setActivate="@{viewModel.nextBtnActivated}"/>
 
         </LinearLayout>
 

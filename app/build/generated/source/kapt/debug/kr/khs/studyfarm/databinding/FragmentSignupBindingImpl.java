@@ -149,7 +149,7 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
         this(bindingComponent, root, mapBindings(bindingComponent, root, 11, sIncludes, sViewsWithIds));
     }
     private FragmentSignupBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
-        super(bindingComponent, root, 4
+        super(bindingComponent, root, 5
             , (android.widget.LinearLayout) bindings[8]
             , (android.widget.Button) bindings[7]
             , (com.google.android.material.textfield.TextInputLayout) bindings[3]
@@ -179,7 +179,7 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x20L;
+                mDirtyFlags = 0x40L;
         }
         requestRebind();
     }
@@ -209,7 +209,7 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
     public void setViewModel(@Nullable kr.khs.studyfarm.login_process.sign_up.SignupViewModel ViewModel) {
         this.mViewModel = ViewModel;
         synchronized(this) {
-            mDirtyFlags |= 0x10L;
+            mDirtyFlags |= 0x20L;
         }
         notifyPropertyChanged(BR.viewModel);
         super.requestRebind();
@@ -219,17 +219,19 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
     protected boolean onFieldChange(int localFieldId, Object object, int fieldId) {
         switch (localFieldId) {
             case 0 :
-                return onChangeViewModelEmail((androidx.databinding.ObservableField<java.lang.String>) object, fieldId);
+                return onChangeViewModelNextBtnActivated((androidx.lifecycle.MutableLiveData<java.lang.Boolean>) object, fieldId);
             case 1 :
-                return onChangeViewModelDuplicateNickname((androidx.databinding.ObservableBoolean) object, fieldId);
+                return onChangeViewModelEmail((androidx.databinding.ObservableField<java.lang.String>) object, fieldId);
             case 2 :
-                return onChangeViewModelPassword((androidx.databinding.ObservableField<java.lang.String>) object, fieldId);
+                return onChangeViewModelDuplicateNickname((androidx.databinding.ObservableBoolean) object, fieldId);
             case 3 :
+                return onChangeViewModelPassword((androidx.databinding.ObservableField<java.lang.String>) object, fieldId);
+            case 4 :
                 return onChangeViewModelNickname((androidx.databinding.ObservableField<java.lang.String>) object, fieldId);
         }
         return false;
     }
-    private boolean onChangeViewModelEmail(androidx.databinding.ObservableField<java.lang.String> ViewModelEmail, int fieldId) {
+    private boolean onChangeViewModelNextBtnActivated(androidx.lifecycle.MutableLiveData<java.lang.Boolean> ViewModelNextBtnActivated, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x1L;
@@ -238,7 +240,7 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
         }
         return false;
     }
-    private boolean onChangeViewModelDuplicateNickname(androidx.databinding.ObservableBoolean ViewModelDuplicateNickname, int fieldId) {
+    private boolean onChangeViewModelEmail(androidx.databinding.ObservableField<java.lang.String> ViewModelEmail, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x2L;
@@ -247,7 +249,7 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
         }
         return false;
     }
-    private boolean onChangeViewModelPassword(androidx.databinding.ObservableField<java.lang.String> ViewModelPassword, int fieldId) {
+    private boolean onChangeViewModelDuplicateNickname(androidx.databinding.ObservableBoolean ViewModelDuplicateNickname, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x4L;
@@ -256,10 +258,19 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
         }
         return false;
     }
-    private boolean onChangeViewModelNickname(androidx.databinding.ObservableField<java.lang.String> ViewModelNickname, int fieldId) {
+    private boolean onChangeViewModelPassword(androidx.databinding.ObservableField<java.lang.String> ViewModelPassword, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x8L;
+            }
+            return true;
+        }
+        return false;
+    }
+    private boolean onChangeViewModelNickname(androidx.databinding.ObservableField<java.lang.String> ViewModelNickname, int fieldId) {
+        if (fieldId == BR._all) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x10L;
             }
             return true;
         }
@@ -273,7 +284,9 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
             dirtyFlags = mDirtyFlags;
             mDirtyFlags = 0;
         }
+        androidx.lifecycle.MutableLiveData<java.lang.Boolean> viewModelNextBtnActivated = null;
         java.lang.String viewModelPasswordGet = null;
+        java.lang.Boolean viewModelNextBtnActivatedGetValue = null;
         kr.khs.studyfarm.StringRule viewModelRuleEMAILRULE = null;
         java.lang.String viewModelNicknameGet = null;
         kr.khs.studyfarm.Rule viewModelRule = null;
@@ -282,15 +295,34 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
         androidx.databinding.ObservableField<java.lang.String> viewModelEmail = null;
         boolean viewModelDuplicateNicknameGet = false;
         android.view.View.OnFocusChangeListener viewModelNicknameFocusChangeListener = null;
+        boolean androidxDatabindingViewDataBindingSafeUnboxViewModelNextBtnActivatedGetValue = false;
         androidx.databinding.ObservableBoolean viewModelDuplicateNickname = null;
         kr.khs.studyfarm.login_process.sign_up.SignupViewModel viewModel = mViewModel;
         androidx.databinding.ObservableField<java.lang.String> viewModelPassword = null;
         androidx.databinding.ObservableField<java.lang.String> viewModelNickname = null;
 
-        if ((dirtyFlags & 0x3fL) != 0) {
+        if ((dirtyFlags & 0x7fL) != 0) {
 
 
-            if ((dirtyFlags & 0x30L) != 0) {
+            if ((dirtyFlags & 0x61L) != 0) {
+
+                    if (viewModel != null) {
+                        // read viewModel.nextBtnActivated
+                        viewModelNextBtnActivated = viewModel.getNextBtnActivated();
+                    }
+                    updateLiveDataRegistration(0, viewModelNextBtnActivated);
+
+
+                    if (viewModelNextBtnActivated != null) {
+                        // read viewModel.nextBtnActivated.getValue()
+                        viewModelNextBtnActivatedGetValue = viewModelNextBtnActivated.getValue();
+                    }
+
+
+                    // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.nextBtnActivated.getValue())
+                    androidxDatabindingViewDataBindingSafeUnboxViewModelNextBtnActivatedGetValue = androidx.databinding.ViewDataBinding.safeUnbox(viewModelNextBtnActivatedGetValue);
+            }
+            if ((dirtyFlags & 0x60L) != 0) {
 
                     if (viewModel != null) {
                         // read viewModel.rule
@@ -307,13 +339,13 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
                         viewModelRulePASSWORDRULE = viewModelRule.getPASSWORD_RULE();
                     }
             }
-            if ((dirtyFlags & 0x31L) != 0) {
+            if ((dirtyFlags & 0x62L) != 0) {
 
                     if (viewModel != null) {
                         // read viewModel.email
                         viewModelEmail = viewModel.getEmail();
                     }
-                    updateRegistration(0, viewModelEmail);
+                    updateRegistration(1, viewModelEmail);
 
 
                     if (viewModelEmail != null) {
@@ -321,13 +353,13 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
                         viewModelEmailGet = viewModelEmail.get();
                     }
             }
-            if ((dirtyFlags & 0x32L) != 0) {
+            if ((dirtyFlags & 0x64L) != 0) {
 
                     if (viewModel != null) {
                         // read viewModel.duplicateNickname
                         viewModelDuplicateNickname = viewModel.getDuplicateNickname();
                     }
-                    updateRegistration(1, viewModelDuplicateNickname);
+                    updateRegistration(2, viewModelDuplicateNickname);
 
 
                     if (viewModelDuplicateNickname != null) {
@@ -335,13 +367,13 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
                         viewModelDuplicateNicknameGet = viewModelDuplicateNickname.get();
                     }
             }
-            if ((dirtyFlags & 0x34L) != 0) {
+            if ((dirtyFlags & 0x68L) != 0) {
 
                     if (viewModel != null) {
                         // read viewModel.password
                         viewModelPassword = viewModel.getPassword();
                     }
-                    updateRegistration(2, viewModelPassword);
+                    updateRegistration(3, viewModelPassword);
 
 
                     if (viewModelPassword != null) {
@@ -349,13 +381,13 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
                         viewModelPasswordGet = viewModelPassword.get();
                     }
             }
-            if ((dirtyFlags & 0x38L) != 0) {
+            if ((dirtyFlags & 0x70L) != 0) {
 
                     if (viewModel != null) {
                         // read viewModel.nickname
                         viewModelNickname = viewModel.getNickname();
                     }
-                    updateRegistration(3, viewModelNickname);
+                    updateRegistration(4, viewModelNickname);
 
 
                     if (viewModelNickname != null) {
@@ -365,12 +397,12 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
             }
         }
         // batch finished
-        if ((dirtyFlags & 0x38L) != 0) {
+        if ((dirtyFlags & 0x70L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.mboundView2, viewModelNicknameGet);
         }
-        if ((dirtyFlags & 0x20L) != 0) {
+        if ((dirtyFlags & 0x40L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.mboundView2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, mboundView2androidTextAttrChanged);
@@ -379,24 +411,29 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
             this.signemailBtnNext.setOnClickListener(mCallback25);
             kr.khs.studyfarm.BindingUtilKt.setPasswordVisibility(this.signpwPassword, true);
         }
-        if ((dirtyFlags & 0x31L) != 0) {
+        if ((dirtyFlags & 0x62L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.mboundView4, viewModelEmailGet);
         }
-        if ((dirtyFlags & 0x34L) != 0) {
+        if ((dirtyFlags & 0x68L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.mboundView6, viewModelPasswordGet);
         }
-        if ((dirtyFlags & 0x30L) != 0) {
+        if ((dirtyFlags & 0x61L) != 0) {
+            // api target 1
+
+            kr.khs.studyfarm.BindingUtilKt.setActivate(this.signemailBtnNext, androidxDatabindingViewDataBindingSafeUnboxViewModelNextBtnActivatedGetValue);
+        }
+        if ((dirtyFlags & 0x60L) != 0) {
             // api target 1
 
             kr.khs.studyfarm.BindingUtilKt.setErrorEnable(this.signemailEtEmail, viewModelRuleEMAILRULE, "이메일 형식이 맞지 않습니다.");
             kr.khs.studyfarm.BindingUtilKt.setErrorEnable(this.signpwPassword, viewModelRulePASSWORDRULE, "비밀번호의 형식(8~15자, 특수문자 포함)이 맞지 않습니다.");
             kr.khs.studyfarm.BindingUtilKt.checkNickName(this.signupEtNickname, viewModelNicknameFocusChangeListener);
         }
-        if ((dirtyFlags & 0x32L) != 0) {
+        if ((dirtyFlags & 0x64L) != 0) {
             // api target 1
 
             kr.khs.studyfarm.BindingUtilKt.setErrorEnableBoolean(this.signupEtNickname, viewModelDuplicateNicknameGet, "중복된 닉네임입니다.");
@@ -423,12 +460,13 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
     // dirty flag
     private  long mDirtyFlags = 0xffffffffffffffffL;
     /* flag mapping
-        flag 0 (0x1L): viewModel.email
-        flag 1 (0x2L): viewModel.duplicateNickname
-        flag 2 (0x3L): viewModel.password
-        flag 3 (0x4L): viewModel.nickname
-        flag 4 (0x5L): viewModel
-        flag 5 (0x6L): null
+        flag 0 (0x1L): viewModel.nextBtnActivated
+        flag 1 (0x2L): viewModel.email
+        flag 2 (0x3L): viewModel.duplicateNickname
+        flag 3 (0x4L): viewModel.password
+        flag 4 (0x5L): viewModel.nickname
+        flag 5 (0x6L): viewModel
+        flag 6 (0x7L): null
     flag mapping end*/
     //end
 }

@@ -31,7 +31,7 @@ public class FragmentSelectBindingImpl extends FragmentSelectBinding implements 
     private final com.google.android.material.chip.Chip mboundView4;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback1;
+    private final android.view.View.OnClickListener mCallback16;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -59,7 +59,7 @@ public class FragmentSelectBindingImpl extends FragmentSelectBinding implements 
         this.mboundView4.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback1 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
+        mCallback16 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -209,7 +209,7 @@ public class FragmentSelectBindingImpl extends FragmentSelectBinding implements 
         if ((dirtyFlags & 0x8L) != 0) {
             // api target 1
 
-            this.button2.setOnClickListener(mCallback1);
+            this.button2.setOnClickListener(mCallback16);
         }
         if ((dirtyFlags & 0xfL) != 0) {
             // api target 1

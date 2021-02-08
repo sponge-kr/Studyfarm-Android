@@ -253,3 +253,9 @@ fun LevelSelectButton.onChange(listener : InverseBindingListener) {
 fun LevelSelectButton.getLevel() : String {
     return this.levelselect_tv_select.text.toString()
 }
+
+@BindingAdapter("app:setActivate")
+fun Button.setActivate(enabled : Boolean) {
+    this.isEnabled = enabled
+    this.background = resources.getDrawable(if(enabled) R.color.mainColor else R.color.notActivateColor, null)
+}

@@ -9,4 +9,5 @@
     <color name="colorAccent">#03DAC5</color>
 
     <color name="mainColor">#FF7663</color>
+    <color name="notActivateColor">#DFDFDF</color>
 </resources>

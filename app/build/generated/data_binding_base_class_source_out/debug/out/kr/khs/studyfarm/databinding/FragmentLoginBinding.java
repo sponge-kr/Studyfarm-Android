@@ -55,6 +55,12 @@ public abstract class FragmentLoginBinding extends ViewDataBinding {
   @NonNull
   public final TextInputLayout signpwPassword;
 
+  @NonNull
+  public final View view2;
+
+  @NonNull
+  public final View view3;
+
   @Bindable
   protected LoginViewModel mViewModel;
 
@@ -62,7 +68,7 @@ public abstract class FragmentLoginBinding extends ViewDataBinding {
       Button google, Button kakao, LinearLayout linearLayout, TextView loginBtnFindpw,
       TextView loginBtnSignup, Button naver, Button signemailBtnNext,
       TextInputLayout signemailEtEmail, TextView signemailMaintitle, TextView signemailSubtitle,
-      TextView signemailTvSocial, TextInputLayout signpwPassword) {
+      TextView signemailTvSocial, TextInputLayout signpwPassword, View view2, View view3) {
     super(_bindingComponent, _root, _localFieldCount);
     this.google = google;
     this.kakao = kakao;
@@ -76,6 +82,8 @@ public abstract class FragmentLoginBinding extends ViewDataBinding {
     this.signemailSubtitle = signemailSubtitle;
     this.signemailTvSocial = signemailTvSocial;
     this.signpwPassword = signpwPassword;
+    this.view2 = view2;
+    this.view3 = view3;
   }
 
   public abstract void setViewModel(@Nullable LoginViewModel viewModel);
