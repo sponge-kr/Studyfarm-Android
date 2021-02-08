@@ -29,7 +29,9 @@ class SignupViewModel(val context : Context) : ViewModel() {
 
     val duplicateNickname = ObservableBoolean()
 
-    val nextBtnActivated = MutableLiveData<Boolean>()
+    private val _nextBtnActivated = MutableLiveData<Boolean>()
+    val nextBtnActivated : LiveData<Boolean>
+        get() = _nextBtnActivated
 
     //0 default 1 회원가입 2 로그인
     private val _status = MutableLiveData<Int>()
@@ -79,8 +81,8 @@ class SignupViewModel(val context : Context) : ViewModel() {
     val toast : LiveData<String>
         get() = _toast
 
-    fun nextBtnActivateCheck() {
-        nextBtnActivated.value = isEmailValid && isPasswordValid && isNicknameValid && !duplicateNickname.get()
+    private fun nextBtnActivateCheck() {
+        _nextBtnActivated.value = isEmailValid && isPasswordValid && isNicknameValid && !duplicateNickname.get()
     }
 
     fun onNextBtnClicked() {
@@ -147,12 +149,12 @@ class SignupViewModel(val context : Context) : ViewModel() {
     }
 
     init {
-//        nickname.set("kimheeseung1")
-//        email.set("simpson5304@naver.com")
-//        password.set("gmltmd!23")
+        nickname.set("kimheeseung1")
+        email.set("simpson5304@naver.com")
+        password.set("gmltmd!23")
         _toast.value = ""
         duplicateNickname.set(false)
-        nextBtnActivated.value = false
+        _nextBtnActivated.value = false
         nickname.addOnPropertyChangedCallback(callback)
         email.addOnPropertyChangedCallback(callback)
         password.addOnPropertyChangedCallback(callback)
