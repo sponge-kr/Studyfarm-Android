@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="메일 주소를 입력해 주세요"
+            android:text="이메일로 시작하기"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -107,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="로그인을 하거나 회원가입을 진행할 수 있도록\n본인인증을 위한 인증메일이 전송됩니다."
+            android:text="입력하신 메일로 본인인증 위한 인증번호가 전송됩니다.\n비밀번호는 1번만 입력하니 정확히 입력해주세요."
             app:layout_constraintStart_toStartOf="@+id/signemail_maintitle"
             app:layout_constraintTop_toBottomOf="@+id/signemail_maintitle" />
 
