@@ -13,6 +13,9 @@ import kr.khs.studyfarm.network.response.Response
 import kr.khs.studyfarm.network.response.ResponseError
 import java.util.AbstractMap
 
+/*
+참고 : https://medium.com/@dev.ksw/android-%EB%8F%99%EC%A0%81-%EC%9D%B4%EC%9A%A9%EC%95%BD%EA%B4%80-%EB%A7%8C%EB%93%A4%EA%B8%B0-8913eb66a63a
+ */
 class AgreementViewModel(val context: Context,
                          val email : String, val password : String, val nickname : String) : ViewModel() {
 
