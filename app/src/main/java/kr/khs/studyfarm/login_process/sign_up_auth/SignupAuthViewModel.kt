@@ -1,10 +1,7 @@
 package kr.khs.studyfarm.login_process.sign_up_auth
 
 import android.content.Context
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import kotlinx.coroutines.*
 import kr.khs.studyfarm.R
 import kr.khs.studyfarm.network.ApiStatus
@@ -17,6 +14,10 @@ import java.util.AbstractMap
 class SignupAuthViewModel(val context : Context, _email : String) : ViewModel() {
 
     val email = MutableLiveData<String>()
+
+    val subTitle = Transformations.map(email) {
+        it + "으로 인증 메일을 발송했습니다."
+    }
 
     private val _nextBtnClicked = MutableLiveData<Boolean>()
     val nextBtnClicked : LiveData<Boolean>
