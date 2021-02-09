@@ -1884,11 +1884,10 @@ id activity_chooser_view_content
 id add
 id agreementFragment
 id agreement_btn_next
-id agreement_check_1
-id agreement_check_2
-id agreement_check_3
-id agreement_check_4
 id agreement_check_all
+id agreement_cl_allAgree
+id agreement_rv
+id agreement_tv_all
 id alertTitle
 id aligned
 id all
@@ -2032,6 +2031,8 @@ id incoming
 id info
 id invisible
 id italic
+id item_agreement_checkbox
+id item_agreement_textview
 id item_date
 id item_studyname
 id item_touch_helper_previous_elevation
@@ -2508,6 +2509,7 @@ layout layout_makestudy_detail
 layout layout_makestudy_recruit
 layout layout_signup_step1
 layout layout_signup_step2
+layout list_item_agreement
 layout list_item_interestingstudy
 layout list_item_select
 layout material_chip_input_combo
@@ -2721,6 +2723,8 @@ string signup_infoSubTitle2
 string signup_maxStudy
 string signup_success
 string status_bar_notification_info_overflow
+string terms_title_required_false
+string terms_title_required_true
 style ActiveButton
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light

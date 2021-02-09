@@ -44,6 +44,10 @@ class AgreementFragment : BottomSheetDialogFragment() {
 
         val viewModel = ViewModelProvider(this, viewModelFactory).get(AgreementViewModel::class.java)
 
+        val agreementAdapter = AgreementAdapter(viewModel)
+
+        binding.agreementRv.adapter = agreementAdapter
+
         binding.viewModel = viewModel
 
         viewModel.toast.observe(viewLifecycleOwner, Observer {

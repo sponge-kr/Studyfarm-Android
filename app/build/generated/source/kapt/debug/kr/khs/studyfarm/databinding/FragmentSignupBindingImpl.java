@@ -29,7 +29,7 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
     private final com.google.android.material.textfield.TextInputEditText mboundView6;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback25;
+    private final android.view.View.OnClickListener mCallback24;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -172,7 +172,7 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
         this.signupEtNickname.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback25 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
+        mCallback24 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -219,7 +219,7 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
     protected boolean onFieldChange(int localFieldId, Object object, int fieldId) {
         switch (localFieldId) {
             case 0 :
-                return onChangeViewModelNextBtnActivated((androidx.lifecycle.MutableLiveData<java.lang.Boolean>) object, fieldId);
+                return onChangeViewModelNextBtnActivated((androidx.lifecycle.LiveData<java.lang.Boolean>) object, fieldId);
             case 1 :
                 return onChangeViewModelEmail((androidx.databinding.ObservableField<java.lang.String>) object, fieldId);
             case 2 :
@@ -231,7 +231,7 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
         }
         return false;
     }
-    private boolean onChangeViewModelNextBtnActivated(androidx.lifecycle.MutableLiveData<java.lang.Boolean> ViewModelNextBtnActivated, int fieldId) {
+    private boolean onChangeViewModelNextBtnActivated(androidx.lifecycle.LiveData<java.lang.Boolean> ViewModelNextBtnActivated, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x1L;
@@ -284,7 +284,7 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
             dirtyFlags = mDirtyFlags;
             mDirtyFlags = 0;
         }
-        androidx.lifecycle.MutableLiveData<java.lang.Boolean> viewModelNextBtnActivated = null;
+        androidx.lifecycle.LiveData<java.lang.Boolean> viewModelNextBtnActivated = null;
         java.lang.String viewModelPasswordGet = null;
         java.lang.Boolean viewModelNextBtnActivatedGetValue = null;
         kr.khs.studyfarm.StringRule viewModelRuleEMAILRULE = null;
@@ -408,7 +408,7 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.mboundView2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, mboundView2androidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.mboundView4, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, mboundView4androidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.mboundView6, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, mboundView6androidTextAttrChanged);
-            this.signemailBtnNext.setOnClickListener(mCallback25);
+            this.signemailBtnNext.setOnClickListener(mCallback24);
             kr.khs.studyfarm.BindingUtilKt.setPasswordVisibility(this.signpwPassword, true);
         }
         if ((dirtyFlags & 0x62L) != 0) {

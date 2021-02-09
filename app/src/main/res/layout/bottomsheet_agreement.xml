@@ -19,59 +19,103 @@
         android:paddingEnd="30dp"
         android:paddingBottom="60dp">
 
-        <CheckBox
-            android:id="@+id/agreement_check_all"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="전체 동의"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="@{() -> viewModel.allCheck()}"/>
+<!--        <CheckBox-->
+<!--            android:id="@+id/agreement_check_all"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="전체 동의"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:onClick="@{() -> viewModel.allCheck()}"/>-->
 
-        <CheckBox
-            android:id="@+id/agreement_check_1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="스터디팜 이용약관 동의[필수]"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/agreement_check_all"
-            android:checked="@={viewModel.checked[0]}"/>
+<!--        <CheckBox-->
+<!--            android:id="@+id/agreement_check_1"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="스터디팜 이용약관 동의[필수]"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/agreement_check_all"-->
+<!--            android:checked="@={viewModel.checked[0]}"/>-->
 
-        <CheckBox
-            android:id="@+id/agreement_check_2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="개인정보 수집이용 동의[필수]"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/agreement_check_1"
-            android:checked="@={viewModel.checked[1]}"/>
+<!--        <CheckBox-->
+<!--            android:id="@+id/agreement_check_2"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:text="개인정보 수집이용 동의[필수]"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/agreement_check_1"-->
+<!--            android:checked="@={viewModel.checked[1]}"/>-->
 
-        <CheckBox
-            android:id="@+id/agreement_check_3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="개인정보 수집이용 동의[선택]"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/agreement_check_2"
-            android:checked="@={viewModel.checked[2]}"/>
+<!--        <CheckBox-->
+<!--            android:id="@+id/agreement_check_3"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:text="개인정보 수집이용 동의[선택]"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/agreement_check_2"-->
+<!--            android:checked="@={viewModel.checked[2]}"/>-->
 
-        <CheckBox
-            android:id="@+id/agreement_check_4"
+<!--        <CheckBox-->
+<!--            android:id="@+id/agreement_check_4"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:text="마케팅 정보 수신 동의[선택]"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/agreement_check_3"-->
+<!--            android:checked="@={viewModel.checked[3]}"/>-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/agreement_cl_allAgree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="14dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/agreement_check_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@={viewModel.allAgreeChecked}"
+                android:onClick="@{viewModel::onAllAgreeCheckBoxListener}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/agreement_tv_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="전체 동의"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/agreement_check_all"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/agreement_rv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="마케팅 정보 수신 동의[선택]"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            app:termsItems="@{viewModel.termsList}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/agreement_check_3"
-            android:checked="@={viewModel.checked[3]}"/>
+            app:layout_constraintTop_toBottomOf="@+id/agreement_cl_allAgree" />
 
         <Button
             android:id="@+id/agreement_btn_next"
@@ -79,9 +123,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="동의 후 계속하기"
+            app:setActivate="@{viewModel.btnEnable}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/agreement_check_4"
+            app:layout_constraintTop_toBottomOf="@+id/agreement_rv"
             android:onClick="@{() -> viewModel.doNextBtnClicked()}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

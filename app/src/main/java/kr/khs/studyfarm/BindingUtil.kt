@@ -9,12 +9,15 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.button_level_select.view.*
+import kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementAdapter
+import kr.khs.studyfarm.login_process.agreement_bottomsheet.TermsData
 import kr.khs.studyfarm.login_process.select.SelectInfo
 import kr.khs.studyfarm.mainpage.vp.InterestingVPAdapter
 import kr.khs.studyfarm.network.response.UserInterestingInfo
@@ -258,4 +261,22 @@ fun LevelSelectButton.getLevel() : String {
 fun Button.setActivate(enabled : Boolean) {
     this.isEnabled = enabled
     this.background = resources.getDrawable(if(enabled) R.color.mainColor else R.color.notActivateColor, null)
+}
+
+@BindingAdapter("termsItems")
+fun RecyclerView.bindTermsItem(list: List<TermsData>?) {
+    list?.let {
+        (adapter as AgreementAdapter).submitList(list)
+    }
+}
+
+@BindingAdapter(value = ["termsTitle","termsRequired"],requireAll = true)
+fun TextView.setTermsString(termsStr: String, required: Boolean) {
+    val termsText = if (required) {
+        String.format(this.context.getString(R.string.terms_title_required_true),termsStr)
+    } else {
+        String.format(this.context.getString(R.string.terms_title_required_false),termsStr)
+    }
+
+    this.text = termsText
 }

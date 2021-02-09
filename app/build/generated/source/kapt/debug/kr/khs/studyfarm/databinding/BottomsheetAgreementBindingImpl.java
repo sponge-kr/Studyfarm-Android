@@ -13,7 +13,9 @@ public class BottomsheetAgreementBindingImpl extends BottomsheetAgreementBinding
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
         sIncludes = null;
-        sViewsWithIds = null;
+        sViewsWithIds = new android.util.SparseIntArray();
+        sViewsWithIds.put(R.id.agreement_cl_allAgree, 4);
+        sViewsWithIds.put(R.id.agreement_tv_all, 5);
     }
     // views
     @NonNull
@@ -21,30 +23,27 @@ public class BottomsheetAgreementBindingImpl extends BottomsheetAgreementBinding
     // variables
     @Nullable
     private final android.view.View.OnClickListener mCallback17;
-    @Nullable
-    private final android.view.View.OnClickListener mCallback18;
     // values
     // listeners
+    private OnClickListenerImpl mViewModelOnAllAgreeCheckBoxListenerAndroidViewViewOnClickListener;
     // Inverse Binding Event Handlers
-    private androidx.databinding.InverseBindingListener agreementCheck1androidCheckedAttrChanged = new androidx.databinding.InverseBindingListener() {
+    private androidx.databinding.InverseBindingListener agreementCheckAllandroidCheckedAttrChanged = new androidx.databinding.InverseBindingListener() {
         @Override
         public void onChange() {
-            // Inverse of viewModel.checked.get()[0]
-            //         is androidx.databinding.ViewDataBinding.setTo(viewModel.checked.get(), 0, callbackArg_0)
-            boolean callbackArg_0 = agreementCheck1.isChecked();
+            // Inverse of viewModel.allAgreeChecked.get()
+            //         is viewModel.allAgreeChecked.set((boolean) callbackArg_0)
+            boolean callbackArg_0 = agreementCheckAll.isChecked();
             // localize variables for thread safety
-            // viewModel.checked.get()
-            boolean[] viewModelCheckedGet = null;
-            // viewModel.checked
-            androidx.databinding.ObservableField<boolean[]> viewModelChecked = null;
-            // viewModel.checked != null
-            boolean viewModelCheckedJavaLangObjectNull = false;
-            // viewModel.checked.get()[0]
-            boolean viewModelChecked0 = false;
+            // viewModel.allAgreeChecked
+            androidx.databinding.ObservableBoolean viewModelAllAgreeChecked = null;
+            // viewModel.allAgreeChecked.get()
+            boolean viewModelAllAgreeCheckedGet = false;
             // viewModel
             kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementViewModel viewModel = mViewModel;
             // viewModel != null
             boolean viewModelJavaLangObjectNull = false;
+            // viewModel.allAgreeChecked != null
+            boolean viewModelAllAgreeCheckedJavaLangObjectNull = false;
 
 
 
@@ -52,176 +51,46 @@ public class BottomsheetAgreementBindingImpl extends BottomsheetAgreementBinding
             if (viewModelJavaLangObjectNull) {
 
 
-                viewModelChecked = viewModel.getChecked();
+                viewModelAllAgreeChecked = viewModel.getAllAgreeChecked();
 
-                viewModelCheckedJavaLangObjectNull = (viewModelChecked) != (null);
-                if (viewModelCheckedJavaLangObjectNull) {
-
-
-                    viewModelCheckedGet = viewModelChecked.get();
+                viewModelAllAgreeCheckedJavaLangObjectNull = (viewModelAllAgreeChecked) != (null);
+                if (viewModelAllAgreeCheckedJavaLangObjectNull) {
 
 
 
-                    androidx.databinding.ViewDataBinding.setTo(viewModelCheckedGet, 0, callbackArg_0);
-                }
-            }
-        }
-    };
-    private androidx.databinding.InverseBindingListener agreementCheck2androidCheckedAttrChanged = new androidx.databinding.InverseBindingListener() {
-        @Override
-        public void onChange() {
-            // Inverse of viewModel.checked.get()[1]
-            //         is androidx.databinding.ViewDataBinding.setTo(viewModel.checked.get(), 1, callbackArg_0)
-            boolean callbackArg_0 = agreementCheck2.isChecked();
-            // localize variables for thread safety
-            // viewModel.checked.get()
-            boolean[] viewModelCheckedGet = null;
-            // viewModel.checked
-            androidx.databinding.ObservableField<boolean[]> viewModelChecked = null;
-            // viewModel.checked != null
-            boolean viewModelCheckedJavaLangObjectNull = false;
-            // viewModel.checked.get()[1]
-            boolean viewModelChecked1 = false;
-            // viewModel
-            kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementViewModel viewModel = mViewModel;
-            // viewModel != null
-            boolean viewModelJavaLangObjectNull = false;
 
-
-
-            viewModelJavaLangObjectNull = (viewModel) != (null);
-            if (viewModelJavaLangObjectNull) {
-
-
-                viewModelChecked = viewModel.getChecked();
-
-                viewModelCheckedJavaLangObjectNull = (viewModelChecked) != (null);
-                if (viewModelCheckedJavaLangObjectNull) {
-
-
-                    viewModelCheckedGet = viewModelChecked.get();
-
-
-
-                    androidx.databinding.ViewDataBinding.setTo(viewModelCheckedGet, 1, callbackArg_0);
-                }
-            }
-        }
-    };
-    private androidx.databinding.InverseBindingListener agreementCheck3androidCheckedAttrChanged = new androidx.databinding.InverseBindingListener() {
-        @Override
-        public void onChange() {
-            // Inverse of viewModel.checked.get()[2]
-            //         is androidx.databinding.ViewDataBinding.setTo(viewModel.checked.get(), 2, callbackArg_0)
-            boolean callbackArg_0 = agreementCheck3.isChecked();
-            // localize variables for thread safety
-            // viewModel.checked.get()
-            boolean[] viewModelCheckedGet = null;
-            // viewModel.checked
-            androidx.databinding.ObservableField<boolean[]> viewModelChecked = null;
-            // viewModel.checked != null
-            boolean viewModelCheckedJavaLangObjectNull = false;
-            // viewModel.checked.get()[2]
-            boolean viewModelChecked2 = false;
-            // viewModel
-            kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementViewModel viewModel = mViewModel;
-            // viewModel != null
-            boolean viewModelJavaLangObjectNull = false;
-
-
-
-            viewModelJavaLangObjectNull = (viewModel) != (null);
-            if (viewModelJavaLangObjectNull) {
-
-
-                viewModelChecked = viewModel.getChecked();
-
-                viewModelCheckedJavaLangObjectNull = (viewModelChecked) != (null);
-                if (viewModelCheckedJavaLangObjectNull) {
-
-
-                    viewModelCheckedGet = viewModelChecked.get();
-
-
-
-                    androidx.databinding.ViewDataBinding.setTo(viewModelCheckedGet, 2, callbackArg_0);
-                }
-            }
-        }
-    };
-    private androidx.databinding.InverseBindingListener agreementCheck4androidCheckedAttrChanged = new androidx.databinding.InverseBindingListener() {
-        @Override
-        public void onChange() {
-            // Inverse of viewModel.checked.get()[3]
-            //         is androidx.databinding.ViewDataBinding.setTo(viewModel.checked.get(), 3, callbackArg_0)
-            boolean callbackArg_0 = agreementCheck4.isChecked();
-            // localize variables for thread safety
-            // viewModel.checked.get()
-            boolean[] viewModelCheckedGet = null;
-            // viewModel.checked
-            androidx.databinding.ObservableField<boolean[]> viewModelChecked = null;
-            // viewModel.checked != null
-            boolean viewModelCheckedJavaLangObjectNull = false;
-            // viewModel.checked.get()[3]
-            boolean viewModelChecked3 = false;
-            // viewModel
-            kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementViewModel viewModel = mViewModel;
-            // viewModel != null
-            boolean viewModelJavaLangObjectNull = false;
-
-
-
-            viewModelJavaLangObjectNull = (viewModel) != (null);
-            if (viewModelJavaLangObjectNull) {
-
-
-                viewModelChecked = viewModel.getChecked();
-
-                viewModelCheckedJavaLangObjectNull = (viewModelChecked) != (null);
-                if (viewModelCheckedJavaLangObjectNull) {
-
-
-                    viewModelCheckedGet = viewModelChecked.get();
-
-
-
-                    androidx.databinding.ViewDataBinding.setTo(viewModelCheckedGet, 3, callbackArg_0);
+                    viewModelAllAgreeChecked.set(((boolean) (callbackArg_0)));
                 }
             }
         }
     };
 
     public BottomsheetAgreementBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 7, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 6, sIncludes, sViewsWithIds));
     }
     private BottomsheetAgreementBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
-        super(bindingComponent, root, 1
-            , (android.widget.Button) bindings[6]
-            , (android.widget.CheckBox) bindings[2]
-            , (android.widget.CheckBox) bindings[3]
-            , (android.widget.CheckBox) bindings[4]
-            , (android.widget.CheckBox) bindings[5]
-            , (android.widget.CheckBox) bindings[1]
+        super(bindingComponent, root, 2
+            , (android.widget.Button) bindings[3]
+            , (androidx.appcompat.widget.AppCompatCheckBox) bindings[1]
+            , (androidx.constraintlayout.widget.ConstraintLayout) bindings[4]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[2]
+            , (android.widget.TextView) bindings[5]
             );
         this.agreementBtnNext.setTag(null);
-        this.agreementCheck1.setTag(null);
-        this.agreementCheck2.setTag(null);
-        this.agreementCheck3.setTag(null);
-        this.agreementCheck4.setTag(null);
         this.agreementCheckAll.setTag(null);
+        this.agreementRv.setTag(null);
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);
         setRootTag(root);
         // listeners
         mCallback17 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
-        mCallback18 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
         invalidateAll();
     }
 
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x4L;
+                mDirtyFlags = 0x8L;
         }
         requestRebind();
     }
@@ -251,7 +120,7 @@ public class BottomsheetAgreementBindingImpl extends BottomsheetAgreementBinding
     public void setViewModel(@Nullable kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementViewModel ViewModel) {
         this.mViewModel = ViewModel;
         synchronized(this) {
-            mDirtyFlags |= 0x2L;
+            mDirtyFlags |= 0x4L;
         }
         notifyPropertyChanged(BR.viewModel);
         super.requestRebind();
@@ -261,14 +130,25 @@ public class BottomsheetAgreementBindingImpl extends BottomsheetAgreementBinding
     protected boolean onFieldChange(int localFieldId, Object object, int fieldId) {
         switch (localFieldId) {
             case 0 :
-                return onChangeViewModelChecked((androidx.databinding.ObservableField<boolean[]>) object, fieldId);
+                return onChangeViewModelAllAgreeChecked((androidx.databinding.ObservableBoolean) object, fieldId);
+            case 1 :
+                return onChangeViewModelBtnEnable((androidx.databinding.ObservableBoolean) object, fieldId);
         }
         return false;
     }
-    private boolean onChangeViewModelChecked(androidx.databinding.ObservableField<boolean[]> ViewModelChecked, int fieldId) {
+    private boolean onChangeViewModelAllAgreeChecked(androidx.databinding.ObservableBoolean ViewModelAllAgreeChecked, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x1L;
+            }
+            return true;
+        }
+        return false;
+    }
+    private boolean onChangeViewModelBtnEnable(androidx.databinding.ObservableBoolean ViewModelBtnEnable, int fieldId) {
+        if (fieldId == BR._all) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x2L;
             }
             return true;
         }
@@ -282,108 +162,115 @@ public class BottomsheetAgreementBindingImpl extends BottomsheetAgreementBinding
             dirtyFlags = mDirtyFlags;
             mDirtyFlags = 0;
         }
-        androidx.databinding.ObservableField<boolean[]> viewModelChecked = null;
-        boolean viewModelChecked3 = false;
-        boolean viewModelChecked0 = false;
-        boolean viewModelChecked2 = false;
-        boolean[] viewModelCheckedGet = null;
-        boolean viewModelChecked1 = false;
+        boolean viewModelBtnEnableGet = false;
+        androidx.databinding.ObservableBoolean viewModelAllAgreeChecked = null;
+        android.view.View.OnClickListener viewModelOnAllAgreeCheckBoxListenerAndroidViewViewOnClickListener = null;
+        boolean viewModelAllAgreeCheckedGet = false;
+        java.util.ArrayList<kr.khs.studyfarm.login_process.agreement_bottomsheet.TermsData> viewModelTermsList = null;
+        androidx.databinding.ObservableBoolean viewModelBtnEnable = null;
         kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementViewModel viewModel = mViewModel;
 
-        if ((dirtyFlags & 0x7L) != 0) {
+        if ((dirtyFlags & 0xfL) != 0) {
 
 
+            if ((dirtyFlags & 0xdL) != 0) {
 
-                if (viewModel != null) {
-                    // read viewModel.checked
-                    viewModelChecked = viewModel.getChecked();
-                }
-                updateRegistration(0, viewModelChecked);
-
-
-                if (viewModelChecked != null) {
-                    // read viewModel.checked.get()
-                    viewModelCheckedGet = viewModelChecked.get();
-                }
+                    if (viewModel != null) {
+                        // read viewModel.allAgreeChecked
+                        viewModelAllAgreeChecked = viewModel.getAllAgreeChecked();
+                    }
+                    updateRegistration(0, viewModelAllAgreeChecked);
 
 
-                if (viewModelCheckedGet != null) {
-                    // read viewModel.checked.get()[3]
-                    viewModelChecked3 = getFromArray(viewModelCheckedGet, 3);
-                    // read viewModel.checked.get()[0]
-                    viewModelChecked0 = getFromArray(viewModelCheckedGet, 0);
-                    // read viewModel.checked.get()[2]
-                    viewModelChecked2 = getFromArray(viewModelCheckedGet, 2);
-                    // read viewModel.checked.get()[1]
-                    viewModelChecked1 = getFromArray(viewModelCheckedGet, 1);
-                }
+                    if (viewModelAllAgreeChecked != null) {
+                        // read viewModel.allAgreeChecked.get()
+                        viewModelAllAgreeCheckedGet = viewModelAllAgreeChecked.get();
+                    }
+            }
+            if ((dirtyFlags & 0xcL) != 0) {
+
+                    if (viewModel != null) {
+                        // read viewModel::onAllAgreeCheckBoxListener
+                        viewModelOnAllAgreeCheckBoxListenerAndroidViewViewOnClickListener = (((mViewModelOnAllAgreeCheckBoxListenerAndroidViewViewOnClickListener == null) ? (mViewModelOnAllAgreeCheckBoxListenerAndroidViewViewOnClickListener = new OnClickListenerImpl()) : mViewModelOnAllAgreeCheckBoxListenerAndroidViewViewOnClickListener).setValue(viewModel));
+                        // read viewModel.termsList
+                        viewModelTermsList = viewModel.getTermsList();
+                    }
+            }
+            if ((dirtyFlags & 0xeL) != 0) {
+
+                    if (viewModel != null) {
+                        // read viewModel.btnEnable
+                        viewModelBtnEnable = viewModel.getBtnEnable();
+                    }
+                    updateRegistration(1, viewModelBtnEnable);
+
+
+                    if (viewModelBtnEnable != null) {
+                        // read viewModel.btnEnable.get()
+                        viewModelBtnEnableGet = viewModelBtnEnable.get();
+                    }
+            }
         }
         // batch finished
-        if ((dirtyFlags & 0x4L) != 0) {
+        if ((dirtyFlags & 0xeL) != 0) {
             // api target 1
 
-            this.agreementBtnNext.setOnClickListener(mCallback18);
-            androidx.databinding.adapters.CompoundButtonBindingAdapter.setListeners(this.agreementCheck1, (android.widget.CompoundButton.OnCheckedChangeListener)null, agreementCheck1androidCheckedAttrChanged);
-            androidx.databinding.adapters.CompoundButtonBindingAdapter.setListeners(this.agreementCheck2, (android.widget.CompoundButton.OnCheckedChangeListener)null, agreementCheck2androidCheckedAttrChanged);
-            androidx.databinding.adapters.CompoundButtonBindingAdapter.setListeners(this.agreementCheck3, (android.widget.CompoundButton.OnCheckedChangeListener)null, agreementCheck3androidCheckedAttrChanged);
-            androidx.databinding.adapters.CompoundButtonBindingAdapter.setListeners(this.agreementCheck4, (android.widget.CompoundButton.OnCheckedChangeListener)null, agreementCheck4androidCheckedAttrChanged);
-            this.agreementCheckAll.setOnClickListener(mCallback17);
+            kr.khs.studyfarm.BindingUtilKt.setActivate(this.agreementBtnNext, viewModelBtnEnableGet);
         }
-        if ((dirtyFlags & 0x7L) != 0) {
+        if ((dirtyFlags & 0x8L) != 0) {
             // api target 1
 
-            androidx.databinding.adapters.CompoundButtonBindingAdapter.setChecked(this.agreementCheck1, viewModelChecked0);
-            androidx.databinding.adapters.CompoundButtonBindingAdapter.setChecked(this.agreementCheck2, viewModelChecked1);
-            androidx.databinding.adapters.CompoundButtonBindingAdapter.setChecked(this.agreementCheck3, viewModelChecked2);
-            androidx.databinding.adapters.CompoundButtonBindingAdapter.setChecked(this.agreementCheck4, viewModelChecked3);
+            this.agreementBtnNext.setOnClickListener(mCallback17);
+            androidx.databinding.adapters.CompoundButtonBindingAdapter.setListeners(this.agreementCheckAll, (android.widget.CompoundButton.OnCheckedChangeListener)null, agreementCheckAllandroidCheckedAttrChanged);
+        }
+        if ((dirtyFlags & 0xdL) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.CompoundButtonBindingAdapter.setChecked(this.agreementCheckAll, viewModelAllAgreeCheckedGet);
+        }
+        if ((dirtyFlags & 0xcL) != 0) {
+            // api target 1
+
+            this.agreementCheckAll.setOnClickListener(viewModelOnAllAgreeCheckBoxListenerAndroidViewViewOnClickListener);
+            kr.khs.studyfarm.BindingUtilKt.bindTermsItem(this.agreementRv, viewModelTermsList);
         }
     }
     // Listener Stub Implementations
+    public static class OnClickListenerImpl implements android.view.View.OnClickListener{
+        private kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementViewModel value;
+        public OnClickListenerImpl setValue(kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementViewModel value) {
+            this.value = value;
+            return value == null ? null : this;
+        }
+        @Override
+        public void onClick(android.view.View arg0) {
+            this.value.onAllAgreeCheckBoxListener(arg0); 
+        }
+    }
     // callback impls
     public final void _internalCallbackOnClick(int sourceId , android.view.View callbackArg_0) {
-        switch(sourceId) {
-            case 1: {
-                // localize variables for thread safety
-                // viewModel
-                kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementViewModel viewModel = mViewModel;
-                // viewModel != null
-                boolean viewModelJavaLangObjectNull = false;
+        // localize variables for thread safety
+        // viewModel
+        kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementViewModel viewModel = mViewModel;
+        // viewModel != null
+        boolean viewModelJavaLangObjectNull = false;
 
 
 
-                viewModelJavaLangObjectNull = (viewModel) != (null);
-                if (viewModelJavaLangObjectNull) {
+        viewModelJavaLangObjectNull = (viewModel) != (null);
+        if (viewModelJavaLangObjectNull) {
 
 
-                    viewModel.allCheck();
-                }
-                break;
-            }
-            case 2: {
-                // localize variables for thread safety
-                // viewModel
-                kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementViewModel viewModel = mViewModel;
-                // viewModel != null
-                boolean viewModelJavaLangObjectNull = false;
-
-
-
-                viewModelJavaLangObjectNull = (viewModel) != (null);
-                if (viewModelJavaLangObjectNull) {
-
-
-                    viewModel.doNextBtnClicked();
-                }
-                break;
-            }
+            viewModel.doNextBtnClicked();
         }
     }
     // dirty flag
     private  long mDirtyFlags = 0xffffffffffffffffL;
     /* flag mapping
-        flag 0 (0x1L): viewModel.checked
-        flag 1 (0x2L): viewModel
-        flag 2 (0x3L): null
+        flag 0 (0x1L): viewModel.allAgreeChecked
+        flag 1 (0x2L): viewModel.btnEnable
+        flag 2 (0x3L): viewModel
+        flag 3 (0x4L): null
     flag mapping end*/
     //end
 }

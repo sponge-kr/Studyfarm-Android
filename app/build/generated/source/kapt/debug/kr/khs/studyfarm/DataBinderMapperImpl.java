@@ -38,6 +38,7 @@ import kr.khs.studyfarm.databinding.LayoutMakestudyDetailBindingImpl;
 import kr.khs.studyfarm.databinding.LayoutMakestudyRecruitBindingImpl;
 import kr.khs.studyfarm.databinding.LayoutSignupStep1BindingImpl;
 import kr.khs.studyfarm.databinding.LayoutSignupStep2BindingImpl;
+import kr.khs.studyfarm.databinding.ListItemAgreementBindingImpl;
 import kr.khs.studyfarm.databinding.ListItemInterestingstudyBindingImpl;
 import kr.khs.studyfarm.databinding.ListItemSelectBindingImpl;
 
@@ -88,11 +89,13 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_LAYOUTSIGNUPSTEP2 = 23;
 
-  private static final int LAYOUT_LISTITEMINTERESTINGSTUDY = 24;
+  private static final int LAYOUT_LISTITEMAGREEMENT = 24;
 
-  private static final int LAYOUT_LISTITEMSELECT = 25;
+  private static final int LAYOUT_LISTITEMINTERESTINGSTUDY = 25;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(25);
+  private static final int LAYOUT_LISTITEMSELECT = 26;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(26);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.activity_test, LAYOUT_ACTIVITYTEST);
@@ -118,6 +121,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.layout_makestudy_recruit, LAYOUT_LAYOUTMAKESTUDYRECRUIT);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.layout_signup_step1, LAYOUT_LAYOUTSIGNUPSTEP1);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.layout_signup_step2, LAYOUT_LAYOUTSIGNUPSTEP2);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.list_item_agreement, LAYOUT_LISTITEMAGREEMENT);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.list_item_interestingstudy, LAYOUT_LISTITEMINTERESTINGSTUDY);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.list_item_select, LAYOUT_LISTITEMSELECT);
   }
@@ -269,6 +273,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
           }
           throw new IllegalArgumentException("The tag for layout_signup_step2 is invalid. Received: " + tag);
         }
+        case  LAYOUT_LISTITEMAGREEMENT: {
+          if ("layout/list_item_agreement_0".equals(tag)) {
+            return new ListItemAgreementBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for list_item_agreement is invalid. Received: " + tag);
+        }
         case  LAYOUT_LISTITEMINTERESTINGSTUDY: {
           if ("layout/list_item_interestingstudy_0".equals(tag)) {
             return new ListItemInterestingstudyBindingImpl(component, view);
@@ -326,20 +336,21 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerBrLookup {
-    static final SparseArray<String> sKeys = new SparseArray<String>(6);
+    static final SparseArray<String> sKeys = new SparseArray<String>(7);
 
     static {
       sKeys.put(0, "_all");
       sKeys.put(1, "clickListener");
       sKeys.put(2, "data");
       sKeys.put(3, "gender");
-      sKeys.put(4, "view");
-      sKeys.put(5, "viewModel");
+      sKeys.put(4, "termsData");
+      sKeys.put(5, "view");
+      sKeys.put(6, "viewModel");
     }
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(25);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(26);
 
     static {
       sKeys.put("layout/activity_test_0", kr.khs.studyfarm.R.layout.activity_test);
@@ -365,6 +376,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/layout_makestudy_recruit_0", kr.khs.studyfarm.R.layout.layout_makestudy_recruit);
       sKeys.put("layout/layout_signup_step1_0", kr.khs.studyfarm.R.layout.layout_signup_step1);
       sKeys.put("layout/layout_signup_step2_0", kr.khs.studyfarm.R.layout.layout_signup_step2);
+      sKeys.put("layout/list_item_agreement_0", kr.khs.studyfarm.R.layout.list_item_agreement);
       sKeys.put("layout/list_item_interestingstudy_0", kr.khs.studyfarm.R.layout.list_item_interestingstudy);
       sKeys.put("layout/list_item_select_0", kr.khs.studyfarm.R.layout.list_item_select);
     }

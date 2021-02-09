@@ -5,12 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatCheckBox;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.recyclerview.widget.RecyclerView;
 import java.lang.Deprecated;
 import java.lang.Object;
 import kr.khs.studyfarm.R;
@@ -21,33 +24,29 @@ public abstract class BottomsheetAgreementBinding extends ViewDataBinding {
   public final Button agreementBtnNext;
 
   @NonNull
-  public final CheckBox agreementCheck1;
+  public final AppCompatCheckBox agreementCheckAll;
 
   @NonNull
-  public final CheckBox agreementCheck2;
+  public final ConstraintLayout agreementClAllAgree;
 
   @NonNull
-  public final CheckBox agreementCheck3;
+  public final RecyclerView agreementRv;
 
   @NonNull
-  public final CheckBox agreementCheck4;
-
-  @NonNull
-  public final CheckBox agreementCheckAll;
+  public final TextView agreementTvAll;
 
   @Bindable
   protected AgreementViewModel mViewModel;
 
   protected BottomsheetAgreementBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      Button agreementBtnNext, CheckBox agreementCheck1, CheckBox agreementCheck2,
-      CheckBox agreementCheck3, CheckBox agreementCheck4, CheckBox agreementCheckAll) {
+      Button agreementBtnNext, AppCompatCheckBox agreementCheckAll,
+      ConstraintLayout agreementClAllAgree, RecyclerView agreementRv, TextView agreementTvAll) {
     super(_bindingComponent, _root, _localFieldCount);
     this.agreementBtnNext = agreementBtnNext;
-    this.agreementCheck1 = agreementCheck1;
-    this.agreementCheck2 = agreementCheck2;
-    this.agreementCheck3 = agreementCheck3;
-    this.agreementCheck4 = agreementCheck4;
     this.agreementCheckAll = agreementCheckAll;
+    this.agreementClAllAgree = agreementClAllAgree;
+    this.agreementRv = agreementRv;
+    this.agreementTvAll = agreementTvAll;
   }
 
   public abstract void setViewModel(@Nullable AgreementViewModel viewModel);
