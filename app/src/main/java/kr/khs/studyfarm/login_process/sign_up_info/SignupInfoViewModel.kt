@@ -10,7 +10,6 @@ import androidx.lifecycle.*
 import kotlinx.android.parcel.Parcelize
 import kotlinx.coroutines.*
 import kr.khs.studyfarm.Gender
-import kr.khs.studyfarm.R
 import kr.khs.studyfarm.login_process.select.SelectInfo
 import kr.khs.studyfarm.network.*
 import kr.khs.studyfarm.network.request.UserInfo
@@ -21,9 +20,8 @@ import java.util.*
 
 class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array<SelectInfo>?, __interesting : Array<SelectInfo>?) : ViewModel() {
 
-    private val MAX_SIGN_UP = 2
-
-    private val MAX_CHOICE = 3
+    private val MAX_CITY_CHOICE = 2
+    private val MAX_STUDY_CHOICE = 3
 
     private val _cities = MutableLiveData<Array<SelectInfo>>()
     val citiesConverting : List<Int>
@@ -46,24 +44,27 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
         Array(it.size) { idx -> it[idx].toString() }
     }
     val cityVisiblities = Transformations.map(_cities) {
-        Array(MAX_CHOICE) { idx -> if(idx < it.size) View.VISIBLE else View.GONE }
+        Array(MAX_CITY_CHOICE) { idx -> if(idx < it.size) View.VISIBLE else View.GONE }
+    }
+    val cityCountText = Transformations.map(_cities) {
+        "${it.size} / $MAX_CITY_CHOICE"
     }
 
     val studyTexts = Transformations.map(_interesting) {
         Array(it.size) { idx -> it[idx].toString() }
     }
     val studyVisiblities = Transformations.map(_interesting) {
-        Array(MAX_CHOICE) { idx -> if(idx < it.size) View.VISIBLE else View.GONE }
+        Array(MAX_STUDY_CHOICE) { idx -> if(idx < it.size) View.VISIBLE else View.GONE }
     }
+    val studyCountText = Transformations.map(_cities) {
+        "${it.size} / $MAX_STUDY_CHOICE"
+    }
+
     // default : 0
     // 1 - city, 2 - interested -> 1은 false로 전달, 2은 true로 전달
     private val _cityOrInterested = MutableLiveData<Int>()
     val cityOrInterested : LiveData<Int>
         get() = _cityOrInterested
-
-    private val step = MutableLiveData<Int>()
-
-    val stepVisibility = ObservableField<IntArray>()
 
     val birthYear = ObservableField<Int>()
 
@@ -85,21 +86,6 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
         }
     }
 
-    val mainTitle = Transformations.map(step) {
-        when(it) {
-            1 -> context.getString(R.string.signup_infoMaintitle1)
-            2 -> context.getString(R.string.signup_infoMaintitle2)
-            else -> ""
-        }
-    }
-
-    val subTitle = Transformations.map(step) {
-        when(it) {
-            1 -> context.getString(R.string.signup_infoSubTitle1)
-            2 -> context.getString(R.string.signup_infoSubTitle2)
-            else -> ""
-        }
-    }
 
     private val _isSignupSuccess = MutableLiveData<Boolean>()
     val isSignupSuccess : LiveData<Boolean>
@@ -130,27 +116,22 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
     }
 
     fun onNextBtnClicked() {
-        if(step.value != MAX_SIGN_UP) {
-            step.value = step.value!!.plus(1)
-            stepVisibility.set(IntArray(3) { if(it == step.value!! - 1) View.VISIBLE else View.GONE })
-        }
-        else {
-            val temp = List(interesting.size * 2) { i ->
-                if(i % 2 == 0)
-                    interesting[i / 2]
-                else
+        val temp = List(interesting.size * 2) { i ->
+            if(i % 2 == 0)
+                interesting[i / 2]
+            else
 //                    interestingRating.value!![i / 2]
-                    interestingRating.get()!![i / 2].toInt()
-            }
-            val userInfo = UserInfo(
-                birthYear = birthYear.get() ?: 0,
-                cityInfo = citiesConverting,
-                gender = gender.MW,
-                interesting = temp,
-            )
-
-            addUserInfo(userInfo)
+                interestingRating.get()!![i / 2].toInt()
         }
+        val userInfo = UserInfo(
+            birthYear = birthYear.get() ?: 0,
+            cityInfo = citiesConverting,
+            gender = gender.MW,
+            interesting = temp,
+        )
+
+        addUserInfo(userInfo)
+
     }
 
     private fun addUserInfo(userInfo: UserInfo) {
@@ -187,12 +168,10 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
     init {
         _cities.value = __cities ?: arrayOf()
         _interesting.value = __interesting ?: arrayOf()
-        stepVisibility.set(IntArray(2) { if(it == 0) View.VISIBLE else View.INVISIBLE })
-        step.value = 1
         _isSignupSuccess.value = false
         _cityOrInterested.value = 0
         birthYear.set(2000)
-        interestingRating.set(Array(MAX_CHOICE) { "0" })
+        interestingRating.set(Array(MAX_STUDY_CHOICE) { "0" })
 //        interestingRating.value = Array(MAX_CHOICE) { 0 }
     }
 
