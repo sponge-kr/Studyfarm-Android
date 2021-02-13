@@ -20,7 +20,7 @@ public class ListItemSelectBindingImpl extends ListItemSelectBinding implements 
     private final androidx.constraintlayout.widget.ConstraintLayout mboundView0;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback22;
+    private final android.view.View.OnClickListener mCallback21;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -37,7 +37,7 @@ public class ListItemSelectBindingImpl extends ListItemSelectBinding implements 
         this.textView.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback22 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
+        mCallback21 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -122,7 +122,7 @@ public class ListItemSelectBindingImpl extends ListItemSelectBinding implements 
         if ((dirtyFlags & 0x4L) != 0) {
             // api target 1
 
-            this.mboundView0.setOnClickListener(mCallback22);
+            this.mboundView0.setOnClickListener(mCallback21);
         }
         if ((dirtyFlags & 0x6L) != 0) {
             // api target 1

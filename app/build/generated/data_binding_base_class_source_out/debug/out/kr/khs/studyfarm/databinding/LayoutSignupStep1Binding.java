@@ -4,79 +4,62 @@ package kr.khs.studyfarm.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
-import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
-import com.google.android.material.chip.Chip;
 import java.lang.Deprecated;
 import java.lang.Object;
+import kr.khs.studyfarm.Gender;
 import kr.khs.studyfarm.R;
 import kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel;
 
 public abstract class LayoutSignupStep1Binding extends ViewDataBinding {
   @NonNull
-  public final LinearLayout linearLayout2;
+  public final RadioButton signupSexMan;
 
   @NonNull
-  public final TextView signupBtnAddcity;
+  public final RadioButton signupSexWoman;
 
   @NonNull
-  public final Chip signupChipCity1;
+  public final AppCompatSpinner signupSpinnerBirthyear;
 
   @NonNull
-  public final Chip signupChipCity2;
+  public final ConstraintLayout signupStep3;
 
   @NonNull
-  public final Chip signupChipCity3;
+  public final RadioGroup singupRadiogroupSex;
 
   @NonNull
-  public final Chip signupChipStudy1;
+  public final TextView step31;
 
   @NonNull
-  public final Chip signupChipStudy2;
-
-  @NonNull
-  public final Chip signupChipStudy3;
-
-  @NonNull
-  public final HorizontalScrollView signupHorizonscrollCity;
-
-  @NonNull
-  public final ConstraintLayout signupStep2;
-
-  @NonNull
-  public final TextView step21;
-
-  @NonNull
-  public final TextView step22;
+  public final TextView step32;
 
   @Bindable
   protected SignupInfoViewModel mViewModel;
 
+  @Bindable
+  protected Gender mGender;
+
   protected LayoutSignupStep1Binding(Object _bindingComponent, View _root, int _localFieldCount,
-      LinearLayout linearLayout2, TextView signupBtnAddcity, Chip signupChipCity1,
-      Chip signupChipCity2, Chip signupChipCity3, Chip signupChipStudy1, Chip signupChipStudy2,
-      Chip signupChipStudy3, HorizontalScrollView signupHorizonscrollCity,
-      ConstraintLayout signupStep2, TextView step21, TextView step22) {
+      RadioButton signupSexMan, RadioButton signupSexWoman, AppCompatSpinner signupSpinnerBirthyear,
+      ConstraintLayout signupStep3, RadioGroup singupRadiogroupSex, TextView step31,
+      TextView step32) {
     super(_bindingComponent, _root, _localFieldCount);
-    this.linearLayout2 = linearLayout2;
-    this.signupBtnAddcity = signupBtnAddcity;
-    this.signupChipCity1 = signupChipCity1;
-    this.signupChipCity2 = signupChipCity2;
-    this.signupChipCity3 = signupChipCity3;
-    this.signupChipStudy1 = signupChipStudy1;
-    this.signupChipStudy2 = signupChipStudy2;
-    this.signupChipStudy3 = signupChipStudy3;
-    this.signupHorizonscrollCity = signupHorizonscrollCity;
-    this.signupStep2 = signupStep2;
-    this.step21 = step21;
-    this.step22 = step22;
+    this.signupSexMan = signupSexMan;
+    this.signupSexWoman = signupSexWoman;
+    this.signupSpinnerBirthyear = signupSpinnerBirthyear;
+    this.signupStep3 = signupStep3;
+    this.singupRadiogroupSex = singupRadiogroupSex;
+    this.step31 = step31;
+    this.step32 = step32;
   }
 
   public abstract void setViewModel(@Nullable SignupInfoViewModel viewModel);
@@ -84,6 +67,13 @@ public abstract class LayoutSignupStep1Binding extends ViewDataBinding {
   @Nullable
   public SignupInfoViewModel getViewModel() {
     return mViewModel;
+  }
+
+  public abstract void setGender(@Nullable Gender gender);
+
+  @Nullable
+  public Gender getGender() {
+    return mGender;
   }
 
   @NonNull

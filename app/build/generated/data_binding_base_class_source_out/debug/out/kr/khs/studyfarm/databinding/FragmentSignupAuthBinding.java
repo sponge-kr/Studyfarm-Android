@@ -37,9 +37,6 @@ public abstract class FragmentSignupAuthBinding extends ViewDataBinding {
   public final TextView signupauthSubtitle;
 
   @NonNull
-  public final TextView textView4;
-
-  @NonNull
   public final TextView textView6;
 
   @NonNull
@@ -51,7 +48,7 @@ public abstract class FragmentSignupAuthBinding extends ViewDataBinding {
   protected FragmentSignupAuthBinding(Object _bindingComponent, View _root, int _localFieldCount,
       ConstraintLayout constraintLayout, Button signemailBtnNext2, TextView signupauthEmail,
       TextView signupauthInquire, TextView signupauthMaintitle, TextView signupauthSubtitle,
-      TextView textView4, TextView textView6, TextView textView7) {
+      TextView textView6, TextView textView7) {
     super(_bindingComponent, _root, _localFieldCount);
     this.constraintLayout = constraintLayout;
     this.signemailBtnNext2 = signemailBtnNext2;
@@ -59,7 +56,6 @@ public abstract class FragmentSignupAuthBinding extends ViewDataBinding {
     this.signupauthInquire = signupauthInquire;
     this.signupauthMaintitle = signupauthMaintitle;
     this.signupauthSubtitle = signupauthSubtitle;
-    this.textView4 = textView4;
     this.textView6 = textView6;
     this.textView7 = textView7;
   }

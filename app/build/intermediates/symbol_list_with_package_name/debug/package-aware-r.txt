@@ -2268,7 +2268,6 @@ id signupFragment
 id signupInfoFragment
 id signup_btn_addcity
 id signup_btn_next
-id signup_btn_skip
 id signup_chip_city1
 id signup_chip_city2
 id signup_chip_city3
@@ -2277,6 +2276,8 @@ id signup_chip_study2
 id signup_chip_study3
 id signup_et_nickname
 id signup_horizonscroll_city
+id signup_layout1
+id signup_layout2
 id signup_maintitle
 id signup_sex_man
 id signup_sex_woman
@@ -2284,6 +2285,8 @@ id signup_spinner_birthyear
 id signup_step2
 id signup_step3
 id signup_subtitle
+id signup_tv_citycount
+id signup_tv_studycount
 id signupauth_email
 id signupauth_inquire
 id signupauth_maintitle
@@ -2347,7 +2350,6 @@ id textTop
 id textView
 id textView2
 id textView3
-id textView4
 id textView5
 id textView6
 id textView7

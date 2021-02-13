@@ -22,7 +22,7 @@ public class BottomsheetAgreementBindingImpl extends BottomsheetAgreementBinding
     private final androidx.constraintlayout.widget.ConstraintLayout mboundView0;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback17;
+    private final android.view.View.OnClickListener mCallback16;
     // values
     // listeners
     private OnClickListenerImpl mViewModelOnAllAgreeCheckBoxListenerAndroidViewViewOnClickListener;
@@ -83,7 +83,7 @@ public class BottomsheetAgreementBindingImpl extends BottomsheetAgreementBinding
         this.mboundView0.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback17 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
+        mCallback16 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -220,7 +220,7 @@ public class BottomsheetAgreementBindingImpl extends BottomsheetAgreementBinding
         if ((dirtyFlags & 0x8L) != 0) {
             // api target 1
 
-            this.agreementBtnNext.setOnClickListener(mCallback17);
+            this.agreementBtnNext.setOnClickListener(mCallback16);
             androidx.databinding.adapters.CompoundButtonBindingAdapter.setListeners(this.agreementCheckAll, (android.widget.CompoundButton.OnCheckedChangeListener)null, agreementCheckAllandroidCheckedAttrChanged);
         }
         if ((dirtyFlags & 0xdL) != 0) {

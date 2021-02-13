@@ -13,23 +13,21 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
         sIncludes = new androidx.databinding.ViewDataBinding.IncludedLayouts(7);
-        sIncludes.setIncludes(0, 
+        sIncludes.setIncludes(1, 
             new String[] {"layout_signup_step1", "layout_signup_step2"},
-            new int[] {5, 6},
+            new int[] {3, 4},
             new int[] {kr.khs.studyfarm.R.layout.layout_signup_step1,
                 kr.khs.studyfarm.R.layout.layout_signup_step2});
-        sViewsWithIds = null;
+        sViewsWithIds = new android.util.SparseIntArray();
+        sViewsWithIds.put(R.id.signup_maintitle, 5);
+        sViewsWithIds.put(R.id.signup_subtitle, 6);
     }
     // views
     @NonNull
     private final androidx.constraintlayout.widget.ConstraintLayout mboundView0;
-    @Nullable
-    private final kr.khs.studyfarm.databinding.LayoutSignupStep1Binding mboundView01;
-    @Nullable
-    private final kr.khs.studyfarm.databinding.LayoutSignupStep2Binding mboundView02;
+    @NonNull
+    private final android.widget.LinearLayout mboundView1;
     // variables
-    @Nullable
-    private final android.view.View.OnClickListener mCallback10;
     @Nullable
     private final android.view.View.OnClickListener mCallback9;
     // values
@@ -40,25 +38,20 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
         this(bindingComponent, root, mapBindings(bindingComponent, root, 7, sIncludes, sViewsWithIds));
     }
     private FragmentSignupInfoBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
-        super(bindingComponent, root, 3
-            , (android.widget.Button) bindings[3]
-            , (android.widget.TextView) bindings[4]
-            , (android.widget.TextView) bindings[1]
-            , (android.widget.TextView) bindings[2]
+        super(bindingComponent, root, 2
+            , (android.widget.Button) bindings[2]
+            , (kr.khs.studyfarm.databinding.LayoutSignupStep1Binding) bindings[3]
+            , (kr.khs.studyfarm.databinding.LayoutSignupStep2Binding) bindings[4]
+            , (android.widget.TextView) bindings[5]
+            , (android.widget.TextView) bindings[6]
             );
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);
-        this.mboundView01 = (kr.khs.studyfarm.databinding.LayoutSignupStep1Binding) bindings[5];
-        setContainedBinding(this.mboundView01);
-        this.mboundView02 = (kr.khs.studyfarm.databinding.LayoutSignupStep2Binding) bindings[6];
-        setContainedBinding(this.mboundView02);
+        this.mboundView1 = (android.widget.LinearLayout) bindings[1];
+        this.mboundView1.setTag(null);
         this.signupBtnNext.setTag(null);
-        this.signupBtnSkip.setTag(null);
-        this.signupMaintitle.setTag(null);
-        this.signupSubtitle.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback10 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
         mCallback9 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
@@ -66,10 +59,10 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x10L;
+                mDirtyFlags = 0x8L;
         }
-        mboundView01.invalidateAll();
-        mboundView02.invalidateAll();
+        signupLayout1.invalidateAll();
+        signupLayout2.invalidateAll();
         requestRebind();
     }
 
@@ -80,10 +73,10 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
                 return true;
             }
         }
-        if (mboundView01.hasPendingBindings()) {
+        if (signupLayout1.hasPendingBindings()) {
             return true;
         }
-        if (mboundView02.hasPendingBindings()) {
+        if (signupLayout2.hasPendingBindings()) {
             return true;
         }
         return false;
@@ -104,7 +97,7 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
     public void setViewModel(@Nullable kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel ViewModel) {
         this.mViewModel = ViewModel;
         synchronized(this) {
-            mDirtyFlags |= 0x8L;
+            mDirtyFlags |= 0x4L;
         }
         notifyPropertyChanged(BR.viewModel);
         super.requestRebind();
@@ -113,23 +106,21 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
     @Override
     public void setLifecycleOwner(@Nullable androidx.lifecycle.LifecycleOwner lifecycleOwner) {
         super.setLifecycleOwner(lifecycleOwner);
-        mboundView01.setLifecycleOwner(lifecycleOwner);
-        mboundView02.setLifecycleOwner(lifecycleOwner);
+        signupLayout1.setLifecycleOwner(lifecycleOwner);
+        signupLayout2.setLifecycleOwner(lifecycleOwner);
     }
 
     @Override
     protected boolean onFieldChange(int localFieldId, Object object, int fieldId) {
         switch (localFieldId) {
             case 0 :
-                return onChangeViewModelMainTitle((androidx.lifecycle.LiveData<java.lang.String>) object, fieldId);
+                return onChangeSignupLayout1((kr.khs.studyfarm.databinding.LayoutSignupStep1Binding) object, fieldId);
             case 1 :
-                return onChangeViewModelStepVisibility((androidx.databinding.ObservableField<int[]>) object, fieldId);
-            case 2 :
-                return onChangeViewModelSubTitle((androidx.lifecycle.LiveData<java.lang.String>) object, fieldId);
+                return onChangeSignupLayout2((kr.khs.studyfarm.databinding.LayoutSignupStep2Binding) object, fieldId);
         }
         return false;
     }
-    private boolean onChangeViewModelMainTitle(androidx.lifecycle.LiveData<java.lang.String> ViewModelMainTitle, int fieldId) {
+    private boolean onChangeSignupLayout1(kr.khs.studyfarm.databinding.LayoutSignupStep1Binding SignupLayout1, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x1L;
@@ -138,19 +129,10 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
         }
         return false;
     }
-    private boolean onChangeViewModelStepVisibility(androidx.databinding.ObservableField<int[]> ViewModelStepVisibility, int fieldId) {
+    private boolean onChangeSignupLayout2(kr.khs.studyfarm.databinding.LayoutSignupStep2Binding SignupLayout2, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x2L;
-            }
-            return true;
-        }
-        return false;
-    }
-    private boolean onChangeViewModelSubTitle(androidx.lifecycle.LiveData<java.lang.String> ViewModelSubTitle, int fieldId) {
-        if (fieldId == BR._all) {
-            synchronized(this) {
-                    mDirtyFlags |= 0x4L;
             }
             return true;
         }
@@ -164,146 +146,50 @@ public class FragmentSignupInfoBindingImpl extends FragmentSignupInfoBinding imp
             dirtyFlags = mDirtyFlags;
             mDirtyFlags = 0;
         }
-        java.lang.String viewModelSubTitleGetValue = null;
-        java.lang.String viewModelMainTitleGetValue = null;
-        androidx.lifecycle.LiveData<java.lang.String> viewModelMainTitle = null;
-        int viewModelStepVisibility2 = 0;
-        int[] viewModelStepVisibilityGet = null;
         kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel viewModel = mViewModel;
-        androidx.databinding.ObservableField<int[]> viewModelStepVisibility = null;
-        androidx.lifecycle.LiveData<java.lang.String> viewModelSubTitle = null;
 
-        if ((dirtyFlags & 0x1fL) != 0) {
-
-
-            if ((dirtyFlags & 0x19L) != 0) {
-
-                    if (viewModel != null) {
-                        // read viewModel.mainTitle
-                        viewModelMainTitle = viewModel.getMainTitle();
-                    }
-                    updateLiveDataRegistration(0, viewModelMainTitle);
-
-
-                    if (viewModelMainTitle != null) {
-                        // read viewModel.mainTitle.getValue()
-                        viewModelMainTitleGetValue = viewModelMainTitle.getValue();
-                    }
-            }
-            if ((dirtyFlags & 0x1aL) != 0) {
-
-                    if (viewModel != null) {
-                        // read viewModel.stepVisibility
-                        viewModelStepVisibility = viewModel.getStepVisibility();
-                    }
-                    updateRegistration(1, viewModelStepVisibility);
-
-
-                    if (viewModelStepVisibility != null) {
-                        // read viewModel.stepVisibility.get()
-                        viewModelStepVisibilityGet = viewModelStepVisibility.get();
-                    }
-
-
-                    if (viewModelStepVisibilityGet != null) {
-                        // read viewModel.stepVisibility.get()[2]
-                        viewModelStepVisibility2 = getFromArray(viewModelStepVisibilityGet, 2);
-                    }
-            }
-            if ((dirtyFlags & 0x1cL) != 0) {
-
-                    if (viewModel != null) {
-                        // read viewModel.subTitle
-                        viewModelSubTitle = viewModel.getSubTitle();
-                    }
-                    updateLiveDataRegistration(2, viewModelSubTitle);
-
-
-                    if (viewModelSubTitle != null) {
-                        // read viewModel.subTitle.getValue()
-                        viewModelSubTitleGetValue = viewModelSubTitle.getValue();
-                    }
-            }
+        if ((dirtyFlags & 0xcL) != 0) {
         }
         // batch finished
-        if ((dirtyFlags & 0x18L) != 0) {
-            // api target 1
-
-            this.mboundView01.setViewModel(viewModel);
-            this.mboundView02.setViewModel(viewModel);
-        }
-        if ((dirtyFlags & 0x10L) != 0) {
+        if ((dirtyFlags & 0x8L) != 0) {
             // api target 1
 
             this.signupBtnNext.setOnClickListener(mCallback9);
-            this.signupBtnSkip.setOnClickListener(mCallback10);
         }
-        if ((dirtyFlags & 0x1aL) != 0) {
+        if ((dirtyFlags & 0xcL) != 0) {
             // api target 1
 
-            this.signupBtnSkip.setVisibility(viewModelStepVisibility2);
+            this.signupLayout1.setViewModel(viewModel);
+            this.signupLayout2.setViewModel(viewModel);
         }
-        if ((dirtyFlags & 0x19L) != 0) {
-            // api target 1
-
-            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.signupMaintitle, viewModelMainTitleGetValue);
-        }
-        if ((dirtyFlags & 0x1cL) != 0) {
-            // api target 1
-
-            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.signupSubtitle, viewModelSubTitleGetValue);
-        }
-        executeBindingsOn(mboundView01);
-        executeBindingsOn(mboundView02);
+        executeBindingsOn(signupLayout1);
+        executeBindingsOn(signupLayout2);
     }
     // Listener Stub Implementations
     // callback impls
     public final void _internalCallbackOnClick(int sourceId , android.view.View callbackArg_0) {
-        switch(sourceId) {
-            case 2: {
-                // localize variables for thread safety
-                // viewModel
-                kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel viewModel = mViewModel;
-                // viewModel != null
-                boolean viewModelJavaLangObjectNull = false;
+        // localize variables for thread safety
+        // viewModel
+        kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel viewModel = mViewModel;
+        // viewModel != null
+        boolean viewModelJavaLangObjectNull = false;
 
 
 
-                viewModelJavaLangObjectNull = (viewModel) != (null);
-                if (viewModelJavaLangObjectNull) {
+        viewModelJavaLangObjectNull = (viewModel) != (null);
+        if (viewModelJavaLangObjectNull) {
 
 
-                    viewModel.onNextBtnClicked();
-                }
-                break;
-            }
-            case 1: {
-                // localize variables for thread safety
-                // viewModel
-                kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel viewModel = mViewModel;
-                // viewModel != null
-                boolean viewModelJavaLangObjectNull = false;
-
-
-
-                viewModelJavaLangObjectNull = (viewModel) != (null);
-                if (viewModelJavaLangObjectNull) {
-
-
-                    viewModel.onNextBtnClicked();
-                }
-                break;
-            }
+            viewModel.onNextBtnClicked();
         }
     }
     // dirty flag
     private  long mDirtyFlags = 0xffffffffffffffffL;
     /* flag mapping
-        flag 0 (0x1L): viewModel.mainTitle
-        flag 1 (0x2L): viewModel.stepVisibility
-        flag 2 (0x3L): viewModel.subTitle
-        flag 3 (0x4L): viewModel
-        flag 4 (0x5L): null
+        flag 0 (0x1L): signupLayout1
+        flag 1 (0x2L): signupLayout2
+        flag 2 (0x3L): viewModel
+        flag 3 (0x4L): null
     flag mapping end*/
     //end
 }

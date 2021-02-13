@@ -7,188 +7,90 @@
         <variable
             name="viewModel"
             type="kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel" />
+
+        <variable
+            name="gender"
+            type="kr.khs.studyfarm.Gender" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/signup_step2"
+        android:id="@+id/signup_step3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/padding"
-        android:visibility="@{viewModel.stepVisibility[0]}">
+        android:padding="@dimen/padding">
+
+        <!--        <EditText-->
+<!--            android:id="@+id/signup_et_introduce"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:hint="소개글을 입력하세요.\n최대 200자까지 쓸 수 있어요."-->
+<!--            android:text="@={viewModel.introduce}"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/signup_datepicker"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/signup_datepicker" />-->
 
         <TextView
-            android:id="@+id/step2_1"
+            android:id="@+id/step3_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="지역"
+            android:text="성별"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="추가하기+"
-            android:layout_margin="@dimen/vertical_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/signup_btn_addcity"
-            android:onClick="@{() -> viewModel.doSelectCity()}"/>
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/vertical_margin"
-            android:id="@+id/signup_horizonscroll_city"
-            app:layout_constraintStart_toStartOf="@+id/step2_1"
-            app:layout_constraintTop_toBottomOf="@+id/step2_1">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <com.google.android.material.chip.Chip
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="@{viewModel.cityVisiblities[0]}"
-                    android:text="@{viewModel.cityTexts[0]}"
-                    android:layout_margin="@dimen/vertical_margin"
-                    android:id="@+id/signup_chip_city1" />
-
-                <com.google.android.material.chip.Chip
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="@{viewModel.cityVisiblities[1]}"
-                    android:text="@{viewModel.cityTexts[1]}"
-                    android:layout_margin="@dimen/vertical_margin"
-                    android:id="@+id/signup_chip_city2" />
-
-                <com.google.android.material.chip.Chip
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="@{viewModel.cityVisiblities[2]}"
-                    android:text="@{viewModel.cityTexts[2]}"
-                    android:layout_margin="@dimen/vertical_margin"
-                    android:id="@+id/signup_chip_city3" />
-
-            </LinearLayout>
-        </HorizontalScrollView>
 
         <TextView
-            android:id="@+id/step2_2"
+            android:id="@+id/step3_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="관심 스터디"
-            app:layout_constraintStart_toStartOf="@+id/signup_horizonscroll_city"
-            app:layout_constraintTop_toBottomOf="@+id/signup_horizonscroll_city" />
+            android:text="나이"
+            app:layout_constraintStart_toStartOf="@+id/singup_radiogroup_sex"
+            app:layout_constraintTop_toBottomOf="@+id/singup_radiogroup_sex" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/signup_spinner_birthyear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="추가하기+"
-            android:onClick="@{() -> viewModel.doSelectInteresting()}"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/signup_horizonscroll_city"
-            app:layout_constraintTop_toBottomOf="@+id/signup_horizonscroll_city"  />
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:simpleSpinnerAdapter="@{viewModel.yearSpinnerAdapter}"
+            app:simpleSpinnerSelectedListener="@{viewModel.yearSpinnerOnItemSelectedListener}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/step3_2">
 
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="match_parent"
+        </androidx.appcompat.widget.AppCompatSpinner>
+
+        <RadioGroup
+            android:id="@+id/singup_radiogroup_sex"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            app:layout_constraintStart_toStartOf="@id/step2_2"
-            app:layout_constraintTop_toBottomOf="@id/step2_2">
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@+id/step3_1"
+            app:layout_constraintTop_toBottomOf="@+id/step3_1">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <RadioButton
+                android:id="@+id/signup_sex_man"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.studyVisiblities[0]}">
+                android:text="남성"
+                android:checked="@{viewModel.gender.equals(gender.Man)}"
+                android:onClick="@{() -> viewModel.selectGender(gender.Man)}" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/signup_chip_study1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="false"
-                    android:text="@{viewModel.studyTexts[0]}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <kr.khs.studyfarm.view.custom.LevelSelectButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/signup_chip_study1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/signup_chip_study1"
-                    app:layout_constraintTop_toTopOf="@+id/signup_chip_study1"
-                    app:levelFourName="고급"
-                    app:levelOneName="초급"
-                    app:levelThreeName="중급"
-                    app:levelTwoName="초중급"
-                    app:levelSelectButtonSetting="@{viewModel.interestingRating[0]}" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <RadioButton
+                android:id="@+id/signup_sex_woman"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.studyVisiblities[1]}">
+                android:text="여성"
+                android:checked="@{viewModel.gender.equals(gender.Woman)}"
+                android:onClick="@{() -> viewModel.selectGender(gender.Woman)}" />
+        </RadioGroup>
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/signup_chip_study2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="false"
-                    android:text="@{viewModel.studyTexts[1]}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <kr.khs.studyfarm.view.custom.LevelSelectButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/signup_chip_study2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/signup_chip_study2"
-                    app:layout_constraintTop_toTopOf="@+id/signup_chip_study2"
-                    app:levelFourName="고급"
-                    app:levelOneName="초급"
-                    app:levelThreeName="중급"
-                    app:levelTwoName="초중급"
-                    app:levelSelectButtonSetting="@{viewModel.interestingRating[1]}" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="@{viewModel.studyVisiblities[2]}">
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/signup_chip_study3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="false"
-                    android:text="@{viewModel.studyTexts[2]}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <kr.khs.studyfarm.view.custom.LevelSelectButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/signup_chip_study3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/signup_chip_study3"
-                    app:layout_constraintTop_toTopOf="@+id/signup_chip_study3"
-                    app:levelFourName="고급"
-                    app:levelOneName="초급"
-                    app:levelThreeName="중급"
-                    app:levelTwoName="초중급"
-                    app:levelSelectButtonSetting="@{viewModel.interestingRating[2]}" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

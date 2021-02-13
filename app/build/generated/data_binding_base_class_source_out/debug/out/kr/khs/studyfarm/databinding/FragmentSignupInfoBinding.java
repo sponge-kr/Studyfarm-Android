@@ -21,7 +21,10 @@ public abstract class FragmentSignupInfoBinding extends ViewDataBinding {
   public final Button signupBtnNext;
 
   @NonNull
-  public final TextView signupBtnSkip;
+  public final LayoutSignupStep1Binding signupLayout1;
+
+  @NonNull
+  public final LayoutSignupStep2Binding signupLayout2;
 
   @NonNull
   public final TextView signupMaintitle;
@@ -33,11 +36,14 @@ public abstract class FragmentSignupInfoBinding extends ViewDataBinding {
   protected SignupInfoViewModel mViewModel;
 
   protected FragmentSignupInfoBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      Button signupBtnNext, TextView signupBtnSkip, TextView signupMaintitle,
-      TextView signupSubtitle) {
+      Button signupBtnNext, LayoutSignupStep1Binding signupLayout1,
+      LayoutSignupStep2Binding signupLayout2, TextView signupMaintitle, TextView signupSubtitle) {
     super(_bindingComponent, _root, _localFieldCount);
     this.signupBtnNext = signupBtnNext;
-    this.signupBtnSkip = signupBtnSkip;
+    this.signupLayout1 = signupLayout1;
+    setContainedBinding(this.signupLayout1);
+    this.signupLayout2 = signupLayout2;
+    setContainedBinding(this.signupLayout2);
     this.signupMaintitle = signupMaintitle;
     this.signupSubtitle = signupSubtitle;
   }

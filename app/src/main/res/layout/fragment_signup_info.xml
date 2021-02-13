@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@{viewModel.mainTitle}"
+            android:text="어떤 스터디를 찾고 있나요?"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,51 +31,50 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{viewModel.subTitle}"
+            android:text="입력하신 정보로 스터디를 찾을 수 있습니다.\n지역 정보는 다른 사람들에게 공유되지 않습니다."
             app:layout_constraintStart_toStartOf="@+id/signup_maintitle"
             app:layout_constraintTop_toBottomOf="@+id/signup_maintitle" />
 
-        <include
-            layout="@layout/layout_signup_step1"
-            android:layout_height="wrap_content"
+        <ScrollView
             android:layout_width="match_parent"
-            app:layout_constraintBottom_toTopOf="@+id/signup_btn_next"
+            android:layout_height="0dp"
+            android:layout_marginVertical="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/signup_subtitle"
-            bind:viewModel="@{viewModel}" />
+            app:layout_constraintBottom_toTopOf="@+id/signup_btn_next">
 
-        <include
-            layout="@layout/layout_signup_step2"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            app:layout_constraintBottom_toTopOf="@+id/signup_btn_next"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_subtitle"
-            bind:viewModel="@{viewModel}" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/signup_layout1"
+                    layout="@layout/layout_signup_step1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    bind:viewModel="@{viewModel}" />
+
+                <include
+                    android:id="@+id/signup_layout2"
+                    layout="@layout/layout_signup_step2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    bind:viewModel="@{viewModel}" />
+            </LinearLayout>
+        </ScrollView>
 
         <Button
             android:id="@+id/signup_btn_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="64dp"
+            android:layout_marginBottom="32dp"
             android:onClick="@{() -> viewModel.onNextBtnClicked()}"
             android:text="다음"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/signup_btn_skip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="다음에 할래요."
-            android:visibility="@{viewModel.stepVisibility[2]}"
-            android:onClick="@{() -> viewModel.onNextBtnClicked()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_btn_next" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

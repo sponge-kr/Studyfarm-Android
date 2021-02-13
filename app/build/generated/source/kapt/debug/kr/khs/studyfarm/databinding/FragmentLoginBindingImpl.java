@@ -36,9 +36,9 @@ public class FragmentLoginBindingImpl extends FragmentLoginBinding implements kr
     @Nullable
     private final android.view.View.OnClickListener mCallback11;
     @Nullable
-    private final android.view.View.OnClickListener mCallback14;
-    @Nullable
     private final android.view.View.OnClickListener mCallback12;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback10;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -151,10 +151,10 @@ public class FragmentLoginBindingImpl extends FragmentLoginBinding implements kr
         this.signpwPassword.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback13 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 3);
-        mCallback11 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
-        mCallback14 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 4);
-        mCallback12 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
+        mCallback13 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 4);
+        mCallback11 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 2);
+        mCallback12 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 3);
+        mCallback10 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -293,12 +293,12 @@ public class FragmentLoginBindingImpl extends FragmentLoginBinding implements kr
         if ((dirtyFlags & 0x8L) != 0) {
             // api target 1
 
-            this.kakao.setOnClickListener(mCallback12);
-            this.loginBtnFindpw.setOnClickListener(mCallback14);
-            this.loginBtnSignup.setOnClickListener(mCallback13);
+            this.kakao.setOnClickListener(mCallback11);
+            this.loginBtnFindpw.setOnClickListener(mCallback13);
+            this.loginBtnSignup.setOnClickListener(mCallback12);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.mboundView2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, mboundView2androidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.mboundView4, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, mboundView4androidTextAttrChanged);
-            this.signemailBtnNext.setOnClickListener(mCallback11);
+            this.signemailBtnNext.setOnClickListener(mCallback10);
             kr.khs.studyfarm.BindingUtilKt.setPasswordVisibility(this.signpwPassword, true);
         }
         if ((dirtyFlags & 0xdL) != 0) {
@@ -322,40 +322,6 @@ public class FragmentLoginBindingImpl extends FragmentLoginBinding implements kr
     // callback impls
     public final void _internalCallbackOnClick(int sourceId , android.view.View callbackArg_0) {
         switch(sourceId) {
-            case 3: {
-                // localize variables for thread safety
-                // viewModel
-                kr.khs.studyfarm.login_process.login.LoginViewModel viewModel = mViewModel;
-                // viewModel != null
-                boolean viewModelJavaLangObjectNull = false;
-
-
-
-                viewModelJavaLangObjectNull = (viewModel) != (null);
-                if (viewModelJavaLangObjectNull) {
-
-
-                    viewModel.doGoToSignUp();
-                }
-                break;
-            }
-            case 1: {
-                // localize variables for thread safety
-                // viewModel
-                kr.khs.studyfarm.login_process.login.LoginViewModel viewModel = mViewModel;
-                // viewModel != null
-                boolean viewModelJavaLangObjectNull = false;
-
-
-
-                viewModelJavaLangObjectNull = (viewModel) != (null);
-                if (viewModelJavaLangObjectNull) {
-
-
-                    viewModel.onLoginBtnClick();
-                }
-                break;
-            }
             case 4: {
                 // localize variables for thread safety
                 // viewModel
@@ -387,6 +353,40 @@ public class FragmentLoginBindingImpl extends FragmentLoginBinding implements kr
 
 
                     viewModel.loginByKakao();
+                }
+                break;
+            }
+            case 3: {
+                // localize variables for thread safety
+                // viewModel
+                kr.khs.studyfarm.login_process.login.LoginViewModel viewModel = mViewModel;
+                // viewModel != null
+                boolean viewModelJavaLangObjectNull = false;
+
+
+
+                viewModelJavaLangObjectNull = (viewModel) != (null);
+                if (viewModelJavaLangObjectNull) {
+
+
+                    viewModel.doGoToSignUp();
+                }
+                break;
+            }
+            case 1: {
+                // localize variables for thread safety
+                // viewModel
+                kr.khs.studyfarm.login_process.login.LoginViewModel viewModel = mViewModel;
+                // viewModel != null
+                boolean viewModelJavaLangObjectNull = false;
+
+
+
+                viewModelJavaLangObjectNull = (viewModel) != (null);
+                if (viewModelJavaLangObjectNull) {
+
+
+                    viewModel.onLoginBtnClick();
                 }
                 break;
             }

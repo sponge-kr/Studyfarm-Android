@@ -29,7 +29,7 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
     private final com.google.android.material.textfield.TextInputEditText mboundView6;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback24;
+    private final android.view.View.OnClickListener mCallback23;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -172,7 +172,7 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
         this.signupEtNickname.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback24 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
+        mCallback23 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -408,7 +408,7 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.mboundView2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, mboundView2androidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.mboundView4, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, mboundView4androidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.mboundView6, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, mboundView6androidTextAttrChanged);
-            this.signemailBtnNext.setOnClickListener(mCallback24);
+            this.signemailBtnNext.setOnClickListener(mCallback23);
             kr.khs.studyfarm.BindingUtilKt.setPasswordVisibility(this.signpwPassword, true);
         }
         if ((dirtyFlags & 0x62L) != 0) {
