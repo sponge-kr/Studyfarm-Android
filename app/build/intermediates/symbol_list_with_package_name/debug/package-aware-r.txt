@@ -1980,6 +1980,7 @@ id dropdown_menu
 id easeIn
 id easeInOut
 id easeOut
+id editTextTextPersonName
 id edit_query
 id end
 id end_padder
@@ -2241,6 +2242,9 @@ id select_dialog_listview
 id select_rv_first
 id select_rv_second
 id select_scroll_chip
+id select_tv_child
+id select_tv_parent
+id select_tv_title
 id selected
 id selectedTextAlignCenter
 id selectedTextAlignLeft
@@ -2270,7 +2274,6 @@ id signup_btn_addcity
 id signup_btn_next
 id signup_chip_city1
 id signup_chip_city2
-id signup_chip_city3
 id signup_chip_study1
 id signup_chip_study2
 id signup_chip_study3

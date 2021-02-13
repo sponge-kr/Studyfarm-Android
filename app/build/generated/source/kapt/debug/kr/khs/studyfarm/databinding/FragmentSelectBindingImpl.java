@@ -14,11 +14,11 @@ public class FragmentSelectBindingImpl extends FragmentSelectBinding implements 
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.select_rv_first, 5);
-        sViewsWithIds.put(R.id.select_rv_second, 6);
-        sViewsWithIds.put(R.id.select_scroll_chip, 7);
-        sViewsWithIds.put(R.id.chipGroup, 8);
-        sViewsWithIds.put(R.id.view, 9);
+        sViewsWithIds.put(R.id.select_rv_first, 9);
+        sViewsWithIds.put(R.id.select_rv_second, 10);
+        sViewsWithIds.put(R.id.select_scroll_chip, 11);
+        sViewsWithIds.put(R.id.chipGroup, 12);
+        sViewsWithIds.put(R.id.view, 13);
     }
     // views
     @NonNull
@@ -37,18 +37,23 @@ public class FragmentSelectBindingImpl extends FragmentSelectBinding implements 
     // Inverse Binding Event Handlers
 
     public FragmentSelectBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 10, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 14, sIncludes, sViewsWithIds));
     }
     private FragmentSelectBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
-        super(bindingComponent, root, 2
+        super(bindingComponent, root, 3
             , (android.widget.Button) bindings[1]
-            , (com.google.android.material.chip.ChipGroup) bindings[8]
-            , (androidx.recyclerview.widget.RecyclerView) bindings[5]
-            , (androidx.recyclerview.widget.RecyclerView) bindings[6]
-            , (android.widget.HorizontalScrollView) bindings[7]
-            , (android.view.View) bindings[9]
+            , (com.google.android.material.chip.ChipGroup) bindings[12]
+            , (android.widget.EditText) bindings[8]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[9]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[10]
+            , (android.widget.HorizontalScrollView) bindings[11]
+            , (android.widget.TextView) bindings[7]
+            , (android.widget.TextView) bindings[6]
+            , (android.widget.TextView) bindings[5]
+            , (android.view.View) bindings[13]
             );
         this.button2.setTag(null);
+        this.editTextTextPersonName.setTag(null);
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);
         this.mboundView2 = (com.google.android.material.chip.Chip) bindings[2];
@@ -57,6 +62,9 @@ public class FragmentSelectBindingImpl extends FragmentSelectBinding implements 
         this.mboundView3.setTag(null);
         this.mboundView4 = (com.google.android.material.chip.Chip) bindings[4];
         this.mboundView4.setTag(null);
+        this.selectTvChild.setTag(null);
+        this.selectTvParent.setTag(null);
+        this.selectTvTitle.setTag(null);
         setRootTag(root);
         // listeners
         mCallback15 = new kr.khs.studyfarm.generated.callback.OnClickListener(this, 1);
@@ -66,7 +74,7 @@ public class FragmentSelectBindingImpl extends FragmentSelectBinding implements 
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x8L;
+                mDirtyFlags = 0x10L;
         }
         requestRebind();
     }
@@ -96,7 +104,7 @@ public class FragmentSelectBindingImpl extends FragmentSelectBinding implements 
     public void setViewModel(@Nullable kr.khs.studyfarm.login_process.select.SelectViewModel ViewModel) {
         this.mViewModel = ViewModel;
         synchronized(this) {
-            mDirtyFlags |= 0x4L;
+            mDirtyFlags |= 0x8L;
         }
         notifyPropertyChanged(BR.viewModel);
         super.requestRebind();
@@ -106,13 +114,15 @@ public class FragmentSelectBindingImpl extends FragmentSelectBinding implements 
     protected boolean onFieldChange(int localFieldId, Object object, int fieldId) {
         switch (localFieldId) {
             case 0 :
-                return onChangeViewModelChipVisible((androidx.lifecycle.MutableLiveData<java.util.List<java.lang.Boolean>>) object, fieldId);
+                return onChangeViewModelTitle((androidx.lifecycle.LiveData<java.lang.String>) object, fieldId);
             case 1 :
+                return onChangeViewModelChipVisible((androidx.lifecycle.MutableLiveData<java.util.List<java.lang.Boolean>>) object, fieldId);
+            case 2 :
                 return onChangeViewModelSelectData((androidx.lifecycle.MutableLiveData<java.util.ArrayList<kr.khs.studyfarm.login_process.select.SelectInfo>>) object, fieldId);
         }
         return false;
     }
-    private boolean onChangeViewModelChipVisible(androidx.lifecycle.MutableLiveData<java.util.List<java.lang.Boolean>> ViewModelChipVisible, int fieldId) {
+    private boolean onChangeViewModelTitle(androidx.lifecycle.LiveData<java.lang.String> ViewModelTitle, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x1L;
@@ -121,10 +131,19 @@ public class FragmentSelectBindingImpl extends FragmentSelectBinding implements 
         }
         return false;
     }
-    private boolean onChangeViewModelSelectData(androidx.lifecycle.MutableLiveData<java.util.ArrayList<kr.khs.studyfarm.login_process.select.SelectInfo>> ViewModelSelectData, int fieldId) {
+    private boolean onChangeViewModelChipVisible(androidx.lifecycle.MutableLiveData<java.util.List<java.lang.Boolean>> ViewModelChipVisible, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x2L;
+            }
+            return true;
+        }
+        return false;
+    }
+    private boolean onChangeViewModelSelectData(androidx.lifecycle.MutableLiveData<java.util.ArrayList<kr.khs.studyfarm.login_process.select.SelectInfo>> ViewModelSelectData, int fieldId) {
+        if (fieldId == BR._all) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x4L;
             }
             return true;
         }
@@ -138,6 +157,8 @@ public class FragmentSelectBindingImpl extends FragmentSelectBinding implements 
             dirtyFlags = mDirtyFlags;
             mDirtyFlags = 0;
         }
+        java.lang.String viewModelCategoryChild = null;
+        java.lang.String viewModelHint = null;
         java.lang.Boolean viewModelChipVisible1 = null;
         java.util.ArrayList<kr.khs.studyfarm.login_process.select.SelectInfo> viewModelSelectDataGetValue = null;
         boolean androidxDatabindingViewDataBindingSafeUnboxViewModelChipVisible0 = false;
@@ -146,77 +167,119 @@ public class FragmentSelectBindingImpl extends FragmentSelectBinding implements 
         java.lang.Boolean viewModelChipVisible2 = null;
         boolean androidxDatabindingViewDataBindingSafeUnboxViewModelChipVisible1 = false;
         java.lang.Boolean viewModelChipVisible0 = null;
+        java.lang.String viewModelTitleGetValue = null;
+        androidx.lifecycle.LiveData<java.lang.String> viewModelTitle = null;
         kr.khs.studyfarm.login_process.select.SelectInfo viewModelSelectData2 = null;
         kotlin.jvm.functions.Function0<kotlin.Unit> viewModelChipUpdateListener = null;
+        java.lang.String viewModelCategoryParent = null;
         java.util.List<java.lang.Boolean> viewModelChipVisibleGetValue = null;
         kr.khs.studyfarm.login_process.select.SelectInfo viewModelSelectData0 = null;
         androidx.lifecycle.MutableLiveData<java.util.List<java.lang.Boolean>> viewModelChipVisible = null;
         androidx.lifecycle.MutableLiveData<java.util.ArrayList<kr.khs.studyfarm.login_process.select.SelectInfo>> viewModelSelectData = null;
         kr.khs.studyfarm.login_process.select.SelectViewModel viewModel = mViewModel;
 
-        if ((dirtyFlags & 0xfL) != 0) {
+        if ((dirtyFlags & 0x1fL) != 0) {
 
 
+            if ((dirtyFlags & 0x18L) != 0) {
 
-                if (viewModel != null) {
-                    // read viewModel.chipUpdateListener
-                    viewModelChipUpdateListener = viewModel.getChipUpdateListener();
-                    // read viewModel.chipVisible
-                    viewModelChipVisible = viewModel.getChipVisible();
-                    // read viewModel._selectData
-                    viewModelSelectData = viewModel.get_selectData();
-                }
-                updateLiveDataRegistration(0, viewModelChipVisible);
-                updateLiveDataRegistration(1, viewModelSelectData);
+                    if (viewModel != null) {
+                        // read viewModel.categoryChild
+                        viewModelCategoryChild = viewModel.getCategoryChild();
+                        // read viewModel.hint
+                        viewModelHint = viewModel.getHint();
+                        // read viewModel.categoryParent
+                        viewModelCategoryParent = viewModel.getCategoryParent();
+                    }
+            }
+            if ((dirtyFlags & 0x19L) != 0) {
 
-
-                if (viewModelChipVisible != null) {
-                    // read viewModel.chipVisible.getValue()
-                    viewModelChipVisibleGetValue = viewModelChipVisible.getValue();
-                }
-                if (viewModelSelectData != null) {
-                    // read viewModel._selectData.getValue()
-                    viewModelSelectDataGetValue = viewModelSelectData.getValue();
-                }
+                    if (viewModel != null) {
+                        // read viewModel.title
+                        viewModelTitle = viewModel.getTitle();
+                    }
+                    updateLiveDataRegistration(0, viewModelTitle);
 
 
-                if (viewModelChipVisibleGetValue != null) {
-                    // read viewModel.chipVisible.getValue()[1]
-                    viewModelChipVisible1 = getFromList(viewModelChipVisibleGetValue, 1);
-                    // read viewModel.chipVisible.getValue()[2]
-                    viewModelChipVisible2 = getFromList(viewModelChipVisibleGetValue, 2);
-                    // read viewModel.chipVisible.getValue()[0]
-                    viewModelChipVisible0 = getFromList(viewModelChipVisibleGetValue, 0);
-                }
-                if (viewModelSelectDataGetValue != null) {
-                    // read viewModel._selectData.getValue()[1]
-                    viewModelSelectData1 = getFromList(viewModelSelectDataGetValue, 1);
-                    // read viewModel._selectData.getValue()[2]
-                    viewModelSelectData2 = getFromList(viewModelSelectDataGetValue, 2);
-                    // read viewModel._selectData.getValue()[0]
-                    viewModelSelectData0 = getFromList(viewModelSelectDataGetValue, 0);
-                }
+                    if (viewModelTitle != null) {
+                        // read viewModel.title.getValue()
+                        viewModelTitleGetValue = viewModelTitle.getValue();
+                    }
+            }
+            if ((dirtyFlags & 0x1eL) != 0) {
+
+                    if (viewModel != null) {
+                        // read viewModel.chipUpdateListener
+                        viewModelChipUpdateListener = viewModel.getChipUpdateListener();
+                        // read viewModel.chipVisible
+                        viewModelChipVisible = viewModel.getChipVisible();
+                        // read viewModel._selectData
+                        viewModelSelectData = viewModel.get_selectData();
+                    }
+                    updateLiveDataRegistration(1, viewModelChipVisible);
+                    updateLiveDataRegistration(2, viewModelSelectData);
 
 
-                // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.chipVisible.getValue()[1])
-                androidxDatabindingViewDataBindingSafeUnboxViewModelChipVisible1 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelChipVisible1);
-                // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.chipVisible.getValue()[2])
-                androidxDatabindingViewDataBindingSafeUnboxViewModelChipVisible2 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelChipVisible2);
-                // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.chipVisible.getValue()[0])
-                androidxDatabindingViewDataBindingSafeUnboxViewModelChipVisible0 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelChipVisible0);
+                    if (viewModelChipVisible != null) {
+                        // read viewModel.chipVisible.getValue()
+                        viewModelChipVisibleGetValue = viewModelChipVisible.getValue();
+                    }
+                    if (viewModelSelectData != null) {
+                        // read viewModel._selectData.getValue()
+                        viewModelSelectDataGetValue = viewModelSelectData.getValue();
+                    }
+
+
+                    if (viewModelChipVisibleGetValue != null) {
+                        // read viewModel.chipVisible.getValue()[1]
+                        viewModelChipVisible1 = getFromList(viewModelChipVisibleGetValue, 1);
+                        // read viewModel.chipVisible.getValue()[2]
+                        viewModelChipVisible2 = getFromList(viewModelChipVisibleGetValue, 2);
+                        // read viewModel.chipVisible.getValue()[0]
+                        viewModelChipVisible0 = getFromList(viewModelChipVisibleGetValue, 0);
+                    }
+                    if (viewModelSelectDataGetValue != null) {
+                        // read viewModel._selectData.getValue()[1]
+                        viewModelSelectData1 = getFromList(viewModelSelectDataGetValue, 1);
+                        // read viewModel._selectData.getValue()[2]
+                        viewModelSelectData2 = getFromList(viewModelSelectDataGetValue, 2);
+                        // read viewModel._selectData.getValue()[0]
+                        viewModelSelectData0 = getFromList(viewModelSelectDataGetValue, 0);
+                    }
+
+
+                    // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.chipVisible.getValue()[1])
+                    androidxDatabindingViewDataBindingSafeUnboxViewModelChipVisible1 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelChipVisible1);
+                    // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.chipVisible.getValue()[2])
+                    androidxDatabindingViewDataBindingSafeUnboxViewModelChipVisible2 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelChipVisible2);
+                    // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.chipVisible.getValue()[0])
+                    androidxDatabindingViewDataBindingSafeUnboxViewModelChipVisible0 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelChipVisible0);
+            }
         }
         // batch finished
-        if ((dirtyFlags & 0x8L) != 0) {
+        if ((dirtyFlags & 0x10L) != 0) {
             // api target 1
 
             this.button2.setOnClickListener(mCallback15);
         }
-        if ((dirtyFlags & 0xfL) != 0) {
+        if ((dirtyFlags & 0x18L) != 0) {
+            // api target 1
+
+            this.editTextTextPersonName.setHint(viewModelHint);
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.selectTvChild, viewModelCategoryChild);
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.selectTvParent, viewModelCategoryParent);
+        }
+        if ((dirtyFlags & 0x1eL) != 0) {
             // api target 1
 
             kr.khs.studyfarm.BindingUtilKt.setVisibility(this.mboundView2, androidxDatabindingViewDataBindingSafeUnboxViewModelChipVisible0, viewModelSelectData0, viewModelSelectDataGetValue, viewModelChipUpdateListener);
             kr.khs.studyfarm.BindingUtilKt.setVisibility(this.mboundView3, androidxDatabindingViewDataBindingSafeUnboxViewModelChipVisible1, viewModelSelectData1, viewModelSelectDataGetValue, viewModelChipUpdateListener);
             kr.khs.studyfarm.BindingUtilKt.setVisibility(this.mboundView4, androidxDatabindingViewDataBindingSafeUnboxViewModelChipVisible2, viewModelSelectData2, viewModelSelectDataGetValue, viewModelChipUpdateListener);
+        }
+        if ((dirtyFlags & 0x19L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.selectTvTitle, viewModelTitleGetValue);
         }
     }
     // Listener Stub Implementations
@@ -240,10 +303,11 @@ public class FragmentSelectBindingImpl extends FragmentSelectBinding implements 
     // dirty flag
     private  long mDirtyFlags = 0xffffffffffffffffL;
     /* flag mapping
-        flag 0 (0x1L): viewModel.chipVisible
-        flag 1 (0x2L): viewModel._selectData
-        flag 2 (0x3L): viewModel
-        flag 3 (0x4L): null
+        flag 0 (0x1L): viewModel.title
+        flag 1 (0x2L): viewModel.chipVisible
+        flag 2 (0x3L): viewModel._selectData
+        flag 3 (0x4L): viewModel
+        flag 4 (0x5L): null
     flag mapping end*/
     //end
 }

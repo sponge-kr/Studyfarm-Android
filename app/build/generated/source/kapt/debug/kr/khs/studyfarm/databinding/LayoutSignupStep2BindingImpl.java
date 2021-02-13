@@ -14,26 +14,26 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.step2_1, 17);
-        sViewsWithIds.put(R.id.signup_horizonscroll_city, 18);
-        sViewsWithIds.put(R.id.step2_2, 19);
-        sViewsWithIds.put(R.id.linearLayout2, 20);
+        sViewsWithIds.put(R.id.step2_1, 16);
+        sViewsWithIds.put(R.id.signup_horizonscroll_city, 17);
+        sViewsWithIds.put(R.id.step2_2, 18);
+        sViewsWithIds.put(R.id.linearLayout2, 19);
     }
     // views
     @NonNull
-    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView10;
+    private final androidx.constraintlayout.widget.ConstraintLayout mboundView10;
     @NonNull
-    private final androidx.constraintlayout.widget.ConstraintLayout mboundView11;
+    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView12;
     @NonNull
-    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView13;
+    private final androidx.constraintlayout.widget.ConstraintLayout mboundView13;
     @NonNull
-    private final androidx.constraintlayout.widget.ConstraintLayout mboundView14;
+    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView15;
     @NonNull
-    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView16;
+    private final android.widget.TextView mboundView4;
     @NonNull
-    private final android.widget.TextView mboundView5;
+    private final androidx.constraintlayout.widget.ConstraintLayout mboundView7;
     @NonNull
-    private final androidx.constraintlayout.widget.ConstraintLayout mboundView8;
+    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView9;
     // variables
     @Nullable
     private final android.view.View.OnClickListener mCallback4;
@@ -44,43 +44,41 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
     // Inverse Binding Event Handlers
 
     public LayoutSignupStep2BindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 21, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 20, sIncludes, sViewsWithIds));
     }
     private LayoutSignupStep2BindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 7
-            , (android.widget.LinearLayout) bindings[20]
+            , (android.widget.LinearLayout) bindings[19]
             , (android.widget.TextView) bindings[1]
             , (com.google.android.material.chip.Chip) bindings[2]
             , (com.google.android.material.chip.Chip) bindings[3]
-            , (com.google.android.material.chip.Chip) bindings[4]
-            , (com.google.android.material.chip.Chip) bindings[9]
-            , (com.google.android.material.chip.Chip) bindings[12]
-            , (com.google.android.material.chip.Chip) bindings[15]
-            , (android.widget.HorizontalScrollView) bindings[18]
+            , (com.google.android.material.chip.Chip) bindings[8]
+            , (com.google.android.material.chip.Chip) bindings[11]
+            , (com.google.android.material.chip.Chip) bindings[14]
+            , (android.widget.HorizontalScrollView) bindings[17]
             , (androidx.constraintlayout.widget.ConstraintLayout) bindings[0]
+            , (android.widget.TextView) bindings[5]
             , (android.widget.TextView) bindings[6]
-            , (android.widget.TextView) bindings[7]
-            , (android.widget.TextView) bindings[17]
-            , (android.widget.TextView) bindings[19]
+            , (android.widget.TextView) bindings[16]
+            , (android.widget.TextView) bindings[18]
             );
-        this.mboundView10 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[10];
+        this.mboundView10 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[10];
         this.mboundView10.setTag(null);
-        this.mboundView11 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[11];
-        this.mboundView11.setTag(null);
-        this.mboundView13 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[13];
+        this.mboundView12 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[12];
+        this.mboundView12.setTag(null);
+        this.mboundView13 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[13];
         this.mboundView13.setTag(null);
-        this.mboundView14 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[14];
-        this.mboundView14.setTag(null);
-        this.mboundView16 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[16];
-        this.mboundView16.setTag(null);
-        this.mboundView5 = (android.widget.TextView) bindings[5];
-        this.mboundView5.setTag(null);
-        this.mboundView8 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[8];
-        this.mboundView8.setTag(null);
+        this.mboundView15 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[15];
+        this.mboundView15.setTag(null);
+        this.mboundView4 = (android.widget.TextView) bindings[4];
+        this.mboundView4.setTag(null);
+        this.mboundView7 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[7];
+        this.mboundView7.setTag(null);
+        this.mboundView9 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[9];
+        this.mboundView9.setTag(null);
         this.signupBtnAddcity.setTag(null);
         this.signupChipCity1.setTag(null);
         this.signupChipCity2.setTag(null);
-        this.signupChipCity3.setTag(null);
         this.signupChipStudy1.setTag(null);
         this.signupChipStudy2.setTag(null);
         this.signupChipStudy3.setTag(null);
@@ -237,13 +235,11 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
         androidx.lifecycle.LiveData<java.lang.Integer[]> viewModelCityVisiblities = null;
         java.lang.Integer[] viewModelCityVisiblitiesGetValue = null;
         java.lang.String[] viewModelInterestingRatingGet = null;
-        java.lang.Integer viewModelCityVisiblities2 = null;
         java.lang.String viewModelStudyTexts1 = null;
         androidx.databinding.ObservableField<java.lang.String[]> viewModelInterestingRating = null;
         java.lang.String viewModelCityTexts1 = null;
         int androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities1 = 0;
         java.lang.Integer viewModelStudyVisiblities0 = null;
-        int androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities2 = 0;
         java.lang.String viewModelCityCountTextGetValue = null;
         androidx.lifecycle.LiveData<java.lang.String[]> viewModelStudyTexts = null;
         java.lang.Integer[] viewModelStudyVisiblitiesGetValue = null;
@@ -253,7 +249,6 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
         java.lang.String viewModelStudyCountTextGetValue = null;
         androidx.lifecycle.LiveData<java.lang.Integer[]> viewModelStudyVisiblities = null;
         int androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities1 = 0;
-        java.lang.String viewModelCityTexts2 = null;
         java.lang.String viewModelInterestingRating0 = null;
         int androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities2 = 0;
         java.lang.Integer viewModelCityVisiblities0 = null;
@@ -282,8 +277,6 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
                     if (viewModelCityVisiblitiesGetValue != null) {
                         // read viewModel.cityVisiblities.getValue()[1]
                         viewModelCityVisiblities1 = getFromArray(viewModelCityVisiblitiesGetValue, 1);
-                        // read viewModel.cityVisiblities.getValue()[2]
-                        viewModelCityVisiblities2 = getFromArray(viewModelCityVisiblitiesGetValue, 2);
                         // read viewModel.cityVisiblities.getValue()[0]
                         viewModelCityVisiblities0 = getFromArray(viewModelCityVisiblitiesGetValue, 0);
                     }
@@ -291,8 +284,6 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
 
                     // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.cityVisiblities.getValue()[1])
                     androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities1 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelCityVisiblities1);
-                    // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.cityVisiblities.getValue()[2])
-                    androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities2 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelCityVisiblities2);
                     // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.cityVisiblities.getValue()[0])
                     androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities0 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelCityVisiblities0);
             }
@@ -364,8 +355,6 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
                         viewModelCityTexts0 = getFromArray(viewModelCityTextsGetValue, 0);
                         // read viewModel.cityTexts.getValue()[1]
                         viewModelCityTexts1 = getFromArray(viewModelCityTextsGetValue, 1);
-                        // read viewModel.cityTexts.getValue()[2]
-                        viewModelCityTexts2 = getFromArray(viewModelCityTextsGetValue, 2);
                     }
             }
             if ((dirtyFlags & 0x190L) != 0) {
@@ -430,24 +419,24 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
             }
         }
         // batch finished
-        if ((dirtyFlags & 0x182L) != 0) {
-            // api target 1
-
-            kr.khs.studyfarm.BindingUtilKt.setting(this.mboundView10, viewModelInterestingRating0);
-            kr.khs.studyfarm.BindingUtilKt.setting(this.mboundView13, viewModelInterestingRating1);
-            kr.khs.studyfarm.BindingUtilKt.setting(this.mboundView16, viewModelInterestingRating2);
-        }
         if ((dirtyFlags & 0x1a0L) != 0) {
             // api target 1
 
-            this.mboundView11.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities1);
-            this.mboundView14.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities2);
-            this.mboundView8.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities0);
+            this.mboundView10.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities1);
+            this.mboundView13.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities2);
+            this.mboundView7.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities0);
+        }
+        if ((dirtyFlags & 0x182L) != 0) {
+            // api target 1
+
+            kr.khs.studyfarm.BindingUtilKt.setting(this.mboundView12, viewModelInterestingRating1);
+            kr.khs.studyfarm.BindingUtilKt.setting(this.mboundView15, viewModelInterestingRating2);
+            kr.khs.studyfarm.BindingUtilKt.setting(this.mboundView9, viewModelInterestingRating0);
         }
         if ((dirtyFlags & 0x100L) != 0) {
             // api target 1
 
-            this.mboundView5.setOnClickListener(mCallback4);
+            this.mboundView4.setOnClickListener(mCallback4);
             this.signupBtnAddcity.setOnClickListener(mCallback3);
         }
         if ((dirtyFlags & 0x181L) != 0) {
@@ -455,14 +444,12 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
 
             this.signupChipCity1.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities0);
             this.signupChipCity2.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities1);
-            this.signupChipCity3.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities2);
         }
         if ((dirtyFlags & 0x188L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.signupChipCity1, viewModelCityTexts0);
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.signupChipCity2, viewModelCityTexts1);
-            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.signupChipCity3, viewModelCityTexts2);
         }
         if ((dirtyFlags & 0x184L) != 0) {
             // api target 1

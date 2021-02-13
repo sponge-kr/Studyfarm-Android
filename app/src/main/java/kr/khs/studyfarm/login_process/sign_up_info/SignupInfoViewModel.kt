@@ -56,7 +56,7 @@ class SignupInfoViewModel(val context : Context, val seq : Int, __cities : Array
     val studyVisiblities = Transformations.map(_interesting) {
         Array(MAX_STUDY_CHOICE) { idx -> if(idx < it.size) View.VISIBLE else View.GONE }
     }
-    val studyCountText = Transformations.map(_cities) {
+    val studyCountText = Transformations.map(_interesting) {
         "${it.size} / $MAX_STUDY_CHOICE"
     }
 

@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.HorizontalScrollView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.Bindable;
@@ -26,6 +28,9 @@ public abstract class FragmentSelectBinding extends ViewDataBinding {
   public final ChipGroup chipGroup;
 
   @NonNull
+  public final EditText editTextTextPersonName;
+
+  @NonNull
   public final RecyclerView selectRvFirst;
 
   @NonNull
@@ -35,20 +40,35 @@ public abstract class FragmentSelectBinding extends ViewDataBinding {
   public final HorizontalScrollView selectScrollChip;
 
   @NonNull
+  public final TextView selectTvChild;
+
+  @NonNull
+  public final TextView selectTvParent;
+
+  @NonNull
+  public final TextView selectTvTitle;
+
+  @NonNull
   public final View view;
 
   @Bindable
   protected SelectViewModel mViewModel;
 
   protected FragmentSelectBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      Button button2, ChipGroup chipGroup, RecyclerView selectRvFirst, RecyclerView selectRvSecond,
-      HorizontalScrollView selectScrollChip, View view) {
+      Button button2, ChipGroup chipGroup, EditText editTextTextPersonName,
+      RecyclerView selectRvFirst, RecyclerView selectRvSecond,
+      HorizontalScrollView selectScrollChip, TextView selectTvChild, TextView selectTvParent,
+      TextView selectTvTitle, View view) {
     super(_bindingComponent, _root, _localFieldCount);
     this.button2 = button2;
     this.chipGroup = chipGroup;
+    this.editTextTextPersonName = editTextTextPersonName;
     this.selectRvFirst = selectRvFirst;
     this.selectRvSecond = selectRvSecond;
     this.selectScrollChip = selectScrollChip;
+    this.selectTvChild = selectTvChild;
+    this.selectTvParent = selectTvParent;
+    this.selectTvTitle = selectTvTitle;
     this.view = view;
   }
 

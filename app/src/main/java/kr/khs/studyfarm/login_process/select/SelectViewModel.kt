@@ -18,6 +18,9 @@ import java.util.AbstractMap
 import java.util.ArrayList
 
 class SelectViewModel(val context : Context, private val cityOrInterested : Boolean, _dataInit : Array<SelectInfo>?) : ViewModel() {
+    private val MAX_CITY_SIZE = 2
+    private val MAX_STUDY_SIZE = 3
+
     private val _returnSignup = MutableLiveData<Boolean>()
     val returnSignup : LiveData<Boolean>
         get() = _returnSignup
@@ -32,6 +35,17 @@ class SelectViewModel(val context : Context, private val cityOrInterested : Bool
     var cur : SelectInfo? = null
 
     val chipVisible = MutableLiveData<List<Boolean>>()
+
+    val title = Transformations.map(_selectData) {
+        val prefix = if(cityOrInterested) "관심 분야 선택" else "관심 지역 선택"
+
+        prefix + " " + it.size + " / " + if(cityOrInterested) MAX_STUDY_SIZE else MAX_CITY_SIZE
+    }
+
+    val categoryParent = if(cityOrInterested) "종류" else "시/도"
+    val categoryChild = if(cityOrInterested) "과목" else "시/군/구"
+
+    val hint = if(cityOrInterested) "관심 스터디 검색하기" else "지역별 검색 예) 서울시 서초구"
 
     private val _response = MutableLiveData<Response>()
     val response : LiveData<Response>
@@ -110,7 +124,7 @@ class SelectViewModel(val context : Context, private val cityOrInterested : Bool
 
     fun onChildrenSelect(data : InfoData) {
         cur!!.children = data
-        if(_selectData.value?.size == 3) {
+        if(_selectData.value?.size == (if(cityOrInterested) MAX_STUDY_SIZE else MAX_CITY_SIZE)) {
             _toast.value = if(cityOrInterested) context.getString(R.string.signup_maxStudy) else context.getString(R.string.select_maxCity)
             return
         }

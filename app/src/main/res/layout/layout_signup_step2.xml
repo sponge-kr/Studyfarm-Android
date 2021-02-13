@@ -61,13 +61,13 @@
                     android:layout_margin="@dimen/vertical_margin"
                     android:id="@+id/signup_chip_city2" />
 
-                <com.google.android.material.chip.Chip
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="@{viewModel.cityVisiblities[2]}"
-                    android:text="@{viewModel.cityTexts[2]}"
-                    android:layout_margin="@dimen/vertical_margin"
-                    android:id="@+id/signup_chip_city3" />
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:visibility="@{viewModel.cityVisiblities[2]}"-->
+<!--                    android:text="@{viewModel.cityTexts[2]}"-->
+<!--                    android:layout_margin="@dimen/vertical_margin"-->
+<!--                    android:id="@+id/signup_chip_city3" />-->
 
             </LinearLayout>
         </HorizontalScrollView>
@@ -130,23 +130,21 @@
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:text="@{viewModel.studyTexts[0]}"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <kr.khs.studyfarm.view.custom.LevelSelectButton
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/signup_chip_study1"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/signup_chip_study1"
-                    app:layout_constraintTop_toTopOf="@+id/signup_chip_study1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signup_chip_study1"
                     app:levelFourName="고급"
                     app:levelOneName="초급"
+                    app:levelSelectButtonSetting="@{viewModel.interestingRating[0]}"
                     app:levelThreeName="중급"
-                    app:levelTwoName="초중급"
-                    app:levelSelectButtonSetting="@{viewModel.interestingRating[0]}" />
+                    app:levelTwoName="초중급" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -160,18 +158,16 @@
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:text="@{viewModel.studyTexts[1]}"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <kr.khs.studyfarm.view.custom.LevelSelectButton
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/signup_chip_study2"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/signup_chip_study2"
-                    app:layout_constraintTop_toTopOf="@+id/signup_chip_study2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signup_chip_study2"
                     app:levelFourName="고급"
                     app:levelOneName="초급"
                     app:levelThreeName="중급"
@@ -190,18 +186,16 @@
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:text="@{viewModel.studyTexts[2]}"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <kr.khs.studyfarm.view.custom.LevelSelectButton
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/signup_chip_study3"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/signup_chip_study3"
-                    app:layout_constraintTop_toTopOf="@+id/signup_chip_study3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signup_chip_study3"
                     app:levelFourName="고급"
                     app:levelOneName="초급"
                     app:levelThreeName="중급"
