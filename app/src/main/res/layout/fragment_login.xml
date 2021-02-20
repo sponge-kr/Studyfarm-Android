@@ -29,6 +29,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginVertical="@dimen/vertical_margin"
                 app:errorEnabled="true"
                 android:id="@+id/signemail_et_email"
@@ -50,6 +51,7 @@
                 android:id="@+id/signpw_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginVertical="@dimen/vertical_margin"
                 app:validation="@{viewModel.rule.PASSWORD_RULE}"
                 app:errorMsg='@{"비밀번호의 형식이 맞지 않습니다."}'

@@ -42,6 +42,7 @@
             android:id="@+id/setpw_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginVertical="@dimen/vertical_margin"
             app:errorMsg='@{"비밀번호의 형식이 맞지 않습니다."}'
             app:layout_constraintBottom_toBottomOf="parent"

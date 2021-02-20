@@ -16,12 +16,13 @@ import com.google.android.material.chip.ChipGroup
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.button_level_select.view.*
+import kotlinx.android.synthetic.main.button_level_select_line.view.*
 import kr.khs.studyfarm.login_process.agreement_bottomsheet.AgreementAdapter
 import kr.khs.studyfarm.login_process.agreement_bottomsheet.TermsData
 import kr.khs.studyfarm.login_process.select.SelectInfo
 import kr.khs.studyfarm.mainpage.vp.InterestingVPAdapter
 import kr.khs.studyfarm.network.response.UserInterestingInfo
-import kr.khs.studyfarm.view.custom.LevelSelectButton
+import kr.khs.studyfarm.view.custom.LevelSelectLineButton
 import java.util.*
 
 //이메일, 비밀번호 등 textinputlayout가 주어진 조건에 부합하는지 체크
@@ -34,7 +35,7 @@ fun setErrorEnable(textInputLayout: TextInputLayout, stringRule: StringRule, err
 
         override fun afterTextChanged(p0: Editable?) {
             textInputLayout.error =
-                if (stringRule.validate(p0))
+                if (stringRule.validate(p0) || p0.isNullOrEmpty())
                     null
                 else
                     errorMsg
@@ -225,21 +226,21 @@ fun View.setVisible(visible : Boolean) {
 }
 
 @BindingAdapter("app:levelSelectButtonSetting")
-fun LevelSelectButton.setting(level : String?) {
+fun LevelSelectLineButton.setting(level : String?) {
     if(level.isNullOrBlank()) {
-        this.levelselect_tv_select.text = "0"
+        this.levelselectline_tv_select.text = "0"
         return
     }
-    val old = this.levelselect_tv_select.text.toString()
+    val old = this.levelselectline_tv_select.text.toString()
     if(old != level) {
 //        this.setSelectLevel(level.toInt())
-        this.levelselect_tv_select.text = level
+        this.levelselectline_tv_select.text = level
     }
 }
 
 // 참고 : https://pyxispub.uzuki.live/?p=917
 @BindingAdapter("app:levelSelectButtonAttrChanged")
-fun LevelSelectButton.onChange(listener : InverseBindingListener) {
+fun LevelSelectLineButton.onChange(listener : InverseBindingListener) {
     val watcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
 
@@ -249,12 +250,12 @@ fun LevelSelectButton.onChange(listener : InverseBindingListener) {
             listener.onChange()
         }
     }
-    this.levelselect_tv_select.addTextChangedListener(watcher)
+    this.levelselectline_tv_select.addTextChangedListener(watcher)
 }
 
 @InverseBindingAdapter(attribute = "app:levelSelectButtonSetting", event = "app:levelSelectButtonAttrChanged")
-fun LevelSelectButton.getLevel() : String {
-    return this.levelselect_tv_select.text.toString()
+fun LevelSelectLineButton.getLevel() : String {
+    return this.levelselectline_tv_select.text.toString()
 }
 
 @BindingAdapter("app:setActivate")
