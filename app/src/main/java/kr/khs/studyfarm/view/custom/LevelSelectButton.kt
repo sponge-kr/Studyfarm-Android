@@ -1,77 +1,101 @@
 package kr.khs.studyfarm.view.custom
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageView
+import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableField
-import androidx.databinding.ObservableInt
 import kotlinx.android.synthetic.main.button_level_select.view.*
 import kr.khs.studyfarm.R
-import kr.khs.studyfarm.databinding.ButtonLevelSelectBindingImpl
+import kr.khs.studyfarm.databinding.ButtonLevelSelectBinding
 import kr.khs.studyfarm.setting
-import kotlin.math.max
-import kotlin.math.min
 
 class LevelSelectButton @JvmOverloads constructor(
-    context : Context, attrs : AttributeSet? = null, defStyle: Int = 0
+    context : Context, attrs : AttributeSet? = null, defStyle : Int = 0
 ) : ConstraintLayout(context, attrs, defStyle) {
 
-    private var binding : ButtonLevelSelectBindingImpl
+    private var binding : ButtonLevelSelectBinding
 
-    private val dotCount = 4
+    private val MAX_SIZE = 4
 
-    private lateinit var btnLevelOne : ImageView
-    private lateinit var btnLevelTwo : ImageView
-    private lateinit var btnLevelThree : ImageView
-    private lateinit var btnLevelFour : ImageView
+    private lateinit var target : TextView
+//        get() = binding.root.levelselect_target
+    private lateinit var btnLevelOne : Button
+//        get() = binding.root.levelselect_btn1
+    private lateinit var btnLevelTwo : Button
+//        get() = binding.root.levelselect_btn2
+    private lateinit var btnLevelThree : Button
+//        get() = binding.root.levelselect_btn3
+    private lateinit var btnLevelFour : Button
+//        get() = binding.root.levelselect_btn4
 
-    private lateinit var textLevelOne : TextView
-    private lateinit var textLevelTwo : TextView
-    private lateinit var textLevelThree : TextView
-    private lateinit var textLevelFour : TextView
-    val textLevelSelect : TextView
-        get() = binding.root.levelselect_tv_select
+    private var targetName = ""
+    private var levelOneName = "초급"
+    private var levelTwoName = "초중급"
+    private var levelThreeName = "중급"
+    private var levelFourName = "상급"
 
-    private lateinit var lineOne : View
-    private lateinit var lineTwo : View
-    private lateinit var lineThree : View
+    private val selected = ObservableField<String>()
 
-    private var levelOneName = "Level 1"
-    private var levelTwoName = "Level 2"
-    private var levelThreeName = "Level 3"
-    private var levelFourName = "Level 4"
+    private val btnClickListener = OnClickListener { v ->
+        this.setting(when(v.id) {
+            R.id.levelselect_btn1 -> "1"
+            R.id.levelselect_btn2 -> "2"
+            R.id.levelselect_btn3 -> "3"
+            R.id.levelselect_btn4 -> "4"
+            else -> "0"
+        })
 
-    val selectNumber = ObservableField<String>()
+        when(v.id) {
+            R.id.levelselect_btn1 -> {
+                btnLevelOne.setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
+                btnLevelTwo.setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+                btnLevelThree.setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+                btnLevelFour.setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+            }
+            R.id.levelselect_btn2 -> {
+                btnLevelOne.setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+                btnLevelTwo.setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
+                btnLevelThree.setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+                btnLevelFour.setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+            }
+            R.id.levelselect_btn3 -> {
+                btnLevelOne.setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+                btnLevelTwo.setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+                btnLevelThree.setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
+                btnLevelFour.setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+            }
+            R.id.levelselect_btn4 -> {
+                btnLevelOne.setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+                btnLevelTwo.setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+                btnLevelThree.setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+                btnLevelFour.setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
+            }
+        }
 
-    private var isRange = false
+        selected.set(when(v.id) {
+            R.id.levelselect_btn1 -> 1
+            R.id.levelselect_btn2 -> 2
+            R.id.levelselect_btn3 -> 3
+            R.id.levelselect_btn4 -> 4
+            else -> 0
+        }.toString())
 
-//    private var startIdx = 0
-//    private var endIdx = 0
-
-    private val startIdx : Int
-        get() = selectNumber.get()!!.toInt() / 10
-
-    private val endIdx : Int
-        get() = selectNumber.get()!!.toInt() % 10
+    }
 
     init {
         val inflater = LayoutInflater.from(context)
         binding = DataBindingUtil.inflate(
             inflater, R.layout.button_level_select, this, true
         )
-        binding.view = this
-//        val inflaterService = Context.LAYOUT_INFLATER_SERVICE
-//        val layoutInflater = getContext().getSystemService(inflaterService) as LayoutInflater
-//        val view = layoutInflater.inflate(R.layout.button_level_select, this, false)
-//        addView(view)
 
-        selectNumber.set("0")
+        binding.view = this
+
+        selected.set("0")
 
         initViews()
         initAttrs(attrs)
@@ -79,19 +103,11 @@ class LevelSelectButton @JvmOverloads constructor(
     }
 
     private fun initViews() {
-        btnLevelOne = binding.root.findViewById(R.id.levelselect_button_level1)
-        btnLevelTwo = binding.root.findViewById(R.id.levelselect_button_level2)
-        btnLevelThree = binding.root.findViewById(R.id.levelselect_button_level3)
-        btnLevelFour = binding.root.findViewById(R.id.levelselect_button_level4)
-
-        textLevelOne = binding.root.findViewById(R.id.levelselect_tv_level1)
-        textLevelTwo = binding.root.findViewById(R.id.levelselect_tv_level2)
-        textLevelThree = binding.root.findViewById(R.id.levelselect_tv_level3)
-        textLevelFour = binding.root.findViewById(R.id.levelselect_tv_level4)
-
-        lineOne = binding.root.findViewById(R.id.levelselect_line1)
-        lineTwo = binding.root.findViewById(R.id.levelselect_line2)
-        lineThree = binding.root.findViewById(R.id.levelselect_line3)
+        target = binding.root.findViewById(R.id.levelselect_target)
+        btnLevelOne = binding.root.findViewById(R.id.levelselect_btn1)
+        btnLevelTwo = binding.root.findViewById(R.id.levelselect_btn2)
+        btnLevelThree = binding.root.findViewById(R.id.levelselect_btn3)
+        btnLevelFour = binding.root.findViewById(R.id.levelselect_btn4)
     }
 
     private fun initAttrs(attrs : AttributeSet?) {
@@ -103,175 +119,43 @@ class LevelSelectButton @JvmOverloads constructor(
             levelThreeName = getString(R.styleable.LevelSelectButton_levelThreeName) ?: levelThreeName
             levelFourName = getString(R.styleable.LevelSelectButton_levelFourName) ?: levelFourName
 
-            isRange = getBoolean(R.styleable.LevelSelectButton_range, isRange)
+            targetName = getString(R.styleable.LevelSelectButton_target) ?: targetName
         }
     }
 
     private fun initSettings() {
-        textLevelOne.text = levelOneName
-        textLevelTwo.text = levelTwoName
-        textLevelThree.text = levelThreeName
-        textLevelFour.text = levelFourName
+        btnLevelOne.apply {
+            text = levelOneName
+            setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+            setOnClickListener(btnClickListener)
+        }
+        btnLevelTwo.apply {
+            text = levelTwoName
+            setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+            setOnClickListener(btnClickListener)
+        }
+        btnLevelThree.apply {
+            text = levelThreeName
+            setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+            setOnClickListener(btnClickListener)
+        }
+        btnLevelFour.apply {
+            text = levelFourName
+            setBackgroundColor(resources.getColor(R.color.notActivateColor, null))
+            setOnClickListener(btnClickListener)
+        }
 
-        btnLevelOne.setOnClickListener { btnClick(1) }
-        btnLevelTwo.setOnClickListener { btnClick(2) }
-        btnLevelThree.setOnClickListener { btnClick(3) }
-        btnLevelFour.setOnClickListener { btnClick(4) }
+        target.text = targetName
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
-    private fun btnClick(idx : Int) {
-        this.setting(idx.toString())
-        if(isRange) {
-            var change = 0
-            if(idx == 0) {
-//                selectNumber.set(0)
-                change = 0
-            }
-            else if(startIdx == 0 && endIdx == 0) {
-//                selectNumber.set(if(idx / 10 > 0) (idx / 10) * 10 + idx % 10 else idx * 10)
-                change = if(idx / 10 > 0) (idx / 10) * 10 + idx % 10 else idx * 10
-            }
-            else if(startIdx != 0 && endIdx == 0) {
-//                selectNumber.set( when {
-//                    startIdx == idx -> 0
-//                    else -> {
-//                        min(startIdx, idx) * 10 + max(startIdx, idx)
-//                    }
-//                })
-                change = when (startIdx) {
-                    idx -> 0
-                    else -> {
-                        min(startIdx, idx) * 10 + max(startIdx, idx)
-                    }
-                }
-            }
-            else { // startIdx != 0 && endIdx != 0
-//                selectNumber.set(
-//                    if(startIdx == idx) {
-//                        (selectNumber.get()!!.toInt()!!.toInt() % 10) * 10
-//                    }
-//                    else if(endIdx == idx) {
-//                        (selectNumber.get()!!.toInt() / 10) * 10
-//                    }
-//                    else if(startIdx > idx) {
-//                        (selectNumber.get()!!.toInt() % 10) + idx * 10
-//                    }
-//                    else /*if(endIdx < idx)*/ {
-//                        (selectNumber.get()!!.toInt() / 10) * 10 + idx
-//                    }
-//                // 사이를 선택했다면 어떻게 처리가 될 것인지
-//                )
-                change = if(startIdx == idx) {
-                    (selectNumber.get()!!.toInt()!!.toInt() % 10) * 10
-                }
-                else if(endIdx == idx) {
-                    (selectNumber.get()!!.toInt() / 10) * 10
-                }
-                else if(startIdx > idx) {
-                    (selectNumber.get()!!.toInt() % 10) + idx * 10
-                }
-                else /*if(endIdx < idx)*/ {
-                    (selectNumber.get()!!.toInt() / 10) * 10 + idx
-                }
-                // 사이를 선택했다면 어떻게 처리가 될 것인지
-            }
-            selectNumber.set(change.toString())
-
-            btnLevelOne.background = resources.getDrawable(
-                if (startIdx == 1 || endIdx == 1)
-                    R.drawable.custom_circle_select_o
-                else
-                    R.drawable.custom_circle_select_x,
-                null
-            )
-
-            btnLevelTwo.background = resources.getDrawable(
-                if (startIdx == 2 || endIdx == 2)
-                    R.drawable.custom_circle_select_o
-                else
-                    R.drawable.custom_circle_select_x,
-                null
-            )
-
-            btnLevelThree.background = resources.getDrawable(
-                if (startIdx == 3 || endIdx == 3)
-                    R.drawable.custom_circle_select_o
-                else
-                    R.drawable.custom_circle_select_x,
-                null
-            )
-
-            btnLevelFour.background = resources.getDrawable(
-                if (startIdx == 4 || endIdx == 4)
-                    R.drawable.custom_circle_select_o
-                else
-                    R.drawable.custom_circle_select_x,
-                null
-            )
-
-            lineOne.setBackgroundColor(resources.getColor(
-                if(startIdx <= 1 && endIdx > 1 && startIdx != 0 && endIdx != 0)
-                    R.color.colorPrimary
-                else
-                    android.R.color.darker_gray
-                , null)
-            )
-
-            lineTwo.setBackgroundColor(resources.getColor(
-                if(startIdx <= 2 && endIdx > 2 && startIdx != 0 && endIdx != 0)
-                    R.color.colorPrimary
-                else
-                    android.R.color.darker_gray
-                , null)
-            )
-
-            lineThree.setBackgroundColor(resources.getColor(
-                if(startIdx <= 3 && endIdx > 3 && startIdx != 0 && endIdx != 0)
-                    R.color.colorPrimary
-                else
-                    android.R.color.darker_gray
-                , null)
-            )
-        }
-        else {
-            selectNumber.set(idx.toString())
-
-            btnLevelOne.background = resources.getDrawable(
-                if (idx == 1)
-                    R.drawable.custom_circle_select_o
-                else
-                    R.drawable.custom_circle_select_x,
-                null
-            )
-
-            btnLevelTwo.background = resources.getDrawable(
-                if (idx == 2)
-                    R.drawable.custom_circle_select_o
-                else
-                    R.drawable.custom_circle_select_x,
-                null
-            )
-
-            btnLevelThree.background = resources.getDrawable(
-                if (idx == 3)
-                    R.drawable.custom_circle_select_o
-                else
-                    R.drawable.custom_circle_select_x,
-                null
-            )
-
-            btnLevelFour.background = resources.getDrawable(
-                if (idx == 4)
-                    R.drawable.custom_circle_select_o
-                else
-                    R.drawable.custom_circle_select_x,
-                null
-            )
+    fun setSelectLevel(idx : Int) {
+        when(idx) {
+            1 -> btnLevelOne.callOnClick()
+            2 -> btnLevelTwo.callOnClick()
+            3 -> btnLevelThree.callOnClick()
+            4 -> btnLevelFour.callOnClick()
         }
     }
 
-    fun setSelectLevel(idx : Int) = btnClick(idx)
-
-    fun getSelectLevel() = selectNumber.get()!!.toInt()
+    fun getSelectLevel() = selected.get()!!.toInt()
 }

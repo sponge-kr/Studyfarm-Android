@@ -36,46 +36,9 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
     private androidx.databinding.InverseBindingListener mboundView2androidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
         @Override
         public void onChange() {
-            // Inverse of viewModel.nickname.get()
-            //         is viewModel.nickname.set((java.lang.String) callbackArg_0)
-            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(mboundView2);
-            // localize variables for thread safety
-            // viewModel.nickname != null
-            boolean viewModelNicknameJavaLangObjectNull = false;
-            // viewModel.nickname.get()
-            java.lang.String viewModelNicknameGet = null;
-            // viewModel
-            kr.khs.studyfarm.login_process.sign_up.SignupViewModel viewModel = mViewModel;
-            // viewModel != null
-            boolean viewModelJavaLangObjectNull = false;
-            // viewModel.nickname
-            androidx.databinding.ObservableField<java.lang.String> viewModelNickname = null;
-
-
-
-            viewModelJavaLangObjectNull = (viewModel) != (null);
-            if (viewModelJavaLangObjectNull) {
-
-
-                viewModelNickname = viewModel.getNickname();
-
-                viewModelNicknameJavaLangObjectNull = (viewModelNickname) != (null);
-                if (viewModelNicknameJavaLangObjectNull) {
-
-
-
-
-                    viewModelNickname.set(((java.lang.String) (callbackArg_0)));
-                }
-            }
-        }
-    };
-    private androidx.databinding.InverseBindingListener mboundView4androidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
-        @Override
-        public void onChange() {
             // Inverse of viewModel.email.get()
             //         is viewModel.email.set((java.lang.String) callbackArg_0)
-            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(mboundView4);
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(mboundView2);
             // localize variables for thread safety
             // viewModel.email.get()
             java.lang.String viewModelEmailGet = null;
@@ -107,12 +70,12 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
             }
         }
     };
-    private androidx.databinding.InverseBindingListener mboundView6androidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
+    private androidx.databinding.InverseBindingListener mboundView4androidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
         @Override
         public void onChange() {
             // Inverse of viewModel.password.get()
             //         is viewModel.password.set((java.lang.String) callbackArg_0)
-            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(mboundView6);
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(mboundView4);
             // localize variables for thread safety
             // viewModel.password != null
             boolean viewModelPasswordJavaLangObjectNull = false;
@@ -144,6 +107,43 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
             }
         }
     };
+    private androidx.databinding.InverseBindingListener mboundView6androidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
+        @Override
+        public void onChange() {
+            // Inverse of viewModel.nickname.get()
+            //         is viewModel.nickname.set((java.lang.String) callbackArg_0)
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(mboundView6);
+            // localize variables for thread safety
+            // viewModel.nickname != null
+            boolean viewModelNicknameJavaLangObjectNull = false;
+            // viewModel.nickname.get()
+            java.lang.String viewModelNicknameGet = null;
+            // viewModel
+            kr.khs.studyfarm.login_process.sign_up.SignupViewModel viewModel = mViewModel;
+            // viewModel != null
+            boolean viewModelJavaLangObjectNull = false;
+            // viewModel.nickname
+            androidx.databinding.ObservableField<java.lang.String> viewModelNickname = null;
+
+
+
+            viewModelJavaLangObjectNull = (viewModel) != (null);
+            if (viewModelJavaLangObjectNull) {
+
+
+                viewModelNickname = viewModel.getNickname();
+
+                viewModelNicknameJavaLangObjectNull = (viewModelNickname) != (null);
+                if (viewModelNicknameJavaLangObjectNull) {
+
+
+
+
+                    viewModelNickname.set(((java.lang.String) (callbackArg_0)));
+                }
+            }
+        }
+    };
 
     public FragmentSignupBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
         this(bindingComponent, root, mapBindings(bindingComponent, root, 11, sIncludes, sViewsWithIds));
@@ -152,11 +152,11 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
         super(bindingComponent, root, 5
             , (android.widget.LinearLayout) bindings[8]
             , (android.widget.Button) bindings[7]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[3]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[1]
             , (android.widget.TextView) bindings[9]
             , (android.widget.TextView) bindings[10]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[3]
             , (com.google.android.material.textfield.TextInputLayout) bindings[5]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[1]
             );
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);
@@ -397,10 +397,10 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
             }
         }
         // batch finished
-        if ((dirtyFlags & 0x70L) != 0) {
+        if ((dirtyFlags & 0x62L) != 0) {
             // api target 1
 
-            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.mboundView2, viewModelNicknameGet);
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.mboundView2, viewModelEmailGet);
         }
         if ((dirtyFlags & 0x40L) != 0) {
             // api target 1
@@ -411,15 +411,15 @@ public class FragmentSignupBindingImpl extends FragmentSignupBinding implements 
             this.signemailBtnNext.setOnClickListener(mCallback23);
             kr.khs.studyfarm.BindingUtilKt.setPasswordVisibility(this.signpwPassword, true);
         }
-        if ((dirtyFlags & 0x62L) != 0) {
-            // api target 1
-
-            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.mboundView4, viewModelEmailGet);
-        }
         if ((dirtyFlags & 0x68L) != 0) {
             // api target 1
 
-            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.mboundView6, viewModelPasswordGet);
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.mboundView4, viewModelPasswordGet);
+        }
+        if ((dirtyFlags & 0x70L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.mboundView6, viewModelNicknameGet);
         }
         if ((dirtyFlags & 0x61L) != 0) {
             // api target 1

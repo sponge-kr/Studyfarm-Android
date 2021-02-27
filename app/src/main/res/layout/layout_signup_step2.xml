@@ -133,7 +133,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <kr.khs.studyfarm.view.custom.LevelSelectButton
+                <kr.khs.studyfarm.view.custom.LevelSelectLineButton
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -161,7 +161,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <kr.khs.studyfarm.view.custom.LevelSelectButton
+                <kr.khs.studyfarm.view.custom.LevelSelectLineButton
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -189,7 +189,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <kr.khs.studyfarm.view.custom.LevelSelectButton
+                <kr.khs.studyfarm.view.custom.LevelSelectLineButton
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"

@@ -173,7 +173,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/recruit_tv_placesearch" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <kr.khs.studyfarm.view.custom.LevelSelectButton
+        <kr.khs.studyfarm.view.custom.LevelSelectLineButton
             android:id="@+id/recruit_lsb_difficulty"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -22,6 +22,7 @@ import kr.khs.studyfarm.login_process.agreement_bottomsheet.TermsData
 import kr.khs.studyfarm.login_process.select.SelectInfo
 import kr.khs.studyfarm.mainpage.vp.InterestingVPAdapter
 import kr.khs.studyfarm.network.response.UserInterestingInfo
+import kr.khs.studyfarm.view.custom.LevelSelectButton
 import kr.khs.studyfarm.view.custom.LevelSelectLineButton
 import java.util.*
 
@@ -256,6 +257,37 @@ fun LevelSelectLineButton.onChange(listener : InverseBindingListener) {
 @InverseBindingAdapter(attribute = "app:levelSelectButtonSetting", event = "app:levelSelectButtonAttrChanged")
 fun LevelSelectLineButton.getLevel() : String {
     return this.levelselectline_tv_select.text.toString()
+}
+
+@BindingAdapter("app:levelSelectTarget")
+fun LevelSelectButton.setting(target : String?) {
+    if(target.isNullOrBlank()) {
+        this.levelselect_tv_select.text = "0"
+        return
+    }
+    val old = this.levelselect_tv_select.text.toString()
+    if(old != target) {
+        this.levelselect_tv_select.text = target
+    }
+}
+
+@BindingAdapter("app:levelSelectButtonAttrChanged1")
+fun LevelSelectButton.onChange(listener : InverseBindingListener) {
+    val watcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { }
+
+        override fun afterTextChanged(s: Editable?) {
+            listener.onChange()
+        }
+    }
+    this.levelselect_tv_select.addTextChangedListener(watcher)
+}
+
+@InverseBindingAdapter(attribute = "app:levelSelectTarget", event = "app:levelSelectButtonAttrChanged1")
+fun LevelSelectButton.getLevel() : String {
+    return this.levelselect_tv_select.text.toString()
 }
 
 @BindingAdapter("app:setActivate")

@@ -23,17 +23,17 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
     @NonNull
     private final androidx.constraintlayout.widget.ConstraintLayout mboundView10;
     @NonNull
-    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView12;
+    private final kr.khs.studyfarm.view.custom.LevelSelectLineButton mboundView12;
     @NonNull
     private final androidx.constraintlayout.widget.ConstraintLayout mboundView13;
     @NonNull
-    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView15;
+    private final kr.khs.studyfarm.view.custom.LevelSelectLineButton mboundView15;
     @NonNull
     private final android.widget.TextView mboundView4;
     @NonNull
     private final androidx.constraintlayout.widget.ConstraintLayout mboundView7;
     @NonNull
-    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView9;
+    private final kr.khs.studyfarm.view.custom.LevelSelectLineButton mboundView9;
     // variables
     @Nullable
     private final android.view.View.OnClickListener mCallback4;
@@ -64,17 +64,17 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
             );
         this.mboundView10 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[10];
         this.mboundView10.setTag(null);
-        this.mboundView12 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[12];
+        this.mboundView12 = (kr.khs.studyfarm.view.custom.LevelSelectLineButton) bindings[12];
         this.mboundView12.setTag(null);
         this.mboundView13 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[13];
         this.mboundView13.setTag(null);
-        this.mboundView15 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[15];
+        this.mboundView15 = (kr.khs.studyfarm.view.custom.LevelSelectLineButton) bindings[15];
         this.mboundView15.setTag(null);
         this.mboundView4 = (android.widget.TextView) bindings[4];
         this.mboundView4.setTag(null);
         this.mboundView7 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[7];
         this.mboundView7.setTag(null);
-        this.mboundView9 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[9];
+        this.mboundView9 = (kr.khs.studyfarm.view.custom.LevelSelectLineButton) bindings[9];
         this.mboundView9.setTag(null);
         this.signupBtnAddcity.setTag(null);
         this.signupChipCity1.setTag(null);
