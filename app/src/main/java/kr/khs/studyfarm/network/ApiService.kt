@@ -14,7 +14,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 
-private const val BASE_URL = "http://3.214.168.45:8080/api/v1/"
+private const val BASE_URL = "http://3.214.168.45:3724/api/v1/"
 
 enum class ApiStatus { LOADING, ERROR, DONE }
 
