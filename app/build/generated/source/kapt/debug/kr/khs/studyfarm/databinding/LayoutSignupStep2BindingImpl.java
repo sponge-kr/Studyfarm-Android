@@ -14,26 +14,20 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.step2_1, 16);
-        sViewsWithIds.put(R.id.signup_horizonscroll_city, 17);
-        sViewsWithIds.put(R.id.step2_2, 18);
-        sViewsWithIds.put(R.id.linearLayout2, 19);
+        sViewsWithIds.put(R.id.step2_1, 10);
+        sViewsWithIds.put(R.id.signup_horizonscroll_city, 11);
+        sViewsWithIds.put(R.id.step2_2, 12);
+        sViewsWithIds.put(R.id.linearLayout2, 13);
     }
     // views
     @NonNull
-    private final androidx.constraintlayout.widget.ConstraintLayout mboundView10;
-    @NonNull
-    private final kr.khs.studyfarm.view.custom.LevelSelectLineButton mboundView12;
-    @NonNull
-    private final androidx.constraintlayout.widget.ConstraintLayout mboundView13;
-    @NonNull
-    private final kr.khs.studyfarm.view.custom.LevelSelectLineButton mboundView15;
-    @NonNull
     private final android.widget.TextView mboundView4;
     @NonNull
-    private final androidx.constraintlayout.widget.ConstraintLayout mboundView7;
+    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView7;
     @NonNull
-    private final kr.khs.studyfarm.view.custom.LevelSelectLineButton mboundView9;
+    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView8;
+    @NonNull
+    private final kr.khs.studyfarm.view.custom.LevelSelectButton mboundView9;
     // variables
     @Nullable
     private final android.view.View.OnClickListener mCallback4;
@@ -44,44 +38,32 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
     // Inverse Binding Event Handlers
 
     public LayoutSignupStep2BindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 20, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 14, sIncludes, sViewsWithIds));
     }
     private LayoutSignupStep2BindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
-        super(bindingComponent, root, 7
-            , (android.widget.LinearLayout) bindings[19]
+        super(bindingComponent, root, 5
+            , (android.widget.LinearLayout) bindings[13]
             , (android.widget.TextView) bindings[1]
             , (com.google.android.material.chip.Chip) bindings[2]
             , (com.google.android.material.chip.Chip) bindings[3]
-            , (com.google.android.material.chip.Chip) bindings[8]
-            , (com.google.android.material.chip.Chip) bindings[11]
-            , (com.google.android.material.chip.Chip) bindings[14]
-            , (android.widget.HorizontalScrollView) bindings[17]
+            , (android.widget.HorizontalScrollView) bindings[11]
             , (androidx.constraintlayout.widget.ConstraintLayout) bindings[0]
             , (android.widget.TextView) bindings[5]
             , (android.widget.TextView) bindings[6]
-            , (android.widget.TextView) bindings[16]
-            , (android.widget.TextView) bindings[18]
+            , (android.widget.TextView) bindings[10]
+            , (android.widget.TextView) bindings[12]
             );
-        this.mboundView10 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[10];
-        this.mboundView10.setTag(null);
-        this.mboundView12 = (kr.khs.studyfarm.view.custom.LevelSelectLineButton) bindings[12];
-        this.mboundView12.setTag(null);
-        this.mboundView13 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[13];
-        this.mboundView13.setTag(null);
-        this.mboundView15 = (kr.khs.studyfarm.view.custom.LevelSelectLineButton) bindings[15];
-        this.mboundView15.setTag(null);
         this.mboundView4 = (android.widget.TextView) bindings[4];
         this.mboundView4.setTag(null);
-        this.mboundView7 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[7];
+        this.mboundView7 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[7];
         this.mboundView7.setTag(null);
-        this.mboundView9 = (kr.khs.studyfarm.view.custom.LevelSelectLineButton) bindings[9];
+        this.mboundView8 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[8];
+        this.mboundView8.setTag(null);
+        this.mboundView9 = (kr.khs.studyfarm.view.custom.LevelSelectButton) bindings[9];
         this.mboundView9.setTag(null);
         this.signupBtnAddcity.setTag(null);
         this.signupChipCity1.setTag(null);
         this.signupChipCity2.setTag(null);
-        this.signupChipStudy1.setTag(null);
-        this.signupChipStudy2.setTag(null);
-        this.signupChipStudy3.setTag(null);
         this.signupStep2.setTag(null);
         this.signupTvCitycount.setTag(null);
         this.signupTvStudycount.setTag(null);
@@ -95,7 +77,7 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x100L;
+                mDirtyFlags = 0x40L;
         }
         requestRebind();
     }
@@ -125,7 +107,7 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
     public void setViewModel(@Nullable kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel ViewModel) {
         this.mViewModel = ViewModel;
         synchronized(this) {
-            mDirtyFlags |= 0x80L;
+            mDirtyFlags |= 0x20L;
         }
         notifyPropertyChanged(BR.viewModel);
         super.requestRebind();
@@ -135,23 +117,19 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
     protected boolean onFieldChange(int localFieldId, Object object, int fieldId) {
         switch (localFieldId) {
             case 0 :
-                return onChangeViewModelCityVisiblities((androidx.lifecycle.LiveData<java.lang.Integer[]>) object, fieldId);
-            case 1 :
-                return onChangeViewModelInterestingRating((androidx.databinding.ObservableField<java.lang.String[]>) object, fieldId);
-            case 2 :
-                return onChangeViewModelStudyTexts((androidx.lifecycle.LiveData<java.lang.String[]>) object, fieldId);
-            case 3 :
                 return onChangeViewModelCityTexts((androidx.lifecycle.LiveData<java.lang.String[]>) object, fieldId);
-            case 4 :
+            case 1 :
                 return onChangeViewModelStudyCountText((androidx.lifecycle.LiveData<java.lang.String>) object, fieldId);
-            case 5 :
+            case 2 :
                 return onChangeViewModelStudyVisiblities((androidx.lifecycle.LiveData<java.lang.Integer[]>) object, fieldId);
-            case 6 :
+            case 3 :
+                return onChangeViewModelCityVisiblities((androidx.lifecycle.LiveData<java.lang.Integer[]>) object, fieldId);
+            case 4 :
                 return onChangeViewModelCityCountText((androidx.lifecycle.LiveData<java.lang.String>) object, fieldId);
         }
         return false;
     }
-    private boolean onChangeViewModelCityVisiblities(androidx.lifecycle.LiveData<java.lang.Integer[]> ViewModelCityVisiblities, int fieldId) {
+    private boolean onChangeViewModelCityTexts(androidx.lifecycle.LiveData<java.lang.String[]> ViewModelCityTexts, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x1L;
@@ -160,7 +138,7 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
         }
         return false;
     }
-    private boolean onChangeViewModelInterestingRating(androidx.databinding.ObservableField<java.lang.String[]> ViewModelInterestingRating, int fieldId) {
+    private boolean onChangeViewModelStudyCountText(androidx.lifecycle.LiveData<java.lang.String> ViewModelStudyCountText, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x2L;
@@ -169,7 +147,7 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
         }
         return false;
     }
-    private boolean onChangeViewModelStudyTexts(androidx.lifecycle.LiveData<java.lang.String[]> ViewModelStudyTexts, int fieldId) {
+    private boolean onChangeViewModelStudyVisiblities(androidx.lifecycle.LiveData<java.lang.Integer[]> ViewModelStudyVisiblities, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x4L;
@@ -178,7 +156,7 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
         }
         return false;
     }
-    private boolean onChangeViewModelCityTexts(androidx.lifecycle.LiveData<java.lang.String[]> ViewModelCityTexts, int fieldId) {
+    private boolean onChangeViewModelCityVisiblities(androidx.lifecycle.LiveData<java.lang.Integer[]> ViewModelCityVisiblities, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
                     mDirtyFlags |= 0x8L;
@@ -187,28 +165,10 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
         }
         return false;
     }
-    private boolean onChangeViewModelStudyCountText(androidx.lifecycle.LiveData<java.lang.String> ViewModelStudyCountText, int fieldId) {
-        if (fieldId == BR._all) {
-            synchronized(this) {
-                    mDirtyFlags |= 0x10L;
-            }
-            return true;
-        }
-        return false;
-    }
-    private boolean onChangeViewModelStudyVisiblities(androidx.lifecycle.LiveData<java.lang.Integer[]> ViewModelStudyVisiblities, int fieldId) {
-        if (fieldId == BR._all) {
-            synchronized(this) {
-                    mDirtyFlags |= 0x20L;
-            }
-            return true;
-        }
-        return false;
-    }
     private boolean onChangeViewModelCityCountText(androidx.lifecycle.LiveData<java.lang.String> ViewModelCityCountText, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
-                    mDirtyFlags |= 0x40L;
+                    mDirtyFlags |= 0x10L;
             }
             return true;
         }
@@ -222,50 +182,108 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
             dirtyFlags = mDirtyFlags;
             mDirtyFlags = 0;
         }
-        java.lang.String viewModelInterestingRating1 = null;
-        java.lang.Integer viewModelCityVisiblities1 = null;
-        java.lang.String viewModelStudyTexts2 = null;
-        java.lang.Integer viewModelStudyVisiblities1 = null;
-        java.lang.String[] viewModelCityTextsGetValue = null;
-        java.lang.String[] viewModelStudyTextsGetValue = null;
-        int androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities0 = 0;
-        int androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities0 = 0;
-        java.lang.String viewModelCityTexts0 = null;
-        java.lang.String viewModelInterestingRating2 = null;
-        androidx.lifecycle.LiveData<java.lang.Integer[]> viewModelCityVisiblities = null;
-        java.lang.Integer[] viewModelCityVisiblitiesGetValue = null;
-        java.lang.String[] viewModelInterestingRatingGet = null;
-        java.lang.String viewModelStudyTexts1 = null;
-        androidx.databinding.ObservableField<java.lang.String[]> viewModelInterestingRating = null;
         java.lang.String viewModelCityTexts1 = null;
         int androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities1 = 0;
         java.lang.Integer viewModelStudyVisiblities0 = null;
         java.lang.String viewModelCityCountTextGetValue = null;
-        androidx.lifecycle.LiveData<java.lang.String[]> viewModelStudyTexts = null;
+        java.lang.Integer viewModelCityVisiblities1 = null;
         java.lang.Integer[] viewModelStudyVisiblitiesGetValue = null;
         androidx.lifecycle.LiveData<java.lang.String[]> viewModelCityTexts = null;
-        java.lang.String viewModelStudyTexts0 = null;
+        java.lang.Integer viewModelStudyVisiblities1 = null;
+        java.lang.String[] viewModelCityTextsGetValue = null;
         androidx.lifecycle.LiveData<java.lang.String> viewModelStudyCountText = null;
+        int androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities0 = 0;
+        int androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities0 = 0;
         java.lang.String viewModelStudyCountTextGetValue = null;
+        java.lang.String viewModelCityTexts0 = null;
         androidx.lifecycle.LiveData<java.lang.Integer[]> viewModelStudyVisiblities = null;
         int androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities1 = 0;
-        java.lang.String viewModelInterestingRating0 = null;
+        androidx.lifecycle.LiveData<java.lang.Integer[]> viewModelCityVisiblities = null;
         int androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities2 = 0;
+        java.lang.Integer[] viewModelCityVisiblitiesGetValue = null;
         java.lang.Integer viewModelCityVisiblities0 = null;
         androidx.lifecycle.LiveData<java.lang.String> viewModelCityCountText = null;
         java.lang.Integer viewModelStudyVisiblities2 = null;
         kr.khs.studyfarm.login_process.sign_up_info.SignupInfoViewModel viewModel = mViewModel;
 
-        if ((dirtyFlags & 0x1ffL) != 0) {
+        if ((dirtyFlags & 0x7fL) != 0) {
 
 
-            if ((dirtyFlags & 0x181L) != 0) {
+            if ((dirtyFlags & 0x61L) != 0) {
+
+                    if (viewModel != null) {
+                        // read viewModel.cityTexts
+                        viewModelCityTexts = viewModel.getCityTexts();
+                    }
+                    updateLiveDataRegistration(0, viewModelCityTexts);
+
+
+                    if (viewModelCityTexts != null) {
+                        // read viewModel.cityTexts.getValue()
+                        viewModelCityTextsGetValue = viewModelCityTexts.getValue();
+                    }
+
+
+                    if (viewModelCityTextsGetValue != null) {
+                        // read viewModel.cityTexts.getValue()[1]
+                        viewModelCityTexts1 = getFromArray(viewModelCityTextsGetValue, 1);
+                        // read viewModel.cityTexts.getValue()[0]
+                        viewModelCityTexts0 = getFromArray(viewModelCityTextsGetValue, 0);
+                    }
+            }
+            if ((dirtyFlags & 0x62L) != 0) {
+
+                    if (viewModel != null) {
+                        // read viewModel.studyCountText
+                        viewModelStudyCountText = viewModel.getStudyCountText();
+                    }
+                    updateLiveDataRegistration(1, viewModelStudyCountText);
+
+
+                    if (viewModelStudyCountText != null) {
+                        // read viewModel.studyCountText.getValue()
+                        viewModelStudyCountTextGetValue = viewModelStudyCountText.getValue();
+                    }
+            }
+            if ((dirtyFlags & 0x64L) != 0) {
+
+                    if (viewModel != null) {
+                        // read viewModel.studyVisiblities
+                        viewModelStudyVisiblities = viewModel.getStudyVisiblities();
+                    }
+                    updateLiveDataRegistration(2, viewModelStudyVisiblities);
+
+
+                    if (viewModelStudyVisiblities != null) {
+                        // read viewModel.studyVisiblities.getValue()
+                        viewModelStudyVisiblitiesGetValue = viewModelStudyVisiblities.getValue();
+                    }
+
+
+                    if (viewModelStudyVisiblitiesGetValue != null) {
+                        // read viewModel.studyVisiblities.getValue()[0]
+                        viewModelStudyVisiblities0 = getFromArray(viewModelStudyVisiblitiesGetValue, 0);
+                        // read viewModel.studyVisiblities.getValue()[1]
+                        viewModelStudyVisiblities1 = getFromArray(viewModelStudyVisiblitiesGetValue, 1);
+                        // read viewModel.studyVisiblities.getValue()[2]
+                        viewModelStudyVisiblities2 = getFromArray(viewModelStudyVisiblitiesGetValue, 2);
+                    }
+
+
+                    // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.studyVisiblities.getValue()[0])
+                    androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities0 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelStudyVisiblities0);
+                    // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.studyVisiblities.getValue()[1])
+                    androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities1 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelStudyVisiblities1);
+                    // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.studyVisiblities.getValue()[2])
+                    androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities2 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelStudyVisiblities2);
+            }
+            if ((dirtyFlags & 0x68L) != 0) {
 
                     if (viewModel != null) {
                         // read viewModel.cityVisiblities
                         viewModelCityVisiblities = viewModel.getCityVisiblities();
                     }
-                    updateLiveDataRegistration(0, viewModelCityVisiblities);
+                    updateLiveDataRegistration(3, viewModelCityVisiblities);
 
 
                     if (viewModelCityVisiblities != null) {
@@ -287,129 +305,13 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
                     // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.cityVisiblities.getValue()[0])
                     androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities0 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelCityVisiblities0);
             }
-            if ((dirtyFlags & 0x182L) != 0) {
-
-                    if (viewModel != null) {
-                        // read viewModel.interestingRating
-                        viewModelInterestingRating = viewModel.getInterestingRating();
-                    }
-                    updateRegistration(1, viewModelInterestingRating);
-
-
-                    if (viewModelInterestingRating != null) {
-                        // read viewModel.interestingRating.get()
-                        viewModelInterestingRatingGet = viewModelInterestingRating.get();
-                    }
-
-
-                    if (viewModelInterestingRatingGet != null) {
-                        // read viewModel.interestingRating.get()[1]
-                        viewModelInterestingRating1 = getFromArray(viewModelInterestingRatingGet, 1);
-                        // read viewModel.interestingRating.get()[2]
-                        viewModelInterestingRating2 = getFromArray(viewModelInterestingRatingGet, 2);
-                        // read viewModel.interestingRating.get()[0]
-                        viewModelInterestingRating0 = getFromArray(viewModelInterestingRatingGet, 0);
-                    }
-            }
-            if ((dirtyFlags & 0x184L) != 0) {
-
-                    if (viewModel != null) {
-                        // read viewModel.studyTexts
-                        viewModelStudyTexts = viewModel.getStudyTexts();
-                    }
-                    updateLiveDataRegistration(2, viewModelStudyTexts);
-
-
-                    if (viewModelStudyTexts != null) {
-                        // read viewModel.studyTexts.getValue()
-                        viewModelStudyTextsGetValue = viewModelStudyTexts.getValue();
-                    }
-
-
-                    if (viewModelStudyTextsGetValue != null) {
-                        // read viewModel.studyTexts.getValue()[2]
-                        viewModelStudyTexts2 = getFromArray(viewModelStudyTextsGetValue, 2);
-                        // read viewModel.studyTexts.getValue()[1]
-                        viewModelStudyTexts1 = getFromArray(viewModelStudyTextsGetValue, 1);
-                        // read viewModel.studyTexts.getValue()[0]
-                        viewModelStudyTexts0 = getFromArray(viewModelStudyTextsGetValue, 0);
-                    }
-            }
-            if ((dirtyFlags & 0x188L) != 0) {
-
-                    if (viewModel != null) {
-                        // read viewModel.cityTexts
-                        viewModelCityTexts = viewModel.getCityTexts();
-                    }
-                    updateLiveDataRegistration(3, viewModelCityTexts);
-
-
-                    if (viewModelCityTexts != null) {
-                        // read viewModel.cityTexts.getValue()
-                        viewModelCityTextsGetValue = viewModelCityTexts.getValue();
-                    }
-
-
-                    if (viewModelCityTextsGetValue != null) {
-                        // read viewModel.cityTexts.getValue()[0]
-                        viewModelCityTexts0 = getFromArray(viewModelCityTextsGetValue, 0);
-                        // read viewModel.cityTexts.getValue()[1]
-                        viewModelCityTexts1 = getFromArray(viewModelCityTextsGetValue, 1);
-                    }
-            }
-            if ((dirtyFlags & 0x190L) != 0) {
-
-                    if (viewModel != null) {
-                        // read viewModel.studyCountText
-                        viewModelStudyCountText = viewModel.getStudyCountText();
-                    }
-                    updateLiveDataRegistration(4, viewModelStudyCountText);
-
-
-                    if (viewModelStudyCountText != null) {
-                        // read viewModel.studyCountText.getValue()
-                        viewModelStudyCountTextGetValue = viewModelStudyCountText.getValue();
-                    }
-            }
-            if ((dirtyFlags & 0x1a0L) != 0) {
-
-                    if (viewModel != null) {
-                        // read viewModel.studyVisiblities
-                        viewModelStudyVisiblities = viewModel.getStudyVisiblities();
-                    }
-                    updateLiveDataRegistration(5, viewModelStudyVisiblities);
-
-
-                    if (viewModelStudyVisiblities != null) {
-                        // read viewModel.studyVisiblities.getValue()
-                        viewModelStudyVisiblitiesGetValue = viewModelStudyVisiblities.getValue();
-                    }
-
-
-                    if (viewModelStudyVisiblitiesGetValue != null) {
-                        // read viewModel.studyVisiblities.getValue()[1]
-                        viewModelStudyVisiblities1 = getFromArray(viewModelStudyVisiblitiesGetValue, 1);
-                        // read viewModel.studyVisiblities.getValue()[0]
-                        viewModelStudyVisiblities0 = getFromArray(viewModelStudyVisiblitiesGetValue, 0);
-                        // read viewModel.studyVisiblities.getValue()[2]
-                        viewModelStudyVisiblities2 = getFromArray(viewModelStudyVisiblitiesGetValue, 2);
-                    }
-
-
-                    // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.studyVisiblities.getValue()[1])
-                    androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities1 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelStudyVisiblities1);
-                    // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.studyVisiblities.getValue()[0])
-                    androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities0 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelStudyVisiblities0);
-                    // read androidx.databinding.ViewDataBinding.safeUnbox(viewModel.studyVisiblities.getValue()[2])
-                    androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities2 = androidx.databinding.ViewDataBinding.safeUnbox(viewModelStudyVisiblities2);
-            }
-            if ((dirtyFlags & 0x1c0L) != 0) {
+            if ((dirtyFlags & 0x70L) != 0) {
 
                     if (viewModel != null) {
                         // read viewModel.cityCountText
                         viewModelCityCountText = viewModel.getCityCountText();
                     }
-                    updateLiveDataRegistration(6, viewModelCityCountText);
+                    updateLiveDataRegistration(4, viewModelCityCountText);
 
 
                     if (viewModelCityCountText != null) {
@@ -419,51 +321,37 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
             }
         }
         // batch finished
-        if ((dirtyFlags & 0x1a0L) != 0) {
-            // api target 1
-
-            this.mboundView10.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities1);
-            this.mboundView13.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities2);
-            this.mboundView7.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities0);
-        }
-        if ((dirtyFlags & 0x182L) != 0) {
-            // api target 1
-
-            kr.khs.studyfarm.BindingUtilKt.setting(this.mboundView12, viewModelInterestingRating1);
-            kr.khs.studyfarm.BindingUtilKt.setting(this.mboundView15, viewModelInterestingRating2);
-            kr.khs.studyfarm.BindingUtilKt.setting(this.mboundView9, viewModelInterestingRating0);
-        }
-        if ((dirtyFlags & 0x100L) != 0) {
+        if ((dirtyFlags & 0x40L) != 0) {
             // api target 1
 
             this.mboundView4.setOnClickListener(mCallback4);
             this.signupBtnAddcity.setOnClickListener(mCallback3);
         }
-        if ((dirtyFlags & 0x181L) != 0) {
+        if ((dirtyFlags & 0x64L) != 0) {
+            // api target 1
+
+            this.mboundView7.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities0);
+            this.mboundView8.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities1);
+            this.mboundView9.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelStudyVisiblities2);
+        }
+        if ((dirtyFlags & 0x68L) != 0) {
             // api target 1
 
             this.signupChipCity1.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities0);
             this.signupChipCity2.setVisibility(androidxDatabindingViewDataBindingSafeUnboxViewModelCityVisiblities1);
         }
-        if ((dirtyFlags & 0x188L) != 0) {
+        if ((dirtyFlags & 0x61L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.signupChipCity1, viewModelCityTexts0);
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.signupChipCity2, viewModelCityTexts1);
         }
-        if ((dirtyFlags & 0x184L) != 0) {
-            // api target 1
-
-            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.signupChipStudy1, viewModelStudyTexts0);
-            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.signupChipStudy2, viewModelStudyTexts1);
-            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.signupChipStudy3, viewModelStudyTexts2);
-        }
-        if ((dirtyFlags & 0x1c0L) != 0) {
+        if ((dirtyFlags & 0x70L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.signupTvCitycount, viewModelCityCountTextGetValue);
         }
-        if ((dirtyFlags & 0x190L) != 0) {
+        if ((dirtyFlags & 0x62L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.signupTvStudycount, viewModelStudyCountTextGetValue);
@@ -512,15 +400,13 @@ public class LayoutSignupStep2BindingImpl extends LayoutSignupStep2Binding imple
     // dirty flag
     private  long mDirtyFlags = 0xffffffffffffffffL;
     /* flag mapping
-        flag 0 (0x1L): viewModel.cityVisiblities
-        flag 1 (0x2L): viewModel.interestingRating
-        flag 2 (0x3L): viewModel.studyTexts
-        flag 3 (0x4L): viewModel.cityTexts
-        flag 4 (0x5L): viewModel.studyCountText
-        flag 5 (0x6L): viewModel.studyVisiblities
-        flag 6 (0x7L): viewModel.cityCountText
-        flag 7 (0x8L): viewModel
-        flag 8 (0x9L): null
+        flag 0 (0x1L): viewModel.cityTexts
+        flag 1 (0x2L): viewModel.studyCountText
+        flag 2 (0x3L): viewModel.studyVisiblities
+        flag 3 (0x4L): viewModel.cityVisiblities
+        flag 4 (0x5L): viewModel.cityCountText
+        flag 5 (0x6L): viewModel
+        flag 6 (0x7L): null
     flag mapping end*/
     //end
 }

@@ -119,89 +119,27 @@
             app:layout_constraintStart_toStartOf="@id/step2_2"
             app:layout_constraintTop_toBottomOf="@id/step2_2">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <kr.khs.studyfarm.view.custom.LevelSelectButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.studyVisiblities[0]}">
+                android:visibility="@{viewModel.studyVisiblities[0]}" />
+<!--                app:target="@{viewModel.studyTexts[0]}"-->
+<!--                app:levelSelectTarget="@={viewModel.interestingRating[0]}" />-->
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/signup_chip_study1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="false"
-                    android:text="@{viewModel.studyTexts[0]}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <kr.khs.studyfarm.view.custom.LevelSelectLineButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/signup_chip_study1"
-                    app:levelFourName="고급"
-                    app:levelOneName="초급"
-                    app:levelSelectButtonSetting="@{viewModel.interestingRating[0]}"
-                    app:levelThreeName="중급"
-                    app:levelTwoName="초중급" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <kr.khs.studyfarm.view.custom.LevelSelectButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.studyVisiblities[1]}">
+                android:visibility="@{viewModel.studyVisiblities[1]}" />
+<!--                app:target="@{viewModel.studyTexts[1]}"-->
+<!--                app:levelSelectTarget="@={viewModel.interestingRating[1]}" />-->
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/signup_chip_study2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="false"
-                    android:text="@{viewModel.studyTexts[1]}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <kr.khs.studyfarm.view.custom.LevelSelectLineButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/signup_chip_study2"
-                    app:levelFourName="고급"
-                    app:levelOneName="초급"
-                    app:levelThreeName="중급"
-                    app:levelTwoName="초중급"
-                    app:levelSelectButtonSetting="@{viewModel.interestingRating[1]}" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <kr.khs.studyfarm.view.custom.LevelSelectButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.studyVisiblities[2]}">
+                android:visibility="@{viewModel.studyVisiblities[2]}" />
+<!--                app:target="@{viewModel.studyTexts[2]}"-->
+<!--                app:levelSelectTarget="@={viewModel.interestingRating[2]}" />-->
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/signup_chip_study3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="false"
-                    android:text="@{viewModel.studyTexts[2]}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <kr.khs.studyfarm.view.custom.LevelSelectLineButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/signup_chip_study3"
-                    app:levelFourName="고급"
-                    app:levelOneName="초급"
-                    app:levelThreeName="중급"
-                    app:levelTwoName="초중급"
-                    app:levelSelectButtonSetting="@{viewModel.interestingRating[2]}" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

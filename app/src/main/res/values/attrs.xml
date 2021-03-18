@@ -10,7 +10,6 @@
     </declare-styleable>
 
     <declare-styleable name="LevelSelectButton">
-        <attr name="target" format="reference|string" />
         <attr name="levelOneName" format="reference|string" />
         <attr name="levelTwoName" format="reference|string" />
         <attr name="levelThreeName" format="reference|string" />

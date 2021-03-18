@@ -33,13 +33,19 @@ class LevelSelectButton @JvmOverloads constructor(
     private lateinit var btnLevelFour : Button
 //        get() = binding.root.levelselect_btn4
 
-    private var targetName = ""
     private var levelOneName = "초급"
     private var levelTwoName = "초중급"
     private var levelThreeName = "중급"
     private var levelFourName = "상급"
 
     private val selected = ObservableField<String>()
+
+    // for databinding
+    var targetName = ""
+        set(value) {
+            field = value
+            target.text = value
+        }
 
     private val btnClickListener = OnClickListener { v ->
         this.setting(when(v.id) {
@@ -119,7 +125,6 @@ class LevelSelectButton @JvmOverloads constructor(
             levelThreeName = getString(R.styleable.LevelSelectButton_levelThreeName) ?: levelThreeName
             levelFourName = getString(R.styleable.LevelSelectButton_levelFourName) ?: levelFourName
 
-            targetName = getString(R.styleable.LevelSelectButton_target) ?: targetName
         }
     }
 

@@ -33,15 +33,6 @@ public abstract class LayoutSignupStep2Binding extends ViewDataBinding {
   public final Chip signupChipCity2;
 
   @NonNull
-  public final Chip signupChipStudy1;
-
-  @NonNull
-  public final Chip signupChipStudy2;
-
-  @NonNull
-  public final Chip signupChipStudy3;
-
-  @NonNull
   public final HorizontalScrollView signupHorizonscrollCity;
 
   @NonNull
@@ -64,17 +55,14 @@ public abstract class LayoutSignupStep2Binding extends ViewDataBinding {
 
   protected LayoutSignupStep2Binding(Object _bindingComponent, View _root, int _localFieldCount,
       LinearLayout linearLayout2, TextView signupBtnAddcity, Chip signupChipCity1,
-      Chip signupChipCity2, Chip signupChipStudy1, Chip signupChipStudy2, Chip signupChipStudy3,
-      HorizontalScrollView signupHorizonscrollCity, ConstraintLayout signupStep2,
-      TextView signupTvCitycount, TextView signupTvStudycount, TextView step21, TextView step22) {
+      Chip signupChipCity2, HorizontalScrollView signupHorizonscrollCity,
+      ConstraintLayout signupStep2, TextView signupTvCitycount, TextView signupTvStudycount,
+      TextView step21, TextView step22) {
     super(_bindingComponent, _root, _localFieldCount);
     this.linearLayout2 = linearLayout2;
     this.signupBtnAddcity = signupBtnAddcity;
     this.signupChipCity1 = signupChipCity1;
     this.signupChipCity2 = signupChipCity2;
-    this.signupChipStudy1 = signupChipStudy1;
-    this.signupChipStudy2 = signupChipStudy2;
-    this.signupChipStudy3 = signupChipStudy3;
     this.signupHorizonscrollCity = signupHorizonscrollCity;
     this.signupStep2 = signupStep2;
     this.signupTvCitycount = signupTvCitycount;

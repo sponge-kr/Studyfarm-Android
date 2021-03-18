@@ -2288,9 +2288,6 @@ id signup_btn_addcity
 id signup_btn_next
 id signup_chip_city1
 id signup_chip_city2
-id signup_chip_study1
-id signup_chip_study2
-id signup_chip_study3
 id signup_et_nickname
 id signup_horizonscroll_city
 id signup_layout1
