@@ -114,6 +114,11 @@ interface StudyFarmApiService {
 
     @Headers("Content-Type: application/hal+json;charset=UTF-8",
         "Accept: application/hal+json")
+    @PUT("user/{email}/change-password")
+    suspend fun setNewPW(@Path("email") email : String, @Body newPW : PasswordData) : Response
+
+    @Headers("Content-Type: application/hal+json;charset=UTF-8",
+        "Accept: application/hal+json")
     @POST("study")
     suspend fun makeStudy(@Header("Authorization") token : String, @Body makeStudyData : MakeStudyData) : Response
 }

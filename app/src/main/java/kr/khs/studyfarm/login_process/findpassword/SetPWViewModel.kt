@@ -12,10 +12,12 @@ import kotlinx.coroutines.launch
 import kr.khs.studyfarm.Rule
 import kr.khs.studyfarm.network.ApiStatus
 import kr.khs.studyfarm.network.StudyFarmApi
+import kr.khs.studyfarm.network.request.PasswordData
 import kr.khs.studyfarm.network.response.Response
 import kr.khs.studyfarm.network.response.ResponseError
+import kr.khs.studyfarm.network.response.errorHandling
 
-class SetPWViewModel : ViewModel() {
+class SetPWViewModel(private val email : String) : ViewModel() {
 
     val rule = Rule
 
@@ -54,18 +56,22 @@ class SetPWViewModel : ViewModel() {
         coroutineScope.launch {
             try {
                 _apiStatus.value = ApiStatus.LOADING
-//                _response.value = StudyFarmApi.retrofitService.
+                _response.value = StudyFarmApi.retrofitService.setNewPW(email, PasswordData(password.get()!!))
                 _apiStatus.value = ApiStatus.DONE
                 successSetPW()
             }
             catch(t : Throwable) {
                 _apiStatus.value = ApiStatus.ERROR
+                errorHandling(t).apply {
+                    _toast.value = this.message
+                }
                 t.printStackTrace()
             }
         }
     }
 
-    fun successSetPW() {
+    private fun successSetPW() {
+        _toast.value = "비밀번호 변경이 완료되었습니다."
         _successSetPW.value = true
     }
 
@@ -82,10 +88,10 @@ class SetPWViewModel : ViewModel() {
     }
 }
 
-class SetPWViewModelFactory : ViewModelProvider.Factory {
+class SetPWViewModelFactory(private val email : String) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(SetPWViewModel::class.java))
-            return SetPWViewModel() as T
+            return SetPWViewModel(email) as T
         throw IllegalArgumentException("Unknown Class Name")
     }
 

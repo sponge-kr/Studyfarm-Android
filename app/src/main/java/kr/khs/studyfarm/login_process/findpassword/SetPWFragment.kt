@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -27,7 +28,9 @@ class SetPWFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        val viewModelFactory = SetPWViewModelFactory()
+        val email = SetPWFragmentArgs.fromBundle(requireArguments()).email
+
+        val viewModelFactory = SetPWViewModelFactory(email)
 
         val viewModel = ViewModelProvider(this, viewModelFactory).get(SetPWViewModel::class.java)
 
@@ -35,8 +38,8 @@ class SetPWFragment : Fragment() {
 
         viewModel.toast.observe(viewLifecycleOwner, Observer {
             if(it != "") {
-//                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-                createAlertDialog(requireContext(), it, "알겠어요.")
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+//                createAlertDialog(requireContext(), it, "알겠어요.")
                 viewModel.doneToast()
             }
         })
@@ -46,7 +49,7 @@ class SetPWFragment : Fragment() {
                 dialog.onLoadingDialog(requireActivity())
             }
             else if(dialog.loadingDialog != null && dialog.loadingDialog!!.isShowing) {
-                dialog.offLoadingDialog()
+                    dialog.offLoadingDialog()
             }
         })
 

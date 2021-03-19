@@ -54,7 +54,7 @@ class FindPWFragment : Fragment() {
 
         viewModel.setPW.observe(viewLifecycleOwner, Observer {
             if(it) {
-                findNavController().navigate(FindPWFragmentDirections.actionFindPWFragmentToSetPWFragment())
+                findNavController().navigate(FindPWFragmentDirections.actionFindPWFragmentToSetPWFragment(viewModel.email))
                 viewModel.doneSetPW()
             }
         })

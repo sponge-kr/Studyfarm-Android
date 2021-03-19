@@ -5,3 +5,7 @@ package kr.khs.studyfarm.network.request
 data class EmailData(
     val email : String
 )
+
+data class PasswordData(
+    val password : String
+)
