@@ -344,17 +344,17 @@
                         "startLines": "11",
                         "startColumns": "4",
                         "startOffsets": "520",
-                        "endLines": "18",
+                        "endLines": "17",
                         "endColumns": "24",
-                        "endOffsets": "958"
+                        "endOffsets": "901"
                     },
                     "to": {
                         "startLines": "6255",
                         "startColumns": "4",
                         "startOffsets": "373670",
-                        "endLines": "6262",
+                        "endLines": "6261",
                         "endColumns": "24",
-                        "endOffsets": "374102"
+                        "endOffsets": "374046"
                     }
                 },
                 {

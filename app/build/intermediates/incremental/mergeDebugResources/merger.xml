@@ -6441,7 +6441,6 @@
         <attr format="reference|boolean" name="range"/>
         <attr format="reference|integer" name="select"/>
     </declare-styleable><declare-styleable name="LevelSelectButton">
-        <attr format="reference|string" name="target"/>
         <attr format="reference|string" name="levelOneName"/>
         <attr format="reference|string" name="levelTwoName"/>
         <attr format="reference|string" name="levelThreeName"/>
@@ -8355,7 +8354,6 @@
     
     <attr name="android:layout"/>
   </declare-styleable><declare-styleable name="LevelSelectButton">
-        <attr format="reference|string" name="target"/>
         <attr format="reference|string" name="levelOneName"/>
         <attr format="reference|string" name="levelTwoName"/>
         <attr format="reference|string" name="levelThreeName"/>

@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-46:12
-INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-46:12
-INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-46:12
-INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-46:12
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-41:12
 MERGED from [androidx.databinding:databinding-adapters:4.0.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/5aef8e0cfb9e2958e4a2a608960a6cd7/databinding-adapters-4.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.databinding:databinding-runtime:4.0.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/cd4568579f6805eb511bf5da1dfcb1c5/databinding-runtime-4.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.kakao.sdk:v2-user:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/e37e94a2df9fe6d17fac6d2b432a4372/jetified-v2-user-2.2.0/AndroidManifest.xml:2:1-11:12
@@ -71,20 +71,20 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/
 MERGED from [androidx.print:print:1.0.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/e84cdc999d23c0bbd73a37ded6d2a872/print-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/888a36c031d270d272742e6c708090e7/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/6dfa5465e1022fb6bea6ef556fb91b2d/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
-INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-46:12
-INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-46:12
-INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-46:12
+INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-41:12
 	package
 		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:3:5-31
 		INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-46:12
+		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-41:12
 		INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-46:12
+		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:1-41:12
 		INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:2:11-69
@@ -93,7 +93,7 @@ ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidMa
 	android:name
 		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:7:5-44:19
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:7:5-39:19
 MERGED from [com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:11:5-21:19
 MERGED from [com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:11:5-21:19
 MERGED from [com.google.android.material:material:1.3.0-alpha03] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/739d81355bb0878bd33ee767476ea580/material-1.3.0-alpha03/AndroidManifest.xml:22:5-20
@@ -140,26 +140,26 @@ activity#kr.khs.studyfarm.view.SplashActivity
 ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:18:9-24:20
 	android:name
 		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:18:19-54
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:19:13-23:29
+action#android.intent.action.MAIN
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:20:17-69
+	android:name
+		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:20:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:22:17-77
+	android:name
+		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:22:27-74
 activity#kr.khs.studyfarm.view.TestActivity
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:25:9-31:20
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:25:9-26:20
 	android:name
 		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:25:19-52
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:26:13-30:29
-action#android.intent.action.MAIN
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:27:17-69
-	android:name
-		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:27:25-66
-category#android.intent.category.LAUNCHER
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:29:17-77
-	android:name
-		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:29:27-74
 activity#kr.khs.studyfarm.view.SignActivity
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:32:9-55
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:27:9-55
 	android:name
-		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:32:19-52
+		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:27:19-52
 activity#com.kakao.sdk.auth.AuthCodeHandlerActivity
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:33:9-43:20
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:28:9-38:20
 MERGED from [com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:17:9-20:56
 MERGED from [com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:17:9-20:56
 	android:launchMode
@@ -167,27 +167,27 @@ MERGED from [com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/tran
 	android:theme
 		ADDED from [com.kakao.sdk:v2-auth:2.2.0] /Users/heeseungkim/.gradle/caches/transforms-2/files-2.1/4146d3d98c379d56215964e1ae1e785d/jetified-v2-auth-2.2.0/AndroidManifest.xml:20:13-53
 	android:name
-		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:33:19-76
+		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:28:19-76
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:oauth+data:scheme:@string/kakao_scheme
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:34:13-42:29
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:29:13-37:29
 action#android.intent.action.VIEW
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:35:17-69
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:30:17-69
 	android:name
-		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:35:25-66
+		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:30:25-66
 category#android.intent.category.DEFAULT
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:36:17-76
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:31:17-76
 	android:name
-		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:36:27-73
+		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:31:27-73
 category#android.intent.category.BROWSABLE
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:37:17-78
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:32:17-78
 	android:name
-		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:37:27-75
+		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:32:27-75
 data
-ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:40:17-41:61
+ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:35:17-36:61
 	android:host
-		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:40:23-43
+		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:35:23-43
 	android:scheme
-		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:41:21-58
+		ADDED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml:36:21-58
 uses-sdk
 INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/heeseungkim/studyfarm/Studyfarm-Android/app/src/main/AndroidManifest.xml

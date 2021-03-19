@@ -119,26 +119,29 @@
             app:layout_constraintStart_toStartOf="@id/step2_2"
             app:layout_constraintTop_toBottomOf="@id/step2_2">
 
-            <kr.khs.studyfarm.view.custom.LevelSelectButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="@{viewModel.studyVisiblities[0]}" />
-<!--                app:target="@{viewModel.studyTexts[0]}"-->
+            <!--                app:target="@{viewModel.studyTexts[0]}"-->
 <!--                app:levelSelectTarget="@={viewModel.interestingRating[0]}" />-->
 
             <kr.khs.studyfarm.view.custom.LevelSelectButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.studyVisiblities[1]}" />
-<!--                app:target="@{viewModel.studyTexts[1]}"-->
-<!--                app:levelSelectTarget="@={viewModel.interestingRating[1]}" />-->
+                android:visibility="@{viewModel.studyVisiblities[0]}"
+                app:targetName="@{viewModel.studyTexts[0]}"
+                app:levelSelectTarget="@={viewModel.interestingRating[0]}"/>
 
             <kr.khs.studyfarm.view.custom.LevelSelectButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.studyVisiblities[2]}" />
-<!--                app:target="@{viewModel.studyTexts[2]}"-->
-<!--                app:levelSelectTarget="@={viewModel.interestingRating[2]}" />-->
+                android:visibility="@{viewModel.studyVisiblities[1]}"
+                app:targetName="@{viewModel.studyTexts[1]}"
+                app:levelSelectTarget="@={viewModel.interestingRating[1]}"/>
+
+            <kr.khs.studyfarm.view.custom.LevelSelectButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.studyVisiblities[2]}"
+                app:targetName="@{viewModel.studyTexts[2]}"
+                app:levelSelectTarget="@={viewModel.interestingRating[2]}"/>
 
         </LinearLayout>
 
