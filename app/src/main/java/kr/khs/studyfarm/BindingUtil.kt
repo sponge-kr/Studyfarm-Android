@@ -1,5 +1,6 @@
 package kr.khs.studyfarm
 
+import android.app.DatePickerDialog
 import android.content.res.Resources
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,6 +10,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.chip.Chip
@@ -312,4 +314,25 @@ fun TextView.setTermsString(termsStr: String, required: Boolean) {
     }
 
     this.text = termsText
+}
+
+//참고 : https://www.debugcn.com/ko/article/49569474.html
+@BindingAdapter("app:selectDate")
+fun TextView.dateClicks(date : MutableLiveData<String>) {
+    this.setOnClickListener {
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        val minDate = Calendar.getInstance().apply {
+            set(year, month, day)
+        }
+
+        val datePickerDialog = DatePickerDialog(context, { view, year, monthOfYear, dayOfMonth ->
+                date.value = year.toString() + "-" + (monthOfYear + 1) + "-" + dayOfMonth.toString()
+            },year,month,day).apply {
+            datePicker.minDate = minDate.time.time
+        }
+        datePickerDialog.show()
+    }
 }

@@ -12,6 +12,7 @@ import kr.khs.studyfarm.network.ApiStatus
 import kr.khs.studyfarm.network.StudyFarmApi
 import kr.khs.studyfarm.network.request.MakeStudyData
 import kr.khs.studyfarm.network.response.*
+import java.util.*
 
 class MakeStudyViewModel(val context : Context, topics : Array<UserInterestingInfo>, areas : Array<UserCityInfo>) : ViewModel() {
 
@@ -47,9 +48,11 @@ class MakeStudyViewModel(val context : Context, topics : Array<UserInterestingIn
 
     val step = ObservableField<String>()
 
-    val startDate = ObservableField<String>()
+    private val calendar = Calendar.getInstance()
 
-    val endDate = ObservableField<String>()
+    val startDate = MutableLiveData<String>()
+
+    val endDate = MutableLiveData<String>()
 
     private var state : Array<Int> = Array(areas.size) { areas[it].stateCode.toInt() }
     private var _state = 0
@@ -129,8 +132,8 @@ class MakeStudyViewModel(val context : Context, topics : Array<UserInterestingIn
             || content.get().isNullOrBlank()
             || typeOfRecruit.value == null
             || step.get().isNullOrBlank()
-            || startDate.get().isNullOrBlank()
-            || endDate.get().isNullOrBlank()
+            || startDate.value.isNullOrBlank()
+            || endDate.value.isNullOrBlank()
             || _state == -1
             || _city == -1
             || topic == -1) {
@@ -160,8 +163,8 @@ class MakeStudyViewModel(val context : Context, topics : Array<UserInterestingIn
                     typeOfRecruit = typeOfRecruit.value!!,
                     typeOfProgress = typeOfProgress.value!!,
                     steps = steps,
-                    startDate = startDate.get()!!,
-                    endDate = endDate.get()!!,
+                    startDate = startDate.value!!,
+                    endDate = endDate.value!!,
                     state = _state,
                     city = _city,
                     topic = topic,
@@ -192,8 +195,8 @@ class MakeStudyViewModel(val context : Context, topics : Array<UserInterestingIn
         _typeOfRecruit.value = -1
         _typeOfProgress.value = -1
         step.set("0")
-        startDate.set("1900-01-01")
-        endDate.set("2021-01-01")
+        startDate.value = "${calendar.get(Calendar.YEAR)}-${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.DAY_OF_MONTH)}"
+        endDate.value = "${calendar.get(Calendar.YEAR)}-${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.DAY_OF_MONTH)}"
         _isMakeStudySuccess.value = false
 
 //        state = Array(areas.size) { areas[it].stateCode.toInt() }
