@@ -195,8 +195,8 @@ class MakeStudyViewModel(val context : Context, topics : Array<UserInterestingIn
         _typeOfRecruit.value = -1
         _typeOfProgress.value = -1
         step.set("0")
-        startDate.value = "${calendar.get(Calendar.YEAR)}-${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.DAY_OF_MONTH)}"
-        endDate.value = "${calendar.get(Calendar.YEAR)}-${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.DAY_OF_MONTH)}"
+        startDate.value = "${calendar.get(Calendar.YEAR)}.${String.format("%02d", calendar.get(Calendar.MONTH) + 1)}.${String.format("%02d", calendar.get(Calendar.DAY_OF_MONTH))}"
+        endDate.value = "${calendar.get(Calendar.YEAR)}.${String.format("%02d", calendar.get(Calendar.MONTH) + 1)}.${String.format("%02d", calendar.get(Calendar.DAY_OF_MONTH))}"
         _isMakeStudySuccess.value = false
 
 //        state = Array(areas.size) { areas[it].stateCode.toInt() }
