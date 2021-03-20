@@ -20,10 +20,10 @@
             app:destination="@id/makeStudyFragment" />
     </fragment>
     <fragment
-        android:id="@+id/bottom_explore"
-        android:name="kr.khs.studyfarm.Blank1Fragment"
-        android:label="fragment_blank1"
-        tools:layout="@layout/fragment_blank1" />
+        android:id="@+id/study_list"
+        android:name="kr.khs.studyfarm.mainpage.study_list.StudyListFragment"
+        android:label="fragment_study_list"
+        tools:layout="@layout/fragment_study_list" />
     <fragment
         android:id="@+id/bottom_more"
         android:name="kr.khs.studyfarm.Blank2Fragment"

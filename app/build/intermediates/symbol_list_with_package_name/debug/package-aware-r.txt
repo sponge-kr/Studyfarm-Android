@@ -1913,7 +1913,6 @@ id beginning
 id bidirectional
 id blocking
 id bottom
-id bottom_explore
 id bottom_more
 id bounce
 id browser_actions_header_text
@@ -2338,6 +2337,7 @@ id step3_1
 id step3_2
 id stop
 id stretch
+id study_list
 id submenuarrow
 id submit_area
 id tabMode
@@ -2507,7 +2507,6 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_loading
-layout fragment_blank1
 layout fragment_blank2
 layout fragment_find_pw
 layout fragment_find_study_cafe
@@ -2522,6 +2521,7 @@ layout fragment_signup
 layout fragment_signup_auth
 layout fragment_signup_info
 layout fragment_study_info
+layout fragment_study_list
 layout fragment_vp_interesting
 layout layout_findpw_step1
 layout layout_findpw_step2

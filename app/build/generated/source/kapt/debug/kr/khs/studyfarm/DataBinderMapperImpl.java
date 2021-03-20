@@ -32,6 +32,7 @@ import kr.khs.studyfarm.databinding.FragmentSignupAuthBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentSignupBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentSignupInfoBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentStudyInfoBindingImpl;
+import kr.khs.studyfarm.databinding.FragmentStudyListBindingImpl;
 import kr.khs.studyfarm.databinding.FragmentVpInterestingBindingImpl;
 import kr.khs.studyfarm.databinding.LayoutFindpwStep1BindingImpl;
 import kr.khs.studyfarm.databinding.LayoutFindpwStep2BindingImpl;
@@ -78,27 +79,29 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_FRAGMENTSTUDYINFO = 17;
 
-  private static final int LAYOUT_FRAGMENTVPINTERESTING = 18;
+  private static final int LAYOUT_FRAGMENTSTUDYLIST = 18;
 
-  private static final int LAYOUT_LAYOUTFINDPWSTEP1 = 19;
+  private static final int LAYOUT_FRAGMENTVPINTERESTING = 19;
 
-  private static final int LAYOUT_LAYOUTFINDPWSTEP2 = 20;
+  private static final int LAYOUT_LAYOUTFINDPWSTEP1 = 20;
 
-  private static final int LAYOUT_LAYOUTMAKESTUDYDETAIL = 21;
+  private static final int LAYOUT_LAYOUTFINDPWSTEP2 = 21;
 
-  private static final int LAYOUT_LAYOUTMAKESTUDYRECRUIT = 22;
+  private static final int LAYOUT_LAYOUTMAKESTUDYDETAIL = 22;
 
-  private static final int LAYOUT_LAYOUTSIGNUPSTEP1 = 23;
+  private static final int LAYOUT_LAYOUTMAKESTUDYRECRUIT = 23;
 
-  private static final int LAYOUT_LAYOUTSIGNUPSTEP2 = 24;
+  private static final int LAYOUT_LAYOUTSIGNUPSTEP1 = 24;
 
-  private static final int LAYOUT_LISTITEMAGREEMENT = 25;
+  private static final int LAYOUT_LAYOUTSIGNUPSTEP2 = 25;
 
-  private static final int LAYOUT_LISTITEMINTERESTINGSTUDY = 26;
+  private static final int LAYOUT_LISTITEMAGREEMENT = 26;
 
-  private static final int LAYOUT_LISTITEMSELECT = 27;
+  private static final int LAYOUT_LISTITEMINTERESTINGSTUDY = 27;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(27);
+  private static final int LAYOUT_LISTITEMSELECT = 28;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(28);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.activity_test, LAYOUT_ACTIVITYTEST);
@@ -118,6 +121,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_signup_auth, LAYOUT_FRAGMENTSIGNUPAUTH);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_signup_info, LAYOUT_FRAGMENTSIGNUPINFO);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_study_info, LAYOUT_FRAGMENTSTUDYINFO);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_study_list, LAYOUT_FRAGMENTSTUDYLIST);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.fragment_vp_interesting, LAYOUT_FRAGMENTVPINTERESTING);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.layout_findpw_step1, LAYOUT_LAYOUTFINDPWSTEP1);
     INTERNAL_LAYOUT_ID_LOOKUP.put(kr.khs.studyfarm.R.layout.layout_findpw_step2, LAYOUT_LAYOUTFINDPWSTEP2);
@@ -241,6 +245,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
           }
           throw new IllegalArgumentException("The tag for fragment_study_info is invalid. Received: " + tag);
         }
+        case  LAYOUT_FRAGMENTSTUDYLIST: {
+          if ("layout/fragment_study_list_0".equals(tag)) {
+            return new FragmentStudyListBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_study_list is invalid. Received: " + tag);
+        }
         case  LAYOUT_FRAGMENTVPINTERESTING: {
           if ("layout/fragment_vp_interesting_0".equals(tag)) {
             return new FragmentVpInterestingBindingImpl(component, view);
@@ -360,7 +370,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(27);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(28);
 
     static {
       sKeys.put("layout/activity_test_0", kr.khs.studyfarm.R.layout.activity_test);
@@ -380,6 +390,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/fragment_signup_auth_0", kr.khs.studyfarm.R.layout.fragment_signup_auth);
       sKeys.put("layout/fragment_signup_info_0", kr.khs.studyfarm.R.layout.fragment_signup_info);
       sKeys.put("layout/fragment_study_info_0", kr.khs.studyfarm.R.layout.fragment_study_info);
+      sKeys.put("layout/fragment_study_list_0", kr.khs.studyfarm.R.layout.fragment_study_list);
       sKeys.put("layout/fragment_vp_interesting_0", kr.khs.studyfarm.R.layout.fragment_vp_interesting);
       sKeys.put("layout/layout_findpw_step1_0", kr.khs.studyfarm.R.layout.layout_findpw_step1);
       sKeys.put("layout/layout_findpw_step2_0", kr.khs.studyfarm.R.layout.layout_findpw_step2);

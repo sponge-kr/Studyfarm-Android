@@ -121,6 +121,10 @@ class SignupViewModel(val context : Context) : ViewModel() {
             _toast.value = context.getString(R.string.signup_duplicateNickname)
             return
         }
+        else if(!(nickname.get()!!.length >= 2 || nickname.get()!!.length <= 10)) {
+            _toast.value = "닉네임은 2자 이상 10자 이하로 입력해주세요."
+            return
+        }
 
         coroutineScope.launch {
             try {
