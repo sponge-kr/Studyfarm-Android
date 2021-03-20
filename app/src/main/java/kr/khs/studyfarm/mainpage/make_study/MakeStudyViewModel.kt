@@ -30,6 +30,8 @@ class MakeStudyViewModel(val context : Context, topics : Array<UserInterestingIn
         override fun onNothingSelected(parent: AdapterView<*>?) { }
     }
 
+    val isIgnoreRecruit = ObservableField<Boolean>()
+
     private val _typeOfRecruit = MutableLiveData<Int>()
     val typeOfRecruit : LiveData<Int>
         get() = _typeOfRecruit
@@ -49,10 +51,9 @@ class MakeStudyViewModel(val context : Context, topics : Array<UserInterestingIn
     val step = ObservableField<String>()
 
     private val calendar = Calendar.getInstance()
-
     val startDate = MutableLiveData<String>()
-
     val endDate = MutableLiveData<String>()
+    val isDateDiscuss = ObservableField<Boolean>()
 
     private var state : Array<Int> = Array(areas.size) { areas[it].stateCode.toInt() }
     private var _state = 0
@@ -95,6 +96,8 @@ class MakeStudyViewModel(val context : Context, topics : Array<UserInterestingIn
 
     val content = ObservableField<String>()
 
+    val objective = ObservableField<String>()
+
     private val _isMakeStudySuccess = MutableLiveData<Boolean>()
     val isMakeStudySuccess : LiveData<Boolean>
         get() = _isMakeStudySuccess
@@ -130,6 +133,7 @@ class MakeStudyViewModel(val context : Context, topics : Array<UserInterestingIn
     fun onSubmitBtnClicked() {
         if(title.get().isNullOrBlank()
             || content.get().isNullOrBlank()
+            || objective.get().isNullOrBlank()
             || typeOfRecruit.value == null
             || step.get().isNullOrBlank()
             || startDate.value.isNullOrBlank()
@@ -147,24 +151,25 @@ class MakeStudyViewModel(val context : Context, topics : Array<UserInterestingIn
         coroutineScope.launch {
             try {
                 _apiStatus.value = ApiStatus.LOADING
-                var steps = arrayOf<Int>()
-                if(step.get()!!.toInt() / 10 == 0)
-                    steps += step.get()!!.toInt() - 1
-                else {
-                    val start = step.get()!!.toInt() / 10 - 1
-                    val end = step.get()!!.toInt() % 10 - 1
-                    for(i in start..end)
-                        steps += i
-                }
+                val steps = mutableListOf<Int>()
+                println(step.get()!!)
+                val start = step.get()!!.toInt() / 10
+                val end = step.get()!!.toInt() % 10 - 1
+                for(i in start..end)
+                    steps.add(i)
+
                 val makeStudyDTO = MakeStudyData(
                     title = title.get()!!,
                     content = content.get()!!,
-                    numberOfMemeber = numberOfPeople,
+                    objective = objective.get()!!,
+                    numberOfMember = numberOfPeople,
+                    isIgnoreRecruit = isIgnoreRecruit.get()!!,
                     typeOfRecruit = typeOfRecruit.value!!,
                     typeOfProgress = typeOfProgress.value!!,
                     steps = steps,
                     startDate = startDate.value!!,
                     endDate = endDate.value!!,
+                    isDateDiscuss = isDateDiscuss.get()!!,
                     state = _state,
                     city = _city,
                     topic = topic,
@@ -195,9 +200,11 @@ class MakeStudyViewModel(val context : Context, topics : Array<UserInterestingIn
         _typeOfRecruit.value = -1
         _typeOfProgress.value = -1
         step.set("0")
-        startDate.value = "${calendar.get(Calendar.YEAR)}.${String.format("%02d", calendar.get(Calendar.MONTH) + 1)}.${String.format("%02d", calendar.get(Calendar.DAY_OF_MONTH))}"
-        endDate.value = "${calendar.get(Calendar.YEAR)}.${String.format("%02d", calendar.get(Calendar.MONTH) + 1)}.${String.format("%02d", calendar.get(Calendar.DAY_OF_MONTH))}"
+        startDate.value = "${calendar.get(Calendar.YEAR)}-${String.format("%02d", calendar.get(Calendar.MONTH) + 1)}-${String.format("%02d", calendar.get(Calendar.DAY_OF_MONTH))}"
+        endDate.value = "${calendar.get(Calendar.YEAR)}-${String.format("%02d", calendar.get(Calendar.MONTH) + 1)}-${String.format("%02d", calendar.get(Calendar.DAY_OF_MONTH))}"
         _isMakeStudySuccess.value = false
+        isIgnoreRecruit.set(false)
+        isDateDiscuss.set(false)
 
 //        state = Array(areas.size) { areas[it].stateCode.toInt() }
 //        city = Array(areas.size) { areas[it].cityCode.toInt() }

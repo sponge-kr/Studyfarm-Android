@@ -228,6 +228,12 @@ fun View.setVisible(visible : Boolean) {
     this.visibility = if(visible) View.VISIBLE else View.GONE
 }
 
+@BindingAdapter("app:layout_clickable")
+fun View.setClickable(clickable : Boolean) {
+    this.isClickable = !clickable
+    this.isEnabled = !clickable
+}
+
 @BindingAdapter("app:levelSelectButtonSetting")
 fun LevelSelectLineButton.setting(level : String?) {
     if(level.isNullOrBlank()) {
@@ -329,7 +335,7 @@ fun TextView.dateClicks(date : MutableLiveData<String>) {
         }
 
         val datePickerDialog = DatePickerDialog(context, { view, year, monthOfYear, dayOfMonth ->
-                date.value = year.toString() + "." + String.format("%02d", monthOfYear + 1) + "." + String.format("%02d", dayOfMonth)
+                date.value = year.toString() + "-" + String.format("%02d", monthOfYear + 1) + "-" + String.format("%02d", dayOfMonth)
             },year,month,day).apply {
             datePicker.minDate = minDate.time.time
         }

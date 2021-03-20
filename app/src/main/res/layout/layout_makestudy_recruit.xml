@@ -51,6 +51,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            app:layout_clickable="@{viewModel.isIgnoreRecruit()}"
             app:layout_constraintEnd_toEndOf="@+id/recruit_line1"
             app:layout_constraintStart_toStartOf="@+id/recruit_line1"
             app:layout_constraintTop_toBottomOf="@+id/recruit_tv_numberofpeople"
@@ -61,11 +62,11 @@
             android:id="@+id/recruit_tv_typeofrecruit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="참가자 모집 유형"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/recruit_spinner_numberofpeople"
-            app:layout_constraintTop_toBottomOf="@+id/recruit_spinner_numberofpeople" />
+            app:layout_constraintTop_toBottomOf="@+id/recruit_ignore_recruit" />
 
         <RadioGroup
             android:id="@+id/recruit_radiogroup_typeofrecruit"
@@ -88,14 +89,14 @@
                 android:id="@+id/recruit_tv_recruit_type1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="\t\t선착순으로 모집 인원이 다 차면 모임이 생성돼요."
-                android:onClick="@{() -> viewModel.selectTypeOfRecruit(1)}"/>
+                android:text="\t\t선착순으로 모집 인원이 다 차면 모임이 생성돼요."/>
 
             <RadioButton
                 android:id="@+id/recruit_radio_recruit_type2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="검토후 승인" />
+                android:text="검토후 승인"
+                android:onClick="@{() -> viewModel.selectTypeOfRecruit(1)}" />
 
             <TextView
                 android:id="@+id/recruit_tv_recruit_type2"
@@ -104,5 +105,14 @@
                 android:text="\t\t가입 신청한 사람을 검토하고, 승인된 사람들과 모임을 진행해요." />
 
         </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/recruit_ignore_recruit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="제한 없음"
+            android:checked="@={viewModel.isIgnoreRecruit}"
+            app:layout_constraintStart_toStartOf="@+id/recruit_spinner_numberofpeople"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_spinner_numberofpeople" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

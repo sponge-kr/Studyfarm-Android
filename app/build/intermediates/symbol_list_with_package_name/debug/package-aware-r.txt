@@ -2185,11 +2185,14 @@ id progress_horizontal
 id radio
 id ratio
 id recruit_btn_submit
+id recruit_cb_isdatediscuss
 id recruit_cl_offline
 id recruit_et_enddate
 id recruit_et_startdate
 id recruit_et_studyintroduce
 id recruit_et_studyname
+id recruit_et_studyobjective
+id recruit_ignore_recruit
 id recruit_line1
 id recruit_line2
 id recruit_lsb_difficulty
@@ -2217,6 +2220,7 @@ id recruit_tv_startdate
 id recruit_tv_studydate
 id recruit_tv_studyexplain
 id recruit_tv_studyintroduce
+id recruit_tv_studyobjective
 id recruit_tv_studytitle
 id recruit_tv_typeofprogress
 id recruit_tv_typeofrecruit

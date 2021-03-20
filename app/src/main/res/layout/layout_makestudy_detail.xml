@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="어떤 스터디를 모집할까요?"
+            android:text="모집 난이도"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/recruit_title_detail"
             app:layout_constraintTop_toBottomOf="@+id/recruit_tv_studyexplain" />
@@ -205,7 +205,7 @@
             android:text="스터디 모임 이름"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/recruit_et_startdate"
-            app:layout_constraintTop_toBottomOf="@+id/recruit_et_startdate" />
+            app:layout_constraintTop_toBottomOf="@+id/recruit_cb_isdatediscuss" />
 
         <TextView
             android:id="@+id/recruit_tv_studyintroduce"
@@ -214,8 +214,8 @@
             android:layout_marginTop="32dp"
             android:text="스터디 소개"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/recruit_et_studyname"
-            app:layout_constraintTop_toBottomOf="@+id/recruit_et_studyname" />
+            app:layout_constraintStart_toStartOf="@+id/recruit_et_studyobjective"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_et_studyobjective" />
 
         <TextView
             android:id="@+id/recruit_tv_startdate"
@@ -242,20 +242,24 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="@={viewModel.startDate}"
-            app:selectDate="@{viewModel.startDate}"
+            android:textSize="24sp"
+            app:layout_clickable="@{viewModel.isDateDiscuss()}"
             app:layout_constraintEnd_toStartOf="@+id/recruit_tv_enddate"
             app:layout_constraintStart_toStartOf="@+id/recruit_tv_startdate"
-            app:layout_constraintTop_toBottomOf="@+id/recruit_tv_startdate" />
+            app:layout_constraintTop_toBottomOf="@+id/recruit_tv_startdate"
+            app:selectDate="@{viewModel.startDate}" />
 
         <TextView
             android:id="@+id/recruit_et_enddate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@={viewModel.endDate}"
-            app:selectDate="@{viewModel.endDate}"
+            android:textSize="24sp"
+            app:layout_clickable="@{viewModel.isDateDiscuss()}"
             app:layout_constraintEnd_toEndOf="@+id/recruit_line2"
             app:layout_constraintStart_toStartOf="@+id/recruit_tv_enddate"
-            app:layout_constraintTop_toTopOf="@+id/recruit_et_startdate" />
+            app:layout_constraintTop_toTopOf="@+id/recruit_et_startdate"
+            app:selectDate="@{viewModel.endDate}" />
 
         <EditText
             android:id="@+id/recruit_et_studyname"
@@ -275,12 +279,11 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"
             android:text="@={viewModel.content}"
             app:layout_constraintEnd_toEndOf="@+id/recruit_line2"
-            app:layout_constraintStart_toStartOf="@+id/recruit_tv_studytitle"
-            app:layout_constraintTop_toBottomOf="@+id/recruit_tv_studyintroduce"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/recruit_et_studyobjective"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_tv_studyintroduce" />
 
         <Button
             android:id="@+id/recruit_btn_submit"
@@ -293,5 +296,36 @@
             app:layout_constraintEnd_toEndOf="@+id/recruit_et_studyintroduce"
             app:layout_constraintBottom_toBottomOf="parent"
             android:onClick="@{() -> viewModel.onSubmitBtnClicked()}"/>
+
+        <CheckBox
+            android:id="@+id/recruit_cb_isdatediscuss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="협의 예정"
+            android:checked="@={viewModel.isDateDiscuss}"
+            app:layout_constraintStart_toStartOf="@+id/recruit_et_startdate"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_et_startdate" />
+
+        <TextView
+            android:id="@+id/recruit_tv_studyobjective"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="스터디 목표"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/recruit_et_studyname"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_et_studyname" />
+
+        <EditText
+            android:id="@+id/recruit_et_studyobjective"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:layout_marginTop="8dp"
+            android:text="@={viewModel.objective}"
+            app:layout_constraintEnd_toEndOf="@+id/recruit_line2"
+            app:layout_constraintStart_toStartOf="@+id/recruit_tv_studytitle"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_tv_studyobjective" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
